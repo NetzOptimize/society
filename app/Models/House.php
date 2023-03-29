@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Payment;
+
+class House extends Model
+{
+    use HasFactory;
+
+    protected $fillable =[
+
+        'society_id',
+        'name',
+        'image',
+        'capacity',
+        'address',
+        'house_no',
+        'owner',
+        'resident',
+        'dateofjoined',
+        'bedrooms',
+        'bathrooms',
+        'squarefootage',
+        'membership',
+        'payment_status',
+        'owner_id',
+        'resident_id'
+    ];
+
+    public function society()
+    {
+        return $this->belongsTo(Society::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'residents')->withPivot('isOwner', 'datofoccupancy');
+    }
+
+    public function scopeAddress($query, $houseid)
+    {
+        return $query->where('id', $houseid)->first();
+    }
+
+    public function scopeSearch($query, $house)
+    {
+        return $query->where('Block1','Like' ,'%'.$house.'%')
+            ->orwhere('Block2','Like' ,'%'.$house.'%')
+            ->orwhere('house_no','Like' ,'%'.$house.'%')->get();
+    }
+
+
+}
