@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\House;
 use App\Models\User;
 
-
+//new branch
 
 class HouseController extends Controller
 {
