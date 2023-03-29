@@ -147,8 +147,11 @@ class UserController extends Controller
     }
     public function report()
     {
+        $months = [
+            'init'=> 'INITIAL PAYMENT', '2023-01-01' => 'January', '2023-02-01'=> 'February', '2023-03-01' => 'March', '2023-04-01'=> 'April', '2023-05-01' => 'May', '2023-06-01' => 'June', '2023-07-01' =>'July', '2023-08-01' => 'August', '2023-09-01' => 'September', '2023-10-01' => 'October', '2023-11-01' => 'November', '2023-12-01' => 'December'
+        ];
 
-        return view('users.report');
+        return view('users.report',compact('months'));
     }
 
 }
