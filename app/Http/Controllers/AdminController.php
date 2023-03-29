@@ -11,7 +11,18 @@ class AdminController extends Controller
 
     public function index()
     {
-        $expenses= Expense::get();
+        if(isset($_GET['sort']))
+        {
+            $expenses= Expense::sort($_GET['sort']);
+        }
+        elseif(isset($_GET['search']))
+        {
+            $expenses= Expense::search($_GET['search']);
+        }
+        else
+        {
+            $expenses= Expense::get();
+        }
 
         return view('admins.index', compact('expenses'));
     }

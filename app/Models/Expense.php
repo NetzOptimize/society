@@ -20,4 +20,18 @@ class Expense extends Model
     {
         return $this->belongsto(paymentmode::class,'payment_modes_id', 'id');
     }
+    public function scopeSort($query, $sort)
+    {
+        if($sort == 'ASCENDING')
+        {
+            return $query->orderby('dateofpayment', 'asc')->get();
+        }
+
+        return $query->orderby('dateofpayment', 'desc')->get();
+    }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('payee', 'LIKE', '%'.$search.'%')->get();
+    }
 }

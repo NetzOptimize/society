@@ -47,6 +47,11 @@
         @endif
     </form>
     </div>
+
+    {{-- refresh button--}}
+
+    <a href="{{ route('payment.index') }}" class="btn btn-secondary">REFRESH</a>
+
     {{-- listing  --}}
     @php $i=0; @endphp
     <table class="table table-light">
