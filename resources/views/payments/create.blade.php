@@ -51,7 +51,7 @@
             @enderror
         </div>
 
-        <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-secondary">
+        <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-primary">
     </form>
 </div>
 @endsection

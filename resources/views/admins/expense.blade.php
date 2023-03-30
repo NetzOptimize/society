@@ -5,14 +5,14 @@
         <form action="{{ route('admin.expense.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
             @csrf
             <label><b>NAME OF PAYEE</b></label>
-            <input type="text" name= "payee" placeholder="enter name of organisation/individual"class="form-control">
+            <input type="text" name= "payee" placeholder="Enter Name of Organisation/Individual"class="form-control">
             <div class="error">
                 @error('payee')
                     {{ $message }}
                 @enderror
             </div>
             <label><b>AMOUNT</b></label>
-            <input type="text" name="amount" placeholder="enter amount" class="form-control">
+            <input type="text" name="amount" placeholder="Enter amount" class="form-control">
             <div class="error">
                 @error('amount')
                     {{ $message }}

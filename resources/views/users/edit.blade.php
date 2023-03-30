@@ -48,6 +48,6 @@
             {{ $message }}
         @enderror
         </div>
-        <input type="submit" name="login" value="EDIT USER" class="btn btn-secondary">
+        <input type="submit" name="login" value="EDIT USER" class="btn btn-primary">
     </form>
 @endsection

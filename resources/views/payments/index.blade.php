@@ -39,7 +39,7 @@
         @else
             <input type="date" class="me-3" name="end_date">
         @endif
-        <button class="btn btn-secondary me-3" type="submit">FILTER</button>
+        <button class="btn btn-primary me-3" type="submit">FILTER</button>
     </form>
     </div>
 
@@ -56,7 +56,7 @@
 
     {{-- refresh button--}}
 <div class="refresh-button p-3">    
-    <a href="{{ route('payment.index') }}" class="btn btn-secondary">REFRESH</a>
+    <a href="{{ route('payment.index') }}" class="btn btn-primary">REFRESH</a>
 </div>
 
     {{-- listing  --}}

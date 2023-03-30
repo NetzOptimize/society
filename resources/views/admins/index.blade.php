@@ -16,7 +16,7 @@
 
 {{-- refresh button--}}
 <div class="refresh-expenses ps-3">
-    <a href="{{ route('admin.expense.index') }}" class="btn btn-secondary">REFRESH</a>
+    <a href="{{ route('admin.expense.index') }}" class="btn btn-primary">REFRESH</a>
 </div>
 
 {{-- listing --}}
@@ -27,7 +27,7 @@
             <th>AMOUNT</th>
             <th>PAYMENT MODE</th>
             <th>DATE OF PAYMENT <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (request('sort'))
                         {{ request('sort') }}
                         @else

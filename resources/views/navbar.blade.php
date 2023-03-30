@@ -14,22 +14,22 @@
 </div>
 
 <!-- username -->
-      <div class="dropdown p-4">
+      <div class="dropdown p-4 me-2">
 
         <a class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <img src="{{asset('user1.jpg')}}" alt="" height="30px" width="30px"> User </a>
+         <img src="{{asset('user1.jpg')}}" alt="" class="rounded-pill" height="30px" width="30px"> User </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">Profile</a>
 
-          <a class="dropdown-item" href="#">logout</a>
+          <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
         </div>
 
       </div>
       <!-- username -->
     </div>
   </div>
-
-  <nav class="navbar bg-primary">
+<div class="admin-links"> 
+  <nav class="navbar bg-primary p-4">
 
  
 <a href="{{ route('user.index') }}" class="btn btn-transparent  ms-1 text-light">MANAGE USERS</a>
@@ -56,6 +56,6 @@
       </ul>
     </div>
 
-    <a href="{{ route('logout') }}" class="btn btn-primary ms-1">LOGOUT</a>
-  </nav>
+   </nav>
+</div>
 </div>

@@ -52,8 +52,8 @@
                 <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>
             @endforeach
         </select>
-        <div class="add-user">
-        <input type="submit" name="login" value="Add User" class="btn btn-secondary">
+        <div class="add-user text-center">
+        <input type="submit" name="login" value="Add User" class="btn btn-primary">
         </div>
     
     </form>

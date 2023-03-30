@@ -31,7 +31,7 @@
                 {{ $message }}
                 @enderror
             </div>
-            <input type="submit" name="login" value="LOGIN" class="btn btn-info">
+            <input type="submit" name="login" value="LOGIN" class="btn btn-primary">
 
             <div class="forgot-password text-center">
                 <p class="text-center"><a href="" class="text-primary">Forgot Password ?</a></p>

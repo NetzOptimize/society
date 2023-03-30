@@ -10,14 +10,13 @@
       </div>
 <h4>WELCOME {{ Auth::user()->name }}</h4>
 
-<div class="user dropdown p-4">
+<div class="user dropdown pe-3 me-3">
 
 <a class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
- <img src="{{asset('user1.jpg')}}" alt="" height="30px" width="30px">User </a>
+ <img src="{{asset('user1.jpg')}}" alt="" class="rounded-pill" height="30px" width="30px">User </a>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   <a class="dropdown-item" href="#">Profile</a>
-
-  <a class="dropdown-item" href="{{ route('logout') }}">logout</a>
+  <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
 </div>
 
 </div>
@@ -26,8 +25,8 @@
 <div class="user-links  bg-primary p-3">
 <nav class="navbar d-flex justify-content-end">
    
-    <a href="{{ route('user.profile.edit') }}"  class="btn btn-secondary me-3" >MY ACCOUNT</a>
-    <a href="{{ route('user.report') }}"  class="btn btn-secondary">REPORT</a>
+    <a href="{{ route('user.profile.edit') }}"  class="btn btn-light me-3" >MY ACCOUNT</a>
+    <a href="{{ route('user.report') }}"  class="btn btn-light">REPORT</a>
  
 </nav>
 </div>
