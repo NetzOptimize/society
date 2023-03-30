@@ -7,6 +7,8 @@ use App\Models\House;
 use App\Models\PaymentMode;
 use App\Models\Payment;
 use App\Models\Resident;
+use Illuminate\Support\Facades\DB;
+
 
 class PaymentController extends Controller
 {
@@ -16,7 +18,7 @@ class PaymentController extends Controller
     public function index()
     {
         $months = [
-            'init'=> 'INITIAL PAYMENT', '2023-01-01' => 'January', '2023-02-01'=> 'February', '2023-03-01' => 'March', '2023-04-01'=> 'April', '2023-05-01' => 'May', '2023-06-01' => 'June', '2023-07-01' =>'July', '2023-08-01' => 'August', '2023-09-01' => 'September', '2023-10-01' => 'October', '2023-11-01' => 'November', '2023-12-01' => 'December'
+            'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'
         ];
 
         if(isset($_GET['month']))
@@ -45,10 +47,10 @@ class PaymentController extends Controller
     public function create()
     {
 
-        $houses= House::where('house_type','House')->get();
+        $houses= House::get();
 
         $months = [
-            'init'=> 'INITIAL PAYMENT', '2023-01-01' => 'January', '2023-02-01'=> 'February', '2023-03-01' => 'March', '2023-04-01'=> 'April', '2023-05-01' => 'May', '2023-06-01' => 'June', '2023-07-01' =>'July', '2023-08-01' => 'August', '2023-09-01' => 'September', '2023-10-01' => 'October', '2023-11-01' => 'November', '2023-12-01' => 'December'
+            'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'
         ];
 
         $PaymentModes = PaymentMode::get();

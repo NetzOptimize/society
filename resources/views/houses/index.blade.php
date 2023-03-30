@@ -7,16 +7,18 @@
             <th>Block-1</th>
             <th>Block-2</th>
             <th>HOUSE NO</th>
-            <th>HOUSE TYPE</th>
-            <th>DATE OF BUILT</th>
+            <th>ADDRESS</th>
+            <th>OWNER NAME</th>
+            <th>MOBILE</th>
         </tr>
         @foreach ($houses as $house)
             <tr>
                 <td> {{ $house->Block1 }}</td>
                 <td> {{ $house->Block2 }}</td>
                 <td> {{ $house->house_no }}</td>
-                <td> {{ $house->house_type }}</td>
-                <td> {{ $house->dateofbuilt }}</td>
+                <td> {{ $house->full_address }}</td>
+                <td> {{ $house->ownername }}</td>
+                <td> {{ $house->mobile }}</td>
             </tr>
         @endforeach
     </table>

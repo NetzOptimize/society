@@ -11,13 +11,6 @@
             {{ $message }}
         @enderror
         </div>
-        <label>EMAIL</label>
-        <input type="email" name="email" placeholder="enter your email">
-        <div class="error">
-        @error('email')
-            {{ $message }}
-        @enderror
-        </div>
         <label>* MOBILE 1</label>
         <input type="tel" name="mobile1" placeholder="enter your mobile">
         <div class="error">
