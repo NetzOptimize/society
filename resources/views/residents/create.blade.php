@@ -5,7 +5,7 @@
     <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
         <label>HOUSE NO.</label>
-        <select name="house_id">
+        <select name="house_id" class="form-control">
             <option></option>
             @foreach ($houses as $house)
                 @php
@@ -20,7 +20,7 @@
         @enderror
         </div>
         <label>USER</label>
-        <select name="user_id">
+        <select name="user_id" class="form-control">
             <option></option>
             @foreach ($users as $user)
                 <option value="{{ $user->id }} ">{{ $user->name }}</option>
@@ -32,24 +32,24 @@
         @enderror
         </div>
         <label>OCCUPANCY TYPE</label>
-        <select name="isOwner">
+        <select name="isOwner" class="form-control">
                 <option></option>
                 <option value="1">OWNER</option>
                 <option value="0">TENANT</option>
         </select>
-        <div class="error">
+        <div class="error" class="form-control" >
         @error('isOwner')
             {{ $message }}
         @enderror
         </div>
         <label>DATE OF OCCUPANCY</label>
-        <input type="date" name="datofoccupancy">
+        <input type="date" name="datofoccupancy" class="form-control">
         <div class="error">
         @error('datofoccupancy')
             {{ $message }}
         @enderror
         </div>
-        <input type="submit" name="login" value="ADD RESIDENT" class="btn btn-secondary">
+        <input type="submit" name="login" value="ADD RESIDENT" class="btn btn-primary">
     </form>
 </div>
 @endsection

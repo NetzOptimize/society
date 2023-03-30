@@ -2,8 +2,9 @@
 @extends('layouts.main')
 @section('content')
 
-    <table class="table table-light">
-        <tr>
+<div class="table-manage-house  p-3">
+<table class="table table-light table-hover table-borderd align-middle">
+        <tr class="text-center">
             <th>Block-1</th>
             <th>Block-2</th>
             <th>HOUSE NO</th>
@@ -11,7 +12,7 @@
             <th>DATE OF BUILT</th>
         </tr>
         @foreach ($houses as $house)
-            <tr>
+            <tr  class="text-center">
                 <td> {{ $house->Block1 }}</td>
                 <td> {{ $house->Block2 }}</td>
                 <td> {{ $house->house_no }}</td>
@@ -20,4 +21,5 @@
             </tr>
         @endforeach
     </table>
+    </div>
 @endsection

@@ -1,9 +1,14 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<a href="{{ route('resident.create') }}" class="btn btn-secondary">ADD RESIDENT</a>
-    <table class="table table-light">
-        <tr>
+
+<div class="resident-create mt-4 p-3">
+<a href="{{ route('resident.create') }}" class="btn btn-primary">ADD RESIDENT</a>
+</div>
+
+<div class="table-resident table-hover table-borderd align-middle p-3">
+    <table class="table table-light table-hover table-borderd align-middle">
+        <tr class="text-center">
             <th>HOUSE NO.</th>
             <th>USER</th>
             <th>OCCUPANCY TYPE</th>
@@ -12,7 +17,7 @@
             <th>DELETE</th>
         </tr>
         @foreach ($residents as $resident)
-            <tr>
+            <tr class="text-center">
                 @php
                     $address = $resident->house->Block1 . $resident->house->Block2 . $resident->house->house_no;
                 @endphp
@@ -25,7 +30,7 @@
                 @endif
                 <td>{{ $resident->datofoccupancy }}</td>
                 @if($resident->isOwner)
-                    <td><a href="{{ route('resident.edit' ,$resident) }}" class="btn btn-secondary">EDIT</a></td>
+                    <td><a href="{{ route('resident.edit' ,$resident) }}" class="btn btn-primary">EDIT</a></td>
                 @else
                 <td> - </td>
                 @endif
@@ -38,6 +43,8 @@
             </tr>
         @endforeach
     </table>
+    </div>
 @endsection
+
 
 
