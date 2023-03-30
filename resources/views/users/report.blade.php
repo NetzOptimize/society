@@ -2,7 +2,8 @@
 @extends('layouts.main')
 @section('content')
 @php $payments = Auth::user()->payments()->get() @endphp
-    <table class="table table-light">
+<div class="table-report p-4">
+    <table class="table table-light table-hover">
         <tr>
             <th>HOUSE No.</th>
             <th>BILLING MONTH</th>
@@ -27,4 +28,5 @@
         </tr>
         @endforeach
     </table>
+    </div>
 @endsection

@@ -1,7 +1,7 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div style="height:100vh" class="d-flex flex-column justify-content-center align-items-center align-content-center">
+<div class="d-flex flex-column justify-content-center align-items-center align-content-center p-5">
     <form action="{{ route('user.store') }}" method="POST"   class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
         <label>* NAME</label>

@@ -29,23 +29,25 @@
     </div>
   </div>
 
-  <nav class="navbar" style="background-color: #e3f2fd;">
+  <nav class="navbar bg-primary">
 
+ 
+<a href="{{ route('user.index') }}" class="btn btn-transparent  ms-1 text-light">MANAGE USERS</a>
+    <a href="{{ route('house.index') }}" class="btn btn-transparent ms-1 text-light">MANAGE HOUSES</a>
+    <a href="{{ route('resident.index') }}" class="btn btn-transparent ms-1 text-light">MANAGE RESIDENT</a>
+ 
 
-    <a href="{{ route('user.index') }}" class="btn btn-secondary ms-1">MANAGE USERS</a>
-    <a href="{{ route('house.index') }}" class="btn btn-secondary ms-1">MANAGE HOUSES</a>
-    <a href="{{ route('resident.index') }}" class="btn btn-secondary ms-1">MANAGE RESIDENT</a>
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle ms-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn btn-transparent dropdown-toggle ms-1 text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         MANAGE PAYMENT
       </button>
       <ul class="dropdown-menu">
-        <li><a href="{{ route('payment.index') }}" class="dropdown-item ms-1">PAYMENT HISTORY</a></li>
+        <li><a href="{{ route('payment.index') }}" class="dropdown-item ms-1 ">PAYMENT HISTORY</a></li>
         <li><a href="{{ route('payment.create') }}" class="dropdown-item ms-1">MANAGE PAYMENT</a></li>
       </ul>
     </div>
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle ms-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn btn-transparent dropdown-toggle ms-1 text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         MANAGE EXPENSE
       </button>
       <ul class="dropdown-menu">

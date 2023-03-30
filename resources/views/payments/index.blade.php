@@ -2,9 +2,14 @@
 @extends('layouts.main')
 @section('content')
     {{-- monthwise filter --}}
-    <div class="d-flex flex-row mb-3 ">
+
+
+
+
+
+    <div class="d-flex justify-content-center align-items-center  p-5">
     <div class="dropdown">
-        <label class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <label class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             @if (request('month'))
                 {{ request('month') }}
             @else
@@ -20,26 +25,27 @@
     </div>
 
     {{-- datewise filter --}}
-    <form action="" method="GET">
-        <label><b>START DATE</b></label>
+    <div class="payment">
+    <form action="" method="GET" style="margin:0">
+        <label  class="ms-3 me-3"><b>START DATE</b></label>
         @if (request('start_date'))
             <input type="date" name="start_date" value={{ request('start_date') }}>
         @else
             <input type="date" name="start_date">
         @endif
-        <label><b>END DATE</b></label>
+        <label  class="ms-3 me-3"><b>END DATE</b></label>
         @if (request('end_date'))
-            <input type="date" name="end_date" value={{ request('end_date') }}>
+            <input type="date"  name="end_date" value={{ request('end_date') }}>
         @else
-            <input type="date" name="end_date">
+            <input type="date" class="me-3" name="end_date">
         @endif
-        <button class="btn btn-secondary" type="submit">FILTER</button>
+        <button class="btn btn-secondary me-3" type="submit">FILTER</button>
     </form>
-
+    </div>
 
     {{-- search bar --}}
 
-    <form action="" method="GET">
+    <form action="" method="GET" style="margin:0">
         @if (request('search'))
             <input type="search" name="search" value="{{ request('search') }}" />
         @else
@@ -49,11 +55,13 @@
     </div>
 
     {{-- refresh button--}}
-
+<div class="refresh-button p-3">    
     <a href="{{ route('payment.index') }}" class="btn btn-secondary">REFRESH</a>
+</div>
 
     {{-- listing  --}}
     @php $i=0; @endphp
+    <div class="table-payments p-3"> 
     <table class="table table-light">
         <tr>
             <th>SERIAL NO</th>
@@ -82,5 +90,6 @@
         </tr>
         @endforeach
     </table>
+</div>
 @endsection
 
