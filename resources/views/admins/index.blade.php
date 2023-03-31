@@ -37,13 +37,13 @@
                         @if (request('sort'))
                         {{ request('sort') }}
                         @else
-                        sort
+                        Sort
                         @endif
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="?sort=ASCENDING">ASCENDING</a></li>
-                        <li><a class="dropdown-item" href="?sort=DESCENDING">DESCENDING</a></li>
+                        <li><a class="dropdown-item" href="?sort=ASCENDING">Ascending</a></li>
+                        <li><a class="dropdown-item" href="?sort=DESCENDING">Descending</a></li>
                     </ul>
                 </div>
             </th>

@@ -1,13 +1,13 @@
 
-<style> 
+<style>
   #manage-users:hover {
     border: 1px solid white !important;
-    
+
 }
 td,th {
     padding-left: 18px !important;
 }
-</style> 
+</style>
 <div class="main">
   <div class="bg-dark p-3">
     <div class="top-nav d-flex align-items-center justify-content-between">
@@ -32,7 +32,9 @@ td,th {
       </button>
       <ul class="dropdown-menu dropdown-menu-dark">
         <li><a href="{{ route('payment.index') }}" class="dropdown-item ms-1 ">Payment History</a></li>
-        <li><a href="{{ route('payment.create') }}" class="dropdown-item ms-1">Manage Payment</a></li>
+        @if(auth()->user()->usertype_id !=3)
+            <li><a href="{{ route('payment.create') }}" class="dropdown-item ms-1">Manage Payment</a></li>
+        @endif
       </ul>
     </div>
     <div class="dropdown ">
@@ -41,7 +43,9 @@ td,th {
       </button>
       <ul class="dropdown-menu dropdown-menu-dark">
         <li><a href="{{ route('admin.expense.index') }}" class="dropdown-item ms-1">Expense History</a></li>
-        <li><a href="{{ route('admin.expense') }}" class="dropdown-item ms-1">Manage Expenses</a></li>
+        @if(auth()->user()->usertype_id !=3)
+            <li><a href="{{ route('admin.expense') }}" class="dropdown-item ms-1">Manage Expenses</a></li>
+        @endif
       </ul>
     </div>
     <!-- username -->
@@ -61,5 +65,5 @@ td,th {
 
     </div>
   </div>
-  
+
 </div>

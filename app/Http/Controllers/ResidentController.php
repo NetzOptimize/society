@@ -20,7 +20,7 @@ class ResidentController extends Controller
 
     public function create()
     {
-        $users= User::where('usertype_id',2)->get();
+        $users= User::where('usertype_id',2)->orderby('name','asc')->get();
 
         $houses= House::get();
 
