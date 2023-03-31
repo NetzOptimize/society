@@ -21,14 +21,14 @@
             {{ $message }}
         @enderror
         </div>
-     
+
         <input type="tel" name="mobile2" placeholder="Mobile2"  class="form-control">
         <div class="error">
         @error('mobile2')
             {{ $message }}
         @enderror
         </div>
-  
+
         <input type="password" name="password" placeholder="Password" class="form-control">
         <div class="error">
         @error('password')
@@ -42,15 +42,21 @@
         @enderror
         </div>
          <select name="usertype_id" class="form-control">
+            <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)
                 <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>
             @endforeach
         </select>
+        <div class="error">
+            @error('usertype_id')
+                {{ $message }}
+            @enderror
+            </div>
         <div class="add-user text-center">
         <input type="submit" name="login" value="Add User" class="btn btn-primary">
         </div>
-    
+
     </form>
-</div> 
+</div>
 @endsection
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('house_id');
             $table->string('billingmonth');
             $table->foreignid('payment_modes_id')->constrained();
-            $table->date('dateofdeposit');
+            $table->string('dateofdeposit');
             $table->decimal('amount');
             $table->timestamps();
         });

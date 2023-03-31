@@ -8,6 +8,7 @@ use App\Models\PaymentMode;
 use App\Models\Payment;
 use App\Models\Resident;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class PaymentController extends Controller
@@ -95,7 +96,7 @@ class PaymentController extends Controller
                     'billingmonth' => $req['billingmonth'][0],
                     'amount' => $this->initialpayment,
                     'payment_modes_id' => $req->payment_modes_id,
-                    'dateofdeposit' => $req->dateofdeposit
+                    'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y')
                 ]);
 
                 if($req['billingmonth'])
@@ -114,7 +115,7 @@ class PaymentController extends Controller
                                 'billingmonth' => $month,
                                 'amount' => $this->monthlypayment,
                                 'payment_modes_id' => $req->payment_modes_id,
-                                'dateofdeposit' => $req->dateofdeposit
+                                'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y')
                             ]);
                         }
                         $totalAmount += $this->monthlypayment;
@@ -143,7 +144,7 @@ class PaymentController extends Controller
                             'billingmonth' => $month,
                             'amount' => $this->monthlypayment,
                             'payment_modes_id' => $req->payment_modes_id,
-                            'dateofdeposit' => $req->dateofdeposit
+                            'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y')
                         ]);
 
                     }
