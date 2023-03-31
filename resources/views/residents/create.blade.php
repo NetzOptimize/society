@@ -4,12 +4,12 @@
 
 <div class="main  bg-light   rounded mt-5 p-4  " >
 <div class="resident-create text-center">
-    <h3>GET YOUR HOUSE NO.</h3>
+    <h3>Get Your House No.</h3>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4  pb-4 ">
     <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
-        <label>HOUSE NO.</label>
+        <label>House No.</label>
         <select name="house_id" class="form-control">
             <option value="">Select House Number</option>
             @foreach ($houses as $house)
@@ -24,7 +24,7 @@
             {{ $message }}
         @enderror
         </div>
-        <label>USER</label>
+        <label>User</label>
         <select name="user_id" class="form-control">
             <option value="">Select User</option>
             @foreach ($users as $user)
@@ -36,25 +36,25 @@
             {{ $message }}
         @enderror
         </div>
-        <label>OCCUPANCY TYPE</label>
+        <label>Occupancy Type</label>
         <select name="isOwner" class="form-control">
                 <option  value="">Select Occupancy Type</option>
-                <option value="1">OWNER</option>
-                <option value="0">TENANT</option>
+                <option value="1">Owner</option>
+                <option value="0">Tenant</option>
         </select>
         <div class="error" class="form-control" >
         @error('isOwner')
             {{ $message }}
         @enderror
         </div>
-        <label>DATE OF OCCUPANCY</label>
+        <label>Date Of Occupancy</label>
         <input type="date" name="datofoccupancy" class="form-control">
         <div class="error">
         @error('datofoccupancy')
             {{ $message }}
         @enderror
         </div>
-        <input type="submit" name="login" value="ADD RESIDENT" class="btn btn-dark">
+        <input type="submit" name="login" value="Add Resident" class="btn btn-dark">
     </form>
 </div>
 </div>

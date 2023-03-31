@@ -2,9 +2,9 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="payment-heading text-center bg-light   rounded mt-3  p-4">
+<div class="payment-heading text-center bg-light me-5 ms-5  rounded mt-3  p-4">
     <h3>
-      LIST OF USERS
+      List Of Users
     </h3>
   </div>
 

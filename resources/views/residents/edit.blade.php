@@ -6,10 +6,10 @@
 
     <form action="{{ route('resident.update', $resident) }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
-        <label>HOUSE</label>
+        <label>House</label>
         <input type="textbox" value="{{ $address }}" class="form-control" readonly >
 
-        <label>USER</label>
+        <label>User</label>
         <select name="user_id" class="form-control">
             <option></option>
             @foreach ($users as $user)
@@ -25,11 +25,11 @@
             {{ $message }}
         @enderror
         </div>
-        <label>OCCUPANCY TYPE</label>
+        <label>Occupancy Type</label>
         <input type="textbox" name=isOwner value="OWNER" class="form-control" readonly>
 
         <label>DATE OF OCCUPANCY</label>
-        <input type="date" name="datofoccupancy" class="form-control" value="{{ date('Y-m-d', strtotime($resident->datofoccupancy)) }}">
+        <input type="date" name="datofoccupancy" class="form-control" value="{{ $resident->datofoccupancy}}">
         <div class="error">
         @error('datofoccupancy')
             {{ $message }}

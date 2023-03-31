@@ -7,28 +7,28 @@
     
 
 
-<div class="Manage-expenses-heading text-center">
-    <h3>MANAGE EXPENSES</h3>
+<div class="Manage-expenses-heading text-center ">
+    <h3>Manage Expenses</h3>
 </div>
 
     <div class="d-flex flex-column justify-content-center align-items-center align-content-center pb-3 bg-light container mt-5">
         <form action="{{ route('admin.expense.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
             @csrf
-            <label><b>NAME OF PAYEE:</b></label>
+            <label><b>Name Of Payee:</b></label>
             <input type="text" name= "payee" placeholder="Enter Name of Organisation/Individual"class="form-control">
             <div class="error">
                 @error('payee')
                     {{ $message }}
                 @enderror
             </div>
-            <label><b>AMOUNT:</b></label>
+            <label><b>Amount:</b></label>
             <input type="text" name="amount" placeholder="Enter amount" class="form-control">
             <div class="error">
                 @error('amount')
                     {{ $message }}
                 @enderror
             </div>
-            <label><b>SELECT PAYMENT MODE:</b></label>
+            <label><b>Select Payments Mode:</b></label>
             <select name="payment_modes_id"class="form-control">
                 <option value="">Select Payment Method</option>
                 @foreach ($PaymentModes as $PaymentMode)
@@ -41,21 +41,21 @@
                 @enderror
             </div>
 
-            <label><b>DATE OF PAYMENT:</b></label>
+            <label><b>Date Of Payment:</b></label>
             <input type="date" name="dateofpayment" class="form-control" />
             <div class="error">
                 @error('dateofpayment')
                     {{ $message }}
                 @enderror
             </div>
-            <label><b>ADD COMMENT:</b></label>
+            <label><b>Add Comment:</b></label>
             <textarea name="comments"class="form-control"></textarea>
             <div class="error">
                 @error('comments')
                     {{ $message }}
                 @enderror
             </div>
-            <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-dark">
+            <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
         </form>
     </div>
     </div>

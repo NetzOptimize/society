@@ -2,8 +2,8 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="heading-resident text-center bg-light   rounded mt-3  p-4">
-    <h3>LIST OF RESIDENTS</h3>
+<div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
+    <h3>List Of Residents</h3>
 </div>
 @if(auth()->user()->usertype_id !=3)
     <div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
@@ -27,9 +27,9 @@
                 <td> {{ $resident->house->full_address }}</td>
                 <td> {{ $resident->user->name }}</td>
                 @if($resident->isOwner)
-                    <td>OWNER</td>
+                    <td>Owner</td>
                 @else
-                    <td>TENANT</td>
+                    <td>Tenant</td>
                 @endif
                 <td>{{ $resident->datofoccupancy }}</td>
                 @if(auth()->user()->usertype_id !=3)

@@ -2,6 +2,8 @@
 @extends('layouts.main')
 @section('content')
 
+<div class="main container mt-5 bg-light">
+
 <div class="heading-add-user p-4 bg-light text-center mt-4">
     <h3>Add User</h3>
 </div>
@@ -52,10 +54,11 @@
             @enderror
             </div>
         <div class="add-user text-center">
-        <input type="submit" name="login" value="Add User" class="btn btn-primary">
+        <input type="submit" name="login" value="Add User" class="btn btn-dark">
         </div>
 
     </form>
+</div>
 </div>
 @endsection
 

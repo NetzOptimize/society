@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="main ">
-  <div class="payment-heading text-center bg-light container rounded mt-5 p-4">
+  <div class="payment-heading text-center  bg-light container rounded mt-5 p-4">
     <h3>
       Payment Methods
     </h3>
@@ -12,9 +12,9 @@
   <div class="d-flex flex-column justify-content-center align-items-center align-content-center bg-light  container rounded pb-5">
     <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
       @csrf
-      <label><b>HOUSE NO.</b></label>
-      <select name="house_id">
-        <option value="">Select House Number</option>
+      <label><b>House No.</b></label>
+      <select name="house_id" class="form-control">
+        <option value="" >Select House Number</option>
         @foreach ($houses as $house)
         <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
         @endforeach
@@ -27,7 +27,7 @@
       <label>
         <i class="fa fa-calendar" aria-hidden="true"></i>
 
-        <b>SELECT BILLING MONTHS:</b>
+        <b>Select Billing Months:</b>
       </label>
       @foreach ($months as $key => $month)
       <div class="d-flex flex-row align-items-center justify-content-between">
@@ -41,7 +41,7 @@
       </div>
 
       <label> <i class="fa fa-credit-card"></i>
-        <b>PAYMENT MODE:</b></label>
+        <b>Payment Mode:</b></label>
         <select name="payment_modes_id" class="form-control">
           <option value="">Select Payment Method</option>
           @foreach ($PaymentModes as $PaymentMode)
@@ -57,7 +57,7 @@
 
 
         <label> <i class="fa fa-calendar" aria-hidden="true"></i>
-          <b>DATE OF DEPOSITS:</b></label>
+          <b>Date Of Deposits:</b></label>
         <input type="date" name="dateofdeposit" class="form-control" value={{ now() }} />
         <div class="error">
           @error('dateofdeposit')
@@ -172,7 +172,7 @@
 
 </div> -->
       <!-- payment end -->
-      <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-dark">
+      <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
     </form>
   </div>
 </div>

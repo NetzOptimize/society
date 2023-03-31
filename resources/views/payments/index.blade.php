@@ -5,7 +5,7 @@
 
 
 
-<div class="heading-payment-history bg-light  p-4 mt-3 text-center">
+<div class="heading-payment-history bg-light me-5 ms-5  p-4 mt-3 text-center">
     <h3>Payment History</h3>
 </div>
 
@@ -15,7 +15,7 @@
             @if (request('month'))
                 {{ request('month') }}
             @else
-                MONTH-WISE-FILTER
+                Months
             @endif
         </label>
         <ul class="dropdown-menu">
@@ -29,19 +29,19 @@
     {{-- datewise filter --}}
     <div class="payment">
     <form action="" method="GET" style="margin:0">
-        <label  class="ms-3 me-3"><b>START DATE</b></label>
+        <label  class="ms-3 me-3"><b>Start Date</b></label>
         @if (request('start_date'))
             <input type="date" name="start_date" value={{ request('start_date') }}>
         @else
             <input type="date" name="start_date">
         @endif
-        <label  class="ms-3 me-3"><b>END DATE</b></label>
+        <label  class="ms-3 me-3"><b>End Date</b></label>
         @if (request('end_date'))
             <input type="date"  name="end_date" value={{ request('end_date') }}>
         @else
             <input type="date" class="me-3" name="end_date">
         @endif
-        <button class="btn btn-success me-3" type="submit">FILTER</button>
+        <button class="btn btn-success me-3" type="submit">Filter</button>
     </form>
     </div>
 
@@ -58,10 +58,38 @@
 
  
     {{-- refresh button--}}
-<div class="refresh-button pb-3 me-5 d-flex justify-content-end">
-    <a href="{{ route('payment.index') }}" class="btn btn-success">REFRESH</a>
+<div class="refresh-button pb-4 me-5 d-flex justify-content-end">
+    <a href="{{ route('payment.index') }}" class="btn btn-success">Refresh</a>
 </div>
-<div class="house-data me-5">
+
+<!-- table -->
+<div class="reports d-flex justify-content-end me-5">
+<table class="table w-auto table-bordered ">
+
+<tr>
+    <th class="text-center table-info" colspan="2">Financial Reports</th>
+</tr>
+
+<tbody>
+    <tr class="table-light">
+       <td>Date</td>
+      <td>{{ date('d-m-Y') }}</td>
+     </tr>
+  <tr  class="table-light">
+       <td>Count</td>
+      <td>{{$count }}</td>
+     </tr>
+     <tr  class="table-light">
+       <td>Total Amount</td>
+      <td>{{ $sum}}</td>
+     </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- table end -->
+
+<!-- <div class="house-data me-5">
     <h4 class="text-end"><pre>
     DATE :{{ date('d-m-Y') }}
     COUNT : {{$count }}
@@ -70,18 +98,18 @@
     </h4>
 
 
-</div>
+</div> -->
     {{-- listing  --}}
     @php $i=0; @endphp
     <div class="table-payments ps-5 pe-5 pt-2">
     <table class="table table-light table-bordered table-hover">
         <tr class="table-dark">
-            <th>SERIAL NO</th>
-            <th>HOUSE No.</th>
-            <th>BILLING MONTH</th>
-            <th>PAYMENT MODE</th>
-            <th>DATE OF DEPOSIT</th>
-            <th>AMOUNT</th>
+            <th>Serial No</th>
+            <th>House No.</th>
+            <th>Billing Month</th>
+            <th>Payment Mode</th>
+            <th>Date Of Deposit</th>
+            <th>Amount</th>
         </tr>
         <tr>
             @foreach ($payments as $payment)
