@@ -3,11 +3,12 @@
 @section('content')
 
 {{-- search bar --}}
+<div class="main ">
 <form action="" method="GET">
     @if (request('search'))
     <input type="search" name="search" value="{{ request('search') }}" />
     @else
-    <div class="searchby-payee p-3">
+    <div class="searchby-payee text-end p-3 mt-2">
         <input type="search" placeholder="  Search By Payee" name="search" />
     </div>
     @endif
@@ -15,19 +16,19 @@
 </div>
 
 {{-- refresh button--}}
-<div class="refresh-expenses ps-3">
+<div class="refresh-expenses pe-3 d-flex justify-content-end">
     <a href="{{ route('admin.expense.index') }}" class="btn btn-success">REFRESH</a>
 </div>
 
 {{-- listing --}}
-<div class="table-expenses p-3">
+<div class="table-expenses p-3 mt-3">
     <table class="table table-light table-hover table-bordered">
         <tr class="align-middle text-center table-dark">
             <th>PAYEE</th>
             <th>AMOUNT</th>
             <th>PAYMENT MODE</th>
-            <th>DATE OF PAYMENT <div class="dropdown">
-                    <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <th class="d-flex align-items-center justify-content-center">DATE OF PAYMENT <div class="dropdown ms-2">
+                    <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (request('sort'))
                         {{ request('sort') }}
                         @else
@@ -53,5 +54,6 @@
         </tr>
         @endforeach
     </table>
+</div>
 </div>
 @endsection

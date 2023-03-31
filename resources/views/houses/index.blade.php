@@ -1,11 +1,11 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div class="Manage-houses  bg-light text-center">
-    <h3 class="mx-auto p-5">Manage Houses</h3>
+<div class="Manage-houses  bg-light text-center mt-3">
+    <h3 class="mx-auto p-5">MANAGE HOUSES</h3>
 
 </div>
-<div class="table-manage-house ps-5 pe-5 pt-4">
+<div class="table-manage-house ps-5 pe-5 pt-3">
 <table class="table table-light table-hover table-bordered align-middle">
         <tr class="text-center  table-dark">
             <th>Block-1</th>
