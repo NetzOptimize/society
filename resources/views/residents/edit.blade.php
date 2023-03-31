@@ -29,7 +29,7 @@
         <input type="textbox" name=isOwner value="OWNER" class="form-control" readonly>
 
         <label>DATE OF OCCUPANCY</label>
-        <input type="date" name="datofoccupancy" class="form-control" value="{{ $resident->datofoccupancy}}">
+        <input type="date" name="datofoccupancy" class="form-control" value="{{ date('Y-m-d', strtotime($resident->datofoccupancy)) }}">
         <div class="error">
         @error('datofoccupancy')
             {{ $message }}

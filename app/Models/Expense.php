@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
 
 class Expense extends Model
 {
@@ -24,10 +26,9 @@ class Expense extends Model
     {
         if($sort == 'ASCENDING')
         {
-            return $query->orderby('dateofpayment', 'asc')->get();
+            return $query->orderBy(DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), 'asc')->get();
         }
-
-        return $query->orderby('dateofpayment', 'desc')->get();
+        return $query->orderBy(DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), 'desc')->get();
     }
 
     public function scopeSearch($query, $search)

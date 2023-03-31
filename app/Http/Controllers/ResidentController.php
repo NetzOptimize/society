@@ -7,7 +7,7 @@ use App\Models\Resident;
 use App\Models\User;
 use App\Models\House;
 use Illuminate\Database\QueryException;
-
+use Carbon\Carbon;
 
 class ResidentController extends Controller
 {
@@ -54,7 +54,12 @@ class ResidentController extends Controller
             }
         }
 
-        Resident::create($attributes);
+        Resident::create([
+            'house_id' => $attributes['house_id'],
+            'user_id' => $attributes['user_id'],
+            'isOwner' => $attributes['isOwner'],
+            'datofoccupancy' => Carbon::parse($attributes['datofoccupancy'])->format('d-m-Y')
+        ]);
 
         return redirect()->route('resident.index')->with('success', 'resident added successfully');
     }
@@ -78,7 +83,7 @@ class ResidentController extends Controller
 
         $resident->update([
                 'user_id' => $attributes['user_id'],
-                'datofoccupancy' => $attributes['datofoccupancy'],
+                'datofoccupancy' =>  Carbon::parse($attributes['datofoccupancy'])->format('d-m-Y'),
         ]);
 
         return redirect()->route('resident.index');
