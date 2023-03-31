@@ -22,7 +22,7 @@ class ResidentController extends Controller
     {
         $users= User::where('usertype_id',2)->get();
 
-        $houses= House::where('house_type','House')->get();
+        $houses= House::get();
 
         return view('residents.create', compact('users', 'houses'));
     }

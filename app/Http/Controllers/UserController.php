@@ -38,7 +38,6 @@ class UserController extends Controller
 
        $request->validate([
             'name' => 'required|max:255|min:3',
-            'email' => 'sometimes|nullable|email|unique:users,email',
             'mobile1' => 'required|unique:users,mobile1',
             'mobile2' => 'nullable|unique:users',
             'password' => 'required',
@@ -48,7 +47,6 @@ class UserController extends Controller
 
         User::create([
             'name' => $request->name,
-            'email' => $request->email,
             'password' => Hash::make($request->password),
             'mobile1' => $request->mobile1,
             'mobile2' => $request->mobile2,
@@ -72,11 +70,6 @@ class UserController extends Controller
 
         $attributes = $request->validate([
             'name' => 'required|max:255|min:3',
-            'email' => [
-                'email',
-                'nullable',
-                Rule::unique('users')->ignore($user),
-            ],
             'mobile1' => [
                 'required',
                 'nullable',
@@ -121,11 +114,6 @@ class UserController extends Controller
 
         $attributes = $request->validate([
             'name' => 'required|max:255|min:3',
-            'email' => [
-                'email',
-                'nullable',
-                Rule::unique('users')->ignore($user),
-            ],
             'mobile1' => [
                 'required',
                 'nullable',

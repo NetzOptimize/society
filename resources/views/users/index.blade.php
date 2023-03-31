@@ -11,7 +11,6 @@
     <table class="table table-light  table-bordered table-hover  align-middle ">
         <tr class="table-dark">
             <th>NAME</th>
-            <th>EMAIL</th>
             <th>MOBILE-1</th>
             <th>MOBILE-2</th>
             <th>USER-TYPE</th>
@@ -21,11 +20,6 @@
         <tr>
             @foreach ($users as $user)
                 <td>{{ $user->name }}</td>
-                @if ($user->email)
-                    <td> {{ $user->email }}</td>
-                @else
-                    <td style="color:red;">Not Provided</td>
-                @endif
                 @if ($user->mobile1)
                     <td> {{ $user->mobile1 }}</td>
                 @else

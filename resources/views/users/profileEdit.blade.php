@@ -11,13 +11,6 @@
             {{ $message }}
         @enderror
         </div>
-        <label>EMAIL</label>
-        <input type="email" name="email" value="{{ $user->email }}" value="{{ old('email') }}" class="form-control">
-        <div class="error">
-        @error('email')
-            {{ $message }}
-        @enderror
-        </div>
         <label>MOBILE-1</label>
         <input type="tel" name="mobile1" value="{{ $user->mobile1 }}" value="{{ old('mobile1') }}" class="form-control">
         <div class="error">

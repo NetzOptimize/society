@@ -3,73 +3,88 @@
 @section('content')
 
 <div class="main ">
-<div class="payment-heading text-center bg-light container rounded mt-5 p-4">
+  <div class="payment-heading text-center bg-light container rounded mt-5 p-4">
     <h3>
-    
-        Payment Methods
+
+      Payment Methods
     </h3>
-</div>
+  </div>
 
-<div class="d-flex flex-column justify-content-center align-items-center align-content-center container bg-light pb-4">
-    <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1 w-50" >
-        @csrf
-        <label> <i class="fa fa-home" aria-hidden="true"></i>
 
- <b>  HOUSE NO:</b></label>
-        <select name="house_id" class="form-control" >
-            <option>Select House No.</option>
-            @foreach ($houses as $house)
-            @php
-            $address = $house->Block1 . $house->Block2 . $house->house_no;
-            @endphp
-            <option value="{{ $house->id }} ">{{ $address }}</option>
-            @endforeach
-        </select>
-        <div class="error">
-            @error('house_id')
-            {{ $message }}
-            @enderror
-        </div>
-        <label>
+  <div style="height:100vh" class="d-flex flex-column justify-content-center align-items-center align-content-center">
+    <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
+      @csrf
+      <label><b>HOUSE NO.</b></label>
+      <select name="house_id">
+        <option>Select House Number</option>
+        @foreach ($houses as $house)
+        <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
+        @endforeach
+      </select>
+      <div class="error">
+        @error('house_id')
+        {{ $message }}
+        @enderror
+      </div>
+      <label><b>SELECT BILLING MONTHS</b></label>
+      @foreach ($months as $key => $month)
+      <div class="d-flex flex-row align-items-center justify-content-between"><label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}"></div>
+      @endforeach
+      </select>
+      <div class="error">
+        @error('house_id')
+        {{ $message }}
+        @enderror
+      </div>
+      <label>
         <i class="fa fa-calendar" aria-hidden="true"></i>
 
-            <b>SELECT BILLING MONTHS:</b>
-        </label>
-        {{-- <div class="d-flex flex-row align-items-center justify-content-between "><label>INITIAL PAYMENT</label><input type="checkbox" name="initialpayment" value="1"></div> --}}
-        @foreach ($months as $key => $month)
-        <div class="d-flex flex-row align-items-center justify-content-between"><label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}"></div>
-        @endforeach
-        <div class="error">
-            @error('billingmonth')
-            {{ $message }}
-            @enderror
-        </div>
+        <b>SELECT BILLING MONTHS:</b>
+      </label>
+      {{-- <div class="d-flex flex-row align-items-center justify-content-between "><label>INITIAL PAYMENT</label><input type="checkbox" name="initialpayment" value="1"></div> --}}
+      @foreach ($months as $key => $month)
+      <div class="d-flex flex-row align-items-center justify-content-between"><label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}"></div>
+      @endforeach
+      <div class="error">
+        @error('billingmonth')
+        {{ $message }}
+        @enderror
+      </div>
 
-        <label>            <i class="fa fa-credit-card"></i>
-<b>SELECT PAYMENT MODE:</b></label>
+      <<<<<<< HEAD <label> <i class="fa fa-credit-card"></i>
+        <b>SELECT PAYMENT MODE:</b></label>
         <select name="payment_modes_id" class="form-control">
-            <option>Select payment Method</option>
-            @foreach ($PaymentModes as $PaymentMode)
-            <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
-            @endforeach
+          <option>Select payment Method</option>
+          @foreach ($PaymentModes as $PaymentMode)
+          <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
+          @endforeach
         </select>
-      
-        <div class="error">
-            @error('payment_modes_id')
-            {{ $message }}
-            @enderror
-        </div>
 
-        <label>         <i class="fa fa-calendar" aria-hidden="true"></i>
-<b>DATE OF DEPOSITS:</b></label>
+        <div class="error">
+          @error('payment_modes_id')
+          {{ $message }}
+          @enderror
+        </div>
+        =======
+        <label><b>DATE OF DEPOSITS</b></label>
+        <input type="date" name="dateofdeposit" value="<?php echo date("Y-m-d"); ?>" />
+        <div class="error">
+          @error('dateofdeposit')
+          {{ $message }}
+          @enderror
+        </div>
+        >>>>>>> main
+
+        <label> <i class="fa fa-calendar" aria-hidden="true"></i>
+          <b>DATE OF DEPOSITS:</b></label>
         <input type="date" name="dateofdeposit" class="form-control" />
         <div class="error">
-            @error('dateofdeposit')
-            {{ $message }}
-            @enderror
+          @error('dateofdeposit')
+          {{ $message }}
+          @enderror
         </div>
-  <!-- payment -->
-  <!-- <div class="container d-flex justify-content-center mt-5 mb-5">
+        <!-- payment -->
+        <!-- <div class="container d-flex justify-content-center mt-5 mb-5">
 
             
 
@@ -175,10 +190,10 @@
 
 
 </div> -->
-<!-- payment end -->
+        <!-- payment end -->
         <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-dark">
     </form>
-</div>
+  </div>
 </div>
 @endsection
 <!--  -->
