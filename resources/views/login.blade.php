@@ -51,11 +51,11 @@ rules:{
     mobile1:'required',
     password:'required'
 
-
+ 
 },
 messages:{
-    mobile1:"*Enter your Mobile ",
-    password:"*Please enter Password"
+    mobile1:"*Enter Your Mobile Number ",
+    password:"*Please Enter Password"
 }
 
 });

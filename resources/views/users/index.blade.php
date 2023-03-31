@@ -2,9 +2,9 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="payment-heading text-center bg-light   rounded mt-3  p-4">
+<div class="payment-heading text-center bg-light me-5 ms-5  rounded mt-3  p-4">
     <h3>
-      LIST OF USERS
+      List Of Users
     </h3>
   </div>
 
@@ -16,11 +16,11 @@
 <div class="table-add-user ps-5 pe-5 pt-3"> 
     <table class="table table-light  table-bordered table-hover  align-middle ">
         <tr class="table-dark">
-            <th>NAME</th>
-            <th>MOBILE-1</th>
-            <th>MOBILE-2</th>
-            <th>USER-TYPE</th>
-            <th class="text-center">ACTION</th>
+            <th>Name</th>
+            <th>Mobile-1</th>
+            <th>Mobile-2</th>
+            <th>User-Type</th>
+            <th class="text-center">Action</th>
             <th></th>
         </tr>
         <tr>
@@ -39,12 +39,12 @@
 
 
                 <td>{{ $user->usertype->role }}</td>
-                <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success">EDIT</a></td>
+                <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success btn-sm">EDIT</a></td>
                 <td  class="text-center">
                     <form action="{{ route('user.delete', $user) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="DELETE" class="btn btn-danger">
+                        <input type="submit" value="DELETE" class="btn btn-danger btn-sm">
                     </form>
                 </td>
         </tr>

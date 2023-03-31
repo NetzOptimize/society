@@ -1,8 +1,8 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div class="Manage-houses  bg-light text-center mt-3">
-    <h3 class="mx-auto p-4"> LIST OF HOUSES</h3>
+<div class="Manage-houses  bg-light text-center me-5 ms-5 mt-3">
+    <h3 class="mx-auto p-4 "> List Of Houses</h3>
 
 </div>
 <div class="table-manage-house ps-5 pe-5 pt-3">
@@ -10,10 +10,10 @@
         <tr class="text-center  table-dark">
             <th>Block-1</th>
             <th>Block-2</th>
-            <th>HOUSE NO</th>
-            <th>ADDRESS</th>
-            <th>OWNER NAME</th>
-            <th>MOBILE</th>
+            <th>House No.</th>
+            <th>Address</th>
+            <th>Owner Name</th>
+            <th>Mobile</th>
         </tr>
         @foreach ($houses as $house)
             <tr  class="text-center">
