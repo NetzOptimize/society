@@ -6,7 +6,7 @@
         @csrf
         <label>HOUSE NO.</label>
         <select name="house_id" class="form-control">
-            <option>Select House Number</option>
+            <option value="">Select House Number</option>
             @foreach ($houses as $house)
                 @php
                     $address = $house->Block1 . $house->Block2 . $house->house_no;
@@ -21,7 +21,7 @@
         </div>
         <label>USER</label>
         <select name="user_id" class="form-control">
-            <option>User</option>
+            <option value="">Select User</option>
             @foreach ($users as $user)
                 <option value="{{ $user->id }} ">{{ $user->name }}</option>
             @endforeach
@@ -33,7 +33,7 @@
         </div>
         <label>OCCUPANCY TYPE</label>
         <select name="isOwner" class="form-control">
-                <option>Select Occupancy</option>
+                <option  value="">Select Occupancy Type</option>
                 <option value="1">OWNER</option>
                 <option value="0">TENANT</option>
         </select>

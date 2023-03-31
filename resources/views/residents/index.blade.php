@@ -18,10 +18,7 @@
         </tr>
         @foreach ($residents as $resident)
             <tr class="text-center">
-                @php
-                    $address = $resident->house->Block1 . $resident->house->Block2 . $resident->house->house_no;
-                @endphp
-                <td> {{ $address }}</td>
+                <td> {{ $resident->house->full_address }}</td>
                 <td> {{ $resident->user->name }}</td>
                 @if($resident->isOwner)
                     <td>OWNER</td>

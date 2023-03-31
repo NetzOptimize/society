@@ -37,7 +37,7 @@ class PaymentController extends Controller
         {
             $house=$_GET['search'];
             $payments = Payment::whereHas('houses', function ($query) use ($house) {
-                $query->where('Block1', 'Like', '%'.$house.'%');
+                $query->where('full_address', 'Like', '%'.$house.'%');
             })->get();
             $count = $payments->count();
             $sum = $payments->sum('amount');

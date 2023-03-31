@@ -14,7 +14,7 @@
       @csrf
       <label><b>HOUSE NO.</b></label>
       <select name="house_id">
-        <option>Select House Number</option>
+        <option value="">Select House Number</option>
         @foreach ($houses as $house)
         <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
         @endforeach
@@ -39,9 +39,9 @@
       </div>
 
       <label> <i class="fa fa-credit-card"></i>
-        <b>SELECT PAYMENT MODE:</b></label>
+        <b>PAYMENT MODE:</b></label>
         <select name="payment_modes_id" class="form-control">
-          <option>Select payment Method</option>
+          <option value="">Select Payment Method</option>
           @foreach ($PaymentModes as $PaymentMode)
           <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
           @endforeach
@@ -56,7 +56,7 @@
 
         <label> <i class="fa fa-calendar" aria-hidden="true"></i>
           <b>DATE OF DEPOSITS:</b></label>
-        <input type="date" name="dateofdeposit" class="form-control" />
+        <input type="date" name="dateofdeposit" class="form-control" value={{ now() }} />
         <div class="error">
           @error('dateofdeposit')
           {{ $message }}

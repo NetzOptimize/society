@@ -20,7 +20,7 @@
             </div>
             <label><b>SELECT PAYMENT MODE:</b></label>
             <select name="payment_modes_id"class="form-control">
-                <option>Select Payment method</option>
+                <option value="">Select Payment Method</option>
                 @foreach ($PaymentModes as $PaymentMode)
                     <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
                 @endforeach

@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('content')
 <div class="Manage-houses  bg-light text-center">
-    <h3 class="mx-auto p-5">Manage Houses</h3>
+    <h3 class="mx-auto p-5">HOUSES</h3>
 
 </div>
 <div class="table-manage-house ps-5 pe-5 pt-4">
@@ -22,7 +22,11 @@
                 <td> {{ $house->house_no }}</td>
                 <td> {{ $house->full_address }}</td>
                 <td> {{ $house->ownername }}</td>
+                @if($house->mobile)
                 <td> {{ $house->mobile }}</td>
+                @else
+                <td>- </td>
+                @endif
             </tr>
         @endforeach
     </table>
