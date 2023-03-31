@@ -54,4 +54,4 @@
         </div>
         <input type="submit" name="login" value="EDIT PROFILE" class="btn btn-primary">
     </form>
-@endsection
+@endsection 
