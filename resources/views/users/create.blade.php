@@ -1,13 +1,13 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
+ 
+<div class="main container mt-5 w-50 shadow">
 
-<div class="main container mt-5 bg-light">
-
-<div class="heading-add-user p-4 bg-light text-center mt-4">
+<div class="heading-add-user pt-4 pb-2 text-center mt-5 ">
     <h3>Add User</h3>
 </div>
-<div class="d-flex flex-column justify-content-center align-items-center align-content-center p-5">
+<div class="d-flex flex-column justify-content-center align-items-center  align-content-center p-3 pb-3 ">
     <form action="{{ route('user.store') }}" method="POST"   class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
          <input type="textbox" name="name" placeholder="Name"  class="form-control">
@@ -53,12 +53,13 @@
                 {{ $message }}
             @enderror
             </div>
-        <div class="add-user text-center">
-        <input type="submit" name="login" value="Add User" class="btn btn-dark">
+        <div class="add-user text-center pb-3">
+        <input type="submit" name="login" value="Add User" class="btn btn-dark w-100">
         </div>
 
     </form>
 </div>
 </div>
+ 
 @endsection
 

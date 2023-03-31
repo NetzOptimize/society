@@ -1,7 +1,13 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div style="height:80vh" class="d-flex flex-column justify-content-center align-items-center align-content-center">
+
+<div style="height:60vh" class="d-flex flex-column justify-content-center align-items-center align-content-center  container shadow mt-5 w-50">
+<div class="heading-edit">
+    <h3>
+        Edit Your Profile
+    </h3>
+</div>
     <form action="{{ route('user.update', $user) }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
         <label>NAME</label>
@@ -41,6 +47,6 @@
             {{ $message }}
         @enderror
         </div>
-        <input type="submit" name="login" value="EDIT USER" class="btn btn-dark">
+        <input type="submit" name="login" value="Edit User" class="btn btn-dark">
     </form>
 @endsection
