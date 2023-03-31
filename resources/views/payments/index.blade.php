@@ -81,10 +81,9 @@
             @foreach ($payments as $payment)
                 @php
                     $i++;
-                    $address = $payment->houses->Block1 . $payment->houses->Block2 . $payment->houses->house_no;
                 @endphp
                 <td>@php echo $i; @endphp</td>
-                <td>{{ $address }}</td>
+                <td>{{ $payment->houses->full_address }}</td>
                 @foreach ($months as $key => $month)
                 @if($key == $payment->billingmonth)
                     <td>{{ $month }}</td>
