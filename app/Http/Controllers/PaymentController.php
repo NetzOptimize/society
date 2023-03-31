@@ -24,10 +24,14 @@ class PaymentController extends Controller
         if(isset($_GET['month']))
         {
             $payments = Payment::Monthlyfilter($_GET['month']);
+            $count = $payments->count();
+            $sum = $payments->sum('amount');
         }
         elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
         {
             $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date']);
+            $count = $payments->count();
+            $sum = $payments->sum('amount');
         }
         elseif(isset($_GET['search']))
         {
@@ -35,13 +39,17 @@ class PaymentController extends Controller
             $payments = Payment::whereHas('houses', function ($query) use ($house) {
                 $query->where('Block1', 'Like', '%'.$house.'%');
             })->get();
+            $count = $payments->count();
+            $sum = $payments->sum('amount');
         }
         else
         {
             $payments = Payment::get();
+            $count = $payments->count();
+            $sum = $payments->sum('amount');
         }
 
-        return view('payments.index', compact('payments', 'months'));
+        return view('payments.index', compact('payments', 'months', 'count', 'sum'));
     }
 
     public function create()

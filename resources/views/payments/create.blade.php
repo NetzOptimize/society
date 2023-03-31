@@ -5,11 +5,9 @@
 <div class="main ">
   <div class="payment-heading text-center bg-light container rounded mt-5 p-4">
     <h3>
-
       Payment Methods
     </h3>
   </div>
-
 
   <div style="height:100vh" class="d-flex flex-column justify-content-center align-items-center align-content-center">
     <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
@@ -26,22 +24,11 @@
         {{ $message }}
         @enderror
       </div>
-      <label><b>SELECT BILLING MONTHS</b></label>
-      @foreach ($months as $key => $month)
-      <div class="d-flex flex-row align-items-center justify-content-between"><label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}"></div>
-      @endforeach
-      </select>
-      <div class="error">
-        @error('house_id')
-        {{ $message }}
-        @enderror
-      </div>
       <label>
         <i class="fa fa-calendar" aria-hidden="true"></i>
 
         <b>SELECT BILLING MONTHS:</b>
       </label>
-      {{-- <div class="d-flex flex-row align-items-center justify-content-between "><label>INITIAL PAYMENT</label><input type="checkbox" name="initialpayment" value="1"></div> --}}
       @foreach ($months as $key => $month)
       <div class="d-flex flex-row align-items-center justify-content-between"><label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}"></div>
       @endforeach
@@ -51,7 +38,7 @@
         @enderror
       </div>
 
-      <<<<<<< HEAD <label> <i class="fa fa-credit-card"></i>
+      <label> <i class="fa fa-credit-card"></i>
         <b>SELECT PAYMENT MODE:</b></label>
         <select name="payment_modes_id" class="form-control">
           <option>Select payment Method</option>
@@ -65,15 +52,7 @@
           {{ $message }}
           @enderror
         </div>
-        =======
-        <label><b>DATE OF DEPOSITS</b></label>
-        <input type="date" name="dateofdeposit" value="<?php echo date("Y-m-d"); ?>" />
-        <div class="error">
-          @error('dateofdeposit')
-          {{ $message }}
-          @enderror
-        </div>
-        >>>>>>> main
+
 
         <label> <i class="fa fa-calendar" aria-hidden="true"></i>
           <b>DATE OF DEPOSITS:</b></label>
@@ -86,22 +65,22 @@
         <!-- payment -->
         <!-- <div class="container d-flex justify-content-center mt-5 mb-5">
 
-            
+
 
 <div class="row g-3">
 
-  <div class="col">  
-    
+  <div class="col">
+
     <span>Card Payment</span>
     <div class="card">
 
       <div class="accordion" id="accordionExample">
-        
+
         <div class="card">
           <div class="card-header p-0" id="headingTwo">
             <h2 class="mb-0">
               <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              
+
               </button>
             </h2>
           </div>
@@ -125,7 +104,7 @@
                     <img src="https://i.imgur.com/35tC99g.png" width="30">
                     <img src="https://i.imgur.com/2ISgYja.png" width="30">
                   </div>
-                  
+
                 </div>
               </button>
             </h2>
@@ -133,14 +112,14 @@
 
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body payment-card-body">
-              
+
               <span class="font-weight-normal card-text">Card Number</span>
               <div class="input">
 
                 <i class="fa fa-credit-card"></i>
                 <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
-                
-              </div> 
+
+              </div>
 
               <div class="row mt-3 mb-3">
 
@@ -151,9 +130,9 @@
 
                     <i class="fa fa-calendar"></i>
                     <input type="text" class="form-control" placeholder="MM/YY">
-                    
-                  </div> 
-                  
+
+                  </div>
+
                 </div>
 
 
@@ -164,28 +143,28 @@
 
                     <i class="fa fa-lock"></i>
                     <input type="text" class="form-control" placeholder="000">
-                    
-                  </div> 
-                  
+
+                  </div>
+
                 </div>
-                
+
 
               </div>
 
               <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
-             
+
             </div>
           </div>
         </div>
-        
+
       </div>
-      
+
     </div>
 
   </div>
 
-  
-  
+
+
 </div>
 
 

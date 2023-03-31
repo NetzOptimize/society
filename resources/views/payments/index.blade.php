@@ -56,14 +56,18 @@
     </form>
     </div>
 
+    DATE :{{ date('d-m-Y') }}
+    COUNT : {{$count }}
+    TOTAL AMOUNT :{{ $sum}}
+
     {{-- refresh button--}}
-<div class="refresh-button p-3 d-flex justify-content-end">    
+<div class="refresh-button p-3 d-flex justify-content-end">
     <a href="{{ route('payment.index') }}" class="btn btn-success">REFRESH</a>
 </div>
 
     {{-- listing  --}}
     @php $i=0; @endphp
-    <div class="table-payments ps-5 pe-5 pt-2"> 
+    <div class="table-payments ps-5 pe-5 pt-2">
     <table class="table table-light table-bordered table-hover">
         <tr class="table-dark">
             <th>SERIAL NO</th>
