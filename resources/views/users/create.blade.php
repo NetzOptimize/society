@@ -14,8 +14,7 @@
             {{ $message }}
         @enderror
         </div>
-        <label>* MOBILE 1</label>
-        <input type="tel" name="mobile1" placeholder="enter your mobile">
+         <input type="tel" name="mobile1" placeholder="Enter your mobile"  class="form-control">
         <div class="error">
         @error('mobile1')
             {{ $message }}

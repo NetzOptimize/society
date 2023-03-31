@@ -61,7 +61,7 @@
     TOTAL AMOUNT :{{ $sum}}
 
     {{-- refresh button--}}
-<div class="refresh-button p-3 d-flex justify-content-end">
+<div class="refresh-button p-3 me-5 d-flex justify-content-end">
     <a href="{{ route('payment.index') }}" class="btn btn-success">REFRESH</a>
 </div>
 

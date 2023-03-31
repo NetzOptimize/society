@@ -9,7 +9,7 @@
     </h3>
   </div>
 
-  <div style="height:100vh" class="d-flex flex-column justify-content-center align-items-center align-content-center">
+  <div class="d-flex flex-column justify-content-center align-items-center align-content-center bg-light  container rounded pb-5">
     <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
       @csrf
       <label><b>HOUSE NO.</b></label>
@@ -30,7 +30,9 @@
         <b>SELECT BILLING MONTHS:</b>
       </label>
       @foreach ($months as $key => $month)
-      <div class="d-flex flex-row align-items-center justify-content-between"><label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}"></div>
+      <div class="d-flex flex-row align-items-center justify-content-between">
+        <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}">
+      </div>
       @endforeach
       <div class="error">
         @error('billingmonth')
@@ -47,11 +49,11 @@
           @endforeach
         </select>
 
-        <div class="error">
-          @error('payment_modes_id')
-          {{ $message }}
-          @enderror
-        </div>
+      <div class="error">
+        @error('payment_modes_id')
+        {{ $message }}
+        @enderror
+      </div>
 
 
         <label> <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -169,8 +171,8 @@
 
 
 </div> -->
-        <!-- payment end -->
-        <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-dark">
+      <!-- payment end -->
+      <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-dark">
     </form>
   </div>
 </div>

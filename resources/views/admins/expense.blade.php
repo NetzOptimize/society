@@ -1,7 +1,17 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-    <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-5 bg-light container mt-5">
+
+
+<div class="main container bg-light rounded mt-5 p-4">
+    
+
+
+<div class="Manage-expenses-heading text-center">
+    <h3>MANAGE EXPENSES</h3>
+</div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center align-content-center pb-3 bg-light container mt-5">
         <form action="{{ route('admin.expense.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
             @csrf
             <label><b>NAME OF PAYEE:</b></label>
@@ -47,5 +57,6 @@
             </div>
             <input type="submit" name="login" value="ADD PAYMENT" class="btn btn-dark">
         </form>
+    </div>
     </div>
 @endsection

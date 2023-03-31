@@ -1,7 +1,14 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div class="d-flex flex-column justify-content-center align-items-center align-content-center p-5">
+
+<div class="main  bg-light container rounded mt-5 p-4  " >
+<div class="resident-create text-center">
+    <h3>GET YOUR HOUSE NO.</h3>
+</div>
+
+
+<div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4  pb-4 ">
     <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
         <label>HOUSE NO.</label>
@@ -51,5 +58,6 @@
         </div>
         <input type="submit" name="login" value="ADD RESIDENT" class="btn btn-dark">
     </form>
+</div>
 </div>
 @endsection
