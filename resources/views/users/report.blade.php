@@ -4,7 +4,7 @@
 @php $payments = Auth::user()->payments()->get() @endphp
 <div class="table-report p-4">
     <table class="table table-light table-hover">
-        <tr>
+        <tr  table-active>
             <th>HOUSE No.</th>
             <th>BILLING MONTH</th>
             <th>PAYMENT MODE</th>

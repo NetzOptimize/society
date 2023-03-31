@@ -5,11 +5,13 @@
 
 
 
+<div class="heading-payment-history bg-light  p-4 mt-3 text-center">
+    <h3>Payment History</h3>
+</div>
 
-
-    <div class="d-flex justify-content-center align-items-center  p-5">
+    <div class="d-flex justify-content-center align-items-center  p-4">
     <div class="dropdown">
-        <label class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             @if (request('month'))
                 {{ request('month') }}
             @else
@@ -39,7 +41,7 @@
         @else
             <input type="date" class="me-3" name="end_date">
         @endif
-        <button class="btn btn-primary me-3" type="submit">FILTER</button>
+        <button class="btn btn-success me-3" type="submit">FILTER</button>
     </form>
     </div>
 
@@ -55,15 +57,15 @@
     </div>
 
     {{-- refresh button--}}
-<div class="refresh-button p-3">    
-    <a href="{{ route('payment.index') }}" class="btn btn-primary">REFRESH</a>
+<div class="refresh-button p-3 d-flex justify-content-end">    
+    <a href="{{ route('payment.index') }}" class="btn btn-success">REFRESH</a>
 </div>
 
     {{-- listing  --}}
     @php $i=0; @endphp
-    <div class="table-payments p-3"> 
-    <table class="table table-light">
-        <tr>
+    <div class="table-payments ps-5 pe-5 pt-2"> 
+    <table class="table table-light table-bordered table-hover">
+        <tr class="table-dark">
             <th>SERIAL NO</th>
             <th>HOUSE No.</th>
             <th>BILLING MONTH</th>

@@ -1,13 +1,11 @@
 @extends('layouts.main')
 @section('content')
 
-
- 
-
+<div class="main-login bg-light"> 
 <div style="height:100vh" class="d-flex flex-column justify-content-center align-items-center align-content-center">
 <div class="logo text-center pe-5">
     
-             <h3><img src="{{ asset('logo.png') }}" style="height:80px; width:100px;"
+             <h3><img src="{{ asset('logo.png') }}" class="rounded-pill" style="height:80px; width:100px;"
                alt=""> Society Login</h3>
 
         </div>
@@ -42,5 +40,6 @@
 
         </form>
     </nav>
+</div>
 </div>
 @endsection
