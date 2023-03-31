@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('payee');
             $table->decimal('amount');
-            $table->date('dateofpayment');
+            $table->string('dateofpayment');
             $table->foreignid('payment_modes_id')->constrained();
             $table->text('comments')->nullable();
             $table->timestamps();

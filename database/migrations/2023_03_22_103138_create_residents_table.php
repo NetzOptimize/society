@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('house_id');
             $table->boolean('isOwner')->default(false);
             $table->unique(['user_id', 'house_id', 'isOwner']);
-            $table->date('datofoccupancy');
+            $table->string('datofoccupancy');
             $table->timestamps();
         });
     }

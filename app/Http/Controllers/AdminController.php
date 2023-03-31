@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\PaymentMode;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -42,7 +43,13 @@ class AdminController extends Controller
             'dateofpayment' => 'required|date',
         ]);
 
-        Expense::create($attributes);
+        Expense::create([
+            'payee' => $attributes['payee'],
+            'amount' => $attributes['amount'],
+            'comments' => $attributes['comments'],
+            'payment_modes_id' =>$attributes['payment_modes_id'],
+            'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
+        ]);
         return back()->with('success', 'expenses added successfully');
     }
 }

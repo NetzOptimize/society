@@ -28,7 +28,7 @@
         <label>Occupancy Type</label>
         <input type="textbox" name=isOwner value="OWNER" class="form-control" readonly>
 
-        <label>Date Of Occupany</label>
+        <label>DATE OF OCCUPANCY</label>
         <input type="date" name="datofoccupancy" class="form-control" value="{{ $resident->datofoccupancy}}">
         <div class="error">
         @error('datofoccupancy')
