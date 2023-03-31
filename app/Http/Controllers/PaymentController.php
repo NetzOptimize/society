@@ -40,6 +40,16 @@ class PaymentController extends Controller
             $payments = Payment::whereHas('houses', function ($query) use ($house) {
                 $query->where('full_address', 'Like', '%'.$house.'%');
             })->get();
+
+            // if($payments->first() == null)
+            // {
+            //     $payments = DB::raw("SELECT payments.*
+            //     FROM payments
+            //     INNER JOIN residents ON payments.house_id=residents.house_id
+            //     INNER JOIN users ON residents.user_id=users.id
+            //     Where users.name=$house ");
+            // }
+
             $count = $payments->count();
             $sum = $payments->sum('amount');
         }

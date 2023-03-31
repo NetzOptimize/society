@@ -10,10 +10,10 @@
         <tr class="text-center  table-dark">
             <th>Block-1</th>
             <th>Block-2</th>
-            <th>House No.</th>
-            <th>Address</th>
-            <th>Owner Name</th>
-            <th>Mobile</th>
+            <th>HOUSE NO</th>
+            <th>ADDRESS</th>
+            {{-- <th>OWNER NAME</th>
+            <th>MOBILE</th> --}}
         </tr>
         @foreach ($houses as $house)
             <tr  class="text-center">
@@ -21,12 +21,12 @@
                 <td> {{ $house->Block2 }}</td>
                 <td> {{ $house->house_no }}</td>
                 <td> {{ $house->full_address }}</td>
-                <td> {{ $house->ownername }}</td>
+                {{-- <td> {{ $house->ownername }}</td>
                 @if($house->mobile)
                 <td> {{ $house->mobile }}</td>
                 @else
                 <td>- </td>
-                @endif
+                @endif --}}
             </tr>
         @endforeach
     </table>

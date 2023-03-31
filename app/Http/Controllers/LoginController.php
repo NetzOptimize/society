@@ -26,7 +26,7 @@ class LoginController extends Controller
             }
             else
             {
-                return redirect('moderator/home')
+                return redirect('home')
                 ->with('success', 'Welcome Moderator');
             }
         }

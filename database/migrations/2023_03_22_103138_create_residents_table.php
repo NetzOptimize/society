@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->integer('user_id');
             $table->integer('house_id');
             $table->boolean('isOwner')->default(false);
-            $table->unique(['user_id', 'house_id', 'isOwner']);
             $table->string('datofoccupancy');
             $table->timestamps();
         });
