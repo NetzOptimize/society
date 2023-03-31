@@ -11,9 +11,9 @@
 
 <form action="" method="GET">
     @if (request('search'))
-    <input type="search" name="search" value="{{ request('search') }}" />
+    <input type="search" name="search" value="{{ request('search') }}"  />
     @else
-    <div class="searchby-payee text-end pt-4 pe-5 mt-2">
+    <div class="searchby-payee d-flex pt-4 pe-5 mt-2">
         <input type="search" placeholder="  Search By Payee" name="search" />
     </div>
     @endif

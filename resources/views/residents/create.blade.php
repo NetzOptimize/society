@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main  bg-light   rounded mt-5 p-4  " >
+<div class="main  bg-light container   rounded mt-5 p-4  " >
 <div class="resident-create text-center">
     <h3>Get Your House No.</h3>
 </div>
