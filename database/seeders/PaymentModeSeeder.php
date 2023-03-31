@@ -15,19 +15,19 @@ class PaymentModeSeeder extends Seeder
     public function run(): void
     {
         DB::table('payment_modes')->insert([
-            'name' => 'UPI',
+            'name' => 'Bank Account',
         ]);
         DB::table('payment_modes')->insert([
             'name' => 'Cash',
         ]);
         DB::table('payment_modes')->insert([
-            'name' => 'Cards',
+            'name' => 'GPay',
         ]);
         DB::table('payment_modes')->insert([
-            'name' => 'Cheque',
+            'name' => 'PayTM',
         ]);
         DB::table('payment_modes')->insert([
-            'name' => 'Other',
+            'name' => 'Others',
         ]);
     }
 }

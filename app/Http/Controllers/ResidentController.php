@@ -40,7 +40,7 @@ class ResidentController extends Controller
 
         if($resident)
         {
-            return back()->with('success', 'record already exist');
+            return back()->with('success', 'Record Already Exist');
         }
 
         $owner= Resident::where('house_id', $attributes['house_id'])->where('isOwner', 1)->first();
@@ -50,7 +50,7 @@ class ResidentController extends Controller
             if($attributes['isOwner'])
             {
 
-                return back()->with('success', 'owner already exist');
+                return back()->with('success', 'Owner Already Exist');
             }
         }
 
@@ -61,7 +61,7 @@ class ResidentController extends Controller
             'datofoccupancy' => Carbon::parse($attributes['datofoccupancy'])->format('d-m-Y')
         ]);
 
-        return redirect()->route('resident.index')->with('success', 'resident added successfully');
+        return redirect()->route('resident.index')->with('success', 'Resident Added Successfully');
     }
     public function edit(Resident $resident)
     {
@@ -93,7 +93,7 @@ class ResidentController extends Controller
     {
         $resident->delete();
 
-        return back()->with('success', 'record deleted successfully');
+        return back()->with('success', 'Record Deleted Successfully');
     }
 
 

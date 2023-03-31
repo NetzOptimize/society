@@ -50,6 +50,6 @@ class AdminController extends Controller
             'payment_modes_id' =>$attributes['payment_modes_id'],
             'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
         ]);
-        return back()->with('success', 'expenses added successfully');
+        return back()->with('success', 'Expenses Added Successfully');
     }
 }

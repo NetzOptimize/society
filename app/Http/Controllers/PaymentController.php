@@ -95,7 +95,7 @@ class PaymentController extends Controller
 
             if($initialpayment)
             {
-                return back()->with('success', 'initial payment has already been paid');
+                return back()->with('success', 'Initial Payment Has Already Been Paid');
             }
             else
             {
@@ -132,7 +132,7 @@ class PaymentController extends Controller
                     }
                     $totalAmount += $this->initialpayment;
                 }
-                return back()->with('success', 'Rs '.$totalAmount.' added successfully');
+                return back()->with('success', 'Rs '.$totalAmount.' Added Successfully');
             }
         }
         else
@@ -160,9 +160,9 @@ class PaymentController extends Controller
                     }
                     $totalAmount += $this->monthlypayment;
                 }
-                return back()->with('success', 'Rs '.$totalAmount.' added successfully');
+                return back()->with('success', 'Rs '.$totalAmount.' Added Successfully');
             }
-            return back()->with('success', ' initial payment remains unpaid');
+            return back()->with('success', ' Initial Payment Remains Unpaid');
         }
 
     }

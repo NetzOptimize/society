@@ -53,7 +53,7 @@ class UserController extends Controller
             'usertype_id' =>  $request->usertype_id,
         ]);
 
-        return redirect()->route('user.index')->with('success', 'user created successfully');
+        return redirect()->route('user.index')->with('success', 'User Created Successfully');
 
     }
 
@@ -86,7 +86,7 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        return redirect()->route('user.index')->with('success', 'user updated successfully');
+        return redirect()->route('user.index')->with('success', 'User Updated Successfully');
 
     }
 
@@ -95,7 +95,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return back()->with('success', 'user deleted successfully');
+        return back()->with('success', 'User Deleted Successfully');
     }
 
     public function profile()
@@ -131,7 +131,7 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        return redirect()->route('user.home')->with('success', 'profile updated successfully');
+        return redirect()->route('user.home')->with('success', 'Profile Updated Successfully');
     }
     public function report()
     {
