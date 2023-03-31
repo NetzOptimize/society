@@ -2,7 +2,10 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="resident-create mt-4 p-3 me-5 d-flex justify-content-end">
+<div class="heading-resident text-center bg-light   rounded mt-3  p-4">
+    <h3>LIST OF RESIDENTS</h3>
+</div>
+<div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
 <a href="{{ route('resident.create') }}" class="btn btn-success d-flex align-items-center"> Add Resident  <img src="{{'house.png'}}" style="width:20px" alt="" class="ms-2"></a>
 </div>
 

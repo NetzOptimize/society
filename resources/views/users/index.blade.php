@@ -2,14 +2,14 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="payment-heading text-center bg-light container rounded mt-5 p-4">
+<div class="payment-heading text-center bg-light   rounded mt-3  p-4">
     <h3>
-      ADD USERS
+      LIST OF USERS
     </h3>
   </div>
 
 
-<div class="add-user mt-4 p-3 d-flex justify-content-end" >
+<div class="add-user mt-2 p-3 me-5 d-flex justify-content-end" >
 <a href="{{ route('user.create') }}" class="btn btn-success">Add User <img src="{{asset('add-user.png')}}" class="" alt=""></a>
 
 </div>

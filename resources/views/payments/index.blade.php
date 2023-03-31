@@ -56,15 +56,21 @@
     </form>
     </div>
 
+ 
+    {{-- refresh button--}}
+<div class="refresh-button pb-3 me-5 d-flex justify-content-end">
+    <a href="{{ route('payment.index') }}" class="btn btn-success">REFRESH</a>
+</div>
+<div class="house-data me-5">
+    <h4 class="text-end"><pre>
     DATE :{{ date('d-m-Y') }}
     COUNT : {{$count }}
     TOTAL AMOUNT :{{ $sum}}
+</pre>
+    </h4>
 
-    {{-- refresh button--}}
-<div class="refresh-button p-3 me-5 d-flex justify-content-end">
-    <a href="{{ route('payment.index') }}" class="btn btn-success">REFRESH</a>
+
 </div>
-
     {{-- listing  --}}
     @php $i=0; @endphp
     <div class="table-payments ps-5 pe-5 pt-2">

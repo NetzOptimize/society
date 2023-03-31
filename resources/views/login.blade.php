@@ -54,7 +54,7 @@ rules:{
 
 },
 messages:{
-    mobile1:"*Enter your Mobile 1",
+    mobile1:"*Enter your Mobile ",
     password:"*Please enter Password"
 }
 

@@ -1,8 +1,8 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div class="Manage-houses  bg-light text-center">
-    <h3 class="mx-auto p-5">HOUSES</h3>
+<div class="Manage-houses  bg-light text-center mt-3">
+    <h3 class="mx-auto p-4"> LIST OF HOUSES</h3>
 
 </div>
 <div class="table-manage-house ps-5 pe-5 pt-3">

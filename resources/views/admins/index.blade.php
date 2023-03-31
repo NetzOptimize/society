@@ -4,11 +4,16 @@
 
 {{-- search bar --}}
 <div class="main ">
+
+<div class="houses-list  text-center bg-light p-4  mt-3">
+    <h3>LISTS OF PAYMENT</h3>
+</div>
+
 <form action="" method="GET">
     @if (request('search'))
     <input type="search" name="search" value="{{ request('search') }}" />
     @else
-    <div class="searchby-payee text-end p-3 mt-2">
+    <div class="searchby-payee text-end pt-4 pe-5 mt-2">
         <input type="search" placeholder="  Search By Payee" name="search" />
     </div>
     @endif
@@ -16,12 +21,12 @@
 </div>
 
 {{-- refresh button--}}
-<div class="refresh-expenses pe-3 d-flex justify-content-end">
+<div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
     <a href="{{ route('admin.expense.index') }}" class="btn btn-success">REFRESH</a>
 </div>
 
 {{-- listing --}}
-<div class="table-expenses p-3 mt-3">
+<div class="table-expenses ps-5 pe-5 pt-3  mt-3">
     <table class="table table-light table-hover table-bordered">
         <tr class="align-middle text-center table-dark">
             <th>PAYEE</th>

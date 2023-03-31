@@ -2,12 +2,10 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main  bg-light container rounded mt-5 p-4  " >
+<div class="main  bg-light   rounded mt-5 p-4  " >
 <div class="resident-create text-center">
     <h3>GET YOUR HOUSE NO.</h3>
 </div>
-
-
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4  pb-4 ">
     <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
