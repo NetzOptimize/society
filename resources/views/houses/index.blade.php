@@ -10,9 +10,9 @@
         <tr class="text-center  table-dark">
             <th>Block-1</th>
             <th>Block-2</th>
-            <th>HOUSE NO</th>
-            <th>ADDRESS</th>
-            {{-- <th>OWNER NAME</th>
+            <th>House No</th>
+            <th>Address</th>
+            {{-- <th>Owner Name</th>
             <th>MOBILE</th> --}}
         </tr>
         @foreach ($houses as $house)

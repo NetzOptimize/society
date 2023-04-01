@@ -69,7 +69,7 @@ td,th {
 
 <!-- Bootstrap Navbar -->
 <!-- 
-<nav class="navbar bg-dark  p-3 me-5 ms-5">
+<nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between">
   <div class="container-fluid">
 
 

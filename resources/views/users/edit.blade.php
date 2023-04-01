@@ -2,13 +2,14 @@
 @extends('layouts.main')
 @section('content')
 
-<div style="height:60vh" class="d-flex flex-column justify-content-center align-items-center align-content-center  container shadow mt-5 w-50">
-<div class="heading-edit">
+<div  class="d-flex flex-column justify-content-center align-items-center align-content-center  container shadow   w-50" id="edit">
+<div class="heading-edit pt-4">
     <h3>
+        <img src="{{asset('resume.png')}}" id="edit_img" alt="">
         Edit Your Profile
     </h3>
 </div>
-    <form action="{{ route('user.update', $user) }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
+    <form action="{{ route('user.update', $user) }}" method="POST"  class="d-flex flex-column gap-3 pb-4" style=" width:500px">
         @csrf
         <label>NAME</label>
         <input type="textbox" name="name" value="{{ $user->name }}" value="{{ old('name') }}" class="form-control">
@@ -47,6 +48,6 @@
             {{ $message }}
         @enderror
         </div>
-        <input type="submit" name="login" value="Edit User" class="btn btn-dark">
+        <input type="submit" name="login" value="Edit User" class="btn btn-dark ">
     </form>
 @endsection

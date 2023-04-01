@@ -13,13 +13,13 @@
 <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-4">
     <table class="table table-light table-hover table-borderd align-middle">
         <tr class="text-center  table-dark">
-            <th>HOUSE NO.</th>
-            <th>USER</th>
-            <th>OCCUPANCY TYPE</th>
-            <th>DATE OF OCCUPANCY</th>
+            <th>House No.</th>
+            <th>User</th>
+            <th>Occupancy Type</th>
+            <th>Date Of Occupancy</th>
             @if(auth()->user()->usertype_id !=3)
-                <th>EDIT</th>
-                <th>DELETE</th>
+                <th>Edit</th>
+                <th>Delete</th>
             @endif
         </tr>
         @foreach ($residents as $resident)
@@ -34,14 +34,14 @@
                 <td>{{ $resident->datofoccupancy }}</td>
                 @if(auth()->user()->usertype_id !=3)
                     @if($resident->isOwner)
-                        <td><a href="{{ route('resident.edit' ,$resident) }}" class="btn btn-success">EDIT</a></td>
+                        <td><a href="{{ route('resident.edit' ,$resident) }}" class="btn btn-success">Edit</a></td>
                     @else
                     <td> - </td>
                     @endif
                     <td><form action="{{ route('resident.delete', $resident) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="DELETE" class="btn btn-danger">
+                        <input type="submit" value="Delete" class="btn btn-danger">
                         </form>
                     </td>
                 @endif

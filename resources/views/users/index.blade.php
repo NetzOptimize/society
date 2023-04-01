@@ -17,12 +17,12 @@
 <div class="table-add-user ps-5 pe-5 pt-3">
     <table class="table table-light  table-bordered table-hover  align-middle ">
         <tr class="table-dark">
-            <th>NAME</th>
-            <th>MOBILE-1</th>
-            <th>MOBILE-2</th>
-            <th>USER-TYPE</th>
+            <th>Name</th>
+            <th>Mobile-1</th>
+            <th>Mobile-2</th>
+            <th>User-type</th>
             @if(auth()->user()->usertype_id !=3)
-                <th class="text-center">ACTION</th>
+                <th class="text-center">Actions</th>
                 <th></th>
             @endif
         </tr>
@@ -41,12 +41,12 @@
             @endif
                 <td>{{ $user->usertype->role }}</td>
                 @if(auth()->user()->usertype_id !=3)
-                    <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success">EDIT</a></td>
+                    <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success">Edit</a></td>
                     <td  class="text-center">
                         <form action="{{ route('user.delete', $user) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <input type="submit" value="DELETE" class="btn btn-danger">
+                            <input type="submit" value="Delete" class="btn btn-danger">
                         </form>
                     </td>
                 @endif

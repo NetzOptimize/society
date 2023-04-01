@@ -2,3 +2,54 @@
 {
     color:red;
 }
+
+
+#forgot{
+    color:#e597bf
+}
+#sign-up{
+    color: #e597bf;
+}
+#background{
+    background:rgb(229,151,191) !important;
+}
+#add-user-position{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:20%;
+}
+#edit{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:20%;
+}
+#edit_img{
+    height: 60px;
+    width:60px;
+}
+#keys{
+    
+    height: 60px;
+    width:80px;
+}
+#resident-edit{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:20%;
+}
+#get-resident{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:20%;
+}
+#payment-method{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:10%;
+
+}

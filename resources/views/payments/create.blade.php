@@ -2,17 +2,20 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main ">
-  <div class="payment-heading text-center  bg-light container rounded mt-5 p-4">
+<div class="main container shadow" id="payment-method">
+  <div class="payment-heading text-center rounded  p-4">
     <h3>
       Payment Methods
     </h3>
   </div>
 
-  <div class="d-flex flex-column justify-content-center align-items-center align-content-center bg-light  container rounded pb-5">
+  <div class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5">
     <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
       @csrf
-      <label><b>House No.</b></label>
+      <label>
+      <i class="fa fa-home" aria-hidden="true"></i>
+
+        <b>House No.</b></label>
       <select name="house_id" class="form-control">
         <option value="" >Select House Number</option>
         @foreach ($houses as $house)
@@ -29,11 +32,13 @@
 
         <b>Select Billing Months:</b>
       </label>
-      @foreach ($months as $key => $month)
-      <div class="d-flex flex-row align-items-center justify-content-between">
-        <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}">
+      <div class="month">
+          @foreach ($months as $key => $month)
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}">
+          </div>
+          @endforeach
       </div>
-      @endforeach
       <div class="error">
         @error('billingmonth')
         {{ $message }}

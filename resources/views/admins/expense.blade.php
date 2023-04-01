@@ -7,7 +7,7 @@
     
 
 
-<div class="Manage-expenses-heading text-center ">
+<div class="Manage-expenses-heading text-center">
     <h3>Manage Expenses</h3>
 </div>
 
