@@ -23,7 +23,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::where('usertype_id','!=',1)->orderby('name','asc')->get();
+        $users = User::orderBy('usertype_id', 'asc')
+        ->orderBy('name', 'asc')
+        ->get();
 
         return view('users.index', compact('users'));
     }
@@ -72,13 +74,10 @@ class UserController extends Controller
             'name' => 'required|max:255|min:3',
             'mobile1' => [
                 'required',
-                'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'mobile2' =>  [
                 'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'usertype_id' => 'required'
@@ -116,13 +115,10 @@ class UserController extends Controller
             'name' => 'required|max:255|min:3',
             'mobile1' => [
                 'required',
-                'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'mobile2' =>  [
                 'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'password' => 'required',

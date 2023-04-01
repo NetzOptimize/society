@@ -13,10 +13,7 @@
         <select name="house_id" class="form-control">
             <option value="">Select House Number</option>
             @foreach ($houses as $house)
-                @php
-                    $address = $house->Block1 . $house->Block2 . $house->house_no;
-                @endphp
-                <option value="{{ $house->id }} ">{{ $address }}</option>
+                <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
             @endforeach
         </select>
         <div class="error">
@@ -38,9 +35,8 @@
         </div>
         <label>Occupancy Type</label>
         <select name="isOwner" class="form-control">
-                <option  value="">Select Occupancy Type</option>
-                <option value="1">Owner</option>
-                <option value="0">Tenant</option>
+            <option value="1">Owner</option>
+            <option value="0">Tenant</option>
         </select>
         <div class="error" class="form-control" >
         @error('isOwner')
@@ -48,7 +44,7 @@
         @enderror
         </div>
         <label>Date Of Occupancy</label>
-        <input type="date" name="datofoccupancy" class="form-control">
+        <input type="date" name="datofoccupancy" value={{ now() }} class="form-control" >
         <div class="error">
         @error('datofoccupancy')
             {{ $message }}

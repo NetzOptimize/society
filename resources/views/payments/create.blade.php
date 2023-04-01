@@ -64,6 +64,15 @@
           {{ $message }}
           @enderror
         </div>
+
+        <label><b>Add Comment:</b></label>
+        <textarea name="comments"class="form-control"></textarea>
+        <div class="error">
+            @error('comments')
+                {{ $message }}
+            @enderror
+        </div>
+        
         <!-- payment -->
         <!-- <div class="container d-flex justify-content-center mt-5 mb-5">
 

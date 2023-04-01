@@ -4,7 +4,7 @@
 
 
 <div class="main container bg-light rounded mt-5 p-4">
-    
+
 
 
 <div class="Manage-expenses-heading text-center ">
@@ -42,7 +42,7 @@
             </div>
 
             <label><b>Date Of Payment:</b></label>
-            <input type="date" name="dateofpayment" class="form-control" />
+            <input type="date" name="dateofpayment" class="form-control"  value={{ now() }}/>
             <div class="error">
                 @error('dateofpayment')
                     {{ $message }}
