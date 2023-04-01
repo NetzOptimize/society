@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('billingmonth');
             $table->foreignid('payment_modes_id')->constrained();
             $table->string('dateofdeposit');
+            $table->text('comments')->nullable();
             $table->decimal('amount');
             $table->timestamps();
         });

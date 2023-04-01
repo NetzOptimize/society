@@ -40,7 +40,7 @@ class ResidentController extends Controller
 
         if($resident)
         {
-            return back()->with('success', 'record already exist');
+            return back()->with('success', 'Record Already Exist');
         }
 
         $owner= Resident::where('house_id', $attributes['house_id'])->where('isOwner', 1)->first();
@@ -50,7 +50,7 @@ class ResidentController extends Controller
             if($attributes['isOwner'])
             {
 
-                return back()->with('success', 'owner already exist');
+                return back()->with('success', 'Owner Already Exist');
             }
         }
 
@@ -61,22 +61,24 @@ class ResidentController extends Controller
             'datofoccupancy' => Carbon::parse($attributes['datofoccupancy'])->format('d-m-Y')
         ]);
 
-        return redirect()->route('resident.index')->with('success', 'resident added successfully');
+        return redirect()->route('resident.index')->with('success', 'Resident Added Successfully');
     }
     public function edit(Resident $resident)
     {
-        $users= User::where('usertype_id',2)->get();
+        $users= User::where('usertype_id',2)->orderby('name','asc')->get();
 
-        $address = House::address($resident->house_id);
+        $houses = House::where('house_type', 'house')->get();
 
-        $address = $address['Block1'].$address['Block2'].$address['house_no'];
+        $occupancyTypes = ['0' => 'Tenant', '1' => 'Owner'];
 
-        return view('residents.edit', compact('users','address', 'resident'));
+        return view('residents.edit', compact('users', 'resident', 'houses', 'occupancyTypes'));
     }
 
     public function update(Request $req, Resident $resident)
     {
         $attributes =$req->validate([
+            'house_id' => 'required',
+            'isOwner' => 'required',
             'user_id' => 'required',
             'datofoccupancy' => 'required|date'
         ]);
@@ -84,6 +86,8 @@ class ResidentController extends Controller
         $resident->update([
                 'user_id' => $attributes['user_id'],
                 'datofoccupancy' =>  Carbon::parse($attributes['datofoccupancy'])->format('d-m-Y'),
+                'house_id' => $attributes['house_id'],
+                'isOwner' => $attributes['isOwner'],
         ]);
 
         return redirect()->route('resident.index');
@@ -93,7 +97,7 @@ class ResidentController extends Controller
     {
         $resident->delete();
 
-        return back()->with('success', 'record deleted successfully');
+        return back()->with('success', 'Record Deleted Successfully');
     }
 
 

@@ -20,7 +20,7 @@ class Expense extends Model
     ];
     public function paymentmode()
     {
-        return $this->belongsto(paymentmode::class,'payment_modes_id', 'id');
+        return $this->belongsto(PaymentMode::class,'payment_modes_id', 'id');
     }
     public function scopeSort($query, $sort)
     {

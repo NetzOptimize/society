@@ -85,6 +85,7 @@ class PaymentController extends Controller
             'billingmonth' => 'required',
             'payment_modes_id' =>'required',
             'dateofdeposit' => 'required',
+            'comments' => 'nullable'
         ]);
 
         if($req['billingmonth'][0] == 'init')
@@ -95,7 +96,7 @@ class PaymentController extends Controller
 
             if($initialpayment)
             {
-                return back()->with('success', 'initial payment has already been paid');
+                return back()->with('success', 'Initial Payment Has Already Been Paid');
             }
             else
             {
@@ -106,7 +107,8 @@ class PaymentController extends Controller
                     'billingmonth' => $req['billingmonth'][0],
                     'amount' => $this->initialpayment,
                     'payment_modes_id' => $req->payment_modes_id,
-                    'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y')
+                    'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+                    'comments' => $req['comments'],
                 ]);
 
                 if($req['billingmonth'])
@@ -125,14 +127,15 @@ class PaymentController extends Controller
                                 'billingmonth' => $month,
                                 'amount' => $this->monthlypayment,
                                 'payment_modes_id' => $req->payment_modes_id,
-                                'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y')
+                                'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+                                'comments' => $req['comments']
                             ]);
                         }
                         $totalAmount += $this->monthlypayment;
                     }
                     $totalAmount += $this->initialpayment;
                 }
-                return back()->with('success', 'Rs '.$totalAmount.' added successfully');
+                return back()->with('success', 'Rs '.$totalAmount.' Added Successfully');
             }
         }
         else
@@ -154,15 +157,16 @@ class PaymentController extends Controller
                             'billingmonth' => $month,
                             'amount' => $this->monthlypayment,
                             'payment_modes_id' => $req->payment_modes_id,
-                            'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y')
+                            'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+                            'comments' => $req['comments']
                         ]);
 
                     }
                     $totalAmount += $this->monthlypayment;
                 }
-                return back()->with('success', 'Rs '.$totalAmount.' added successfully');
+                return back()->with('success', 'Rs '.$totalAmount.' Added Successfully');
             }
-            return back()->with('success', ' initial payment remains unpaid');
+            return back()->with('success', ' Initial Payment Remains Unpaid');
         }
 
     }

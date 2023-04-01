@@ -30,7 +30,7 @@ class LoginController extends Controller
                 ->with('success', 'Welcome Moderator');
             }
         }
-        return redirect('/')->with('error','user does not exist' );
+        return redirect('/')->with('error','User Does Not Exist' );
     }
 
     public function logout()

@@ -23,7 +23,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::where('usertype_id','!=',1)->orderby('name','asc')->get();
+        $users = User::orderBy('usertype_id', 'asc')
+        ->orderBy('name', 'asc')
+        ->get();
 
         return view('users.index', compact('users'));
     }
@@ -53,7 +55,7 @@ class UserController extends Controller
             'usertype_id' =>  $request->usertype_id,
         ]);
 
-        return redirect()->route('user.index')->with('success', 'user created successfully');
+        return redirect()->route('user.index')->with('success', 'User Created Successfully');
 
     }
 
@@ -72,13 +74,10 @@ class UserController extends Controller
             'name' => 'required|max:255|min:3',
             'mobile1' => [
                 'required',
-                'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'mobile2' =>  [
                 'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'usertype_id' => 'required'
@@ -86,7 +85,7 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        return redirect()->route('user.index')->with('success', 'user updated successfully');
+        return redirect()->route('user.index')->with('success', 'User Updated Successfully');
 
     }
 
@@ -95,7 +94,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return back()->with('success', 'user deleted successfully');
+        return back()->with('success', 'User Deleted Successfully');
     }
 
     public function profile()
@@ -116,13 +115,10 @@ class UserController extends Controller
             'name' => 'required|max:255|min:3',
             'mobile1' => [
                 'required',
-                'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'mobile2' =>  [
                 'nullable',
-                'digits:10',
                 Rule::unique('users')->ignore($user),
             ],
             'password' => 'required',
@@ -131,7 +127,7 @@ class UserController extends Controller
 
         $user->update($attributes);
 
-        return redirect()->route('user.home')->with('success', 'profile updated successfully');
+        return redirect()->route('user.home')->with('success', 'Profile Updated Successfully');
     }
     public function report()
     {
