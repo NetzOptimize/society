@@ -7,6 +7,7 @@
 
 <div class="heading-add-user pt-4 pb-2 text-center  ">
     <div class="add-user-image d-flex justify-content-center align-items-center ">
+        <div class="add-user-image"></div>
         <img src="{{asset('addimg.png')}}" style="height:70px; width:70px" alt="">
     <h3>Add User</h3>
 </div>

@@ -5,8 +5,8 @@
 <div class="edit-resident pt-4">
     <h3 class=" d-flex align-items-center gap-2"> <img src="{{asset('house-add.png')}}" alt="" style="height:60px; width:60px;"> Edit Your Resident</h3>
 </div>
-    <div style="height:70vh" class="d-flex flex-column justify-content-center align-items-center align-content-center">
-        <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3"
+    <div  class="d-flex flex-column justify-content-center align-items-center align-content-center">
+        <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 pb-3"
             style=" width:500px">
             @csrf
             <label>House No.</label>

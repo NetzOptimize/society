@@ -53,3 +53,12 @@
     top:10%;
 
 }
+#expense-create{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:20%;
+}
+#add_user_id{
+    border-left: 1px solid lavender;
+ }

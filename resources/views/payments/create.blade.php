@@ -2,19 +2,18 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main container shadow" id="payment-method">
+<div class="main container shadow mt-2 w-50" id="payment-method">
   <div class="payment-heading text-center rounded  p-4">
     <h3>
+      <img src="{{asset('debit-card.png')}}" alt="">
       Payment Methods
     </h3>
   </div>
-
-  <div class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5">
+  <div class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5 mt-2">
     <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
       @csrf
       <label>
       <i class="fa fa-home" aria-hidden="true"></i>
-
         <b>House No.</b></label>
       <select name="house_id" class="form-control">
         <option value="" >Select House Number</option>
