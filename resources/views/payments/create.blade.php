@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="main container shadow mt-2 w-50" id="payment-method">
-  <div class="payment-heading text-center rounded  p-4">
+  <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
     <h3>
       <img src="{{asset('debit-card.png')}}" alt="">
       Payment Methods

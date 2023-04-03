@@ -62,3 +62,37 @@
 #add_user_id{
     border-left: 1px solid lavender;
  }
+ 
+ #add-user-logo {
+    /* border: 2px solid black; */
+    width: 220px;
+    padding: 10px;
+    border-radius: 8px;
+    background: beige;
+}
+#heading-edit{
+    width: 220px;
+    padding: 10px;
+    border-radius: 8px;
+ }
+ #get-house{
+    width: 30%;
+    background-color: beige;
+ }
+ #payment-heading{
+    background-color:beige;
+    width: 35%;
+ }
+ #expense-heading{
+    background-color:beige;
+    width: 40%;
+ }
+ 
+#resident-heading{
+    width: 40%;
+    background: beige;
+
+}
+#user-heading{
+    background-color: beige;
+}

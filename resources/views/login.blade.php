@@ -5,7 +5,7 @@
 
 
 
-<div style="height:100vh" class="d-flex   justify-content-center align-items-center align-content-center">
+<div class="d-flex justify-content-center align-items-center h-100">
 
 
 
@@ -14,10 +14,10 @@
     <div class="side-image me-3">
     <img src="{{asset('img1.avif')}}" class="h-80" alt="">
 </div>
-        <form action="{{ route('login.check') }}" method="POST" class="d-flex flex-column gap-3 p-3" style=" width:500px" id="login-form">
+        <form action="{{ route('login.check')}}" method="POST" class="d-flex flex-column gap-3 p-3 " id="login-form" style="width:500px">
             @csrf
-            <div class="logo ms-3">
-             <h3><img src="{{ asset('logo.png') }}" class="rounded-pill " style="height:80px; width:100px;"
+            <div class="logo">
+             <h3><img src="{{ asset('logo1.png') }}" class="rounded-pill " style="height:50px; width:50px;"
                alt=""> Society Login</h3>
 
         </div>

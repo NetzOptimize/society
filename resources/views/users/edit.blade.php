@@ -2,9 +2,9 @@
 @extends('layouts.main')
 @section('content')
 
-<div  class="d-flex flex-column justify-content-center align-items-center align-content-center  container shadow   w-50" id="edit">
-<div class="heading-edit pt-4">
-    <h3>
+<div  class="d-flex flex-column justify-content-center align-items-center container shadow w-50" id="edit">
+<div class="heading-edit p-3 d-flex justify-content-start w-100" id="heading-edit">
+    <h3 id="user-heading" class="p-3 rounded">
         <img src="{{asset('resume.png')}}" id="edit_img" alt="">
         Edit Your Profile
     </h3>

@@ -5,10 +5,10 @@
 <div class="d-flex justify-content-center align-items-center " id="add-user-position">
 <div class="main container w-50 shadow" id="add-user">
 
-<div class="heading-add-user pt-4 pb-2 text-center  ">
-    <div class="add-user-image d-flex justify-content-center align-items-center ">
-        <div class="add-user-image"></div>
-        <img src="{{asset('addimg.png')}}" style="height:70px; width:70px" alt="">
+<div class="heading-add-user pt-3 pb-2 text-center  ">
+    <div class="add-user-image d-flex justify-content-start align-items-center" id="add-user-logo">
+        <div class="add-user-image1">        <img src="{{asset('addimg.png')}}" style="height:70px; width:70px" alt="">
+</div>
     <h3>Add User</h3>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center p-3 pb-3 ">
