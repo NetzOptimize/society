@@ -76,9 +76,13 @@
                 {{ $message }}
             @enderror
         </div>
-        
-        <!-- payment -->
-        <!-- <div class="container d-flex justify-content-center mt-5 mb-5">
+        <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
+    </form>
+  </div>
+</div>
+@endsection
+<!-- payment -->
+<!-- <div class="container d-flex justify-content-center mt-5 mb-5">
 
 
 
@@ -184,10 +188,119 @@
 
 
 </div> -->
-      <!-- payment end -->
-      <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
-    </form>
-  </div>
+<!-- payment end -->
+
+<!-- payment-receipt -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div class="main d-flex flex-column  gap-4  ms-5 me-5">
+    <div class="receipt-main w-50 mt-3 mb-3 bg-light">
+      <div class="row d-flex justify-content-center align-items-center mt-4 mb-4 ms-5 me-5" id="row1">
+        <div class="col">
+          <div class="heading-receipt text-dark">
+            <h3>Receipt - January</h3>
+          </div>
+
+        </div>
+        <div class="col">
+          <div class="logo-receipt text-end">
+            <img src="{{asset('logo1.png')}}" class="rounded-pill"  style="height:70px" alt="">
+          </div>
+        </div>
+      </div> -->
+      <!--row2  -->
+      <!-- <div class="row d-flex justify-content-center align-items-center  mt-4 mb-4 ms-5 me-5" id="row2">
+        <div class="col mt-3 mb-3">
+          <div class="company-name">
+            <p style="font-weight:bold">Society :</p>
+            <p>
+              Address: Lorem ipsum dolor <br> sit amet consectetur adipisicing elit.<br> Nisi error
+            </p>
+          </div>
+
+          <div class="send-to">
+            <p style="font-weight:bold">To</p>
+            <p>
+              <span> Buyers ltd,<br>
+              </span>
+              address:Lorem ipsum <br>dolor  sit amet consectetur adipisicing elit.<br> Nisi error
+            </p>
+          </div>
+        </div>
+        <div class="col" id="payment-report">
+
+    
+
+        </div>
+      </div> -->
+
+      <!-- row3 -->
+      <!-- <div class="row mt-3 mb-3  mt-4 mb-4 ms-5 me-5"  id="row3">
+      <table class="table">
+  <thead class="thead-dark">
+    <tr>
+       <th scope="col">House No.</th>
+      <th scope="col">Month</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <td>dsa1</td>
+      <td>January</td>
+      <td>3000/-</td>
+    </tr>
+   
+
+    
+  </tbody>
+</table>
+<div class="total d-flex justify-content-end" style="width:770px">
+  <p class="text-success" style="font-weight: bold">
+    Total Amount Paid : 3000/-
+  </p>
 </div>
-@endsection
-<!--  -->
+ 
+      </div> -->
+      <!-- row4 -->
+      <!-- <div class="row  mt-4 mb-4 ms-5 me-5" id="row4">
+<div class="col">
+  <p> <span style="font-weight:bold">Registered Address: <br></span>
+    
+  Lorem ipsum  <br> consectetur, <br>adipisicing elit. Eligendi  </p>
+  
+      </div>
+
+      <div class="col">
+  <p> <span style="font-weight:bold">Contact Info: <br></span>
+    
+  Lorem ipsum  <br> consectetur, <br>adipisicing elit. Eligendi  </p>
+  
+      </div>
+      <div class="col">
+  <p> <span style="font-weight:bold">Payment Details: <br></span>
+    
+  Gpay <br> consectetur, <br>adipisicing elit. Eligendi  </p>
+  
+      </div>
+ 
+
+    </div>
+    <div class="bottom-border">
+
+    </div>
+  </div>
+
+
+</body>
+
+</html> -->
+<!-- payment-receipt end -->

@@ -82,6 +82,21 @@
 #expense-heading{
     background-color: beige;
 }
+
+#row1,#row2,#row3{
+    border-bottom: 1px solid aqua;
+}
+.heading-receipt h3{
+ }
+ .receipt-main{
+    margin: 0 auto !important;
+    border: 1px solid black;
+ }
+ .bottom-border{
+    height: 30px;
+    background-color: aqua;
+ }
+
 @media screen and (max-width:1200px) {
 
     #login{
