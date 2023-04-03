@@ -3,13 +3,13 @@
 @section('content')
 
 <div  class="d-flex flex-column justify-content-center align-items-center container shadow w-50" id="edit">
-<div class="heading-edit p-3 d-flex justify-content-start w-100" id="heading-edit">
+<div class="heading-edit mt-3 d-flex justify-content-start w-100 rounded" id="heading-edit">
     <h3 id="user-heading" class="p-3 rounded">
         <img src="{{asset('resume.png')}}" id="edit_img" alt="">
         Edit Your Profile
     </h3>
 </div>
-    <form action="{{ route('user.update', $user) }}" method="POST"  class="d-flex flex-column gap-3 pb-4" style=" width:500px">
+    <form action="{{ route('user.update', $user) }}" method="POST"  class="d-flex flex-column gap-3 pb-4" style=" width:600px">
         @csrf
         <label>NAME</label>
         <input type="textbox" name="name" value="{{ $user->name }}" value="{{ old('name') }}" class="form-control">

@@ -1,7 +1,7 @@
 @include('users.navbar')
 @extends('layouts.main')
 @section('content')
-<div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4" >
+<div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4 " >
     <form action="{{ route('user.profile.update', $user) }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
         @csrf
         <label>NAME</label>

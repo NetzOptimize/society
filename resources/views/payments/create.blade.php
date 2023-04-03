@@ -10,7 +10,7 @@
     </h3>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5 mt-2">
-    <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:500px">
+    <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:600px">
       @csrf
       <label>
       <i class="fa fa-home" aria-hidden="true"></i>

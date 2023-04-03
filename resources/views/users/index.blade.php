@@ -9,7 +9,7 @@
   </div>
 
 @if(auth()->user()->usertype_id !=3)
-    <div class="add-user mt-2 p-3 me-5 d-flex justify-content-end" >
+    <div class="add-user mt-2 p-3 me-5 d-flex justify-content-end " >
     <a href="{{ route('user.create') }}" class="btn btn-success">Add User <img src="{{asset('add-user.png')}}" class="" alt=""></a>
 @endif
 

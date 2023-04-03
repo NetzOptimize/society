@@ -62,37 +62,50 @@
 #add_user_id{
     border-left: 1px solid lavender;
  }
- 
- #add-user-logo {
-    /* border: 2px solid black; */
-    width: 220px;
-    padding: 10px;
-    border-radius: 8px;
-    background: beige;
-}
-#heading-edit{
-    width: 220px;
-    padding: 10px;
-    border-radius: 8px;
+ #add-user-logo{
+    background-color: beige;
+ }
+ #heading-edit{
+    background-color: beige;
  }
  #get-house{
-    width: 30%;
     background-color: beige;
+ }
+ .edit-resident{
+    background-color: beige;
+
  }
  #payment-heading{
-    background-color:beige;
-    width: 35%;
+    background-color: beige;
+
  }
- #expense-heading{
-    background-color:beige;
-    width: 40%;
- }
- 
-#resident-heading{
-    width: 40%;
-    background: beige;
+#expense-heading{
+    background-color: beige;
+}
+@media screen and (max-width:1200px) {
+
+    #login{
+        display: block;
+      }
+    #login-form{
+        margin: 0 auto;
+        padding: 0;
+    }
 
 }
-#user-heading{
-    background-color: beige;
+
+
+
+
+@media screen and (max-width:992px) {
+    
+    .side-image {
+        margin: 0;
+         padding: 0;
+    }
+  #login-form{
+        width: 500px;
+        margin: 0 auto;
+        padding:0;
+    }
 }

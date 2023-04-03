@@ -7,7 +7,7 @@
     <h3 class="d-flex justify-content-start align-items-center gap-2"> <img src="{{asset('keys.jpg')}}" alt="" class="rounded-pill" id="keys"> Get Your House No.</h3>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4  pb-4 ">
-    <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">
+    <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3" style=" width:600px">
         @csrf
         <label>House No.</label>
         <select name="house_id" class="form-control">
