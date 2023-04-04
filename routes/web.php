@@ -79,6 +79,7 @@ Route::post('houses/{house}/update', [HouseController::class, 'update'])->name('
 
 Route::delete('houses/{house}/delete', [HouseController::class, 'delete'])->name('house.delete');
 
+Route::get('houses/{house}/detail', [HouseController::class, 'detail'])->name('house.detail');
 
 //resident
 Route::get('resident', [ResidentController::class, 'index'])->name('resident.index');

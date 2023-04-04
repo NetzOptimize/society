@@ -12,6 +12,7 @@
                 <th>House No</th>
                 <th>Address</th>
                 <th>House Type</th>
+                <th></th>
             </tr>
             @foreach ($houses as $house)
                 <tr class="text-center">
@@ -20,6 +21,7 @@
                     <td> {{ $house->house_no }}</td>
                     <td> {{ $house->full_address }}</td>
                     <td> {{ $house->house_type }}</td>
+                    <td> <a href="{{ route('house.detail', $house) }}" class="btn btn-success">Detail</a></td>
                 </tr>
             @endforeach
         </table>
