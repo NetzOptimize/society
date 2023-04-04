@@ -26,7 +26,14 @@
                 @foreach ($residents as $resident)
                     <tr class="text-center">
                         <td> {{ $resident->house->full_address }}</td>
-                        <td> {{ $resident->user->name }}</td>
+                        @php
+                            try {
+                                $username = $resident->user->name;
+                            } catch (\Exception $e) {
+                                $username = 'N/A';
+                            }
+                        @endphp
+                        <td>{{ $username }}</td>
                         @if ($resident->isOwner)
                             <td>Owner</td>
                         @else
