@@ -89,9 +89,22 @@ class UserController extends Controller
 
     }
 
-    public function delete(User $user)
+    public function delete($id)
     {
-
+        $user = User::findOrFail($id);
+        
+        if($user->usertype_id ==1)
+        {
+            $count = User::where('usertype_id',1)->get()->count();
+            if($count > 1)
+            {
+                $user->delete();
+            }
+            else
+            {
+                return back()->with('success','Admin Cant Delete Himself');
+            }
+        }
         $user->delete();
 
         return back()->with('success', 'User Deleted Successfully');

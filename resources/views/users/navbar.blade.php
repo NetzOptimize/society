@@ -27,8 +27,8 @@
 
     <a href="{{ route('user.profile.edit') }}"  class="btn btn-light me-3" >My Account</a>
     <a href="{{ route('user.report') }}"  class="btn btn-light">Reports</a>
- 
+
 </nav>
 </div>
 </div>
- 
+

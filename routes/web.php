@@ -55,7 +55,7 @@ Route::post('users/store', [UserController::class, 'store'])->name('user.store')
 Route::get('users/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::post('users/update/{user}', [UserController::class, 'update'])->name('user.update');
 
-Route::delete('users/delete/{user}', [UserController::class, 'delete'])->name('user.delete');
+Route::delete('users/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 
 Route::get('users/profile/edit', [UserController::class, 'profile'])->name('user.profile.edit');
 
@@ -79,6 +79,7 @@ Route::post('houses/{house}/update', [HouseController::class, 'update'])->name('
 
 Route::delete('houses/{house}/delete', [HouseController::class, 'delete'])->name('house.delete');
 
+Route::get('houses/{house}/detail', [HouseController::class, 'detail'])->name('house.detail');
 
 //resident
 Route::get('resident', [ResidentController::class, 'index'])->name('resident.index');
@@ -95,7 +96,6 @@ Route::delete('resident/{resident}/delete', [ResidentController::class, 'delete'
 Route::get('payments', [PaymentController::class, 'index'])->name('payment.index');
 Route::get('payment/create', [PaymentController::class, 'create'])->name('payment.create');
 Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
-
 
 //admin
 

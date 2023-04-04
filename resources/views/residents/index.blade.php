@@ -22,28 +22,37 @@
                     <th>Delete</th>
                 @endif
             </tr>
-            @foreach ($residents as $resident)
-                <tr class="">
-                    <td> {{ $resident->house->full_address }}</td>
-                    <td> {{ $resident->user->name }}</td>
-                    @if ($resident->isOwner)
-                        <td>Owner</td>
-                    @else
-                        <td>Tenant</td>
-                    @endif
-                    <td>{{ $resident->datofoccupancy }}</td>
-                    @if (auth()->user()->usertype_id != 3)
-                        <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">Edit</a></td>
-                        <td>
-                            <form action="{{ route('resident.delete', $resident) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="Delete" class="btn btn-danger">
-                            </form>
-                        </td>
-                    @endif
-                </tr>
-            @endforeach
+            @if($residents->first())
+                @foreach ($residents as $resident)
+                    <tr class="">
+                        <td> {{ $resident->house->full_address }}</td>
+                        @php
+                            try {
+                                $username = $resident->user->name;
+                            } catch (\Exception $e) {
+                                $username = 'N/A';
+                            }
+                        @endphp
+                        <td>{{ $username }}</td>
+                        @if ($resident->isOwner)
+                            <td>Owner</td>
+                        @else
+                            <td>Tenant</td>
+                        @endif
+                        <td>{{ $resident->datofoccupancy }}</td>
+                        @if (auth()->user()->usertype_id != 3)
+                            <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">Edit</a></td>
+                            <td>
+                                <form action="{{ route('resident.delete', $resident) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                </form>
+                            </td>
+                        @endif
+                    </tr>
+                @endforeach
+            @endif
         </table>
     </div>
 @endsection

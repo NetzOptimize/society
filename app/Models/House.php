@@ -52,6 +52,9 @@ class House extends Model
             ->orwhere('Block2','Like' ,'%'.$house.'%')
             ->orwhere('house_no','Like' ,'%'.$house.'%')->get();
     }
-
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 
 }

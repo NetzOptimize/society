@@ -47,7 +47,6 @@
       <label> <i class="fa fa-credit-card"></i>
         <b>Payment Mode:</b></label>
         <select name="payment_modes_id" class="form-control">
-          <option value="">Select Payment Method</option>
           @foreach ($PaymentModes as $PaymentMode)
           <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
           @endforeach
@@ -237,7 +236,7 @@
         </div>
         <div class="col" id="payment-report">
 
-    
+
 
         </div>
       </div> -->
@@ -258,9 +257,9 @@
       <td>January</td>
       <td>3000/-</td>
     </tr>
-   
 
-    
+
+
   </tbody>
 </table>
 <div class="total d-flex justify-content-end" style="width:770px">
@@ -268,30 +267,30 @@
     Total Amount Paid : 3000/-
   </p>
 </div>
- 
+
       </div> -->
       <!-- row4 -->
       <!-- <div class="row  mt-4 mb-4 ms-5 me-5" id="row4">
 <div class="col">
   <p> <span style="font-weight:bold">Registered Address: <br></span>
-    
+
   Lorem ipsum  <br> consectetur, <br>adipisicing elit. Eligendi  </p>
-  
+
       </div>
 
       <div class="col">
   <p> <span style="font-weight:bold">Contact Info: <br></span>
-    
+
   Lorem ipsum  <br> consectetur, <br>adipisicing elit. Eligendi  </p>
-  
+
       </div>
       <div class="col">
   <p> <span style="font-weight:bold">Payment Details: <br></span>
-    
+
   Gpay <br> consectetur, <br>adipisicing elit. Eligendi  </p>
-  
+
       </div>
- 
+
 
     </div>
     <div class="bottom-border">
