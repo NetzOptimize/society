@@ -55,7 +55,7 @@ Route::post('users/store', [UserController::class, 'store'])->name('user.store')
 Route::get('users/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::post('users/update/{user}', [UserController::class, 'update'])->name('user.update');
 
-Route::delete('users/delete/{user}', [UserController::class, 'delete'])->name('user.delete');
+Route::delete('users/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 
 Route::get('users/profile/edit', [UserController::class, 'profile'])->name('user.profile.edit');
 

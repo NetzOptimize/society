@@ -89,8 +89,10 @@ class UserController extends Controller
 
     }
 
-    public function delete(User $user)
+    public function delete($id)
     {
+        $user = User::findOrFail($id);
+        
         if($user->usertype_id ==1)
         {
             $count = User::where('usertype_id',1)->get()->count();

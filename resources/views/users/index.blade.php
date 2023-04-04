@@ -43,7 +43,7 @@
                 @if(auth()->user()->usertype_id !=3)
                     <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success">Edit</a></td>
                     <td  class="text-center">
-                        <form action="{{ route('user.delete', $user) }}" method="POST">
+                        <form action="{{ route('user.delete', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger">
