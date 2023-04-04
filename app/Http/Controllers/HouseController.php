@@ -13,8 +13,7 @@ class HouseController extends Controller
     public function index()
     {
 
-        $houses = House::get();
-
+            $houses = House::get();
         return view('houses.index', compact('houses'));
     }
 

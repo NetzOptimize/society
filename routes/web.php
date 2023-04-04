@@ -96,7 +96,6 @@ Route::get('payments', [PaymentController::class, 'index'])->name('payment.index
 Route::get('payment/create', [PaymentController::class, 'create'])->name('payment.create');
 Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
 
-
 //admin
 
 Route::get('expenses', [AdminController::class, 'index'])->name('admin.expense.index');

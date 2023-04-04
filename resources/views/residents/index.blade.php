@@ -22,28 +22,30 @@
                     <th>DELETE</th>
                 @endif
             </tr>
-            @foreach ($residents as $resident)
-                <tr class="text-center">
-                    <td> {{ $resident->house->full_address }}</td>
-                    <td> {{ $resident->user->name }}</td>
-                    @if ($resident->isOwner)
-                        <td>Owner</td>
-                    @else
-                        <td>Tenant</td>
-                    @endif
-                    <td>{{ $resident->datofoccupancy }}</td>
-                    @if (auth()->user()->usertype_id != 3)
-                        <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">EDIT</a></td>
-                        <td>
-                            <form action="{{ route('resident.delete', $resident) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="DELETE" class="btn btn-danger">
-                            </form>
-                        </td>
-                    @endif
-                </tr>
-            @endforeach
+            @if($residents->first())
+                @foreach ($residents as $resident)
+                    <tr class="text-center">
+                        <td> {{ $resident->house->full_address }}</td>
+                        <td> {{ $resident->user->name }}</td>
+                        @if ($resident->isOwner)
+                            <td>Owner</td>
+                        @else
+                            <td>Tenant</td>
+                        @endif
+                        <td>{{ $resident->datofoccupancy }}</td>
+                        @if (auth()->user()->usertype_id != 3)
+                            <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">EDIT</a></td>
+                            <td>
+                                <form action="{{ route('resident.delete', $resident) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="DELETE" class="btn btn-danger">
+                                </form>
+                            </td>
+                        @endif
+                    </tr>
+                @endforeach
+            @endif
         </table>
     </div>
 @endsection

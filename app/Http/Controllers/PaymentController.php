@@ -41,17 +41,25 @@ class PaymentController extends Controller
                 $query->where('full_address', 'Like', '%'.$house.'%');
             })->get();
 
-            // if($payments->first() == null)
-            // {
-            //     $payments = DB::raw("SELECT payments.*
-            //     FROM payments
-            //     INNER JOIN residents ON payments.house_id=residents.house_id
-            //     INNER JOIN users ON residents.user_id=users.id
-            //     Where users.name=$house ");
-            // }
-
             $count = $payments->count();
             $sum = $payments->sum('amount');
+        }
+        elseif(isset($_GET['unpaid']))
+        {
+            $month =  $_GET['unpaid'];
+
+            $payments = DB::table('houses')
+            ->selectRaw('houses.full_address')
+            ->where('houses.house_type', 'house')
+            ->whereNotIn('houses.id', function ($query) use ($month) {
+                $query->select('house_id')
+                    ->from('payments')
+                    ->distinct()
+                    ->where('billingmonth', $month);
+            })->get();
+            
+            $count = $payments->count();
+            $sum = 0 ;
         }
         else
         {
@@ -91,7 +99,7 @@ class PaymentController extends Controller
         if($req['billingmonth'][0] == 'init')
         {
 
-            $initialpayment = Payment::where('house_id', $req->house_id)->first();
+            $initialpayment = Payment::where('house_id', $req->house_id)->where('billingmonth','init')->first();
 
 
             if($initialpayment)
@@ -140,10 +148,10 @@ class PaymentController extends Controller
         }
         else
         {
-            $initialpayment = Payment::where('house_id', $req->house_id)->first();
+            // $initialpayment = Payment::where('house_id', $req->house_id)->first();
 
-            if($initialpayment)
-            {
+            // if($initialpayment)
+            // {
                 foreach($req['billingmonth'] as $month)
                 {
                     if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first())
@@ -165,8 +173,8 @@ class PaymentController extends Controller
                     $totalAmount += $this->monthlypayment;
                 }
                 return back()->with('success', 'Rs '.$totalAmount.' Added Successfully');
-            }
-            return back()->with('success', ' Initial Payment Remains Unpaid');
+            // }
+            // return back()->with('success', ' Initial Payment Remains Unpaid');
         }
 
     }
