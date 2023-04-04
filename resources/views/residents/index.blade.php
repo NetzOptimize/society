@@ -22,7 +22,7 @@
                     <th>DELETE</th>
                 @endif
             </tr>
-            @if($residents->first())
+            @if ($residents->first())
                 @foreach ($residents as $resident)
                     <tr class="text-center">
                         <td> {{ $resident->house->full_address }}</td>
@@ -41,13 +41,16 @@
                         @endif
                         <td>{{ $resident->datofoccupancy }}</td>
                         @if (auth()->user()->usertype_id != 3)
-                            <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">EDIT</a></td>
+                            <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">Edit</a></td>
                             <td>
-                                <form action="{{ route('resident.delete', $resident) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" value="DELETE" class="btn btn-danger">
-                                </form>
+
+                                    <form method="POST" action="{{ route('resident.delete', $resident)}}">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+                                    </form>
+
+
                             </td>
                         @endif
                     </tr>
@@ -55,4 +58,24 @@
             @endif
         </table>
     </div>
+    {{-- delete confirmation --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Do You Want To Delete This?`,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
 @endsection

@@ -43,10 +43,10 @@
                 @if(auth()->user()->usertype_id !=3)
                     <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success">Edit</a></td>
                     <td  class="text-center">
-                        <form action="{{ route('user.delete', $user->id) }}" method="POST">
+                        <form method="POST" action="{{ route('user.delete', $user->id) }}">
                             @csrf
-                            @method('DELETE')
-                            <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Do you Want To Delete This User?')">
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
                         </form>
                     </td>
                 @endif
@@ -54,5 +54,26 @@
         @endforeach
     </table>
 </div>
+{{-- delete confirmation --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+
+     $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Do You Want To Delete This?`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+</script>
 @endsection
 
