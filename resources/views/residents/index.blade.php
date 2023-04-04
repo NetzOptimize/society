@@ -43,14 +43,12 @@
                         @if (auth()->user()->usertype_id != 3)
                             <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">Edit</a></td>
                             <td>
-
-                                    <form method="POST" action="{{ route('resident.delete', $resident)}}">
-                                        @csrf
-                                        <input name="_method" type="hidden" value="DELETE">
-                                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
-                                    </form>
-
-
+                                <form method="POST" action="{{ route('resident.delete', $resident) }}">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm"
+                                        data-toggle="tooltip" title='Delete'>Delete</button>
+                                </form>
                             </td>
                         @endif
                     </tr>

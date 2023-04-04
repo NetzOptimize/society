@@ -66,7 +66,7 @@
 
         {{-- search bar --}}
 
-        <form action="" method="GET" style="margin:0">
+        <form action=""  method="GET" style="margin:0">
             @if (request('search'))
                 <input type="search" name="search" value="{{ request('search') }}" />
             @else
