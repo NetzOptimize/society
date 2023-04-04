@@ -6,7 +6,7 @@
   <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
     <h3>
       <img src="{{asset('debit-card.png')}}" alt="">
-      Payment Methods
+      Payment Methods 
     </h3>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5 mt-2">

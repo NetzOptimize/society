@@ -57,7 +57,7 @@
                     {{ $message }}
                 @enderror
             </div>
-            <label>DATE OF OCCUPANCY</label>
+            <label>Date Of Occupancy</label>
             <input type="date" name="datofoccupancy" class="form-control"
                 value="{{ date('Y-m-d', strtotime($resident->datofoccupancy)) }}">
             <div class="error">

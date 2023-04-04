@@ -28,11 +28,11 @@
 {{-- listing --}}
 <div class="table-expenses ps-5 pe-5 pt-3  mt-3">
     <table class="table table-light table-hover table-bordered">
-        <tr class="align-middle text-center table-dark">
+        <tr class="table-dark">
             <th>Payee</th>
             <th>Amount</th>
             <th>Payment Mode</th>
-            <th class="d-flex align-items-center justify-content-center">Date Of Payments <div class="dropdown ms-2">
+            <th class="d-flex align-items-center ">Date Of Payments <div class="dropdown ms-2">
                     <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (request('sort'))
                         {{ request('sort') }}
@@ -49,13 +49,13 @@
             </th>
             <th>Comments</th>
         </tr>
-        <tr class="text-center">
+        <tr class=" ">
             @foreach ($expenses as $expense)
-            <td class="text-center">{{ $expense->payee }}</td>
-            <td class="text-center">{{ $expense->amount }}</td>
-            <td class="text-center">{{ $expense->paymentmode->name }}</td>
-            <td class="text-center">{{ $expense->dateofpayment }}</td>
-            <td class="text-center">{{ $expense->comments }}</td>
+            <td class="">{{ $expense->payee }}</td>
+            <td class="">{{ $expense->amount }}</td>
+            <td class="">{{ $expense->paymentmode->name }}</td>
+            <td class="">{{ $expense->dateofpayment }}</td>
+            <td class="">{{ $expense->comments }}</td>
         </tr>
         @endforeach
     </table>

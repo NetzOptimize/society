@@ -7,16 +7,16 @@
 </div>
 <div class="table-manage-house ps-5 pe-5 pt-3">
 <table class="table table-light table-hover table-bordered align-middle">
-        <tr class="text-center  table-dark">
+        <tr class= "text-center table-dark">
             <th>Block-1</th>
             <th>Block-2</th>
             <th>House No</th>
             <th>Address</th>
             {{-- <th>Owner Name</th>
-            <th>MOBILE</th> --}}
+            <th>Mobile</th> --}}
         </tr>
         @foreach ($houses as $house)
-            <tr  class="text-center">
+            <tr  class=" text-center">
                 <td> {{ $house->Block1 }}</td>
                 <td> {{ $house->Block2 }}</td>
                 <td> {{ $house->house_no }}</td>
