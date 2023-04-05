@@ -1,76 +1,17 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-
-<div class="main container shadow mt-2 w-50 p-3" id="payment-method">
-  <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
-    <h3>
-      <img src="{{asset('debit-card.png')}}" alt="">
-      Payment Methods
-    </h3>
-  </div>
-  <div class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5 mt-2">
-    <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" id="payment-method-form"  >
-      @csrf
-      <label>
-      <i class="fa fa-home" aria-hidden="true"></i>
-        <b>House No.</b></label>
-      <select name="house_id" class="form-control">
-        <option value="" >Select House Number</option>
-        @foreach ($houses as $house)
-        <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
-        @endforeach
-      </select>
-      <div class="error">
-        @error('house_id')
-        {{ $message }}
-        @enderror
-      </div>
-      <label>
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-
-        <b>Select Billing Months:</b>
-      </label>
-      <div class="month">
-          @foreach ($months as $key => $month)
-          <div class="d-flex flex-row align-items-center justify-content-between">
-            <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}">
-          </div>
-          @endforeach
-      </div>
-      <div class="error">
-        @error('billingmonth')
-        {{ $message }}
-        @enderror
-      </div>
-
-      <label> <i class="fa fa-credit-card"></i>
-        <b>Payment Mode:</b></label>
-        <select name="payment_modes_id" class="form-control">
-          @foreach ($PaymentModes as $PaymentMode)
-          <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
-          @endforeach
-        </select>
-
-      <div class="error">
-        @error('payment_modes_id')
-        {{ $message }}
-        @enderror
-      </div>
-
-
-        <label> <i class="fa fa-calendar" aria-hidden="true"></i>
-          <b>Date Of Deposits:</b></label>
-        <input type="date" name="dateofdeposit" class="form-control" value={{ now() }} />
-        <div class="error">
-          @error('dateofdeposit')
-          {{ $message }}
-          @enderror
+    <div class="main container shadow mt-2 w-50 p-3" id="payment-method">
+        <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
+            <h3>
+                <img src="{{ asset('debit-card.png') }}" alt="">
+                Payment Methods
+            </h3>
         </div>
         <div
             class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5 mt-2">
             <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:600px">
-              @csrf
+                @csrf
                 <label>
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <b>House No.</b></label>
@@ -95,8 +36,8 @@
                         <div class="d-flex flex-row align-items-center justify-content-between">
                             <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]"
                                 value="{{ $key }}">
-                                <p id="date"></p>
-                                <p id="mode"></p>
+                            <p id="date"></p>
+                            <p id="mode"></p>
                         </div>
                     @endforeach
                 </div>
@@ -144,44 +85,45 @@
     {{-- checked checkboxes when house selected --}}
     <script>
         $('#house_id').on('change', function() {
-                var houseId = $(this).val();
-                $.ajax({
-                    url: '/ajax',
-                    type: 'POST',
-                    data: {
-                        "_token" :" {{ csrf_token()}}",
-                        house_id: houseId
-                    },
-                    dataType: 'json',
-                    success: function(response) {
+            var houseId = $(this).val();
+            $.ajax({
+                url: '/ajax',
+                type: 'POST',
+                data: {
+                    "_token": " {{ csrf_token() }}",
+                    house_id: houseId
+                },
+                dataType: 'json',
+                success: function(response) {
 
-                        var billingMonths = response.billingmonths;
-                        var dates = response.dates;
-                        var modes = response.modes;
+                    var billingMonths = response.billingmonths;
+                    var dates = response.dates;
+                    var modes = response.modes;
 
-                        $('#houseSelect input[type="checkbox"]').prop('checked', false).attr('disabled', false);
-                        $.each(billingMonths, function(index, billingMonth) {
-                            $('#houseSelect input[value="' + billingMonth + '"]').prop('checked',true).attr('disabled', true);
-                        });
+                    $('#houseSelect input[type="checkbox"]').prop('checked', false).attr('disabled',
+                        false);
+                    $.each(billingMonths, function(index, billingMonth) {
+                        $('#houseSelect input[value="' + billingMonth + '"]').prop('checked',
+                            true).attr('disabled', true);
+                    });
 
-                        $('#date').text(" ");
-                        $.each(dates, function(index, date) {
-                            $('#date').text($('#date').text() + date + ' ');
-                        });
+                    $('#date').text(" ");
+                    $.each(dates, function(index, date) {
+                        $('#date').text($('#date').text() + date + ' ');
+                    });
 
-                        $('#mode').text(" ");
-                        $.each(modes, function(index, mode) {
-                            $('#mode').text($('#mode').text() + mode + ' ');
-                        });
+                    $('#mode').text(" ");
+                    $.each(modes, function(index, mode) {
+                        $('#mode').text($('#mode').text() + mode + ' ');
+                    });
 
-                    },
-                    error: function() {
-                        console.log('Error occurred. Please try again.');
-                    }
-                });
+                },
+                error: function() {
+                    console.log('Error occurred. Please try again.');
+                }
             });
+        });
     </script>
-
 @endsection
 
 
