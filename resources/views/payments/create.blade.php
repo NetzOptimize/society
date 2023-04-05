@@ -36,6 +36,8 @@
                         <div class="d-flex flex-row align-items-center justify-content-between">
                             <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]"
                                 value="{{ $key }}">
+                                <p id="date"></p>
+                                <p id="mode"></p>
                         </div>
                     @endforeach
                 </div>
@@ -95,10 +97,24 @@
                     success: function(response) {
 
                         var billingMonths = response.billingmonths;
+                        var dates = response.dates;
+                        var modes = response.modes;
+
                         $('#houseSelect input[type="checkbox"]').prop('checked', false).attr('disabled', false);
                         $.each(billingMonths, function(index, billingMonth) {
                             $('#houseSelect input[value="' + billingMonth + '"]').prop('checked',true).attr('disabled', true);
                         });
+
+                        $('#date').text(" ");
+                        $.each(dates, function(index, date) {
+                            $('#date').text($('#date').text() + date + ' ');
+                        });
+
+                        $('#mode').text(" ");
+                        $.each(modes, function(index, mode) {
+                            $('#mode').text($('#mode').text() + mode + ' ');
+                        });
+
                     },
                     error: function() {
                         console.log('Error occurred. Please try again.');

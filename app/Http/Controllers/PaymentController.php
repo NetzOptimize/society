@@ -158,12 +158,21 @@ class PaymentController extends Controller
     public function ajax(Request $request)
     {
         $houseId = $request->input('house_id');
-        $billingmonths = Payment::where('house_id',$houseId)->get()->pluck('billingmonth');
+        $payments = Payment::where('house_id',$houseId)->get();
+
+        $billingmonths = $payments->pluck('billingmonth');
+        $dates = $payments->pluck('dateofdeposit');
+        foreach($payments as $payment)
+        {
+            $modes[] =$payment->paymentmode->name;
+        }
 
         return response()->json([
 
             'status' => 'success',
             'billingmonths' => $billingmonths,
+            'dates' => $dates,
+            'modes' => $modes
         ]);
     }
 }
