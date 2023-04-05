@@ -57,7 +57,7 @@ class PaymentController extends Controller
                     ->distinct()
                     ->where('billingmonth', $month);
             })->get();
-            
+
             $count = $payments->count();
             $sum = 0 ;
         }
@@ -74,7 +74,7 @@ class PaymentController extends Controller
     public function create()
     {
 
-        $houses= House::get();
+        $houses = House::where('house_type', 'house')->get();
 
         $months = [
             'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'

@@ -22,7 +22,7 @@ class ResidentController extends Controller
     {
         $users= User::where('usertype_id',2)->orderby('name','asc')->get();
 
-        $houses= House::get();
+        $houses = House::where('house_type', 'house')->get();
 
         return view('residents.create', compact('users', 'houses'));
     }
@@ -82,6 +82,18 @@ class ResidentController extends Controller
             'user_id' => 'required',
             'datofoccupancy' => 'required|date'
         ]);
+
+        $owner= Resident::where('house_id', $attributes['house_id'])->where('isOwner', 1)->first();
+
+        if($owner)
+        {
+            if($attributes['isOwner'])
+            {
+
+                return back()->with('success', 'Owner Already Exist');
+            }
+        }
+
 
         $resident->update([
                 'user_id' => $attributes['user_id'],

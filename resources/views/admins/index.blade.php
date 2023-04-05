@@ -13,7 +13,7 @@
     @if (request('search'))
     <input type="search" name="search" value="{{ request('search') }}"  />
     @else
-    <div class="searchby-payee d-flex justify-content-end pt-4  mt-2">
+    <div class="searchby-payee d-flex justify-content-end pt-4 mt-2">
         <input type="search" placeholder="  Search By Payee" name="search" />
     </div>
     @endif
