@@ -41,7 +41,7 @@
                         @endif
                     </a>
 
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a class="dropdown-item" href="?sort=ASCENDING">Ascending</a></li>
                         <li><a class="dropdown-item" href="?sort=DESCENDING">Descending</a></li>
                     </ul>

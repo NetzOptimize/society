@@ -69,8 +69,8 @@ td,th {
 
 <!-- Bootstrap Navbar -->
 
-
-<nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between">
+<div class="main">
+<nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between" id="navbar">
   <div class="container-fluid">
 
 
@@ -92,7 +92,7 @@ td,th {
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 w-100 d-flex justify-content-end">
+      <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 w-100 d-flex justify-content-end" id="hover-li">
         <li class="nav-item">
         <a href="{{ route('user.index') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Manage Users</a>
         </li>
@@ -103,32 +103,31 @@ td,th {
         <a href="{{ route('resident.index') }}" class="btn btn-transparent ms-1 text-light">Manage Resident</a>
         </li>
 
-         <div class="dropdown">
+         <div class="dropdown drop-hover">
         <li class="nav-item dropdown">
-        <button class="btn btn-transparent dropdown-toggle ms-1 text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-transparent dropdown-toggle  text-light btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Manage Payment
       </button>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-          <li><a href="{{ route('payment.index') }}" class="dropdown-item ms-1  ">Payment History</a></li>
-        <li><a href="{{ route('payment.create') }}" class="dropdown-item ms-1 ">Manage Payment</a></li>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <li><a href="{{ route('payment.index') }}" class="dropdown-item  ">Payment History</a></li>
+        <li><a href="{{ route('payment.create') }}" class="dropdown-item   ">Manage Payment</a></li>
 
           </ul>
         </li>
 </div>
-<div class="dropdown   "> 
+<div class="dropdown drop-hover "> 
           <li class="nav-item dropdown">
-          <button class="btn btn-transparent dropdown-toggle ms-1 text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-transparent dropdown-toggle text-light btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Manage Expense
       </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a href="{{ route('admin.expense.index') }}" class="dropdown-item ms-1">Expense History</a></li>
-        <li><a href="{{ route('admin.expense') }}" class="dropdown-item ms-1">Manage Expenses</a></li>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <li><a href="{{ route('admin.expense.index') }}" class="dropdown-item">Expense History</a></li>
+        <li><a href="{{ route('admin.expense') }}" class="dropdown-item">Manage Expenses</a></li>
           </ul>
         </li>
 </div>
 <!--  -->
-<div class="dropdown me-2">
-
+<div class="dropdown me-2 user-hover">
 <a class="btn bg-transparent dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  <img src="{{asset('user1.jpg')}}" alt="" class="rounded-pill" height="30px" width="30px"> User </a>
 <div class="dropdown-menu  dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -143,4 +142,5 @@ td,th {
     </div>
   </div>
 </nav>
+</div>
 <!-- Boostrap end -->

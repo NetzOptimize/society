@@ -14,7 +14,7 @@
     <div class="side-image me-3">
     <img src="{{asset('img1.avif')}}" class="h-80" alt="">
 </div>
-        <form action="{{ route('login.check')}}" method="POST" class="d-flex flex-column gap-3 p-3 " id="login-form" style="width:500px">
+        <form action="{{ route('login.check')}}" method="POST" class="d-flex flex-column gap-3 p-3 " id="login-form">
             @csrf
             <div class="logo">
              <h3><img src="{{ asset('logo1.png') }}" class="rounded-pill " style="height:50px; width:50px;"
