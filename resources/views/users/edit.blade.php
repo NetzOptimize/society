@@ -9,7 +9,7 @@
         Edit Your Profile
     </h3>
 </div>
-    <form action="{{ route('user.update', $user) }}" method="POST"  class="d-flex flex-column gap-3 pb-4" style=" width:600px">
+    <form action="{{ route('user.update', $user) }}" method="POST"  class="d-flex flex-column gap-3 pb-4 " id="edit-user">
         @csrf
         <label>NAME</label>
         <input type="textbox" name="name" value="{{ $user->name }}" value="{{ old('name') }}" class="form-control">

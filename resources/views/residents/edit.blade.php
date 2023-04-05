@@ -5,9 +5,9 @@
 <div class="edit-resident mt-3 w-100 rounded">
     <h3 class="gap-2 p-3 rounded" id="resident-heading"> <img src="{{asset('house-add.png')}}" alt="" style="height:60px; width:60px;"> Edit Your Resident</h3>
 </div>
-    <div  class="d-flex flex-column justify-content-center align-items-center align-content-center">
+    <div  class="d-flex flex-column justify-content-center align-items-center align-content-center edit1">
         <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 pb-3"
-            style=" width:600px">
+            id="edit-resident-form">
             @csrf
             <label>House No.</label>
             <select name="house_id" class="form-control">
@@ -57,7 +57,7 @@
                     {{ $message }}
                 @enderror
             </div>
-            <label>DATE OF OCCUPANCY</label>
+            <label>Date Of Occupancy</label>
             <input type="date" name="datofoccupancy" class="form-control"
                 value="{{ date('Y-m-d', strtotime($resident->datofoccupancy)) }}">
             <div class="error">

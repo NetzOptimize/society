@@ -12,19 +12,19 @@
     @endif
     <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-4">
         <table class="table table-light table-hover table-borderd align-middle">
-            <tr class="text-center  table-dark">
-                <th>HOUSE NO.</th>
-                <th>USER</th>
-                <th>OCCUPANCY TYPE</th>
-                <th>DATE OF OCCUPANCY</th>
+            <tr class="table-dark">
+                <th>House No.</th>
+                <th>User</th>
+                <th>Occupancy Type</th>
+                <th>Date Of Occupancy</th>
                 @if (auth()->user()->usertype_id != 3)
-                    <th>EDIT</th>
-                    <th>DELETE</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 @endif
             </tr>
             @if ($residents->first())
                 @foreach ($residents as $resident)
-                    <tr class="text-center">
+                    <tr class="">
                         <td> {{ $resident->house->full_address }}</td>
                         @php
                             try {

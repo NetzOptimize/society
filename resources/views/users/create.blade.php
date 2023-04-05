@@ -12,7 +12,7 @@
     <h3>Add User</h3>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center p-3 pb-3 ">
-    <form action="{{ route('user.store') }}" method="POST"   class="d-flex flex-column gap-3" style="width:600px" >
+    <form action="{{ route('user.store') }}" method="POST"   class="d-flex flex-column gap-3" id="user-create" >
         @csrf
           <input type="textbox" name="name" placeholder="Name"  class="form-control" value={{ old('name')}}>
         <div class="error">
@@ -60,7 +60,6 @@
         <div class="add-user text-center pb-3">
         <input type="submit" name="login" value="Add User" class="btn btn-dark w-100">
         </div>
-
     </form>
 </div>
 </div>

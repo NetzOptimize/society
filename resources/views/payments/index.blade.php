@@ -9,8 +9,8 @@
         <h3>Payment History</h3>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center  p-4">
-        <div class="dropdown">
+    <div class="d-flex justify-content-center align-items-center  p-4 payment1">
+        <div class="dropdown me-2">
             <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @if (request('month') || request('unpaid'))
                     {{ request('month') }}
@@ -47,7 +47,7 @@
 
         {{-- datewise filter --}}
         <div class="payment">
-            <form action="" method="GET" style="margin:0">
+            <form action="" method="GET" style="margin:0" id="payment-history-form">
                 <label class="ms-3 me-3"><b>Start Date</b></label>
                 @if (request('start_date'))
                     <input type="date" name="start_date" value={{ request('start_date') }}>
