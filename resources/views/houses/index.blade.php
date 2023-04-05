@@ -21,7 +21,11 @@
                     <td> {{ $house->house_no }}</td>
                     <td> {{ $house->full_address }}</td>
                     <td> {{ $house->house_type }}</td>
+                    @if($house->house_type == 'house')
                     <td> <a href="{{ route('house.detail', $house) }}" class="btn btn-success">Detail</a></td>
+                    @else
+                    <td>N/A</td>
+                    @endif
                 </tr>
             @endforeach
         </table>
