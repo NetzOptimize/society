@@ -1,85 +1,116 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-
-<div class="main container shadow mt-2 w-50" id="payment-method">
-  <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
-    <h3>
-      <img src="{{asset('debit-card.png')}}" alt="">
-      Payment Methods
-    </h3>
-  </div>
-  <div class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5 mt-2">
-    <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:600px">
-      @csrf
-      <label>
-      <i class="fa fa-home" aria-hidden="true"></i>
-        <b>House No.</b></label>
-      <select name="house_id" class="form-control">
-        <option value="" >Select House Number</option>
-        @foreach ($houses as $house)
-        <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
-        @endforeach
-      </select>
-      <div class="error">
-        @error('house_id')
-        {{ $message }}
-        @enderror
-      </div>
-      <label>
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-
-        <b>Select Billing Months:</b>
-      </label>
-      <div class="month">
-          @foreach ($months as $key => $month)
-          <div class="d-flex flex-row align-items-center justify-content-between">
-            <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]" value="{{ $key }}">
-          </div>
-          @endforeach
-      </div>
-      <div class="error">
-        @error('billingmonth')
-        {{ $message }}
-        @enderror
-      </div>
-
-      <label> <i class="fa fa-credit-card"></i>
-        <b>Payment Mode:</b></label>
-        <select name="payment_modes_id" class="form-control">
-          @foreach ($PaymentModes as $PaymentMode)
-          <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
-          @endforeach
-        </select>
-
-      <div class="error">
-        @error('payment_modes_id')
-        {{ $message }}
-        @enderror
-      </div>
-
-
-        <label> <i class="fa fa-calendar" aria-hidden="true"></i>
-          <b>Date Of Deposits:</b></label>
-        <input type="date" name="dateofdeposit" class="form-control" value={{ now() }} />
-        <div class="error">
-          @error('dateofdeposit')
-          {{ $message }}
-          @enderror
+    <div class="main container shadow mt-2 w-50" id="payment-method">
+        <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
+            <h3>
+                <img src="{{ asset('debit-card.png') }}" alt="">
+                Payment Methods
+            </h3>
         </div>
+        <div
+            class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb-5 mt-2">
+            <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" style=" width:600px">
+              @csrf
+                <label>
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <b>House No.</b></label>
+                <select name="house_id" class="form-control" id="house_id">
+                    <option value="">Select House Number</option>
+                    @foreach ($houses as $house)
+                        <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
+                    @endforeach
+                </select>
+                <div class="error">
+                    @error('house_id')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <label>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
 
-        <label><b>Add Comment:</b></label>
-        <textarea name="comments"class="form-control"></textarea>
-        <div class="error">
-            @error('comments')
-                {{ $message }}
-            @enderror
+                    <b>Select Billing Months:</b>
+                </label>
+                <div class="month" id="houseSelect">
+                    @foreach ($months as $key => $month)
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]"
+                                value="{{ $key }}">
+                        </div>
+                    @endforeach
+                </div>
+                <div class="error">
+                    @error('billingmonth')
+                        {{ $message }}
+                    @enderror
+                </div>
+
+                <label> <i class="fa fa-credit-card"></i>
+                    <b>Payment Mode:</b></label>
+                <select name="payment_modes_id" class="form-control">
+                    @foreach ($PaymentModes as $PaymentMode)
+                        <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
+                    @endforeach
+                </select>
+
+                <div class="error">
+                    @error('payment_modes_id')
+                        {{ $message }}
+                    @enderror
+                </div>
+
+
+                <label> <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <b>Date Of Deposits:</b></label>
+                <input type="date" name="dateofdeposit" class="form-control" value={{ now() }} />
+                <div class="error">
+                    @error('dateofdeposit')
+                        {{ $message }}
+                    @enderror
+                </div>
+
+                <label><b>Add Comment:</b></label>
+                <textarea name="comments"class="form-control"></textarea>
+                <div class="error">
+                    @error('comments')
+                        {{ $message }}
+                    @enderror
+                </div>
+                <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
+            </form>
         </div>
-        <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
-    </form>
-  </div>
-</div>
+    </div>
+    {{-- checked checkboxes when house selected --}}
+    <script>
+        $('#house_id').on('change', function() {
+                var houseId = $(this).val();
+                $.ajax({
+                    url: '/ajax',
+                    type: 'POST',
+                    data: {
+                        "_token" :" {{ csrf_token()}}",
+                        house_id: houseId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+
+                        var billingMonths = response.billingmonths;
+                        $('#houseSelect input[type="checkbox"]').prop('checked', false).attr('disabled', false);
+                        $.each(billingMonths, function(index, billingMonth) {
+                            $('#houseSelect input[value="' + billingMonth + '"]').prop('checked',true).attr('disabled', true);
+                        });
+                    },
+                    error: function() {
+                        console.log('Error occurred. Please try again.');
+                    }
+                });
+            });
+    </script>
+
 @endsection
+
+
+
 <!-- payment -->
 <!-- <div class="container d-flex justify-content-center mt-5 mb-5">
 
@@ -211,12 +242,12 @@
         </div>
         <div class="col">
           <div class="logo-receipt text-end">
-            <img src="{{asset('logo1.png')}}" class="rounded-pill"  style="height:70px" alt="">
+            <img src="{{ asset('logo1.png') }}" class="rounded-pill"  style="height:70px" alt="">
           </div>
         </div>
       </div> -->
-      <!--row2  -->
-      <!-- <div class="row d-flex justify-content-center align-items-center  mt-4 mb-4 ms-5 me-5" id="row2">
+<!--row2  -->
+<!-- <div class="row d-flex justify-content-center align-items-center  mt-4 mb-4 ms-5 me-5" id="row2">
         <div class="col mt-3 mb-3">
           <div class="company-name">
             <p style="font-weight:bold">Society :</p>
@@ -241,8 +272,8 @@
         </div>
       </div> -->
 
-      <!-- row3 -->
-      <!-- <div class="row mt-3 mb-3  mt-4 mb-4 ms-5 me-5"  id="row3">
+<!-- row3 -->
+<!-- <div class="row mt-3 mb-3  mt-4 mb-4 ms-5 me-5"  id="row3">
       <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -269,8 +300,8 @@
 </div>
 
       </div> -->
-      <!-- row4 -->
-      <!-- <div class="row  mt-4 mb-4 ms-5 me-5" id="row4">
+<!-- row4 -->
+<!-- <div class="row  mt-4 mb-4 ms-5 me-5" id="row4">
 <div class="col">
   <p> <span style="font-weight:bold">Registered Address: <br></span>
 

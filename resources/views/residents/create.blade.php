@@ -25,7 +25,7 @@
         <select name="user_id" class="form-control">
             <option value="">Select User</option>
             @foreach ($users as $user)
-                <option value="{{ $user->id }} ">{{ $user->name }} - {{ $user->mobile1}}</option>
+                <option value="{{ $user->id }} ">{{ $user->name }} - {{ $user->mobile1 ? $user->mobile1 : 'Not Provided' }}</option>
             @endforeach
         </select>
         <div class="error">

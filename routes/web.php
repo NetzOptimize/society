@@ -103,3 +103,6 @@ Route::get('expenses', [AdminController::class, 'index'])->name('admin.expense.i
 Route::get('expenses/create', [AdminController::class, 'expenses'])->name('admin.expense');
 Route::post('expenses/store', [AdminController::class, 'store'])->name('admin.expense.store');
 
+//ajax
+
+Route::post('ajax', [PaymentController::class, 'ajax'])->name('ajax');

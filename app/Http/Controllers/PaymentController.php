@@ -101,14 +101,8 @@ class PaymentController extends Controller
 
             $initialpayment = Payment::where('house_id', $req->house_id)->where('billingmonth','init')->first();
 
-
-            if($initialpayment)
+            if($initialpayment == null)
             {
-                return back()->with('success', 'Initial Payment Has Already Been Paid');
-            }
-            else
-            {
-                // initialpayment
                 Payment::create([
 
                     'house_id' => $req['house_id'],
@@ -123,11 +117,7 @@ class PaymentController extends Controller
                 {
                     foreach($req['billingmonth'] as $month)
                     {
-                        if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first())
-                        {
-                            continue;
-                        }
-                        else
+                        if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first() == null)
                         {
                             Payment::create([
 
@@ -139,43 +129,41 @@ class PaymentController extends Controller
                                 'comments' => $req['comments']
                             ]);
                         }
-                        $totalAmount += $this->monthlypayment;
                     }
-                    $totalAmount += $this->initialpayment;
                 }
-                return back()->with('success', 'Rs '.$totalAmount.' Added Successfully');
+                return back()->with('success', 'Payment Added Successfully');
             }
         }
         else
         {
-            // $initialpayment = Payment::where('house_id', $req->house_id)->first();
-
-            // if($initialpayment)
-            // {
-                foreach($req['billingmonth'] as $month)
+            foreach($req['billingmonth'] as $month)
+            {
+                if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first() == null)
                 {
-                    if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first())
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        Payment::create([
-                            'house_id' => $req['house_id'],
-                            'billingmonth' => $month,
-                            'amount' => $this->monthlypayment,
-                            'payment_modes_id' => $req->payment_modes_id,
-                            'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
-                            'comments' => $req['comments']
-                        ]);
+                    Payment::create([
+                        'house_id' => $req['house_id'],
+                        'billingmonth' => $month,
+                        'amount' => $this->monthlypayment,
+                        'payment_modes_id' => $req->payment_modes_id,
+                        'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+                        'comments' => $req['comments']
+                    ]);
 
-                    }
-                    $totalAmount += $this->monthlypayment;
                 }
-                return back()->with('success', 'Rs '.$totalAmount.' Added Successfully');
-            // }
-            // return back()->with('success', ' Initial Payment Remains Unpaid');
+            }
+            return back()->with('success', 'Payment Added Successfully');
         }
 
+    }
+    public function ajax(Request $request)
+    {
+        $houseId = $request->input('house_id');
+        $billingmonths = Payment::where('house_id',$houseId)->get()->pluck('billingmonth');
+
+        return response()->json([
+
+            'status' => 'success',
+            'billingmonths' => $billingmonths,
+        ]);
     }
 }

@@ -14,7 +14,7 @@
 @endif
 
 </div>
-<div class="table-add-user ps-5 pe-5 pt-3">
+<div class="table-add-user ps-5 pe-5 pt-5">
     <table class="table table-light  table-bordered table-hover  align-middle ">
         <tr class="table-dark">
             <th>Name</th>
@@ -43,7 +43,7 @@
                 @if(auth()->user()->usertype_id !=3)
                     <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success">Edit</a></td>
                     <td  class="text-center">
-                        <form method="POST" action="{{ route('user.delete', $user->id) }}">
+                        <form method="POST" action="{{ route('user.delete', $user->id) }}" class="m-0">
                             @csrf
                             <input name="_method" type="hidden" value="DELETE">
                             <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
