@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class=" main-details1 w-100 main d-flex justify-content-center align-items-center " id="main-details1">
+    <div class=" main-details1 w-100 main d-flex justify-content-center align-items-center text-success " id="main-details1">
         <div class="main-details w-50 rounded bg-light p-4 ">
 
             <div class="detail-heading text-center ">
