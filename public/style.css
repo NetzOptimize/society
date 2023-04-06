@@ -18,7 +18,6 @@
     left: 0;
     right: 0;
     top:20%;
-    z-index: -1;
 }
 #edit{
     position: absolute;
@@ -103,10 +102,8 @@
 }
 .main-details1 {
     height: 85vh !important;
- }
- .main-details{
-    width: 60%;
- }
+    color: #e597bf;
+}
 
 #hover-li .nav-item :hover{
 
@@ -161,64 +158,7 @@
 #edit-resident-form {
     width: 80% !important;
 }
-.main-create{
-    height: 85vh;
-}
 
-/* profile */
- 
-  .card-img-top {
-    width: 60%;
-    border-radius: 50% !important;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  .card {
-    padding: 1.5em 0.5em 0.5em;
-    text-align: center;
-    border-radius: 2em;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    padding: 50px;
-  }
-  .card-title {
-    font-weight: bold;
-    font-size: 1.5em;
-  }
-  .btn-primary {
-    border-radius: 2em;
-    padding: 0.5em 1.5em;
-  }
-  h3#resident-heading {
-    display: flex;
-align-items: center;}
-  
- .user-type{
-    cursor: pointer !important;
-}
- .user-type1{
-    cursor: pointer;
-}
-.cursor-resident{
-cursor:pointer;
-}
-.cursor-resident-create{
-    cursor: pointer;
-}
-.payment-cursor{
-    cursor: pointer;
-
-}
-/* reset */
-.main-reset{
-    height: 85vh;
-    display: flex;
-    align-items: center;
-}
-#row2{
-    padding: 10px 400px;
-    border: 1px solid black;
-
-}
 
 @media screen and (max-width:1280px) {
     #user-create{
@@ -267,10 +207,6 @@ cursor:pointer;
         max-width: 1000px;
         width: 100%;
     }
-    #create-resident{
-        width: 75%!important;
-
-    }
    
 }
 @media screen and (max-width:992px) {
@@ -296,8 +232,7 @@ cursor:pointer;
     }
     #payment-method{
         width: 100% !important;
-        position: absolute;
-        z-index: -1;
+        position: initial;
 
     }
     #user-create{
@@ -330,13 +265,7 @@ cursor:pointer;
         flex-direction: column;
         gap: 9px;
     }
-    .main-details {
-        width: 75%;
-    }
-    nav#navbar {
-         
-        margin: 0 !important;
-    }
+
 }
 @media screen and (max-width:700px) {
     #login-height{
@@ -360,7 +289,7 @@ cursor:pointer;
         width: 100% !important;
     }
     #payment-method{
-        width: 90% !important;
+        width: 100% !important;
         position: initial;
 
     }
@@ -377,24 +306,7 @@ cursor:pointer;
         z-index: -1;
 
     }
-    .month {
- 
-        gap: 10px 150px;
-    }   
-    .main-details {
-        width: 85%;
-    }
-    #create-resident{
-        width: 80%!important;
-
-    }
-    #resident-edit {
-        width: 75% !important;
-        
-    }
-    #edit-resident-form {
-        width: 90% !important;
-    }
+     
 }
 @media screen and (max-width:520px) {
     #background{
@@ -450,20 +362,6 @@ cursor:pointer;
     padding: 0px !important;
   
  }
- #payment-method {
-    width: 90% !important;
-    position: initial;
-}
-.month {
-    gap: 6px 120px;
-}
-.main-details {
-    width: 90%;
-}
-#create-resident{
-    width: 85%!important;
-
-}
 }
 
 
@@ -477,7 +375,7 @@ cursor:pointer;
 
     }
     #payment-method{
-        width: 90% !important;
+        width: 100% !important;
         position: initial;
 
     }
@@ -512,37 +410,6 @@ cursor:pointer;
         padding: 10px 0px !important;
         margin: 0 !important;
      }
-     .month {
-        gap: 3px 120px;
-    }
-    #payment-method {
-        width: 95% !important;
-        position: initial;
-    }
-    #resident-create h3{
-        font-size: 20px;
-
-    }
-    #resident-edit{
-        top: 18%;
-
-    }
-    h3#resident-heading {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    .reports.d-flex.justify-content-end.me-5{
-        
-    margin: 0px !important;
-    padding: 0px;
-    display: flex;
-    justify-content: center !important;
-
-    }
-    .month {
-        gap: 3px 95px;
-    }
 }
 
 @media screen and (max-width:320px) {

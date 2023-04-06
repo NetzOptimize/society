@@ -25,7 +25,7 @@
                 @enderror
             </div>
             <label><b>Select Payments Mode:</b></label>
-            <select name="payment_modes_id"class="form-control payment-cursor">
+            <select name="payment_modes_id"class="form-control">
                 <option value="">Select Payment Method</option>
                 @foreach ($PaymentModes as $PaymentMode)
                     <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>

@@ -1,7 +1,7 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div class="main">
+
 <div class="payment-heading text-center bg-light me-5 ms-5  rounded mt-3  p-4">
     <h3>
       List Of Users
@@ -53,7 +53,6 @@
         </tr>
         @endforeach
     </table>
-</div>
 </div>
 {{-- delete confirmation --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
