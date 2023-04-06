@@ -14,7 +14,7 @@
 @endif
 
 </div>
-<div class="table-add-user ps-5 pe-5 pt-5">
+<div class="table-add-user ps-5 pe-5 pt-5 table-responsive">
     <table class="table table-light  table-bordered table-hover  align-middle ">
         <tr class="table-dark">
             <th>Name</th>
