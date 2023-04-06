@@ -1,16 +1,16 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-<div  class="d-flex flex-column shadow w-50 container justify-content-center align-items-center align-content-center" id="resident-edit">
+<div  class="d-flex flex-column shadow w-50 container justify-content-center align-items-center align-content-center pb-3" id="resident-edit">
 <div class="edit-resident mt-3 w-100 rounded">
     <h3 class="gap-2 p-3 rounded" id="resident-heading"> <img src="{{asset('house-add.png')}}" alt="" style="height:60px; width:60px;"> Edit Your Resident</h3>
 </div>
     <div  class="d-flex flex-column justify-content-center align-items-center align-content-center edit1">
-        <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 pb-3"
+        <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 mt-3 pb-3"
             id="edit-resident-form">
             @csrf
             <label>House No.</label>
-            <select name="house_id" class="form-control">
+            <select name="house_id" class="form-control cursor-resident">
                 <option value="">Select House Number</option>
                 @foreach ($houses as $house)
                     @if ($house->id == $resident->house_id)
@@ -27,7 +27,7 @@
             </div>
 
             <label>User</label>
-            <select name="user_id" class="form-control">
+            <select name="user_id" class="form-control cursor-resident">
                 <option></option>
                 @foreach ($users as $user)
                     @if ($user->id == $resident->user_id)
@@ -43,7 +43,7 @@
                 @enderror
             </div>
             <label>Occupancy Type</label>
-            <select name="isOwner" class="form-control">
+            <select name="isOwner" class="form-control cursor-resident">
                 @foreach ($occupancyTypes as $key => $occupancytype)
                     @if ($key == $resident->isOwner)
                         <option value="{{ $key }}" selected>{{ $occupancytype }}</option>

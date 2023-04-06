@@ -10,7 +10,8 @@
     </div>
 
     <div class="d-flex justify-content-center align-items-center  p-4 payment1">
-        <div class="dropdown me-2">
+    <div class="paid-month-flex d-flex me-3"> 
+    <div class="dropdown me-2">
             <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @if (request('month') || request('unpaid'))
                     {{ request('month') }}
@@ -43,7 +44,7 @@
                 @endif
             </ul>
         </div>
-
+    </div>
 
         {{-- datewise filter --}}
         <div class="payment">
