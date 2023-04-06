@@ -116,10 +116,11 @@
                 <th>Serial No</th>
                 <th>House No.</th>
                 <th>Billing Month</th>
-                <th>Payment Mode</th>
-                <th>Date Of Deposit</th>
-                <th>Amount</th>
-
+                @if(request('unpaid') == null)
+                    <th>Payment Mode</th>
+                    <th>Date Of Deposit</th>
+                    <th>Amount</th>
+                @endif
             </tr>
             <tr>
                 @if (request('unpaid'))
@@ -130,9 +131,6 @@
                         <td>@php echo $i; @endphp</td>
                         <td>{{ $payment->full_address }}</td>
                         <td>{{ request('unpaid') }}</td>
-                        <td>null</td>
-                        <td>null</td>
-                        <td>null </td>
             </tr>
                     @endforeach
                 @else
