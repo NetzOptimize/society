@@ -161,18 +161,18 @@ class PaymentController extends Controller
         $payments = Payment::where('house_id',$houseId)->get();
 
         $billingmonths = $payments->pluck('billingmonth');
-        $dates = $payments->pluck('dateofdeposit');
-        foreach($payments as $payment)
-        {
-            $modes[] =$payment->paymentmode->name;
-        }
+        // $dates = $payments->pluck('dateofdeposit');
+        // foreach($payments as $payment)
+        // {
+        //     $modes[] =$payment->paymentmode->name;
+        // }
 
         return response()->json([
 
             'status' => 'success',
             'billingmonths' => $billingmonths,
-            'dates' => $dates,
-            'modes' => $modes
+            // 'dates' => $dates,
+            // 'modes' => $modes
         ]);
     }
 }

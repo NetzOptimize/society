@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main container shadow  rounded  p-4 w-50" id="get-resident" >
+<div class="main container shadow  rounded  p-4 w-50"  >
 <div class="resident-create justify-content-start p-3 rounded" id="get-house">
     <h3 class="d-flex justify-content-start align-items-center gap-2"> <img src="{{asset('keys.jpg')}}" alt="" class="rounded-pill" id="keys"> Get Your House No.</h3>
 </div>
@@ -38,7 +38,7 @@
             <option value="1">Owner</option>
             <option value="0">Tenant</option>
         </select>
-        <div class="error" class="form-control" >
+        <div class="error" >
         @error('isOwner')
             {{ $message }}
         @enderror
