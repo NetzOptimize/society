@@ -92,7 +92,7 @@ class UserController extends Controller
     public function delete($id)
     {
         $user = User::findOrFail($id);
-        
+
         if($user->usertype_id ==1)
         {
             $count = User::where('usertype_id',1)->get()->count();
@@ -110,7 +110,7 @@ class UserController extends Controller
         return back()->with('success', 'User Deleted Successfully');
     }
 
-    public function profile()
+    public function profileEdit()
     {
         $usertypes = Usertype::get();
 
@@ -149,6 +149,37 @@ class UserController extends Controller
         ];
 
         return view('users.report',compact('months'));
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+
+        return view('users.profile' , compact('user'));
+    }
+
+    public function resetPassword(User $user, Request $request)
+    {
+        $request->validate([
+
+            'oldpassword' => 'required',
+            'newpassword' => 'required',
+            'confirmPassword' => 'required|same:newpassword'
+        ]);
+
+        if (Hash::check($request->oldpassword, $user->password))
+        {
+            $user->update([
+                
+                'password' => Hash::make($request->newpassword)
+            ]);
+
+            return back()->with('success', 'Password Changed Successfully');
+        }
+        else
+        {
+            return back()->with('success', 'Current Password is Incorrect');
+        }
     }
 
 }

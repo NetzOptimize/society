@@ -57,14 +57,15 @@ Route::post('users/update/{user}', [UserController::class, 'update'])->name('use
 
 Route::delete('users/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 
-Route::get('users/profile/edit', [UserController::class, 'profile'])->name('user.profile.edit');
+Route::get('users/profile/edit', [UserController::class, 'profileEdit'])->name('user.profile.edit');
 
 Route::post('users/profile/update/{user}', [UserController::class, 'profileupdate'])->name('user.profile.update');
 
 Route::get('users/report', [UserController::class, 'report'])->name('user.report');
 
+Route::get('users/profile', [UserController::class, 'profile'])->name('user.profile');
 
-
+Route::post('users/reset-password/{user}', [UserController::class, 'resetPassword'])->name('user.resetpassword');
 
 
 //houses
