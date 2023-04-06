@@ -28,29 +28,21 @@
                     <table class="table table-hover table-bordered w-50   ">
                         <thead>
                             @if ($owner)
-
                             <tr>
                                 <th scope="col">Name</th>
-
-
-
                                 <th scope="col"> Mobile 1:</th>
                                 <th scope="col">Mobile 2:</th>
-
                             </tr>
                             @endif
-
                         </thead>
                         <tbody>
                             <tr>
-
                                 <td> {{ $owner->name }}
                                 </td>
                                 <td> {{ $owner->mobile1 }}
                                 </td>
                                 <td> {{ $owner->mobile2 }}</td>
                             </tr>
-
                         </tbody>
 
                     </table>

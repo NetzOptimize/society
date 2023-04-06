@@ -107,3 +107,6 @@ Route::post('expenses/store', [AdminController::class, 'store'])->name('admin.ex
 //ajax
 
 Route::post('ajax', [PaymentController::class, 'ajax'])->name('ajax');
+
+
+
