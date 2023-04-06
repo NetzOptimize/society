@@ -10,7 +10,7 @@
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
         </div>
     @endif
-    <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-4">
+    <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-4 table-responsive">
         <table class="table table-light table-hover table-borderd align-middle">
             <tr class="table-dark">
                 <th>House No.</th>

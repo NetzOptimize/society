@@ -116,7 +116,7 @@
 
 }
 
-.user-hover:hover{
+.user-hover a:hover{
     border: 1px solid white !important;
 
 
@@ -256,6 +256,15 @@
     #edit-resident-form {
         width: 80% !important;
     }
+    .payment1{
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+    form#payment-history-form {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+    }
 
 }
 @media screen and (max-width:700px) {
@@ -274,19 +283,30 @@
     }
     #login-form{
          padding: 0;
-         
-
     }
     #payment-method-form{
         max-width: 600px !important;
         width: 100% !important;
-
     }
     #payment-method{
         width: 100% !important;
         position: initial;
 
     }
+    .table-payments.ps-5.pe-5.pt-2 {
+        padding: 0px !important;
+    }
+    .refresh-button a{
+        display: none;
+    }
+    .table-add-user{
+        padding: 0px !important;
+    }
+    #expense-create{
+        z-index: -1;
+
+    }
+     
 }
 @media screen and (max-width:520px) {
     #background{
@@ -338,6 +358,10 @@
 .edit1 {
     width: 100% !important;
 }
+.table-add-user{
+    padding: 0px !important;
+  
+ }
 }
 
 

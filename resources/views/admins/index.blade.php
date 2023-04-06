@@ -26,7 +26,7 @@
 </div>
 
 {{-- listing --}}
-<div class="table-expenses ps-5 pe-5 pt-3  mt-3">
+<div class="table-expenses ps-5 pe-5 pt-3  mt-3 table-responsive">
     <table class="table table-light table-hover table-bordered">
         <tr class="table-dark">
             <th>Payee</th>

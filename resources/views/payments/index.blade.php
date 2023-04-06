@@ -109,8 +109,8 @@
 
     {{-- listing  --}}
     @php $i=0; @endphp
-    <div class="table-payments ps-5 pe-5 pt-2">
-        <table class="table table-light table-bordered table-hover">
+    <div class="table-payments ps-5 pe-5 pt-2 table-responsive">
+        <table class="table table-light table-bordered table-hover ">
             <tr class="table-dark">
                 <th>Serial No</th>
                 <th>House No.</th>

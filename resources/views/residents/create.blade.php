@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main container shadow  rounded  p-4 w-50" id="get-resident" >
+<div class="main container shadow  rounded  p-4 w-50">
 <div class="resident-create justify-content-start p-3 rounded" id="get-house">
     <h3 class="d-flex justify-content-start align-items-center gap-2"> <img src="{{asset('keys.jpg')}}" alt="" class="rounded-pill" id="keys"> Get Your House No.</h3>
 </div>
@@ -44,7 +44,7 @@
         @enderror
         </div>
         <label>Date Of Occupancy</label>
-        <input type="date" name="datofoccupancy" value={{ now() }} class="form-control" >
+        <input type="date" name="datofoccupancy" value={{now()}} class="form-control" >
         <div class="error">
         @error('datofoccupancy')
             {{ $message }}
