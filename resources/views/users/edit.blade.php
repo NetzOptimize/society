@@ -34,7 +34,7 @@
         </div>
 
         <label>USER-TYPE</label>
-        <select name="usertype_id" class="form-control">
+        <select name="usertype_id" class="form-control user-type1">
             @foreach ($usertypes as $usertype)
                 @if ($user->usertype_id == $usertype->id)
                     <option value="{{ $usertype->id }}" selected>{{ $usertype->role }}</option>
