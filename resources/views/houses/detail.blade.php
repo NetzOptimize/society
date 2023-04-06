@@ -55,6 +55,7 @@
 
                     </table>
 
+
                 <div class="detail-heading text-center ">
                     <h3>Details of House {{ $house->full_address }}</h3>
                 </div>
