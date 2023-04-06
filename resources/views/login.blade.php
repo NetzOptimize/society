@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main-login bg-light " id="background">
+<div class="main-login bg-light " id="background"> 
 
 
 
@@ -10,7 +10,7 @@
 
 
     <nav class="navbar navbar-expand-lg shadow p-3 bg-body rounded" id="login">
-
+     
     <div class="side-image me-3">
     <img src="{{asset('img1.avif')}}" class="h-80" alt="">
 </div>
@@ -48,7 +48,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script>
-
+   
     $(document).ready(function(){
         $("#login-form").validate({
 
