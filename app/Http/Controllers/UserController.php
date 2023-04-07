@@ -175,7 +175,7 @@ class UserController extends Controller
 
             'oldPassword' => 'required',
             'newPassword' => 'required',
-            'confirmPassword' => 'required|same:newpassword'
+            'confirmPassword' => 'required|same:newPassword'
         ]);
 
         if (Hash::check($request->oldpassword, $user->password))

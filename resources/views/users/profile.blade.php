@@ -144,7 +144,7 @@
                                                         <span class="input-group-addon"><i
                                                                 class="glyphicon glyphicon-envelope color-blue"></i></span>
 
-                                                        <input id="emailInput" placeholder="Current Password"
+                                                        <input type="password" id="emailInput" placeholder="Current Password"
                                                             class="form-control" type="Cpass" name="oldPassword">
 
                                                     </div>
@@ -155,7 +155,7 @@
                                                         <span class="input-group-addon"><i
                                                                 class="glyphicon glyphicon-envelope color-blue"></i></span>
 
-                                                        <input id="emailInput" placeholder="New Password"
+                                                        <input type="password" id="emailInput" placeholder="New Password"
                                                             class="form-control" type="Npass" name="newPassword">
 
                                                     </div>
@@ -166,7 +166,7 @@
                                                         <span class="input-group-addon"><i
                                                                 class="glyphicon glyphicon-envelope color-blue"></i></span>
 
-                                                        <input id="emailInput  mb-2" placeholder="Confirm Password"
+                                                        <input type="password" id="emailInput  mb-2" placeholder="Confirm Password"
                                                             class="form-control" type="Confirm-passowrd"
                                                             name="confirmPassword">
 
