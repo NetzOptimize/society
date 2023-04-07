@@ -35,13 +35,10 @@ class ForgetPassword extends Notification
      */
     public function toMail($notifiable)
     {
-
-        $url = url('/forget/' . $this->user->id);
-
         return (new MailMessage)
-                    ->line($this->user->name.'you can set your new password by following link :')
-                    ->action('Click', $url)
-                    ->line('Thank you for using our application!');
+            ->line($this->user->name.' Click On The Following Link To Reset Your Password :')
+            ->action('Reset Password', url('forget/' . $notifiable->id))
+            ->line('Thank you for using our application!');
     }
 
     /**

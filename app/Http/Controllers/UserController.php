@@ -199,6 +199,8 @@ class UserController extends Controller
         if($user)
         {
             Notification::send($user, new ForgetPassword($user));
+
+            return back()->with('success', 'Please Check Your Mail');
         }
         else
         {
@@ -210,13 +212,20 @@ class UserController extends Controller
     {
         $user= User::where('id',$id)->first();
 
-        return view('users/forgetpasswordcreate',$user);
+        return view('users/forgetpasswordcreate', compact('user'));
     }
     public function forgetstore(User $user, Request $req)
     {
-        $user->update([
-            'password' => $req->password
+        $req->validate([
+            'password' => 'required',
+            'confirmPassword' => 'required|same:password'
         ]);
+
+        $user->update([
+            'password' => Hash::make($req->password)
+        ]);
+
+        return redirect("/")->with('success', 'Password Changed Successfully');
     }
 }
 
