@@ -32,9 +32,9 @@
                 <option></option>
                 @foreach ($users as $user)
                     @if ($user->id == $resident->user_id)
-                        <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                        <option value="{{ $user->id }}" selected>{{ $user->name }} - {{ $user->mobile1 ? $user->mobile1 : 'Not Provided' }}</option>
                     @else
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        <option value="{{ $user->id }}">{{ $user->name }} - {{ $user->mobile1 ? $user->mobile1 : 'Not Provided' }}</option>
                     @endif
                 @endforeach
             </select>
