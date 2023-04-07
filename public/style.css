@@ -101,8 +101,9 @@
     grid-template-columns: auto auto;
     gap: 10px 130px;
 }
-.main-details1 {
+.main-height{
     height: 85vh !important;
+    
  }
  .main-details{
     width: 60%;
@@ -164,7 +165,9 @@
 .main-create{
     height: 85vh;
 }
-
+.user-cursor{
+    cursor: pointer;
+}
 /* profile */
  
   .card-img-top {
@@ -292,7 +295,9 @@ cursor:pointer;
         width: 80% !important;
 
     }
+   /* navbar */
    
+   /* navbar end */
 }
 @media screen and (max-width:992px) {
     nav#login {

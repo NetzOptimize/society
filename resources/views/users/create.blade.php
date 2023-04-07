@@ -51,7 +51,7 @@
             {{ $message }}
         @enderror
         </div>
-         <select name="usertype_id" class="form-control" value={{ old('usertype_id')}}>
+         <select name="usertype_id" class="form-control user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)
                 <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>
