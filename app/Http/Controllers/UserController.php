@@ -173,8 +173,8 @@ class UserController extends Controller
     {
         $request->validate([
 
-            'oldpassword' => 'required',
-            'newpassword' => 'required',
+            'oldPassword' => 'required',
+            'newPassword' => 'required',
             'confirmPassword' => 'required|same:newpassword'
         ]);
 
