@@ -75,6 +75,9 @@ Route::get('forget-password', function()
 
 Route::post('users/forgetpassword', [UserController::class, 'forgetpassword'])->name('forgetpassword');
 
+Route::post('forget/{id}', [UserController::class, 'forget'])->name('forget');
+
+Route::post('forgetpassword/{user}/store', [UserController::class, 'forgetstore'])->name('forgetpassword.store');
 
 //houses
 

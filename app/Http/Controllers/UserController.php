@@ -198,7 +198,7 @@ class UserController extends Controller
 
         if($user)
         {
-            dd();
+            Notification::send($user, new ForgetPassword($user));
         }
         else
         {
@@ -206,5 +206,17 @@ class UserController extends Controller
         }
     }
 
+    public function forget($id)
+    {
+        $user= User::where('id',$id)->first();
+
+        return view('users/forgetpasswordcreate',$user);
+    }
+    public function forgetstore(User $user, Request $req)
+    {
+        $user->update([
+            'password' => $req->password
+        ]);
+    }
 }
 
