@@ -10,7 +10,8 @@
     </div>
 
     <div class="d-flex justify-content-center align-items-center  p-4 payment1">
-        <div class="dropdown me-2">
+    <div class="paid-month-flex d-flex me-3"> 
+    <div class="dropdown me-2">
             <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @if (request('month') || request('unpaid'))
                     {{ request('month') }}
@@ -43,7 +44,7 @@
                 @endif
             </ul>
         </div>
-
+    </div>
 
         {{-- datewise filter --}}
         <div class="payment">
@@ -115,11 +116,10 @@
                 <th>Serial No</th>
                 <th>House No.</th>
                 <th>Billing Month</th>
-                @if(request('unpaid') == null)
-                    <th>Payment Mode</th>
-                    <th>Date Of Deposit</th>
-                    <th>Amount</th>
-                @endif
+                <th>Payment Mode</th>
+                <th>Date Of Deposit</th>
+                <th>Amount</th>
+
             </tr>
             <tr>
                 @if (request('unpaid'))
@@ -130,6 +130,9 @@
                         <td>@php echo $i; @endphp</td>
                         <td>{{ $payment->full_address }}</td>
                         <td>{{ request('unpaid') }}</td>
+                        <td>null</td>
+                        <td>null</td>
+                        <td>null </td>
             </tr>
                     @endforeach
                 @else

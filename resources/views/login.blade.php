@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main-login bg-light " id="background">
+<div class="main-login bg-light " id="background"> 
 
 
 
@@ -10,9 +10,9 @@
 
 
     <nav class="navbar navbar-expand-lg shadow p-3 bg-body rounded" id="login">
-
+     
     <div class="side-image me-3">
-    <img src="{{asset('img1.avif')}}" class="h-80" alt="">
+    <img src="{{asset('img1.jpg')}}" class="h-80" alt="">
 </div>
         <form action="{{ route('login.check')}}" method="POST" class="d-flex flex-column gap-3 p-3 " id="login-form">
             @csrf
@@ -48,7 +48,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script>
-
+   
     $(document).ready(function(){
         $("#login-form").validate({
 

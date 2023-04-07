@@ -3,7 +3,12 @@
     color:red;
 }
 
-
+#house_id{
+    cursor: pointer;
+}
+#payment_cursor{
+    cursor: pointer;
+}
 #forgot{
     color:#e597bf
 }
@@ -14,31 +19,31 @@
     background:rgb(229,151,191) !important;
 }
 #add-user-position{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top:20%;
-}
-#edit{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top:20%;
+   height:85vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+.main-edit{
+    height:85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #edit_img{
     height: 60px;
     width:60px;
 }
 #keys{
-    
+
     height: 60px;
     width:80px;
 }
-#resident-edit{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top:20%;
+.resident-edit{
+    height:85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #get-resident{
     position: absolute;
@@ -46,22 +51,23 @@
     right: 0;
     top:20%;
 }
-#payment-method{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top:12%;
-}
-#expense-create{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top:20%;
+ .main-payment-method{
+    height:85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.main-expense-create {
+    height:85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 #add_user_id{
     border-left: 1px solid lavender;
  }
- 
+
  .add-user-image  {
     background: beige !important;
 }
@@ -86,7 +92,7 @@
 #row1,#row2,#row3{
     border-bottom: 1px solid aqua;
 }
- 
+
  .receipt-main{
     margin: 0 auto !important;
     border: 1px solid black;
@@ -98,12 +104,15 @@
  .month {
     display: grid;
     grid-template-columns: auto auto;
-    gap: 10px 200px;
+    gap: 10px 130px;
 }
-.main-details1 {
+.main-height{
     height: 85vh !important;
-    color: #e597bf;
-}
+
+ }
+ .main-details{
+    width: 60%;
+ }
 
 #hover-li .nav-item :hover{
 
@@ -151,13 +160,89 @@
  #login-form{
     width: 50%;
  }
- 
+
  .edit1{
     width: 80% !important;
 }
 #edit-resident-form {
     width: 80% !important;
 }
+.main-create{
+    height: 85vh;
+}
+.user-cursor{
+    cursor: pointer;
+}
+/* profile */
+
+  .card-img-top {
+    width: 60%;
+    border-radius: 50% !important;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .card {
+    padding: 1.5em 0.5em 0.5em;
+    text-align: center;
+    border-radius: 2em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+  }
+  .card-title {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  .btn-primary {
+    border-radius: 2em;
+    padding: 0.5em 1.5em;
+  }
+  h3#resident-heading {
+    display: flex;
+align-items: center;}
+
+ .user-type{
+    cursor: pointer !important;
+}
+ .user-type1{
+    cursor: pointer;
+}
+.cursor-resident{
+cursor:pointer;
+}
+.cursor-resident-create{
+    cursor: pointer;
+}
+.payment-cursor{
+    cursor: pointer;
+
+}
+/* reset */
+.main-reset{
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+#row2{
+    padding: 10px 40px;
+
+}
+.user-hover a img{
+    margin-right: 5px;
+}
+#payment-method-form{
+    width: 60%;
+}
+
+#payment-method-form{
+    width:80%;
+}
+
+@media screen and (max-width:1600px) {
+    #payment-method-form {
+        width: 80%;
+    }
+}
+
 
 
 @media screen and (max-width:1280px) {
@@ -183,9 +268,10 @@
     #resident-edit{
         width: 70% !important   ;
     }
+
 }
 @media screen and (max-width:1200px) {
- 
+
     #login-form{
         margin: 0 auto;
         padding: 0;
@@ -200,14 +286,23 @@
     }
     #payment-method{
         width: 100% !important;
-        position: initial;
 
     }
     #user-create{
         max-width: 1000px;
         width: 100%;
     }
-   
+    #create-resident{
+        width: 75%!important;
+
+    }
+    #payment-method{
+        width: 80% !important;
+
+    }
+   /* navbar */
+
+   /* navbar end */
 }
 @media screen and (max-width:992px) {
     nav#login {
@@ -218,21 +313,20 @@
         padding: 0;
         width: 85%;
     }
- 
+
     .side-image {
         margin: 0;
          padding: 0;
          display: none;
     }
-  
+
     #payment-method-form{
         max-width: 800px !important;
         width: 100% !important;
 
     }
     #payment-method{
-        width: 100% !important;
-        position: initial;
+        width: 90% !important;
 
     }
     #user-create{
@@ -249,7 +343,7 @@
     #expense-create {
         width: 70% !important;
     }
-    
+
     .edit1{
         width: 80% !important;
     }
@@ -265,8 +359,15 @@
         flex-direction: column;
         gap: 9px;
     }
+    .main-details {
+        width: 75%;
+    }
+    nav#navbar {
 
+        margin: 0 !important;
+    }
 }
+
 @media screen and (max-width:700px) {
     #login-height{
         width: 100%;
@@ -278,8 +379,8 @@
     }
     #login{
         width: 100%;
-        padding: 10px;     
- 
+        padding: 10px;
+
     }
     #login-form{
          padding: 0;
@@ -289,8 +390,7 @@
         width: 100% !important;
     }
     #payment-method{
-        width: 100% !important;
-        position: initial;
+        width: 90% !important;
 
     }
     .table-payments.ps-5.pe-5.pt-2 {
@@ -306,14 +406,31 @@
         z-index: -1;
 
     }
-     
+    .month {
+
+        gap: 10px 120px;
+    }
+    .main-details {
+        width: 85%;
+    }
+    #create-resident{
+        width: 80%!important;
+
+    }
+    #resident-edit {
+        width: 75% !important;
+
+    }
+    #edit-resident-form {
+        width: 90% !important;
+    }
 }
 @media screen and (max-width:520px) {
     #background{
         background-color:transparent !important;
         background-image:linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%) !important;
      }
-     
+
     .side-image{
         display: none;
     }
@@ -323,8 +440,7 @@
     }
     #payment-method{
         width: 100% !important;
-        position: initial;
-    }
+     }
     #edit{
         width: 90% !important;
     }
@@ -333,7 +449,7 @@
      }
      #resident-create-form {
         width: 95%;
-    } 
+    }
     #get-resident {
         width: 80% !important;
         z-index: -1;
@@ -360,8 +476,25 @@
 }
 .table-add-user{
     padding: 0px !important;
-  
+
  }
+ #payment-method {
+    width: 90% !important;
+ }
+.month {
+    gap: 6px 120px;
+}
+.main-details {
+    width: 90%;
+}
+#create-resident{
+    width: 85%!important;
+
+}
+.month {
+    display: initial;
+
+}
 }
 
 
@@ -375,8 +508,7 @@
 
     }
     #payment-method{
-        width: 100% !important;
-        position: initial;
+        width: 90% !important;
 
     }
     #add-user{
@@ -385,7 +517,7 @@
     }
     #resident-create-form {
         width: 95%;
-    } 
+    }
     #get-resident {
         width: 90% !important;
         z-index: -1;
@@ -410,6 +542,34 @@
         padding: 10px 0px !important;
         margin: 0 !important;
      }
+     .month {
+        gap: 3px 120px;
+    }
+
+    #resident-create h3{
+        font-size: 20px;
+
+    }
+    #resident-edit{
+        top: 18%;
+
+    }
+    h3#resident-heading {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .reports.d-flex.justify-content-end.me-5{
+
+    margin: 0px !important;
+    padding: 0px;
+    display: flex;
+    justify-content: center !important;
+
+    }
+    .month {
+        gap: 3px 95px;
+    }
 }
 
 @media screen and (max-width:320px) {
@@ -420,7 +580,7 @@
     .refresh-button a{
         display: none;
     }
-   
+
     form#payment-history-form {
         display: flex;
         flex-direction: column;
@@ -428,7 +588,6 @@
     }
     #payment-method{
         width: 100% !important;
-        position: initial;
 
     }
     #payment-method-form{
@@ -441,7 +600,7 @@
     }
     #resident-create-form {
         width: 95%;
-    } 
+    }
     #get-resident {
         width: 90% !important;
         top: 25%;
@@ -450,6 +609,6 @@
         padding: 10px 0px !important;
         margin: 0 !important;
      }
- 
-     
+
+
 }

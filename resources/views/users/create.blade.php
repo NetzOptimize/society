@@ -33,7 +33,12 @@
             {{ $message }}
         @enderror
         </div>
-
+        <input type="email" name="email" placeholder="Email"  class="form-control" value={{ old('email')}}>
+        <div class="error">
+        @error('email')
+            {{ $message }}
+        @enderror
+        </div>
         <input type="password" name="password" placeholder="Password" class="form-control" value={{ old('password')}}>
         <div class="error">
         @error('password')
@@ -46,7 +51,7 @@
             {{ $message }}
         @enderror
         </div>
-         <select name="usertype_id" class="form-control" value={{ old('usertype_id')}} style="text-color:grey;">
+         <select name="usertype_id" class="form-control user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)
                 <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>

@@ -8,7 +8,7 @@ td,th {
     padding-left: 18px !important;
 }
 </style>
- {{-- <div class="main">
+ <!-- {{-- <div class="main">
   <div class="bg-dark p-3 me-5 ms-5 ">
     <div class="top-nav d-flex align-items-center justify-content-between">
       <div class="logo d-flex align-items-center">
@@ -50,7 +50,7 @@ td,th {
      <div class="dropdown me-2">
 
 <a class="btn bg-transparent dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
- <img src="{{asset('user1.jpg')}}" alt="" class="rounded-pill" height="30px" width="30px">{{ Auth::user()->name }}</a>
+ <img src="{{asset('user1.jpg')}}" alt="" class="rounded-pill    " height="30px" width="30px" class="">{{ Auth::user()->name }}</a>
 <div class="dropdown-menu  dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
   <a class="dropdown-item " href="#">Profile</a>
 
@@ -63,7 +63,7 @@ td,th {
     </div>
   </div>
 
-</div> --}}
+</div> --}} -->
 
 
 
@@ -91,7 +91,7 @@ td,th {
 </div>
 
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 w-100 d-flex justify-content-end" id="hover-li">
         <li class="nav-item">
         <a href="{{ route('user.index') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Manage Users</a>

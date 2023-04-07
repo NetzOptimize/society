@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ForgetPassword;
 
 class UserController extends Controller
 {
@@ -42,6 +43,7 @@ class UserController extends Controller
             'name' => 'required|max:255|min:3',
             'mobile1' => 'required|unique:users,mobile1',
             'mobile2' => 'nullable|unique:users',
+            'email' => 'nullable|unique:users',
             'password' => 'required',
             'confirmPassword' => 'required|same:password',
             'usertype_id' => 'required',
@@ -52,6 +54,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'mobile1' => $request->mobile1,
             'mobile2' => $request->mobile2,
+            'email' => $request->email,
             'usertype_id' =>  $request->usertype_id,
         ]);
 
@@ -80,8 +83,12 @@ class UserController extends Controller
                 'nullable',
                 Rule::unique('users')->ignore($user),
             ],
+            'email' =>  [
+                'nullable',
+            ],
             'usertype_id' => 'required'
         ]);
+
 
         $user->update($attributes);
 
@@ -134,6 +141,10 @@ class UserController extends Controller
                 'nullable',
                 Rule::unique('users')->ignore($user),
             ],
+            'email' =>  [
+                'nullable',
+                Rule::unique('users')->ignore($user),
+            ],
             'password' => 'required',
             'confirmPassword' => 'required|same:password',
         ]);
@@ -162,15 +173,15 @@ class UserController extends Controller
     {
         $request->validate([
 
-            'oldpassword' => 'required',
-            'newpassword' => 'required',
+            'oldPassword' => 'required',
+            'newPassword' => 'required',
             'confirmPassword' => 'required|same:newpassword'
         ]);
 
         if (Hash::check($request->oldpassword, $user->password))
         {
             $user->update([
-                
+
                 'password' => Hash::make($request->newpassword)
             ]);
 
