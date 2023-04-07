@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg shadow p-3 bg-body rounded" id="login">
      
     <div class="side-image me-3">
-    <img src="{{asset('img1.avif')}}" class="h-80" alt="">
+    <img src="{{asset('img1.jpg')}}" class="h-80" alt="">
 </div>
         <form action="{{ route('login.check')}}" method="POST" class="d-flex flex-column gap-3 p-3 " id="login-form">
             @csrf

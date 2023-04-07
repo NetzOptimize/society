@@ -80,22 +80,22 @@
 <div class="main-reset">
   <div class="container w-100">
     <div class="row">
-      <div class="row" id="row2">
+      <div class="row">
         <div class="col-md-12 col-md-offset-4">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="text-center">
+          <div class="panel panel-default w-100 d-flex justify-content-center align-items-center">
+            <div class="panel-body w-50 d-flex justify-content-center">
+              <div class="text-center w-50">
                 <h3><i class="fa fa-lock fa-4x"></i></h3>
-                <h2 class="text-center">Forgot Password?</h2>
+                <h2 class="text-center">Reset Password?</h2>
                 <p>You can reset your password here.</p>
                 <div class="panel-body">
 
-                  <form class="form" action="{{ route('')}}" method="POST">
+                <form class="form" action="{{ route('user.resetpassword' ,$user) }}" method="POST">                  
                     @csrf
 
                     <fieldset>
                       <div class="form-group ">
-                        <div class="input-group mb-2">
+                        <div class="input-group mb-3">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
                           <input id="emailInput" placeholder="Current Password" class="form-control" type="Cpass"  name="oldpassword">
@@ -103,7 +103,7 @@
         {{ $message }}
     @enderror 
                         </div>
-                        <div class="input-group  mb-2">
+                        <div class="input-group  mb-3">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
                           <input id="emailInput" placeholder="New Password" class="form-control" type="Npass"  name="newpassword">
@@ -111,7 +111,7 @@
         {{ $message }}
     @enderror
                         </div>
-                        <div class="input-group  mb-2">
+                        <div class="input-group  mb-3">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
                           <input id="emailInput  mb-2" placeholder="Confirm Password" class="form-control" type="Confirm-passowrd"  name="confirmPassword">

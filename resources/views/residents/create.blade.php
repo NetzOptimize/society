@@ -1,13 +1,14 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
+<div class="main-resident-create">
 <div class="main-create d-flex justify-content-center align-items-center">
 <div class="main container shadow  rounded  p-4 w-50" id="create-resident">
 <div class="resident-create justify-content-start p-3 rounded" id="get-house">
     <h3 class="d-flex justify-content-start align-items-center gap-2"> <img src="{{asset('keys.jpg')}}" alt="" class="rounded-pill" id="keys"> Get Your House No.</h3>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4   ">
-    <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3" id="resident-create-form">
+    <form action="{{ route('resident.store') }}" method="POST"  class="d-flex flex-column gap-3 fw-bold" id="resident-create-form">
         @csrf
         <label>House No.</label>
         <select name="house_id" class="form-control cursor-resident-create">
@@ -56,3 +57,4 @@
 </div>
  </div>
 @endsection
+</div>  
