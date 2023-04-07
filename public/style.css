@@ -255,7 +255,7 @@ padding-bottom: 72px !important;
 background-color: #fff;
 }
 
-.btn{ 
+.btn{
 
 font-size: 13px;
 }
@@ -275,6 +275,9 @@ box-shadow: 0 0 0 0px #28a745;
     align-items: center;
 
 }
+.order_by{
+    position: initial !important;
+ }
 /*  */
 
 @media screen and (max-width:1600px) {
