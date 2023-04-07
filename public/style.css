@@ -237,49 +237,6 @@ cursor:pointer;
     width:80%;
 }
 
-
-
-/*  */
-
-.forgot{
-    background-color: #fff;
-padding: 12px;
-border: 1px solid #dfdfdf;
-}
-
-.padding-bottom-3x {
-padding-bottom: 72px !important;
-}
-
-.card-footer{
-background-color: #fff;
-}
-
-.btn{
-
-font-size: 13px;
-}
-
-.form-control:focus {
-color: #495057;
-background-color: #fff;
-border-color: #76b7e9;
-outline: 0;
-box-shadow: 0 0 0 0px #28a745;
-}
-
-.main-profile-password{
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-.order_by{
-    position: initial !important;
- }
-/*  */
-
 @media screen and (max-width:1600px) {
     #payment-method-form {
         width: 80%;
@@ -1191,40 +1148,7 @@ cursor:pointer;
     #payment-method {
         width: 95% !important;
      }
-    #resident-create h3{
-        font-size: 20px;
 
-    }
-    #resident-edit{
-        top: 18%;
-
-    }
-    h3#resident-heading {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    .reports.d-flex.justify-content-end.me-5{
-
-    margin: 0px !important;
-    padding: 0px;
-    display: flex;
-    justify-content: center !important;
-
-    }
-    .month {
-        gap: 3px 95px;
-    }
-}
-
-@media screen and (max-width:320px) {
-    .payment1{
-        flex-direction: column-reverse;
-        gap: 15px;
-    }
-    .refresh-button a{
-        display: none;
-    }
 
     form#payment-history-form {
         display: flex;
