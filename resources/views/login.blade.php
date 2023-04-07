@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main-login bg-light " id="background"> 
+<div class="main-login bg-light " id="background">
 
 
 
@@ -10,7 +10,7 @@
 
 
     <nav class="navbar navbar-expand-lg shadow p-3 bg-body rounded" id="login">
-     
+
     <div class="side-image me-3">
     <img src="{{asset('img1.jpg')}}" class="h-80" alt="">
 </div>
@@ -38,7 +38,7 @@
             <input type="submit" name="login" value="LOGIN" class="btn btn-dark mt-3">
 
             <div class="forgot-password text-center">
-                <p class="text-center"><a href="" id="forgot">Forgot Password ?</a></p>
+                <p class="text-center"><a href="{{ route('forget-password') }}" id="forgot">Forgot Password ?</a></p>
 
                 <p>Don't have an account? <span> <a href="" class="text-decoration-none" id="sign-up">Sign Up</a> </span></p>
              </div>
@@ -48,7 +48,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script>
-   
+
     $(document).ready(function(){
         $("#login-form").validate({
 

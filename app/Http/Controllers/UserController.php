@@ -192,6 +192,19 @@ class UserController extends Controller
             return back()->with('success', 'Current Password is Incorrect');
         }
     }
+    public function forgetpassword(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        if($user)
+        {
+            dd();
+        }
+        else
+        {
+            return back()->with('success', 'Email Doesnt Exit');
+        }
+    }
 
 }
 
