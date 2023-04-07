@@ -11,7 +11,7 @@
 </div>
     <h3>Add User</h3>
 </div>
-<div class="d-flex flex-column justify-content-center align-items-center p-3 pb-3 ">
+<div class="d-flex flex-column justify-content-center align-items-center p-3 pb-3">
     <form action="{{ route('user.store') }}" method="POST"   class="d-flex flex-column gap-3" id="user-create" >
         @csrf
           <input type="textbox" name="name" placeholder="Name"  class="form-control" value={{ old('name')}}>
@@ -51,7 +51,7 @@
             {{ $message }}
         @enderror
         </div>
-         <select name="usertype_id" class="form-control" value={{ old('usertype_id')}} style="text-color:grey;">
+         <select name="usertype_id" class="form-control user-type" value={{ old('usertype_id')}} style="text-color:grey;">
             <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)
                 <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>
