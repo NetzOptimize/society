@@ -16,6 +16,48 @@
     <div class=" main-details1 w-100 main d-flex justify-content-center align-items-center text-success" id="main-details1">
         <div class="main-details rounded bg-light p-4 ">
 
+
+
+
+            <div class="detail-heading text-center ">
+                <h3>Details of House {{ $house->full_address }}</h3>
+
+            </div>
+
+            <div class="details">
+                <div class="owner-details">
+                    <h4>Owner Of The House</h4>
+
+                    <table class="table table-hover table-bordered w-50   ">
+                        <thead>
+                            @if ($owner)
+
+                            <tr>
+                                <th scope="col">Name</th>
+
+
+
+                                <th scope="col"> Mobile 1:</th>
+                                <th scope="col">Mobile 2:</th>
+
+                            </tr>
+                            @endif
+
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td> {{ $owner->name }}
+                                </td>
+                                <td> {{ $owner->mobile1 }}
+                                </td>
+                                <td> {{ $owner->mobile2 }}</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
                 <div class="detail-heading text-center ">
                     <h3>Details of House {{ $house->full_address }}</h3>
                 </div>
@@ -25,23 +67,23 @@
                         <div class="table-owner table-responsive"> 
                         <table class="table table-hover table-bordered   ">
                             <thead>
+                                @if ($owner)
                                     <tr>
                                         <th scope="col">Serial No.</th>
                                         <th scope="col">Name</th>
                                         <th scope="col"> Mobile 1:</th>
                                         <th scope="col">Mobile 2:</th>
                                     </tr>
+                                @endif
                             </thead>
                             <tbody>
                                 <tr>
-                                    @if($owner)
                                     <td>1</td>
                                     <td> {{ $owner->name }}
                                     </td>
                                     <td> {{ $owner->mobile1 }}
                                     </td>
                                     <td> {{ $owner->mobile2 }}</td>
-                                    @endif
                                 </tr>
                             </tbody>
                         </table>
@@ -61,7 +103,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (isset($tenants[0]))
+                                @if ($owner)
                                     @php
                                         $i = 0;
                                     @endphp

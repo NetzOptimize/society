@@ -1,12 +1,13 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
+<div class="resident-edit">
 <div  class="d-flex flex-column shadow w-50 container justify-content-center align-items-center align-content-center pb-3" id="resident-edit">
 <div class="edit-resident mt-3 w-100 rounded">
     <h3 class="gap-2 p-3 rounded" id="resident-heading"> <img src="{{asset('house-add.png')}}" alt="" style="height:60px; width:60px;"> Edit Your Resident</h3>
 </div>
     <div  class="d-flex flex-column justify-content-center align-items-center align-content-center edit1">
-        <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 mt-3 pb-3"
+        <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 mt-3 pb-3 fw-bold"
             id="edit-resident-form">
             @csrf
             <label>House No.</label>
@@ -69,3 +70,4 @@
         </form>
     </div>
 @endsection
+</div>

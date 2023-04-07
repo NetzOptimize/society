@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('content')
 
-
+<div class="main-expense-create">
 <div class="main container w-50 shadow rounded mt-3 " id="expense-create">
 <div class="Manage-expenses-heading d-flex justify-content-start rounded p-4 mt-3" id="expense-heading">
     <h3 class="d-flex align-items-center justify-content-center"> <img src="{{asset('manage-expenses.webp')}}" style="height:40px; width:60px;" alt=""> Manage Expenses</h3>
@@ -55,3 +55,4 @@
     </div>
     </div>
 @endsection
+</div>

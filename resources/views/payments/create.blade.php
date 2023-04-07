@@ -1,7 +1,8 @@
 @include('navbar')
 @extends('layouts.main')
 @section('content')
-    <div class="main container shadow mt-2 w-50 p-3" id="payment-method">
+<div class="main-payment-method">
+    <div class="main   shadow mt-2 w-50 p-3" id="payment-method">
         <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
             <h3>
                 <img src="{{ asset('debit-card.png') }}" alt="">
@@ -10,7 +11,7 @@
         </div>
         <div
             class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb- mt-2">
-            <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1">
+            <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" id="payment-method-form">
                 @csrf
                 <label>
                     <i class="fa fa-home" aria-hidden="true"></i>
@@ -33,7 +34,7 @@
                 </label>
                 <div class="month" id="houseSelect">
                     @foreach ($months as $key => $month)
-                        <div class="d-flex flex-row align-items-center justify-content-between">
+                        <div class="d-flex flex-row align-items-center justify-content-between" id="months_gap">
                             <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]"
                                 value="{{ $key }}">
                             {{-- <p id="date"></p>
@@ -81,6 +82,7 @@
                 <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
             </form>
         </div>
+    </div>
     </div>
     {{-- checked checkboxes when house selected --}}
     <script>
