@@ -173,16 +173,16 @@ class UserController extends Controller
     {
         $request->validate([
 
-            'oldPassword' => 'required',
-            'newPassword' => 'required',
-            'confirmPassword' => 'required|same:newPassword'
+            'oldPassword' => 'required|min:8',
+            'newPassword' => 'required|min:8',
+            'confirmPassword' => 'required|same:newPassword|min:8'
         ]);
 
-        if (Hash::check($request->oldpassword, $user->password))
+        if (Hash::check($request->oldPassword, $user->password))
         {
             $user->update([
 
-                'password' => Hash::make($request->newpassword)
+                'password' => Hash::make($request->newPassword)
             ]);
 
             return back()->with('success', 'Password Changed Successfully');
