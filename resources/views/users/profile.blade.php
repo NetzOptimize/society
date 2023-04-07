@@ -99,28 +99,38 @@
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
                           <input id="emailInput" placeholder="Current Password" class="form-control" type="Cpass"  name="oldpassword">
-                          @error('oldpassword')
+                       
+                        </div>
+
+                      <div class="error mb-2">
+                      @error('oldpassword')
         {{ $message }}
     @enderror 
-                        </div>
+                      </div>
+
+
                         <div class="input-group  mb-3">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
                           <input id="emailInput" placeholder="New Password" class="form-control" type="Npass"  name="newpassword">
-                          @error('newpassword')
-        {{ $message }}
-    @enderror
                         </div>
+
+                      <div class="error mb-2">      @error('newpassword')
+        {{ $message }}
+    @enderror</div>
+
+
                         <div class="input-group  mb-3">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
                           <input id="emailInput  mb-2" placeholder="Confirm Password" class="form-control" type="Confirm-passowrd"  name="confirmPassword">
-                          @error('confirmPassword')
-        {{ $message }}
-    @enderror 
+                        
                         </div>
+                        <div class="error mb-2">  @error('confirmPassword')
+        {{ $message }}
+    @enderror </div>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group mt-3">
                         <input class="btn btn-lg btn-primary btn-block" value="Reset My Password" type="submit" >
                       </div>
                     </fieldset>

@@ -224,10 +224,10 @@ cursor:pointer;
 #payment-method-form{
     width: 60%;
 }
-#months_gap{
-    gap: 10px;
+ 
+#payment-method-form{
+    width:80%;
 }
-
 
 @media screen and (max-width:1600px) {
     #payment-method-form {
@@ -260,6 +260,7 @@ cursor:pointer;
     #resident-edit{
         width: 70% !important   ;
     }
+  
 }
 @media screen and (max-width:1200px) {
  
@@ -285,6 +286,10 @@ cursor:pointer;
     }
     #create-resident{
         width: 75%!important;
+
+    }
+    #payment-method{
+        width: 80% !important;
 
     }
    
@@ -530,9 +535,7 @@ cursor:pointer;
      .month {
         gap: 3px 120px;
     }
-    #payment-method {
-        width: 95% !important;
-     }
+    
     #resident-create h3{
         font-size: 20px;
 
