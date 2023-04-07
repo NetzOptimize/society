@@ -32,7 +32,7 @@
             <th>Payee</th>
             <th>Amount</th>
             <th>Payment Mode</th>
-            <th class="d-flex align-items-center ">Date Of Payments <div class="dropdown ms-2">
+            <th class="d-flex align-items-center ">Date Of Payments <div class="dropdown ms-2 order_by">
                     <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (request('sort'))
                         {{ request('sort') }}
