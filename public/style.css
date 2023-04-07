@@ -3,7 +3,12 @@
     color:red;
 }
 
-
+#house_id{
+    cursor: pointer;
+}
+#payment_cursor{
+    cursor: pointer;
+}
 #forgot{
     color:#e597bf
 }
@@ -30,7 +35,7 @@
     width:60px;
 }
 #keys{
-    
+
     height: 60px;
     width:80px;
 }
@@ -38,7 +43,7 @@
     height:85vh;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 #get-resident{
     position: absolute;
@@ -50,19 +55,19 @@
     height:85vh;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
  }
 .main-expense-create {
     height:85vh;
     display: flex;
     justify-content: center;
-    align-items: center; 
-   
+    align-items: center;
+
 }
 #add_user_id{
     border-left: 1px solid lavender;
  }
- 
+
  .add-user-image  {
     background: beige !important;
 }
@@ -87,7 +92,7 @@
 #row1,#row2,#row3{
     border-bottom: 1px solid aqua;
 }
- 
+
  .receipt-main{
     margin: 0 auto !important;
     border: 1px solid black;
@@ -103,7 +108,7 @@
 }
 .main-height{
     height: 85vh !important;
-    
+
  }
  .main-details{
     width: 60%;
@@ -155,7 +160,7 @@
  #login-form{
     width: 50%;
  }
- 
+
  .edit1{
     width: 80% !important;
 }
@@ -169,7 +174,7 @@
     cursor: pointer;
 }
 /* profile */
- 
+
   .card-img-top {
     width: 60%;
     border-radius: 50% !important;
@@ -194,7 +199,7 @@
   h3#resident-heading {
     display: flex;
 align-items: center;}
-  
+
  .user-type{
     cursor: pointer !important;
 }
@@ -219,7 +224,7 @@ cursor:pointer;
 }
 #row2{
     padding: 10px 40px;
- 
+
 }
 .user-hover a img{
     margin-right: 5px;
@@ -227,7 +232,7 @@ cursor:pointer;
 #payment-method-form{
     width: 60%;
 }
- 
+
 #payment-method-form{
     width:80%;
 }
@@ -263,10 +268,10 @@ cursor:pointer;
     #resident-edit{
         width: 70% !important   ;
     }
-  
+
 }
 @media screen and (max-width:1200px) {
- 
+
     #login-form{
         margin: 0 auto;
         padding: 0;
@@ -281,7 +286,7 @@ cursor:pointer;
     }
     #payment-method{
         width: 100% !important;
- 
+
     }
     #user-create{
         max-width: 1000px;
@@ -296,7 +301,7 @@ cursor:pointer;
 
     }
    /* navbar */
-   
+
    /* navbar end */
 }
 @media screen and (max-width:992px) {
@@ -308,13 +313,13 @@ cursor:pointer;
         padding: 0;
         width: 85%;
     }
- 
+
     .side-image {
         margin: 0;
          padding: 0;
          display: none;
     }
-  
+
     #payment-method-form{
         max-width: 800px !important;
         width: 100% !important;
@@ -322,7 +327,7 @@ cursor:pointer;
     }
     #payment-method{
         width: 90% !important;
-  
+
     }
     #user-create{
         max-width: 900px;
@@ -338,7 +343,7 @@ cursor:pointer;
     #expense-create {
         width: 70% !important;
     }
-    
+
     .edit1{
         width: 80% !important;
     }
@@ -358,11 +363,11 @@ cursor:pointer;
         width: 75%;
     }
     nav#navbar {
-         
+
         margin: 0 !important;
     }
 }
-   
+
 @media screen and (max-width:700px) {
     #login-height{
         width: 100%;
@@ -374,8 +379,8 @@ cursor:pointer;
     }
     #login{
         width: 100%;
-        padding: 10px;     
- 
+        padding: 10px;
+
     }
     #login-form{
          padding: 0;
@@ -386,7 +391,7 @@ cursor:pointer;
     }
     #payment-method{
         width: 90% !important;
- 
+
     }
     .table-payments.ps-5.pe-5.pt-2 {
         padding: 0px !important;
@@ -402,9 +407,9 @@ cursor:pointer;
 
     }
     .month {
- 
+
         gap: 10px 120px;
-    }   
+    }
     .main-details {
         width: 85%;
     }
@@ -414,7 +419,7 @@ cursor:pointer;
     }
     #resident-edit {
         width: 75% !important;
-        
+
     }
     #edit-resident-form {
         width: 90% !important;
@@ -425,7 +430,7 @@ cursor:pointer;
         background-color:transparent !important;
         background-image:linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%) !important;
      }
-     
+
     .side-image{
         display: none;
     }
@@ -444,7 +449,7 @@ cursor:pointer;
      }
      #resident-create-form {
         width: 95%;
-    } 
+    }
     #get-resident {
         width: 80% !important;
         z-index: -1;
@@ -471,7 +476,7 @@ cursor:pointer;
 }
 .table-add-user{
     padding: 0px !important;
-  
+
  }
  #payment-method {
     width: 90% !important;
@@ -488,7 +493,7 @@ cursor:pointer;
 }
 .month {
     display: initial;
-   
+
 }
 }
 
@@ -504,7 +509,7 @@ cursor:pointer;
     }
     #payment-method{
         width: 90% !important;
- 
+
     }
     #add-user{
         width: 90% !important;
@@ -512,7 +517,7 @@ cursor:pointer;
     }
     #resident-create-form {
         width: 95%;
-    } 
+    }
     #get-resident {
         width: 90% !important;
         z-index: -1;
@@ -540,7 +545,7 @@ cursor:pointer;
      .month {
         gap: 3px 120px;
     }
-    
+
     #resident-create h3{
         font-size: 20px;
 
@@ -555,7 +560,7 @@ cursor:pointer;
         flex-direction: column;
     }
     .reports.d-flex.justify-content-end.me-5{
-        
+
     margin: 0px !important;
     padding: 0px;
     display: flex;
@@ -575,7 +580,7 @@ cursor:pointer;
     .refresh-button a{
         display: none;
     }
-   
+
     form#payment-history-form {
         display: flex;
         flex-direction: column;
@@ -583,7 +588,7 @@ cursor:pointer;
     }
     #payment-method{
         width: 100% !important;
- 
+
     }
     #payment-method-form{
         max-width: 300px;
@@ -595,7 +600,7 @@ cursor:pointer;
     }
     #resident-create-form {
         width: 95%;
-    } 
+    }
     #get-resident {
         width: 90% !important;
         top: 25%;
@@ -604,6 +609,6 @@ cursor:pointer;
         padding: 10px 0px !important;
         margin: 0 !important;
      }
- 
-     
+
+
 }

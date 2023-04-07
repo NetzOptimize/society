@@ -50,7 +50,7 @@
 
                 <label> <i class="fa fa-credit-card"></i>
                     <b>Payment Mode:</b></label>
-                <select name="payment_modes_id" class="form-control">
+                <select name="payment_modes_id" class="form-control" id="payment_cursor">
                     @foreach ($PaymentModes as $PaymentMode)
                         <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
                     @endforeach
