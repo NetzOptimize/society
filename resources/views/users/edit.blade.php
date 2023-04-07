@@ -27,13 +27,19 @@
         @enderror
         </div>
         <label>MOBILE-2</label>
-        <input type="tel" name="mobile2" value="{{ $user->mobile2 }}" value="{{ old('mobile2') }}"class="form-control">
+        <input type="tel" name="mobile2" value="{{ $user->mobile2 }}" value="{{ old('mobile2') }}" class="form-control">
         <div class="error">
         @error('mobile2')
             {{ $message }}
         @enderror
         </div>
-
+        <label>EMAIL</label>
+        <input type="email" name="email" value="{{ $user->email }}"  class="form-control" value={{ old('email')}}>
+        <div class="error">
+        @error('email')
+            {{ $message }}
+        @enderror
+        </div>
         <label>USER-TYPE</label>
         <select name="usertype_id" class="form-control user-type1">
             @foreach ($usertypes as $usertype)

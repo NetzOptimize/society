@@ -25,6 +25,13 @@
             {{ $message }}
         @enderror
         </div>
+        <label>EMAIL</label>
+        <input type="email" name="email" value="{{ $user->email }}" value="{{ old('email') }}" class="form-control">
+        <div class="error">
+        @error('email')
+            {{ $message }}
+        @enderror
+        </div>
         <label>PASSWORD</label>
         <input type="password" name="password" value="{{ $user->password }}" class="form-control">
         <div class="error">
@@ -54,4 +61,4 @@
         </div>
         <input type="submit" name="login" value="EDIT PROFILE" class="btn btn-primary">
     </form>
-@endsection 
+@endsection

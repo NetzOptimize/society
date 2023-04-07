@@ -33,7 +33,12 @@
             {{ $message }}
         @enderror
         </div>
-
+        <input type="email" name="email" placeholder="Email"  class="form-control" value={{ old('email')}}>
+        <div class="error">
+        @error('email')
+            {{ $message }}
+        @enderror
+        </div>
         <input type="password" name="password" placeholder="Password" class="form-control" value={{ old('password')}}>
         <div class="error">
         @error('password')
