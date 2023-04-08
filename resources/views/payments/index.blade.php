@@ -118,7 +118,9 @@
                 <th>Payment Mode</th>
                 <th>Date Of Deposit</th>
                 <th>Amount</th>
-                <th>Action</th>
+                @if (auth()->user()->usertype_id == 1)
+                    <th>Action</th>
+                @endif
             </tr>
             <tr>
                 @if (request('unpaid'))
