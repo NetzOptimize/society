@@ -19,7 +19,14 @@
                 <select name="house_id" class="form-control" id="house_id">
                     <option value="">Select House Number</option>
                     @foreach ($houses as $house)
-                        <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
+                        @php
+                            $ownerName = [];
+                            foreach ($house->residents as $resident) {
+                                $ownerName[] = $resident->isOwner == 1 ? ucfirst($resident->user?->name) : "";
+                            }
+                            $ownerName = implode(" ", $ownerName);
+                        @endphp
+                        <option value="{{ $house->id }} ">{{ $house->full_address }} {{ $ownerName }}</option>
                     @endforeach
                 </select>
                 <div class="error">

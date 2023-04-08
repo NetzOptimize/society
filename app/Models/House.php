@@ -36,6 +36,11 @@ class House extends Model
         return $this->belongsTo(Society::class);
     }
 
+    public function residents()
+    {
+        return $this->hasMany(Resident::class, 'house_id');
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'residents')->withPivot('isOwner', 'datofoccupancy');

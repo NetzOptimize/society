@@ -95,8 +95,14 @@ Route::delete('resident/{resident}/delete', [ResidentController::class, 'delete'
 
 //PAYMENT
 Route::get('payments', [PaymentController::class, 'index'])->name('payment.index');
+
 Route::get('payment/create', [PaymentController::class, 'create'])->name('payment.create');
 Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
+
+Route::get('payment/{payment}/edit', [PaymentController::class, 'edit'])->name('payment.edit');
+Route::post('payment/{payment}/update', [PaymentController::class, 'update'])->name('payment.update');
+
+Route::delete('payment/{payment}/delete', [PaymentController::class, 'delete'])->name('payment.delete');
 
 //admin
 

@@ -4,13 +4,12 @@
     {{-- monthwise filter --}}
 
 
-
     <div class="heading-payment-history bg-light me-5 ms-5  p-4 mt-3 text-center">
         <h3>Payment History</h3>
     </div>
 
     <div class="d-flex justify-content-center align-items-center  p-4 payment1">
-    <div class="paid-month-flex d-flex me-3"> 
+    <div class="paid-month-flex d-flex me-3">
     <div class="dropdown me-2">
             <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @if (request('month') || request('unpaid'))
@@ -119,7 +118,7 @@
                 <th>Payment Mode</th>
                 <th>Date Of Deposit</th>
                 <th>Amount</th>
-
+                <th>Action</th>
             </tr>
             <tr>
                 @if (request('unpaid'))
@@ -133,6 +132,15 @@
                         <td>null</td>
                         <td>null</td>
                         <td>null </td>
+                        @if (auth()->user()->usertype_id == 1)
+                            <td>
+                                <form class='delete-pm' action="{{ route('payment.delete', $payment->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class='delete-payment btn btn-danger btn-sm'>Delete</button>
+                                </form>
+                            </td>
+                        @endif
             </tr>
                     @endforeach
                 @else
@@ -150,11 +158,32 @@
                     <td>{{ $payment->paymentmode->name }}</td>
                     <td>{{ $payment->dateofdeposit }}</td>
                     <td>{{ $payment->amount }}</td>
+                    @if (auth()->user()->usertype_id == 1)
+                        <td>
+                            <form method="post" class='delete-pm' action="{{ route('payment.delete', $payment->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class='delete-payment btn btn-danger btn-sm'>Delete</button>
+                            </form>
+                        </td>
+                    @endif
                     </tr>
                     @endforeach
             @endif
 
 
+
         </table>
     </div>
 @endsection
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        $(".delete-pm").on("submit", function(e) {
+            if (!confirm("Are you sure?")) {
+                e.preventDefault();
+            }
+        })
+    });
+</script>

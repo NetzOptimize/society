@@ -83,7 +83,7 @@ class ResidentController extends Controller
             'datofoccupancy' => 'required|date'
         ]);
 
-        $owner= Resident::where('house_id', $attributes['house_id'])->where('isOwner', 1)->first();
+        $owner= Resident::where('house_id', $attributes['house_id'])->where('isOwner', 1)->where('id', '!=', $resident->id)->first();
 
         if($owner)
         {

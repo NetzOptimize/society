@@ -73,8 +73,7 @@ class PaymentController extends Controller
 
     public function create()
     {
-
-        $houses = House::where('house_type', 'house')->get();
+        $houses = House::with('residents')->where('house_type', 'house')->get();
 
         $months = [
             'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'
@@ -83,6 +82,24 @@ class PaymentController extends Controller
         $PaymentModes = PaymentMode::get();
 
         return view('payments.create', compact('houses', 'months', 'PaymentModes'));
+    }
+
+    public function edit(Payment $payment)
+    {
+        // Todo
+    }
+
+    public function update(Request $req)
+    {
+       // Todo
+    }
+
+    public function delete(Payment $payment)
+    {
+        abort_if(auth()->user()->usertype_id != 1, 403, 'Access Deined');
+
+        $payment->delete();
+        return redirect()->back();
     }
 
     public function store(Request $req)
