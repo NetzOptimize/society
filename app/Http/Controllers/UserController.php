@@ -86,9 +86,12 @@ class UserController extends Controller
             'email' =>  [
                 'nullable',
             ],
+            'password' => 'required',
+            'confirmPassword' => 'required|same:password',
             'usertype_id' => 'required'
         ]);
 
+    $attributes['password']= Hash::make( $attributes['password']);
 
         $user->update($attributes);
 

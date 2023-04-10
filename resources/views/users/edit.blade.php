@@ -40,6 +40,20 @@
             {{ $message }}
         @enderror
         </div>
+        <label>PASSWORD</label>
+        <input type="password" name="password" value="{{ $user->password }}" class="form-control">
+        <div class="error">
+        @error('password')
+            {{ $message }}
+        @enderror
+        </div>
+        <label>CONFIRM-PASSWORD</label>
+         <input type="password" name="confirmPassword" value="{{ $user->password }}" class="form-control">
+        <div class="error">
+        @error('confirmPassword')
+            {{ $message }}
+        @enderror
+        </div>
         <label>USER-TYPE</label>
         <select name="usertype_id" class="form-control user-type1">
             @foreach ($usertypes as $usertype)
