@@ -41,10 +41,10 @@ class UserController extends Controller
 
        $request->validate([
             'name' => 'required|max:255|min:3',
-            'mobile1' => 'required|unique:users,mobile1',
-            'mobile2' => 'nullable|unique:users',
-            'email' => 'nullable|unique:users',
-            'password' => 'required',
+            'mobile1' => 'required|unique:users,mobile1|gt:0|numeric',
+            'mobile2' => 'nullable|unique:users|gt:0|numeric',
+            'email' => 'nullable|unique:users|email',
+            'password' => 'required|min:8',
             'confirmPassword' => 'required|same:password',
             'usertype_id' => 'required',
         ]);
@@ -77,14 +77,18 @@ class UserController extends Controller
             'name' => 'required|max:255|min:3',
             'mobile1' => [
                 'required',
+                'gt:0',
+                'numeric',
                 Rule::unique('users')->ignore($user),
             ],
             'mobile2' =>  [
                 'nullable',
+                'gt:0',
+                'numeric',
                 Rule::unique('users')->ignore($user),
             ],
             'email' =>  [
-                'nullable',
+                'nullable','email'
             ],
             'usertype_id' => 'required'
         ]);
@@ -135,17 +139,22 @@ class UserController extends Controller
             'name' => 'required|max:255|min:3',
             'mobile1' => [
                 'required',
+                'numeric',
+                'gt:0',
                 Rule::unique('users')->ignore($user),
             ],
             'mobile2' =>  [
                 'nullable',
+                'numeric',
+                'gt:0',
                 Rule::unique('users')->ignore($user),
             ],
             'email' =>  [
                 'nullable',
+                'email',
                 Rule::unique('users')->ignore($user),
             ],
-            'password' => 'required',
+            'password' => 'required|min:8',
             'confirmPassword' => 'required|same:password',
         ]);
 
@@ -194,17 +203,27 @@ class UserController extends Controller
     }
     public function forgetpassword(Request $request)
     {
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('mobile1', $request->mobile)->first();
 
         if($user)
         {
-            Notification::send($user, new ForgetPassword($user));
+            if($user->email)
+            {
 
-            return back()->with('success', 'Please Check Your Mail');
+                Notification::send($user, new ForgetPassword($user));
+
+                return back()->with('success', 'Please Check Your Mail');
+            }
+            else
+            {
+
+                return back()->with('success', 'Please Contact Admin (XXXX XXX XXX)');
+
+            }
         }
         else
         {
-            return back()->with('success', 'Email Doesnt Exit');
+            return back()->with('success', 'Please Enter Registered Number');
         }
     }
 
@@ -217,7 +236,7 @@ class UserController extends Controller
     public function forgetstore(User $user, Request $req)
     {
         $req->validate([
-            'password' => 'required',
+            'password' => 'required|min:8',
             'confirmPassword' => 'required|same:password'
         ]);
 

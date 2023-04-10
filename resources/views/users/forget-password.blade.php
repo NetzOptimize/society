@@ -22,7 +22,7 @@
                                   <div class="form-group">
                                     <div class="input-group">
                                       <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                      <input id="emailInput" name="email" placeholder="Email address" class="form-control" type="email" >
+                                      <input id="emailInput" name="mobile" placeholder="Email address" class="form-control" type="text" >
                                     </div>
                                   </div>
                                   <div class="form-group mt-3 w-100">
@@ -69,14 +69,14 @@ $('document').ready(function(){
 $('.form').validate({
 
     rules:{
-        email:{
+        mobile:{
             'required':true
         }
 
     },
     messages:{
 
-        email:'*Please Enter Your Email For Send Link'
+        mobile:'*Please Enter Your mobile For Send Link'
 
     }
 
