@@ -200,7 +200,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
           <div class="forgot">
-          	
+
           	<h2>Reset your password?</h2>
             <form class="form" action="{{ route('user.resetpassword', $user) }}"
                                             method="POST">
@@ -211,7 +211,7 @@
                                                 <label for="" class="fw-bold">Enter Your Current Password:</label>
 
                                                     <div class="input-group mb-3">
-                                                      
+
                                                         <span class="input-group-addon"><i
                                                                 class="glyphicon glyphicon-envelope color-blue"></i></span>
                                                         <input id="emailInput" placeholder="Current Password"
@@ -235,7 +235,7 @@
                                                         {{ $message }}
                                                     @enderror</div>
 
-                                                    <label for="" class="fw-bold">Enter Your Confirm Password:</label>
+                                                    <label for="" class="fw-bold">Confirm Your Password:</label>
 
                                                     <div class="input-group  mb-3">
                                                         <span class="input-group-addon"><i
@@ -259,9 +259,9 @@
                                             </fieldset>
                                         </form>
 
-          </div>	
-          
-          
+          </div>
+
+
         </div>
       </div>
     </div>

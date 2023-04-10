@@ -1,3 +1,101 @@
+
+.error{
+    color: red;
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.forgot{
+    background-color: #fff;
+padding: 12px;
+border: 1px solid #dfdfdf;
+}
+
+.padding-bottom-3x {
+padding-bottom: 72px !important;
+}
+
+.card-footer{
+background-color: #fff;
+}
+
+.btn{
+
+font-size: 13px;
+}
+
+.form-control:focus {
+color: #495057;
+background-color: #fff;
+border-color: #76b7e9;
+outline: 0;
+box-shadow: 0 0 0 0px #28a745;
+}
+
+.main-profile-password{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.order_by{
+    position: initial !important;
+ }
+#forgot-password-row1{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+
+
+
+/* profile */
+
+  .card-img-top {
+    width: 60%;
+    border-radius: 50% !important;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .card {
+    padding: 1.5em 0.5em 0.5em;
+    text-align: center;
+    border-radius: 2em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+  }
+  .card-title {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  .btn-primary {
+    border-radius: 2em;
+    padding: 0.5em 1.5em;
+  }
+  h3#resident-heading {
+    display: flex;
+align-items: center;}
+
+ .user-type{
+    cursor: pointer !important;
+}
+ .user-type1{
+    cursor: pointer;
+}
+.cursor-resident{
+cursor:pointer;
+}
+.cursor-resident-create{
+    cursor: pointer;
+}
+.payment-cursor{
+    cursor: pointer;
+
+}
+
 .error
 {
     color:red;

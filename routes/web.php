@@ -67,6 +67,17 @@ Route::get('users/profile', [UserController::class, 'profile'])->name('user.prof
 
 Route::post('users/reset-password/{user}', [UserController::class, 'resetPassword'])->name('user.resetpassword');
 
+Route::get('forget-password', function()
+{
+    return view('users.forget-password');
+
+})->name('forget-password');
+
+Route::post('users/forgetpassword', [UserController::class, 'forgetpassword'])->name('forgetpassword');
+
+Route::get('/forget/{id}', [UserController::class, 'forget'])->name('forget');
+
+Route::post('forgetpassword/{user}/store', [UserController::class, 'forgetstore'])->name('forgetpassword.store');
 
 //houses
 
