@@ -119,13 +119,13 @@ cursor:pointer;
     background:rgb(229,151,191) !important;
 }
 #add-user-position{
-   height:85vh;
+   height:90vh;
    display: flex;
    justify-content: center;
    align-items: center;
  }
 .main-edit{
-    height:85vh;
+    height:90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,7 +140,7 @@ cursor:pointer;
     width:80px;
 }
 .resident-edit{
-    height:85vh;
+    height:90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +152,7 @@ cursor:pointer;
     top:20%;
 }
  .main-payment-method{
-    height:85vh;
+    height:90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -268,7 +268,7 @@ cursor:pointer;
     width: 80% !important;
 }
 .main-create{
-    height: 85vh;
+    height: 90vh;
 }
 .user-cursor{
     cursor: pointer;
@@ -336,10 +336,15 @@ cursor:pointer;
 #payment-method-form{
     width:80%;
 }
-
+#edit-user {
+     gap: 5px !important;
+}
 @media screen and (max-width:1600px) {
     #payment-method-form {
         width: 80%;
+    }
+    #edit-user{
+        gap: 4px !important;
     }
 }
 
@@ -348,6 +353,7 @@ cursor:pointer;
 @media screen and (max-width:1280px) {
     #user-create{
          width: 70%;
+         gap:10px !important;
     }
     #add-user{
         width: 70% !important;
@@ -357,6 +363,7 @@ cursor:pointer;
     }
     #edit-user{
         width: 70%;
+        gap: 2px !important;
     }
     #get-resident{
         width: 70% !important;
@@ -400,6 +407,7 @@ cursor:pointer;
         width: 80% !important;
 
     }
+  
    /* navbar */
 
    /* navbar end */
@@ -438,6 +446,8 @@ cursor:pointer;
     }
     #edit-user{
         width: 90%;
+        gap: 3px !important;
+
     }
 
     #expense-create {
@@ -466,6 +476,7 @@ cursor:pointer;
 
         margin: 0 !important;
     }
+    
 }
 
 @media screen and (max-width:700px) {
@@ -596,7 +607,6 @@ cursor:pointer;
 
 }
 }
-
 
 @media screen and (max-width:460px) {
     #login-height{

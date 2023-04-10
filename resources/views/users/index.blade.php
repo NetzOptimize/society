@@ -1,6 +1,7 @@
 @include('navbar')
-@extends('layouts.main')
-@section('content')
+ @section('content')
+ @extends('layouts.main')
+
     <div class="payment-heading text-center bg-light me-5 ms-5  rounded mt-3  p-4">
         <h3>
             List Of Users
@@ -15,8 +16,9 @@
 
     </div>
     <div class="table-add-user ps-5 pe-5 pt-5 table-responsive">
-        <table class="table table-light  table-bordered table-hover  align-middle ">
-            <tr class="table-dark">
+        <table class="table table-light  table-bordered table-hover  align-middle " id="user-data">
+        <thead> 
+        <tr class="table-light">
                 <th>Name</th>
                 <th>Mobile-1</th>
                 <th>Mobile-2</th>
@@ -27,6 +29,9 @@
                     <th></th>
                 @endif
             </tr>
+            </thead>   
+          
+          <tbody>
             <tr>
                 @foreach ($users as $user)
                     <td>{{ $user->name }}</td>
@@ -59,15 +64,18 @@
                         </td>
                     @endif
             </tr>
+            </tbody>
             @endforeach
         </table>
     </div>
     {{-- delete confirmation --}}
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
     <script type="text/javascript">
-        $('.show_confirm').click(function(event) {
-            var form = $(this).closest("form");
-            var name = $(this).data("name");
+        jQuery('.show_confirm').click(function(event) {
+            var form = jQuery(this).closest("form");
+            var name = jQuery(this).data("name");
             event.preventDefault();
             swal({
                     title: `Do You Want To Delete This?`,
@@ -82,4 +90,23 @@
                 });
         });
     </script>
-@endsection
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css ">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css ">
+ 
+
+<script type="text/javascript" href="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js
+"></script>
+<script type="text/javascript" href="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js
+"></script>
+ data table -->
+<!-- <script>
+jQuery(document).ready(function () {
+    jQuery('#user-data').DataTable();
+});
+
+
+</script> -->  
+
+
+
+ 
