@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="main-login bg-light " id="background">
+<div class="main-login   " id="background">
 
 
 
