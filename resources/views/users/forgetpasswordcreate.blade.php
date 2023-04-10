@@ -1,21 +1,5 @@
 @extends('layouts.main')
 @section('content')
-    <!-- <form action="{{ route('forgetpassword.store', $user) }}" method="POST">
-    @csrf
-        <label>New Password</label>
-        <input type="password" name="password">
-        @error('password')
-        {{ $message }}
-    @enderror
-        <label>Confirm Password</label>
-        <input type="password" name="confirmPassword">
-        @error('confirmPassword')
-        {{ $message }}
-    @enderror
-        <input type="submit" value="Submit">
-    </form>
-@endsection -->
-
 <div class="container d-flex justify-content-center">
     <div class="row w-100" id="forgot-password-row1">
         <div class="row d-flex justify-content-center align-items-center">
@@ -70,3 +54,4 @@
         </div>
     </div>
 </div>
+@endsection
