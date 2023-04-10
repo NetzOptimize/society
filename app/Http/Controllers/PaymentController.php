@@ -84,27 +84,9 @@ class PaymentController extends Controller
         return view('payments.create', compact('houses', 'months', 'PaymentModes'));
     }
 
-    public function edit(Payment $payment)
-    {
-        // Todo
-    }
-
-    public function update(Request $req)
-    {
-       // Todo
-    }
-
-    public function delete(Payment $payment)
-    {
-        abort_if(auth()->user()->usertype_id != 1, 403, 'Access Deined');
-
-        $payment->delete();
-        return redirect()->back();
-    }
 
     public function store(Request $req)
     {
-        $totalAmount=0;
         $req->validate([
             'house_id' =>'required',
             'billingmonth' => 'required',
@@ -171,6 +153,50 @@ class PaymentController extends Controller
             return back()->with('success', 'Payment Added Successfully');
         }
 
+    }
+    public function edit(Payment $payment)
+    {
+        $houses = House::with('residents')->where('house_type', 'house')->get();
+
+        $months = [
+            'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'
+        ];
+
+        $PaymentModes = PaymentMode::get();
+
+        return view('payments.edit', compact('payment', 'houses', 'months', 'PaymentModes'));
+    }
+
+    public function update(Request $req, Payment $payment)
+    {
+
+        $attributes= $req->validate([
+            'house_id' =>'required',
+            'billingmonth' => 'required',
+            'payment_modes_id' =>'required',
+            'dateofdeposit' => 'required',
+            'comments' => 'nullable'
+        ]);
+
+        $exists = Payment::where('house_id',$attributes['house_id'])->where('billingmonth',$attributes['billingmonth'] )->first();
+
+        if($exists)
+        {
+            return back()->with('success', 'Payment Already Exists');
+        }
+
+        $payment->update($attributes);
+
+        return redirect()->route('payment.index')->with('success', 'Payment Edited Succesfully');;
+
+    }
+
+    public function delete(Payment $payment)
+    {
+        abort_if(auth()->user()->usertype_id != 1, 403, 'Access Deined');
+
+        $payment->delete();
+        return redirect()->back();
     }
     public function ajax(Request $request)
     {

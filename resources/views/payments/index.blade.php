@@ -9,41 +9,42 @@
     </div>
 
     <div class="d-flex justify-content-center align-items-center  p-4 payment1">
-    <div class="paid-month-flex d-flex me-3">
-    <div class="dropdown me-2">
-            <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                @if (request('month') || request('unpaid'))
-                    {{ request('month') }}
-                    {{ request('unpaid') }}
-                @else
-                    Months
-                @endif
-            </label>
-            <ul class="dropdown-menu">
-                @foreach ($months as $key => $month)
-                    <li><a class="dropdown-item"
-                            href="{{ route('payment.index') }}?month={{ $key }}">{{ $month }}</a></li>
-                @endforeach
-            </ul>
-        </div>
+        <div class="paid-month-flex d-flex me-3">
+            <div class="dropdown me-2">
+                <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @if (request('month') || request('unpaid'))
+                        {{ request('month') }}
+                        {{ request('unpaid') }}
+                    @else
+                        Months
+                    @endif
+                </label>
+                <ul class="dropdown-menu">
+                    @foreach ($months as $key => $month)
+                        <li><a class="dropdown-item"
+                                href="{{ route('payment.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
 
-        <div class="dropdown">
-            <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                @if (request('unpaid'))
-                    Unpaid
-                @else
-                    Paid
-                @endif
-            </label>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('payment.index') }}">Paid</a></li>
-                @if (request('month'))
-                    <li><a class="dropdown-item"
-                            href="{{ route('payment.index') }}?unpaid={{ request('month') }}">Unpaid</a></li>
-                @endif
-            </ul>
+            <div class="dropdown">
+                <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    @if (request('unpaid'))
+                        Unpaid
+                    @else
+                        Paid
+                    @endif
+                </label>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('payment.index') }}">Paid</a></li>
+                    @if (request('month'))
+                        <li><a class="dropdown-item"
+                                href="{{ route('payment.index') }}?unpaid={{ request('month') }}">Unpaid</a></li>
+                    @endif
+                </ul>
+            </div>
         </div>
-    </div>
 
         {{-- datewise filter --}}
         <div class="payment">
@@ -66,7 +67,7 @@
 
         {{-- search bar --}}
 
-        <form action=""  method="GET" style="margin:0">
+        <form action="" method="GET" style="margin:0">
             @if (request('search'))
                 <input type="search" name="search" value="{{ request('search') }}" />
             @else
@@ -115,77 +116,79 @@
                 <th>Serial No</th>
                 <th>House No.</th>
                 <th>Billing Month</th>
-                <th>Payment Mode</th>
-                <th>Date Of Deposit</th>
-                <th>Amount</th>
-                @if (auth()->user()->usertype_id == 1)
-                    <th>Action</th>
+                @if (null == request('unpaid'))
+                    <th>Payment Mode</th>
+                    <th>Date Of Deposit</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                    <th></th>
                 @endif
             </tr>
             <tr>
-                @if (request('unpaid'))
-                    @foreach ($payments as $payment)
-                        @php
-                            $i++;
-                        @endphp
-                        <td>@php echo $i; @endphp</td>
-                        <td>{{ $payment->full_address }}</td>
-                        <td>{{ request('unpaid') }}</td>
-                        <td>null</td>
-                        <td>null</td>
-                        <td>null </td>
-                        @if (auth()->user()->usertype_id == 1)
-                            <td>
-                                <form class='delete-pm' action="{{ route('payment.delete', $payment->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class='delete-payment btn btn-danger btn-sm'>Delete</button>
-                                </form>
-                            </td>
-                        @endif
+        @if (request('unpaid'))
+            @foreach ($payments as $payment)
+                @php
+                    $i++;
+                @endphp
+                <td>@php echo $i; @endphp</td>
+                <td>{{ $payment->full_address }}</td>
+                <td>{{ request('unpaid') }}</td>
             </tr>
-                    @endforeach
-                @else
-                    @foreach ($payments as $payment)
-                    @php
-                        $i++;
-                    @endphp
-                    <td>@php echo $i; @endphp</td>
-                    <td>{{ $payment->houses->full_address }}</td>
-                    @foreach ($months as $key => $month)
-                        @if ($key == $payment->billingmonth)
-                            <td>{{ $month }}</td>
-                        @endif
-                    @endforeach
-                    <td>{{ $payment->paymentmode->name }}</td>
-                    <td>{{ $payment->dateofdeposit }}</td>
-                    <td>{{ $payment->amount }}</td>
-                    @if (auth()->user()->usertype_id == 1)
-                        <td>
-                            <form method="post" class='delete-pm' action="{{ route('payment.delete', $payment->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button class='delete-payment btn btn-danger btn-sm'>Delete</button>
-                            </form>
-                        </td>
+            @endforeach
+        @else
+            @foreach ($payments as $payment)
+                @php
+                    $i++;
+                @endphp
+                <td>@php echo $i; @endphp</td>
+                <td>{{ $payment->houses->full_address }}</td>
+                @foreach ($months as $key => $month)
+                    @if ($key == $payment->billingmonth)
+                        <td>{{ $month }}</td>
                     @endif
-                    </tr>
-                    @endforeach
+                @endforeach
+                <td>{{ $payment->paymentmode->name }}</td>
+                <td>{{ $payment->dateofdeposit }}</td>
+                <td>{{ $payment->amount }}</td>
+                @if (auth()->user()->usertype_id == 1)
+                    <td>
+                        <a href="{{ route('payment.edit', $payment) }}" class="btn btn-success">EDIT</a>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ route('payment.delete', $payment->id) }}"class="m-0">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip"
+                                title='Delete'>Delete</button>
+                        </form>
+                    </td>
+            @endif
+                </tr>
+            @endforeach
             @endif
 
 
 
         </table>
     </div>
+    {{-- delete confirmation --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Do You Want To Delete This?`,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+    </script>
 @endsection
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        $(".delete-pm").on("submit", function(e) {
-            if (!confirm("Are you sure?")) {
-                e.preventDefault();
-            }
-        })
-    });
-</script>
