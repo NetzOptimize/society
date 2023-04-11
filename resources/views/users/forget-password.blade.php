@@ -4,7 +4,7 @@
 <div class="container d-flex justify-content-center">
     <div class="row w-100" id="forgot-password-row1">
         <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-4 col-md-offset-4 border p-4 shadow">
+            <div class="col-md-4 col-md-offset-4 border p-4 shadow w-100 d-flex justify-content-center">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="text-center">
@@ -20,7 +20,7 @@
                                   <div class="form-group">
                                     <div class="input-group">
                                       <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                      <input id="emailInput" name="mobile" placeholder="enter you registered mobile number " class="form-control" type="text" >
+                                      <input id="emailInput" name="mobile" placeholder="Enter you registered mobile number " class="form-control" type="text" >
                                     </div>
                                   </div>
                                   <div class="form-group mt-3 w-100">
