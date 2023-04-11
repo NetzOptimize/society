@@ -11,7 +11,7 @@
                           <h3><i class="fa fa-lock fa-4x"></i></h3>
                           <h2 class="text-center">Forgot Password?</h2>
 
-                          <p> We are sending this email because you requested <br> you requested a password reset.</p>
+                          <p> We are sending this email because you requested <br> a password reset.</p>
                             <div class="panel-body">
 
                               <form action ="{{ route('forgetpassword') }}" class="form" method="POST">

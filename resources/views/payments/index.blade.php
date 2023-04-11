@@ -120,8 +120,10 @@
                     <th>Payment Mode</th>
                     <th>Date Of Deposit</th>
                     <th>Amount</th>
+                    @if (auth()->user()->usertype_id != 3)
                     <th>Actions</th>
                     <th></th>
+                    @endif
                 @endif
             </tr>
             <tr>
