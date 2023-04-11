@@ -37,7 +37,7 @@ class ForgetPassword extends Notification
     {
         return (new MailMessage)
             ->line($this->user->name.' Click On The Following Link To Reset Your Password :')
-            ->action('Reset Password', url('forget/' . $notifiable->id))
+            ->action('Reset Password', route('forget', $notifiable->id))
             ->line('Thank you for using our application!');
     }
 
