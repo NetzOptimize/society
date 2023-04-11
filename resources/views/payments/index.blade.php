@@ -152,7 +152,7 @@
                 <td>{{ $payment->amount }}</td>
                 @if (auth()->user()->usertype_id == 1)
                     <td>
-                        <a href="{{ route('payment.edit', $payment) }}" class="btn btn-success">EDIT</a>
+                        <a href="{{ route('payment.edit', $payment) }}" class="btn btn-success">Edit</a>
                     </td>
                     <td>
                         <form method="POST" action="{{ route('payment.delete', $payment->id) }}"class="m-0">
