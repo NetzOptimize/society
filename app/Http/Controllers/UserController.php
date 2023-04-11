@@ -90,13 +90,21 @@ class UserController extends Controller
             'email' =>  [
                 'nullable','email'
             ],
-            'password' => 'required',
-            'confirmPassword' => 'required|same:password',
             'usertype_id' => 'required'
         ]);
 
-    $attributes['password']= Hash::make( $attributes['password']);
+        $password = $request->validate([
+            'password' => 'nullable',
+            'confirmPassword' => 'same:password',
+        ]);
 
+        if($password['password'])
+        {
+            $user->update([
+                'password' => Hash::make( $password['password'])
+            ]);
+        }
+        
         $user->update($attributes);
 
         return redirect()->route('user.index')->with('success', 'User Updated Successfully');

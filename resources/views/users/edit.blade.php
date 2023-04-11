@@ -41,14 +41,14 @@
         @enderror
         </div>
         <label>PASSWORD</label>
-        <input type="password" name="password" value="{{ $user->password }}" class="form-control">
+        <input type="password" name="password"  class="form-control">
         <div class="error">
         @error('password')
             {{ $message }}
         @enderror
         </div>
         <label>CONFIRM-PASSWORD</label>
-         <input type="password" name="confirmPassword" value="{{ $user->password }}" class="form-control">
+         <input type="password" name="confirmPassword"  class="form-control">
         <div class="error">
         @error('confirmPassword')
             {{ $message }}

@@ -18,7 +18,7 @@
     <div class="table-add-user ps-5 pe-5 pt-5 table-responsive">
         <table class="table table-light  table-bordered table-hover  align-middle " id="user-data">
         <thead>
-        <tr class="table-light">
+        <tr class="table-dark">
                 <th>Name</th>
                 <th>Mobile-1</th>
                 <th>Mobile-2</th>

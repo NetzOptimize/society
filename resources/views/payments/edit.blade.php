@@ -6,7 +6,7 @@
             <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
                 <h3>
                     <img src="{{ asset('debit-card.png') }}" alt="">
-                    Edit Payment Methods
+                    Edit Payment 
                 </h3>
             </div>
             <div
@@ -90,7 +90,7 @@
                                 {{ $message }}
                             @enderror
                         </div>
-                        <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
+                        <input type="submit" name="login" value="Submit" class="btn btn-dark">
                 </form>
                 <a href="{{ route('payment.index') }}"  class="btn btn-dark">Cancel</a>
             </div>
