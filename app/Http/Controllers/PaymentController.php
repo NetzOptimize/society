@@ -24,13 +24,15 @@ class PaymentController extends Controller
 
         if(isset($_GET['month']))
         {
-            $payments = Payment::Monthlyfilter($_GET['month']);
+            $payments = Payment::Monthlyfilter($_GET['month'])->pluck('id')->toarray();
+            $payments = Payment::sortedData($payments)->get();
             $count = $payments->count();
             $sum = $payments->sum('amount');
         }
         elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
         {
-            $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date']);
+            $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();;
+            $payments = Payment::sortedData($payments)->get();
             $count = $payments->count();
             $sum = $payments->sum('amount');
         }
@@ -39,8 +41,9 @@ class PaymentController extends Controller
             $house=$_GET['search'];
             $payments = Payment::whereHas('houses', function ($query) use ($house) {
                 $query->where('full_address', 'Like', '%'.$house.'%');
-            })->get();
+            })->get()->pluck('id')->toarray();
 
+            $payments = Payment::sortedData($payments)->get();
             $count = $payments->count();
             $sum = $payments->sum('amount');
         }
@@ -63,7 +66,8 @@ class PaymentController extends Controller
         }
         else
         {
-            $payments = Payment::get();
+            $payments = Payment::get()->pluck('id')->toarray();
+            $payments = Payment::sortedData($payments)->get();
             $count = $payments->count();
             $sum = $payments->sum('amount');
         }
