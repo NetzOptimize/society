@@ -346,6 +346,19 @@ cursor:pointer;
     #edit-user{
         gap: 4px !important;
     }
+    #user-create{
+        gap: 10px !important;
+    }
+    #resident-create-form {
+        gap: 8px !important;
+     }
+     #edit-resident-form {
+     
+        gap: 8px !important;
+    }
+    #expense-create-form{
+        gap: 8px !important;
+    }
 }
 
 
