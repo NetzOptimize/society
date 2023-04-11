@@ -254,7 +254,7 @@
                                                 </div>
                                                 <div class="form-group ms-2">
                                                     <input class="btn btn-lg btn-primary btn-block"
-                                                        value="Reset My Password" type="submit">
+                                                        value="Reset My Password" id="reset-your-password" type="submit">
                                                 </div>
                                             </fieldset>
                                         </form>

@@ -2,9 +2,9 @@
 @section('content')
 
 <div class="container d-flex justify-content-center">
-    <div class="row w-100" id="forgot-password-row1">
+    <div class= " " id="forgot-password-row1">
         <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-4 col-md-offset-4 border p-4 shadow w-100 d-flex justify-content-center">
+            <div class="col-md-4 col-md-offset-4 border p-5 shadow w-100 d-flex justify-content-center">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="text-center">
@@ -24,7 +24,7 @@
                                     </div>
                                   </div>
                                   <div class="form-group mt-3 w-100">
-                                    <input class="btn btn-lg btn-primary btn-block " value="Send My Password" type="submit">
+                                    <input class="btn btn-lg btn-primary btn-block " value="Send My Password"  type="submit">
                                   </div>
                                 </fieldset>
                               </form>

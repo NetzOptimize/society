@@ -619,7 +619,11 @@ cursor:pointer;
     display: initial;
 
 }
+#reset-your-password{
+    font-size: 15px !important;
+
 }
+}   
 
 @media screen and (max-width:460px) {
     #login-height{
@@ -733,5 +737,4 @@ cursor:pointer;
         margin: 0 !important;
      }
 
-
-}
+ }
