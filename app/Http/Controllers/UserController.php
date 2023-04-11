@@ -113,6 +113,7 @@ class UserController extends Controller
             if($count > 1)
             {
                 $user->delete();
+                return back()->with('success','Admin Deleted Successfully');
             }
             else
             {
