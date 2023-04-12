@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
 <div class="main-payment-method">
@@ -11,7 +11,7 @@
         </div>
         <div
             class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb- mt-2">
-            <form action="{{ route('payment.store') }}" method="POST" class="d-flex flex-column gap-1" id="payment-method-form">
+            <form action="{{ route('payments.store') }}" method="POST" class="d-flex flex-column gap-1" id="payment-method-form">
                 @csrf
                 <label>
                     <i class="fa fa-home" aria-hidden="true"></i>

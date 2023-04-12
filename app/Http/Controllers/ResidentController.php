@@ -11,25 +11,27 @@ use Carbon\Carbon;
 
 class ResidentController extends Controller
 {
+
     public function index()
     {
-        $residents=Resident::orderBy('house_id')->get();
+        $residents=Resident::orderBy('house_id')->simplepaginate(12);
 
         return view('residents.index', compact('residents'));
     }
 
+
     public function create()
     {
-        $users= User::where('usertype_id',2)->orderby('name','asc')->get();
+        $users= User::where('usertype_id',)->orderby('name','asc')->get();
 
         $houses = House::where('house_type', 'house')->get();
 
         return view('residents.create', compact('users', 'houses'));
     }
 
-    public function store(Request $req)
+    public function store(Request $request, Resident $resident)
     {
-        $attributes =$req->validate([
+        $attributes =$request->validate([
             'house_id' => 'required',
             'user_id' => 'required',
             'isOwner' => 'required',
@@ -40,7 +42,7 @@ class ResidentController extends Controller
 
         if($resident)
         {
-            return back()->with('success', 'Record Already Exist');
+            return back()->with('error', 'Record Already Exist');
         }
 
         $owner= Resident::where('house_id', $attributes['house_id'])->where('isOwner', 1)->first();
@@ -50,7 +52,7 @@ class ResidentController extends Controller
             if($attributes['isOwner'])
             {
 
-                return back()->with('success', 'Owner Already Exist');
+                return back()->with('error', 'Owner Already Exist');
             }
         }
 
@@ -61,11 +63,17 @@ class ResidentController extends Controller
             'datofoccupancy' => Carbon::parse($attributes['datofoccupancy'])->format('d-m-Y')
         ]);
 
-        return redirect()->route('resident.index')->with('success', 'Resident Added Successfully');
+        return redirect()->route('residents.index')->with('success', 'Resident Added Successfully');
     }
+
+    public function show(Resident $resident)
+    {
+        //
+    }
+
     public function edit(Resident $resident)
     {
-        $users= User::where('usertype_id',2)->orderby('name','asc')->get();
+        $users= User::where('usertype_id',User::RESIDENT)->orderby('name','asc')->get();
 
         $houses = House::where('house_type', 'house')->get();
 
@@ -74,9 +82,9 @@ class ResidentController extends Controller
         return view('residents.edit', compact('users', 'resident', 'houses', 'occupancyTypes'));
     }
 
-    public function update(Request $req, Resident $resident)
+    public function update(Request $request, Resident $resident)
     {
-        $attributes =$req->validate([
+        $attributes =$request->validate([
             'house_id' => 'required',
             'isOwner' => 'required',
             'user_id' => 'required',
@@ -90,7 +98,7 @@ class ResidentController extends Controller
             if($attributes['isOwner'])
             {
 
-                return back()->with('success', 'Owner Already Exist');
+                return back()->with('error', 'Owner Already Exist');
             }
         }
 
@@ -102,16 +110,13 @@ class ResidentController extends Controller
                 'isOwner' => $attributes['isOwner'],
         ]);
 
-        return redirect()->route('resident.index');
+        return redirect()->route('residents.index');
     }
 
-    public function delete(Resident $resident)
+    public function destroy(Resident $resident)
     {
         $resident->delete();
 
         return back()->with('success', 'Record Deleted Successfully');
     }
-
-
-
 }

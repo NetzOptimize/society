@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
     <div class="Manage-houses  bg-light text-center me-5 ms-5 mt-3">
@@ -22,12 +22,13 @@
                     <td> {{ $house->full_address }}</td>
                     <td> {{ $house->house_type }}</td>
                     @if($house->house_type == 'house')
-                    <td> <a href="{{ route('house.detail', $house) }}" class="btn btn-success">Detail</a></td>
+                    <td> <a href="{{ route('houses.show', $house) }}" class="btn btn-success">Detail</a></td>
                     @else
                     <td>N/A</td>
                     @endif
                 </tr>
             @endforeach
         </table>
+        <?php echo $houses->links(); ?>
     </div>
 @endsection

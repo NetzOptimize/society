@@ -8,23 +8,34 @@ use App\Models\User;
 use App\Models\Resident;
 use App\Models\Payment;
 
-//new branch
-
 class HouseController extends Controller
 {
+
     public function index()
     {
-        $houses = House::get();
+        $houses = House::simplepaginate(12);
         return view('houses.index', compact('houses'));
     }
 
-    public function detail(House $house)
+    public function create()
     {
-        $owner= Resident::where('house_id',$house->id)->where('isOwner',1)->pluck('user_id');
+        //
+    }
+
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+
+    public function show(House $house)
+    {
+        $owner= Resident::where('house_id',$house->id)->where('isOwner',true)->pluck('user_id');
 
         $owner= User::find($owner)->first();
 
-        $tenant= Resident::where('house_id',$house->id)->where('isOwner',0)->pluck('user_id');
+        $tenant= Resident::where('house_id',$house->id)->where('isOwner',false)->pluck('user_id');
 
         $tenants= User::find($tenant)->toarray();
 
@@ -33,4 +44,21 @@ class HouseController extends Controller
         return view('houses.detail', compact('owner','tenants', 'payments', 'house'));
     }
 
+
+    public function edit(string $id)
+    {
+        //
+    }
+
+
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+
+    public function destroy(string $id)
+    {
+        //
+    }
 }

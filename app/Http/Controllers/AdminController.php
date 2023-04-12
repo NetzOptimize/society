@@ -22,17 +22,19 @@ class AdminController extends Controller
         }
         else
         {
-            $expenses= Expense::get();
+            $expenses= Expense::simplepaginate(15);
         }
 
         return view('admins.index', compact('expenses'));
     }
-    public function expenses()
+
+    public function create()
     {
         $PaymentModes = PaymentMode::get();
 
         return view('admins.expense', compact('PaymentModes'));
     }
+
     public function store(Request $req)
     {
         $attributes= $req->validate([
@@ -51,5 +53,28 @@ class AdminController extends Controller
             'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
         ]);
         return back()->with('success', 'Expenses Added Successfully');
+    }
+
+
+    public function show(string $id)
+    {
+        //
+    }
+
+
+    public function edit(string $id)
+    {
+        //
+    }
+
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+
+    public function destroy(string $id)
+    {
+        //
     }
 }

@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
 <div class="resident-edit">
@@ -7,9 +7,10 @@
     <h3 class="gap-2 p-3 rounded" id="resident-heading"> <img src="{{asset('house-add.png')}}" alt="" style="height:60px; width:60px;"> Edit Your Resident</h3>
 </div>
     <div  class="d-flex flex-column justify-content-center align-items-center align-content-center edit1">
-        <form action="{{ route('resident.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 mt-3 pb-3 fw-bold"
+        <form action="{{ route('residents.update', $resident) }}" method="POST" class="d-flex flex-column gap-3 mt-3 pb-3 fw-bold"
             id="edit-resident-form">
             @csrf
+            @method('PUT')
             <label>House No.</label>
             <select name="house_id" class="form-control cursor-resident">
                 <option value="">Select House Number</option>

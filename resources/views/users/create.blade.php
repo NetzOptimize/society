@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
 
@@ -12,7 +12,7 @@
     <h3>Add User</h3>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center p-3 pb-3 ">
-    <form action="{{ route('user.store') }}" method="POST"   class="d-flex flex-column gap-3" id="user-create" >
+    <form action="{{ route('users.store') }}" method="POST"   class="d-flex flex-column gap-3" id="user-create" >
         @csrf
           <input type="textbox" name="name" placeholder="Name"  class="form-control" value={{ old('name')}}>
         <div class="error">
@@ -54,7 +54,7 @@
          <select name="usertype_id" class="form-control user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)
-                <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>
+                <option value="{{ $usertype->id }}" {{ old('usertype_id') == $usertype->id ? 'selected' : '' }}>{{ $usertype->role }}</option>
             @endforeach
         </select>
         <div class="error">

@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
     <div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
@@ -6,7 +6,7 @@
     </div>
     @if (auth()->user()->usertype_id != 3)
         <div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
-            <a href="{{ route('resident.create') }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
+            <a href="{{ route('residents.create') }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
         </div>
     @endif
@@ -41,9 +41,9 @@
                         @endif
                         <td>{{ $resident->datofoccupancy }}</td>
                         @if (auth()->user()->usertype_id != 3)
-                            <td><a href="{{ route('resident.edit', $resident) }}" class="btn btn-success">Edit</a></td>
+                            <td><a href="{{ route('residents.edit', $resident) }}" class="btn btn-success">Edit</a></td>
                             <td>
-                                <form method="POST" class="m-0" action="{{ route('resident.delete', $resident) }}">
+                                <form method="POST" class="m-0" action="{{ route('residents.destroy', $resident) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button type="submit" class="btn  btn-xs btn-danger btn-flat show_confirm"
@@ -55,6 +55,7 @@
                 @endforeach
             @endif
         </table>
+        <?php echo $residents->links(); ?>
     </div>
     {{-- delete confirmation --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>

@@ -24,7 +24,7 @@ class Expense extends Model
     }
     public function scopeSort($query, $sort)
     {
-        if($sort == 'ASCENDING')
+        if($sort == 'Ascending')
         {
             return $query->orderBy(DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), 'asc')->get();
         }

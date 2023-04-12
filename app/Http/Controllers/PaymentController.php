@@ -7,20 +7,18 @@ use App\Models\House;
 use App\Models\PaymentMode;
 use App\Models\Payment;
 use App\Models\Resident;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-
 class PaymentController extends Controller
 {
-    public $initialpayment=2100;
-    public  $monthlypayment=700;
-
+    public $initialpayment = 2100;
+    public $monthlypayment = 700;
     public function index()
     {
-        $months = [
-            'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'
-        ];
+
+        $months = config('global.months');
 
         if(isset($_GET['month']))
         {
@@ -75,13 +73,12 @@ class PaymentController extends Controller
         return view('payments.index', compact('payments', 'months', 'count', 'sum'));
     }
 
+
     public function create()
     {
         $houses = House::with('residents')->where('house_type', 'house')->get();
 
-        $months = [
-            'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'
-        ];
+        $months = config('global.months');
 
         $PaymentModes = PaymentMode::get();
 
@@ -89,7 +86,7 @@ class PaymentController extends Controller
     }
 
 
-    public function store(Request $req)
+    public function store(Request $req, Payment $payment)
     {
         $req->validate([
             'house_id' =>'required',
@@ -156,24 +153,29 @@ class PaymentController extends Controller
             }
             return back()->with('success', 'Payment Added Successfully');
         }
-
     }
+
+
+    public function show(Payment $payment)
+    {
+        //
+    }
+
+
     public function edit(Payment $payment)
     {
         $houses = House::with('residents')->where('house_type', 'house')->get();
 
-        $months = [
-            'init'=> 'INITIAL PAYMENT', '01-01-2023' => 'January 2023', '01-02-2023'=> 'February 2023', '01-03-2023' => 'March 2023', '01-04-2023'=> 'April 2023', '01-05-2023' => 'May 2023', '01-06-2023' => 'June 2023', '01-07-2023' =>'July 2023', '01-08-2023' => 'August 2023', '01-09-2023' => 'September 2023', '01-10-2023' => 'October 2023', '01-11-2023' => 'November 2023', '01-12-2023' => 'December 2023'
-        ];
+        $months = config('global.months');
 
         $PaymentModes = PaymentMode::get();
 
         return view('payments.edit', compact('payment', 'houses', 'months', 'PaymentModes'));
     }
 
+
     public function update(Request $req, Payment $payment)
     {
-
         $attributes= $req->validate([
             'house_id' =>'required',
             'billingmonth' => 'required',
@@ -186,40 +188,31 @@ class PaymentController extends Controller
 
         if($exists)
         {
-            return back()->with('success', 'Payment Already Exists');
+            return back()->with('error', 'Payment Already Exists');
         }
 
         $payment->update($attributes);
 
-        return redirect()->route('payment.index')->with('success', 'Payment Edited Succesfully');;
-
+        return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
     }
 
-    public function delete(Payment $payment)
+    public function destroy(Payment $payment)
     {
-        abort_if(auth()->user()->usertype_id != 1, 403, 'Access Deined');
+        abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
 
-        $payment->delete();
+        $payment->delete()->with('success','payment deleted successfully');
         return redirect()->back();
     }
+
     public function ajax(Request $request)
     {
         $houseId = $request->input('house_id');
         $payments = Payment::where('house_id',$houseId)->get();
-
         $billingmonths = $payments->pluck('billingmonth');
-        // $dates = $payments->pluck('dateofdeposit');
-        // foreach($payments as $payment)
-        // {
-        //     $modes[] =$payment->paymentmode->name;
-        // }
 
         return response()->json([
-
             'status' => 'success',
             'billingmonths' => $billingmonths,
-            // 'dates' => $dates,
-            // 'modes' => $modes
         ]);
     }
 }

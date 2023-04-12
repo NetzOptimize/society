@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
 
@@ -10,7 +10,7 @@
 
     @if (auth()->user()->usertype_id != 3)
         <div class="add-user mt-2 p-3 me-5 d-flex justify-content-end ">
-            <a href="{{ route('user.create') }}" class="btn btn-success">Add User <img src="{{ asset('add-user.png') }}"
+            <a href="{{ route('users.create') }}" class="btn btn-success">Add User <img src="{{ asset('add-user.png') }}"
                     class="" alt=""></a>
     @endif
 
@@ -52,10 +52,10 @@
                     @endif
                     <td>{{ $user->usertype->role }}</td>
                     @if (auth()->user()->usertype_id != 3)
-                        <td class="text-center"><a href="{{ route('user.edit', $user) }}" class="btn btn-success">Edit</a>
+                        <td class="text-center"><a href="{{ route('users.edit', $user) }}" class="btn btn-success">Edit</a>
                         </td>
                         <td class="text-center">
-                            <form method="POST" action="{{ route('user.delete', $user->id) }}" class="m-0">
+                            <form method="POST" action="{{ route('users.destroy', $user->id) }}" class="m-0">
                                 @csrf
                                 <input name="_method" type="hidden" value="DELETE">
                                 <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm"
@@ -67,6 +67,7 @@
             </tbody>
             @endforeach
         </table>
+        <?php echo $users->links(); ?>
     </div>
     {{-- delete confirmation --}}
 

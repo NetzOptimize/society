@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
 
@@ -22,7 +22,7 @@
 
 {{-- refresh button--}}
 <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
-    <a href="{{ route('admin.expense.index') }}" class="btn btn-success">Refresh</a>
+    <a href="{{ route('expenses.index') }}" class="btn btn-success">Refresh</a>
 </div>
 
 {{-- listing --}}
@@ -42,8 +42,8 @@
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="?sort=ASCENDING">Ascending</a></li>
-                        <li><a class="dropdown-item" href="?sort=DESCENDING">Descending</a></li>
+                        <li><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
+                        <li><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
                     </ul>
                 </div>
             </th>

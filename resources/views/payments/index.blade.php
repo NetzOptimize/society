@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
     {{-- monthwise filter --}}
@@ -22,7 +22,7 @@
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
                         <li><a class="dropdown-item"
-                                href="{{ route('payment.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                                href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -37,10 +37,10 @@
                     @endif
                 </label>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('payment.index') }}">Paid</a></li>
+                    <li><a class="dropdown-item" href="{{ route('payments.index') }}">Paid</a></li>
                     @if (request('month'))
                         <li><a class="dropdown-item"
-                                href="{{ route('payment.index') }}?unpaid={{ request('month') }}">Unpaid</a></li>
+                                href="{{ route('payments.index') }}?unpaid={{ request('month') }}">Unpaid</a></li>
                     @endif
                 </ul>
             </div>
@@ -78,7 +78,7 @@
 
     {{-- refresh button --}}
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-        <a href="{{ route('payment.index') }}" class="btn btn-success">Refresh</a>
+        <a href="{{ route('payments.index') }}" class="btn btn-success">Refresh</a>
     </div>
 
     <!-- table -->
@@ -154,10 +154,10 @@
                 <td>{{ $payment->amount }}</td>
                 @if (auth()->user()->usertype_id == 1)
                     <td>
-                        <a href="{{ route('payment.edit', $payment) }}" class="btn btn-success">Edit</a>
+                        <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success">Edit</a>
                     </td>
                     <td>
-                        <form method="POST" action="{{ route('payment.delete', $payment->id) }}"class="m-0">
+                        <form method="POST" action="{{ route('payments.destroy', $payment->id) }}"class="m-0">
                             @csrf
                             <input name="_method" type="hidden" value="DELETE">
                             <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip"

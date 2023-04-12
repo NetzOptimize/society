@@ -16,20 +16,16 @@ use App\Notifications\ForgetPassword;
 class UserController extends Controller
 {
 
-    public function home()
-    {
-
-        return view('users.home');
-    }
-
     public function index()
     {
         $users = User::orderBy('usertype_id', 'asc')
         ->orderBy('name', 'asc')
-        ->get();
+        ->simplepaginate(10);
+
 
         return view('users.index', compact('users'));
     }
+
 
     public function create()
     {
@@ -37,9 +33,11 @@ class UserController extends Controller
 
         return view('users.create', compact('usertypes'));
     }
-    public function store(Request $request){
 
-       $request->validate([
+
+    public function store(Request $request)
+    {
+        $request->validate([
             'name' => 'required|max:255|min:3',
             'mobile1' => 'required|unique:users,mobile1|gt:0|numeric',
             'mobile2' => 'nullable|unique:users|gt:0|numeric',
@@ -58,9 +56,15 @@ class UserController extends Controller
             'usertype_id' =>  $request->usertype_id,
         ]);
 
-        return redirect()->route('user.index')->with('success', 'User Created Successfully');
-
+        return redirect()->route('users.index')->with('success', 'User Created Successfully');
     }
+
+
+    public function show(string $id)
+    {
+        //
+    }
+
 
     public function edit(User $user)
     {
@@ -69,7 +73,8 @@ class UserController extends Controller
         return view('users.edit', compact('usertypes', 'user'));
     }
 
-    public function update(Request $request,User $user)
+
+    public function update(Request $request, User $user)
     {
         $user = User::findOrFail($user->id);
 
@@ -104,18 +109,18 @@ class UserController extends Controller
                 'password' => Hash::make( $password['password'])
             ]);
         }
-        
+
         $user->update($attributes);
 
-        return redirect()->route('user.index')->with('success', 'User Updated Successfully');
-
+        return redirect()->route('users.index')->with('success', 'User Updated Successfully');
     }
 
-    public function delete($id)
+
+    public function destroy($id)
     {
         $user = User::findOrFail($id);
 
-        if($user->usertype_id ==1)
+        if($user->usertype_id == USER::ADMIN)
         {
             $count = User::where('usertype_id',1)->get()->count();
             if($count > 1)
@@ -125,12 +130,17 @@ class UserController extends Controller
             }
             else
             {
-                return back()->with('success','Admin Cant Delete Himself');
+                return back()->with('error','Admin Cant Delete Himself');
             }
         }
         $user->delete();
 
         return back()->with('success', 'User Deleted Successfully');
+    }
+    public function home1()
+    {
+
+        return view('users.home');
     }
 
     public function profileEdit()
@@ -176,10 +186,8 @@ class UserController extends Controller
     }
     public function report()
     {
-        $months = [
-            'init'=> 'INITIAL PAYMENT', '2023-01-01' => 'January', '2023-02-01'=> 'February', '2023-03-01' => 'March', '2023-04-01'=> 'April', '2023-05-01' => 'May', '2023-06-01' => 'June', '2023-07-01' =>'July', '2023-08-01' => 'August', '2023-09-01' => 'September', '2023-10-01' => 'October', '2023-11-01' => 'November', '2023-12-01' => 'December'
-        ];
-
+        $months = config('global.months');
+        
         return view('users.report',compact('months'));
     }
 
@@ -210,7 +218,7 @@ class UserController extends Controller
         }
         else
         {
-            return back()->with('success', 'Current Password is Incorrect');
+            return back()->with('error', 'Current Password is Incorrect');
         }
     }
     public function forgetpassword(Request $request)
@@ -259,4 +267,3 @@ class UserController extends Controller
         return redirect("/")->with('success', 'Password Changed Successfully');
     }
 }
-

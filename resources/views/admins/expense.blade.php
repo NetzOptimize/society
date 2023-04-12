@@ -1,4 +1,4 @@
-@include('navbar')
+
 @extends('layouts.main')
 @section('content')
 
@@ -8,7 +8,7 @@
     <h3 class="d-flex align-items-center justify-content-center"> <img src="{{asset('manage-expenses.webp')}}" style="height:40px; width:60px;" alt=""> Manage Expenses</h3>
 </div>
     <div class="d-flex flex-column justify-content-center align-items-center align-content-center pb-2 pt-2 container">
-        <form action="{{ route('admin.expense.store') }}" method="POST" class="d-flex flex-column gap-2 pb-3" id="expense-create-form">
+        <form action="{{ route('expenses.store') }}" method="POST" class="d-flex flex-column gap-2 pb-3" id="expense-create-form">
             @csrf
             <label><b>Name Of Payee:</b></label>
             <input type="text" name= "payee" placeholder="Enter Name of Organisation/Individual"class="form-control">
@@ -50,9 +50,10 @@
                     {{ $message }}
                 @enderror
             </div>
-            <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
+            <input type="submit" value="Add Payment" class="btn btn-dark">
         </form>
     </div>
     </div>
+    <?php echo $expenses->links(); ?>
 @endsection
 </div>
