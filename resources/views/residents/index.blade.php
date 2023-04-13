@@ -9,7 +9,7 @@ Society Residents
     </div>
     @if (auth()->user()->usertype_id != 3)
         <div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
-            <a href="{{ route('residents.create') }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
+            <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
         </div>
     @endif

@@ -115,6 +115,7 @@ Society Payments
     @php $i=0; @endphp
     <div class="table-payments ps-5 pe-5 pt-2 table-responsive">
         <table class="table table-light table-bordered table-hover ">
+            @if($payments->first())
             <tr class="table-dark">
                 <th>Serial No</th>
                 <th>House No.</th>
@@ -171,9 +172,9 @@ Society Payments
                 </tr>
             @endforeach
             @endif
-
-
-
+        @else
+        <div class="error d-flex justify-content-center " ><b>No Record Found</b></div>
+        @endif
         </table>
     </div>
     {{-- delete confirmation --}}

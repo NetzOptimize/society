@@ -22,17 +22,31 @@ class PaymentController extends Controller
 
         if(isset($_GET['month']))
         {
-            $payments = Payment::Monthlyfilter($_GET['month'])->pluck('id')->toarray();
-            $payments = Payment::sortedData($payments)->get();
-            $count = $payments->count();
-            $sum = $payments->sum('amount');
+
+            if (array_key_exists($_GET['month'], config('global.months'))) {
+
+                $payments = Payment::Monthlyfilter($_GET['month'])->pluck('id')->toarray();
+                $payments = Payment::sortedData($payments)->get();
+                $count = $payments->count();
+                $sum = $payments->sum('amount');
+            }
+            else {
+                return redirect()->route('payments.index')->with('error','Invalid Request');
+            }
         }
         elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
         {
-            $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();;
-            $payments = Payment::sortedData($payments)->get();
-            $count = $payments->count();
-            $sum = $payments->sum('amount');
+            $startdate = strtotime($_GET['start_date']);
+            $enddate = strtotime($_GET['end_date']);
+
+            if ( $startdate == true &&  $enddate == true) {
+                $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();;
+                $payments = Payment::sortedData($payments)->get();
+                $count = $payments->count();
+                $sum = $payments->sum('amount');
+            } else {
+                return redirect()->route('payments.index')->with('error','Invalid Request');
+            }
         }
         elseif(isset($_GET['search']))
         {

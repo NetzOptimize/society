@@ -52,7 +52,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('houses', HouseController::class);
 
-    Route::resource('residents', ResidentController::class);
+    Route::resource('residents', ResidentController::class)->except(['create']);;
+    Route::get('residents/create/{id?}', [ResidentController::class,'create'])->name('residents.create');
 
     Route::resource('payments', PaymentController::class);
     Route::post('ajax', [PaymentController::class, 'ajax'])->name('ajax');

@@ -13,12 +13,21 @@ Society Create Resident
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4   ">
     <form action="{{ route('residents.store') }}" method="POST"  class="d-flex flex-column gap-3 fw-bold" id="resident-create-form">
         @csrf
+        <input type="text" name="house" value="{{ $id }}" hidden>
         <label>House No.</label>
         <select name="house_id" class="form-control cursor-resident-create">
-            <option value="">Select House Number</option>
-            @foreach ($houses as $house)
-                <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
-            @endforeach
+            @if($id)
+                @foreach ($houses as $house)
+                    @if($house->id == $id)
+                        <option value="{{ $house->id }} " selected>{{ $house->full_address }}</option>
+                    @endif
+                @endforeach
+            @else
+                <option value="">Select House Number</option>
+                @foreach ($houses as $house)
+                    <option value="{{ $house->id }} ">{{ $house->full_address }}</option>
+                @endforeach
+            @endif
         </select>
         <div class="error">
         @error('house_id')

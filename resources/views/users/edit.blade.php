@@ -13,6 +13,7 @@ Society Edit User
         Edit Your Profile
     </h3>
 </div>
+
     <form action="{{ route('users.update', $user) }}" method="POST"  class="d-flex flex-column pt-4 gap-3 pb-4 fw-bold" id="edit-user">
         @csrf
         @method('PUT')
@@ -62,7 +63,7 @@ Society Edit User
         <select name="usertype_id" class="form-control user-type1">
             @foreach ($usertypes as $usertype)
                 @if ($user->usertype_id == $usertype->id)
-                    <option value="{{ $usertype->id }}">{{ $usertype->role }}</option>
+                    <option value="{{ $usertype->id }}" selected>{{ $usertype->role }}</option>
                 @else
                     <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>
                 @endif

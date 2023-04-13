@@ -20,13 +20,13 @@ class ResidentController extends Controller
     }
 
 
-    public function create()
+    public function create($id)
     {
-        $users= User::where('usertype_id',)->orderby('name','asc')->get();
+        $users= User::where('usertype_id',2)->orderby('name','asc')->get();
 
         $houses = House::where('house_type', 'house')->get();
 
-        return view('residents.create', compact('users', 'houses'));
+        return view('residents.create', compact('users', 'houses' , 'id'));
     }
 
     public function store(Request $request, Resident $resident)
@@ -63,7 +63,14 @@ class ResidentController extends Controller
             'datofoccupancy' => Carbon::parse($attributes['datofoccupancy'])->format('d-m-Y')
         ]);
 
-        return redirect()->route('residents.index')->with('success', 'Resident Added Successfully');
+        if($request->house)
+        {
+            return redirect()->route('houses.show', $request->house)->with('success', 'Resident Added Successfully');
+        }
+        else
+        {
+            return redirect()->route('residents.index')->with('success', 'Resident Added Successfully');
+        }
     }
 
     public function show(Resident $resident)
