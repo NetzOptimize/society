@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Users
+@endsection
 @section('content')
 
     <div class="payment-heading text-center bg-light me-5 ms-5  rounded mt-3  p-4">

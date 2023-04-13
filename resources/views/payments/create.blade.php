@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Create Payment
+@endsection
 @section('content')
 <div class="main-payment-method">
     <div class="main   shadow mt-2 w-50 p-3" id="payment-method">

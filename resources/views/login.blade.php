@@ -1,4 +1,7 @@
 @extends('layouts.mainWithoutNav')
+@section('title')
+Society Login
+@endsection
 @section('content')
 
 <div class="main-login   " id="background">

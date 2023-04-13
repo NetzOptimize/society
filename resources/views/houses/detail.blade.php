@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Houses Show
+@endsection
 @section('content')
     <!DOCTYPE html>
     <html lang="en">

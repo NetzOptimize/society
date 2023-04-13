@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society User-Profile-Edit
+@endsection
 @section('content')
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4 " >
     <form action="{{ route('user.profile.update', $user) }}" method="POST"  class="d-flex flex-column gap-3" style=" width:500px">

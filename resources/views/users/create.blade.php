@@ -1,13 +1,15 @@
 
 @extends('layouts.main')
+@section('title')
+Society Create User
+@endsection
 @section('content')
-
 <div class="d-flex justify-content-center align-items-center " id="add-user-position">
 <div class="main container w-50 shadow" id="add-user">
 
 <div class="heading-add-user pt-3 pb-2 text-center ">
     <div class="add-user-image d-flex justify-content-start align-items-center p-3 rounded" id="add-user-logo">
-        <div class="add-user-image1">        <img src="{{asset('addimg.png')}}" style="height:70px; width:70px" alt="">
+        <div class="add-user-image1"><img src="{{asset('addimg.png')}}" style="height:70px; width:70px" alt="">
 </div>
     <h3>Add User</h3>
 </div>
@@ -39,17 +41,18 @@
             {{ $message }}
         @enderror
         </div>
-        <input type="password" name="password" placeholder="Password" class="form-control" value={{ old('password')}}>
+        <input type="password" id="password" name="password" placeholder="Password" class="form-control" value={{ old('password')}}>
         <div class="error">
         @error('password')
             {{ $message }}
         @enderror
         </div>
-         <input type="password" name="confirmPassword" placeholder="Confirm password" class="form-control" value={{ old('confirmPassword')}}>
+         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" class="form-control" value={{ old('confirmPassword')}}>
         <div class="error">
         @error('confirmPassword')
             {{ $message }}
         @enderror
+        <input type="checkbox"  id="checkbox">Show Password
         </div>
          <select name="usertype_id" class="form-control user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
@@ -69,5 +72,15 @@
 </div>
 </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#checkbox').on('change', function(){
+            $('#password, #confirmPassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
+        });
+    });
+    </script>
+
+
 @endsection
 

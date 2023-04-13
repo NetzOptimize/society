@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Edit User
+@endsection
 @section('content')
 <div class="main-edit">
 

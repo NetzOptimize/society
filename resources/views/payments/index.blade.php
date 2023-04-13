@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Payments
+@endsection
 @section('content')
     {{-- monthwise filter --}}
 

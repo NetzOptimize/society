@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Residents
+@endsection
 @section('content')
     <div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
         <h3>List Of Residents</h3>

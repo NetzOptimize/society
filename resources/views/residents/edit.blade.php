@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Edit Resident
+@endsection
 @section('content')
 <div class="resident-edit">
 <div  class="d-flex flex-column shadow w-50 container justify-content-center align-items-center align-content-center pb-3" id="resident-edit">

@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society User-Report
+@endsection
 @section('content')
 @php $payments = Auth::user()->payments()->get() @endphp
 <div class="table-report p-4">

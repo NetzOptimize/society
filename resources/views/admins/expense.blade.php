@@ -1,7 +1,9 @@
 
 @extends('layouts.main')
+@section('title')
+Society Expense Create
+@endsection
 @section('content')
-
 <div class="main-expense-create">
 <div class="main container w-50 shadow rounded mt-3 " id="expense-create">
 <div class="Manage-expenses-heading d-flex justify-content-start rounded p-4 mt-3" id="expense-heading">
@@ -54,6 +56,5 @@
         </form>
     </div>
     </div>
-    <?php echo $expenses->links(); ?>
 @endsection
 </div>

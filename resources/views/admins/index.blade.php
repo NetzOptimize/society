@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Expenses
+@endsection
 @section('content')
 
 {{-- search bar --}}

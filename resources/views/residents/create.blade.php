@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
+@section('title')
+Society Create Resident
+@endsection
 @section('content')
 <div class="main-resident-create">
 <div class="main-create d-flex justify-content-center align-items-center">

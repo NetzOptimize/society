@@ -1,4 +1,7 @@
 @extends('layouts.mainWithoutNav')
+@section('title')
+Society Forget-Password
+@endsection
 @section('content')
 <div class="container d-flex justify-content-center">
     <div class="row w-100" id="forgot-password-row1">
