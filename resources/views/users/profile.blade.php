@@ -1,4 +1,3 @@
-
 @extends('layouts.main')
 @section('title')
 Society User-Profile
@@ -269,3 +268,4 @@ Society User-Profile
       </div>
     </div>
   </div>
+@endsection
