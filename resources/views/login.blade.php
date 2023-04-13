@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainWithoutNav')
 @section('content')
 
 <div class="main-login   " id="background">

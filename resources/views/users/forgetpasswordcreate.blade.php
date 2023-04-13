@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainWithoutNav')
 @section('content')
 <div class="container d-flex justify-content-center">
     <div class="row w-100" id="forgot-password-row1">

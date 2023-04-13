@@ -41,13 +41,9 @@ Route::middleware(['auth'])->group(function () {
     {
         return view('home');
     });
-    Route::get('moderator/home', function()
-    {
-        return view('moderators.home');
-    });
 
     Route::resource('users', UserController::class);
-    Route::get('home', [UserController::class, 'home1'])->name('user.home');
+    Route::get('home', [UserController::class, 'home'])->name('user.home');
     Route::get('users/profile/edit', [UserController::class, 'profileEdit'])->name('user.profile.edit');
     Route::post('users/profile/update/{user}', [UserController::class, 'profileupdate'])->name('user.profile.update');
     Route::get('users/report', [UserController::class, 'report'])->name('user.report');

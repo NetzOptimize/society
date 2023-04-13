@@ -1,4 +1,4 @@
-@include('users.navbar')
+
 @extends('layouts.main')
 @section('content')
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4 " >

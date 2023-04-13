@@ -1,4 +1,4 @@
-@include('users.navbar')
+
 @extends('layouts.main')
 @section('content')
 @php $payments = Auth::user()->payments()->get() @endphp

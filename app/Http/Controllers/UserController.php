@@ -187,7 +187,7 @@ class UserController extends Controller
     public function report()
     {
         $months = config('global.months');
-        
+
         return view('users.report',compact('months'));
     }
 
@@ -265,5 +265,9 @@ class UserController extends Controller
         ]);
 
         return redirect("/")->with('success', 'Password Changed Successfully');
+    }
+    public function home()
+    {
+        return view('users.home');
     }
 }

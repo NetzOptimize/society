@@ -1,8 +1,5 @@
-@if(auth()->user()->usertype_id==1)
+
 @include('navbar')
-@else
-@include('users.navbar')
-@endif
 @include('flash')
 <!DOCTYPE html>
 <html lang="en">
