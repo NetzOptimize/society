@@ -13,7 +13,14 @@ class HouseController extends Controller
 
     public function index()
     {
-        $houses = House::get();
+        if(isset($_GET['search']))
+        {
+            $houses = House::search($_GET['search']);
+        }
+        else
+        {
+            $houses = House::get();
+        }
         return view('houses.index', compact('houses'));
     }
 

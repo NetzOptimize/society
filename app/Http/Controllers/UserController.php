@@ -18,10 +18,17 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::orderBy('usertype_id', 'asc')
-        ->orderBy('name', 'asc')
-        ->get();
+        if(isset($_GET['search']))
+        {
+            $users = User::search($_GET['search']);
+        }
+        else
+        {
+            $users = User::orderBy('usertype_id', 'asc')
+            ->orderBy('name', 'asc')
+            ->get();
 
+        }
 
         return view('users.index', compact('users'));
     }

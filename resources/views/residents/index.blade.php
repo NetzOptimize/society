@@ -13,6 +13,19 @@ Society Residents
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
         </div>
     @endif
+     {{-- search bar --}}
+
+     <form action="" method="GET" style="margin:50px">
+        @if (request('search'))
+            <input type="search" name="search" value="{{ request('search') }}" />
+        @else
+            <input type="search" placeholder="Search By House / User" name="search" />
+        @endif
+    </form>
+     {{-- refresh button --}}
+<div class="refresh-button pb-4 me-5 d-flex justify-content-end">
+    <a href="{{ route('residents.index') }}" class="btn btn-success">Refresh</a>
+</div>
     <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-4 table-responsive">
         <table class="table table-light table-hover table-borderd align-middle">
             <tr class="table-dark">

@@ -53,9 +53,7 @@ class House extends Model
 
     public function scopeSearch($query, $house)
     {
-        return $query->where('Block1','Like' ,'%'.$house.'%')
-            ->orwhere('Block2','Like' ,'%'.$house.'%')
-            ->orwhere('house_no','Like' ,'%'.$house.'%')->get();
+        return $query->where('full_address','Like' ,'%'.$house.'%')->get();
     }
     public function payments()
     {

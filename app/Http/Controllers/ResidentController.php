@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Resident;
 use App\Models\User;
 use App\Models\House;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Carbon\Carbon;
 
@@ -14,7 +15,18 @@ class ResidentController extends Controller
 
     public function index()
     {
-        $residents=Resident::orderBy('house_id')->get();
+        if(isset($_GET['search'])) {
+            $search=$_GET['search'];
+            $residents = Resident::join('users', 'users.id', '=', 'residents.user_id')
+            ->select('residents.*')
+            ->where('users.name', 'Like',$search.'%')
+            ->get();
+
+        }
+        else {
+
+            $residents=Resident::orderBy('house_id')->get();
+        }
 
         return view('residents.index', compact('residents'));
     }

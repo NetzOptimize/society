@@ -74,4 +74,9 @@ class User extends Authenticatable
         return $this->hasManyThrough(Payment::class, Resident::class,'user_id', 'house_id', 'id','house_id');
     }
 
+    public function scopesearch($query, $search)
+    {
+        return $query->where('name', 'Like' ,$search.'%')
+            ->orwhere('mobile1', 'Like', '%'.$search.'%')->get();
+    }
 }
