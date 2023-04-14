@@ -12,6 +12,7 @@ Society Create Payment
                 Payment Methods
             </h3>
         </div>
+        <div id="loading-text">Loading...</div>
         <div
             class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb- mt-2">
             <form action="{{ route('payments.store') }}" method="POST" class="d-flex flex-column gap-1" id="payment-method-form">
@@ -97,6 +98,7 @@ Society Create Payment
     {{-- checked checkboxes when house selected --}}
     <script>
         $('#house_id').on('change', function() {
+            $('#loading-text').show();
             var houseId = $(this).val();
             $.ajax({
                 url: "{{ url('/ajax') }}",
@@ -128,7 +130,7 @@ Society Create Payment
                     // $.each(modes, function(index, mode) {
                     //     $('#mode').text($('#mode').text() + mode + ' ');
                     // });
-
+                    $('#loading-text').hide();
                 },
                 error: function() {
                     console.log('Error occurred. Please try again.');

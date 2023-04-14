@@ -70,7 +70,6 @@ Society Users
             </tbody>
             @endforeach
         </table>
-        <?php echo $users->links(); ?>
     </div>
     {{-- delete confirmation --}}
 

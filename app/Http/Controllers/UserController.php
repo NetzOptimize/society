@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $users = User::orderBy('usertype_id', 'asc')
         ->orderBy('name', 'asc')
-        ->simplepaginate(10);
+        ->get();
 
 
         return view('users.index', compact('users'));
@@ -137,7 +137,7 @@ class UserController extends Controller
 
         return back()->with('success', 'User Deleted Successfully');
     }
-    public function home1()
+    public function home()
     {
 
         return view('users.home');
@@ -176,8 +176,6 @@ class UserController extends Controller
                 'email',
                 Rule::unique('users')->ignore($user),
             ],
-            'password' => 'required|min:8',
-            'confirmPassword' => 'required|same:password',
         ]);
 
         $user->update($attributes);
@@ -196,6 +194,12 @@ class UserController extends Controller
         $user = Auth::user();
 
         return view('users.profile' , compact('user'));
+    }
+    public function adminProfile()
+    {
+        $user = Auth::user();
+
+        return view('adminprofile' , compact('user'));
     }
 
     public function resetPassword(User $user, Request $request)
@@ -266,8 +270,5 @@ class UserController extends Controller
 
         return redirect("/")->with('success', 'Password Changed Successfully');
     }
-    public function home()
-    {
-        return view('users.home');
-    }
+
 }

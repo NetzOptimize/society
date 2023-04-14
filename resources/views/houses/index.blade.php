@@ -1,7 +1,7 @@
 
 @extends('layouts.main')
 @section('title')
-Society Houses 
+Society Houses
 @endsection
 @section('content')
     <div class="Manage-houses  bg-light text-center me-5 ms-5 mt-3">
@@ -32,6 +32,5 @@ Society Houses
                 </tr>
             @endforeach
         </table>
-        <?php echo $houses->links(); ?>
     </div>
 @endsection

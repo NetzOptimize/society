@@ -32,6 +32,9 @@ border-color: #76b7e9;
 outline: 0;
 box-shadow: 0 0 0 0px #28a745;
 }
+#loading-text {
+    display: none;
+  }
 
 .main-profile-password{
     height: 70vh;
@@ -353,7 +356,7 @@ cursor:pointer;
         gap: 8px !important;
      }
      #edit-resident-form {
-     
+
         gap: 8px !important;
     }
     #expense-create-form{
@@ -420,7 +423,7 @@ cursor:pointer;
         width: 80% !important;
 
     }
-  
+
    /* navbar */
 
    /* navbar end */
@@ -489,7 +492,7 @@ cursor:pointer;
 
         margin: 0 !important;
     }
-    
+
 }
 
 @media screen and (max-width:700px) {
@@ -623,7 +626,7 @@ cursor:pointer;
     font-size: 15px !important;
 
 }
-}   
+}
 
 @media screen and (max-width:460px) {
     #login-height{

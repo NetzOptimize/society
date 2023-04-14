@@ -37,18 +37,22 @@ Route::post('forgetpassword/{user}/store', [UserController::class, 'forgetstore'
 
 Route::middleware(['auth'])->group(function () {
 
+
     Route::get('/home', function()
     {
         return view('home');
-    });
 
-    Route::resource('users', UserController::class);
-    Route::get('home', [UserController::class, 'home'])->name('user.home');
+    });
+    Route::get('admin/profile', [UserController::class, 'adminProfile'])->name('admin.user.profile');
+
+    Route::get('users/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('users/profile/edit', [UserController::class, 'profileEdit'])->name('user.profile.edit');
     Route::post('users/profile/update/{user}', [UserController::class, 'profileupdate'])->name('user.profile.update');
+    Route::get('/users/home', [UserController::class, 'home'])->name('user.home');
     Route::get('users/report', [UserController::class, 'report'])->name('user.report');
-    Route::get('users/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::post('users/reset-password/{user}', [UserController::class, 'resetPassword'])->name('user.resetpassword');
+
+    Route::resource('users', UserController::class);
 
     Route::resource('houses', HouseController::class);
 

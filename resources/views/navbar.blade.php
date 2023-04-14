@@ -76,7 +76,7 @@ td,th {
 <a class="btn bg-transparent dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  <img src="{{asset('user1.jpg')}}" alt="" class="rounded-pill" height="30px" width="30px">{{ Auth::user()->name }}</a>
 <div class="dropdown-menu  dropdown-menu-dark dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-  <a class="dropdown-item " href="{{ route('user.profile') }}">Profile</a>
+  <a class="dropdown-item " href="{{ route('admin.user.profile') }}">Profile</a>
 
   <a class="dropdown-item " href="{{ route('logout') }}">Logout</a>
 </div>

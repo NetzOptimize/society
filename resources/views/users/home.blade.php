@@ -1,4 +1,5 @@
-@extends('layouts.main')
+@extends('layouts.mainWithoutNav')
+@include('users.navbar')
 @section('title')
 Society Home
 @endsection

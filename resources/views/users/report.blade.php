@@ -1,5 +1,5 @@
-
-@extends('layouts.main')
+@include('users.navbar')
+@extends('layouts.mainWithoutNav')
 @section('title')
 Society User-Report
 @endsection
@@ -8,7 +8,6 @@ Society User-Report
 <div class="table-report p-4">
     <table class="table table-light table-hover">
         <tr  table-active>
-            <th>HOUSE No.</th>
             <th>BILLING MONTH</th>
             <th>PAYMENT MODE</th>
             <th>DATE OF DEPOSIT</th>
@@ -16,9 +15,6 @@ Society User-Report
         </tr>
         <tr>
             @foreach ($payments as $payment)
-            @php
-                $address =$payment->houses->Block1.$payment->houses->Block2.$payment->houses->house_no
-            @endphp
                 <td>{{ $address }}</td>
                 @foreach ($months as $key => $month)
                 @if($key == $payment->billingmonth)

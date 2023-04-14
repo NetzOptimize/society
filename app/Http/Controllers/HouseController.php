@@ -13,7 +13,7 @@ class HouseController extends Controller
 
     public function index()
     {
-        $houses = House::simplepaginate(12);
+        $houses = House::get();
         return view('houses.index', compact('houses'));
     }
 
@@ -38,10 +38,16 @@ class HouseController extends Controller
         $tenant= Resident::where('house_id',$house->id)->where('isOwner',false)->pluck('user_id');
 
         $tenants= User::find($tenant);
-        
+
         $payments= Payment::where('house_id',$house->id)->get();
 
-        return view('houses.detail', compact('owner','tenants', 'payments', 'house'));
+        $next = House::where('id','>',$house->id)->orderby('id','asc')->first();
+
+        $previous = House::where('id','<',$house->id)->orderby('id','desc')->first();
+
+        $maxCount = House::orderby('id','desc')->first()->id;
+
+        return view('houses.detail', compact('owner','tenants', 'payments', 'house', 'next', 'previous', 'maxCount'));
     }
 
 

@@ -15,7 +15,7 @@
 <a class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  <img src="{{asset('user1.jpg')}}" alt="" class="rounded-pill" height="30px" width="30px" >User </a>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  <a class="dropdown-item" href="#">Profile</a>
+  <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
   <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
 </div>
 

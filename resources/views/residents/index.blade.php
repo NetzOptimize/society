@@ -58,7 +58,6 @@ Society Residents
                 @endforeach
             @endif
         </table>
-        <?php echo $residents->links(); ?>
     </div>
     {{-- delete confirmation --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>

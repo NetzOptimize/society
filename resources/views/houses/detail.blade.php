@@ -16,6 +16,9 @@ Society Houses Show
 
 <body>
     <div class=" main-details1 w-100 main d-flex justify-content-center align-items-center text-dark mt-5 pt-5" id="main-details1">
+        @if($house->id != 1)
+        <a class="btn btn-dark d-flex justify-content-start m-2" href="{{ route('houses.show', $previous) }}"> Previous</a>
+        @endif
         <div class="main-details rounded bg-light p-4 ">
 
             @if (auth()->user()->usertype_id != 3)
@@ -100,7 +103,7 @@ Society Houses Show
                                     <td> {{ $tenant['mobile2'] }}
                                     </td>
                                     @if (auth()->user()->usertype_id != 3)
-                                        <td class="text-center"><a href="{{ route('users.edit', $tenant) }}" class="btn btn-success">Edit</a></td>
+                                    <td class="text-center"><a href="{{ route('users.edit', $tenant) }}" class="btn btn-success">Edit</a></td>
                                     @endif
                                 </tr>
                                 @endforeach
@@ -115,6 +118,9 @@ Society Houses Show
 
 
         </div>
+         @if($house->id != $maxCount)
+        <a class="btn btn-dark d-flex justify-content-end m-2" href="{{ route('houses.show', $next) }}"> Next</a>
+        @endif
     </div>
     <div class="main-details-house me-5 ms-5">
 
@@ -161,6 +167,5 @@ Society Houses Show
     </div>
 
 </body>
-<a href="{{ route('houses.index') }}" class="btn btn-dark flex-row-reverse">Cancel</a>
 </html>
 @endsection

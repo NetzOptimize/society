@@ -14,7 +14,7 @@ class ResidentController extends Controller
 
     public function index()
     {
-        $residents=Resident::orderBy('house_id')->simplepaginate(12);
+        $residents=Resident::orderBy('house_id')->get();
 
         return view('residents.index', compact('residents'));
     }

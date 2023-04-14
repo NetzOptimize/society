@@ -1,5 +1,6 @@
 
-@extends('layouts.main')
+@include('users.navbar')
+@extends('layouts.mainWithoutNav')
 @section('title')
 Society User-Profile-Edit
 @endsection
@@ -32,20 +33,6 @@ Society User-Profile-Edit
         <input type="email" name="email" value="{{ $user->email }}" value="{{ old('email') }}" class="form-control">
         <div class="error">
         @error('email')
-            {{ $message }}
-        @enderror
-        </div>
-        <label>PASSWORD</label>
-        <input type="password" name="password" value="{{ $user->password }}" class="form-control">
-        <div class="error">
-        @error('password')
-            {{ $message }}
-        @enderror
-        </div>
-        <label>CONFIRM-PASSWORD</label>
-        <input type="password" name="confirmPassword" value="{{ $user->password }}" class="form-control">
-        <div class="error">
-        @error('confirmPassword')
             {{ $message }}
         @enderror
         </div>
