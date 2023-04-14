@@ -225,10 +225,10 @@ class PaymentController extends Controller
         $billingmonths = $payments->pluck('billingmonth');
         $dates = $payments->pluck('dateofdeposit');
 
-        $modes =$payments->pluck('payment_modes_id');
+        $paymentmodes =$payments->pluck('payment_modes_id');
 
 
-        foreach($modes as $mode)
+        foreach($paymentmodes as $mode)
         {
             $modes[] = PaymentMode::where('id',$mode)->pluck('name');
         }
