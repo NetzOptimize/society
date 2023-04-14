@@ -19,7 +19,7 @@ Society Residents
         @if (request('search'))
             <input type="search" name="search" value="{{ request('search') }}" />
         @else
-            <input type="search" placeholder="Search By House / User" name="search" />
+            <input type="search" placeholder="Search By User Name" name="search" />
         @endif
     </form>
      {{-- refresh button --}}

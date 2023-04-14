@@ -48,11 +48,11 @@ Society Create User
         @enderror
         </div>
          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" class="form-control" value={{ old('confirmPassword')}}>
+         <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
         <div class="error">
         @error('confirmPassword')
             {{ $message }}
         @enderror
-        <input type="checkbox"  id="checkbox">Show Password
         </div>
          <select name="usertype_id" class="form-control user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
@@ -79,8 +79,7 @@ Society Create User
             $('#password, #confirmPassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
         });
     });
-    </script>
-
+</script>
 
 @endsection
 

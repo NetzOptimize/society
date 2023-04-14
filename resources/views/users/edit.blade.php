@@ -46,14 +46,15 @@ Society Edit User
         @enderror
         </div>
         <label>PASSWORD</label>
-        <input type="password" name="password"  class="form-control">
+        <input type="password" name="password" id="password" class="form-control">
         <div class="error">
         @error('password')
             {{ $message }}
         @enderror
         </div>
         <label>CONFIRM-PASSWORD</label>
-         <input type="password" name="confirmPassword"  class="form-control">
+         <input type="password" name="confirmPassword"  id="password" class="form-control">
+         <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
         <div class="error">
         @error('confirmPassword')
             {{ $message }}
@@ -76,5 +77,13 @@ Society Edit User
         </div>
         <input type="submit" name="login" value="Edit User" class="btn btn-dark ">
     </form>
+
+    <script>
+        $(document).ready(function(){
+            $('#checkbox').on('change', function(){
+                $('#password, #confirmPassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
+            });
+        });
+    </script>
 @endsection
 </div>
