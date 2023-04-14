@@ -214,8 +214,8 @@ class PaymentController extends Controller
     {
         abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
 
-        $payment->delete()->with('success','payment deleted successfully');
-        return redirect()->back();
+        $payment->delete();
+        return back()->with('success','payment deleted successfully');
     }
 
     public function ajax(Request $request)
@@ -223,10 +223,22 @@ class PaymentController extends Controller
         $houseId = $request->input('house_id');
         $payments = Payment::where('house_id',$houseId)->get();
         $billingmonths = $payments->pluck('billingmonth');
+        $dates = $payments->pluck('dateofdeposit');
+
+        $modes =$payments->pluck('payment_modes_id');
+
+
+        foreach($modes as $mode)
+        {
+            $modes[] = PaymentMode::where('id',$mode)->pluck('name');
+        }
+
 
         return response()->json([
             'status' => 'success',
             'billingmonths' => $billingmonths,
+            'dates' => $dates,
+            'modes' => $modes
         ]);
     }
 }
