@@ -236,9 +236,9 @@ class PaymentController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'billingmonths' => $billingmonths,
-            'dates' => $dates,
-            'modes' => $modes
+            'billingmonths' => $billingmonths ?? null,
+            'dates' => $dates ?? null,
+            'modes' => $modes ?? null
         ]);
     }
 }

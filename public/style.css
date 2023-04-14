@@ -34,8 +34,15 @@ box-shadow: 0 0 0 0px #28a745;
 }
 #loading-text {
     display: none;
-  }
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
 
+}
+.loading-text{
+    display: none;
+}
 .main-profile-password{
     height: 70vh;
     display: flex;

@@ -4,6 +4,7 @@
 Society Create Payment
 @endsection
 @section('content')
+<img src="{{ asset('loading.jpg') }}" alt="Loading" id="loading-text" width="30%" height="500px" >
 <div class="main-payment-method">
     <div class="main   shadow mt-2 w-50 p-3" id="payment-method">
         <div class="payment-heading d-flex justify-content-start rounded   p-4" id="payment-heading">
@@ -12,7 +13,6 @@ Society Create Payment
                 Payment Methods
             </h3>
         </div>
-        <div id="loading-text">Loading...</div>
         <div
             class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb- mt-2">
             <form action="{{ route('payments.store') }}" method="POST" class="d-flex flex-column gap-1" id="payment-method-form">
