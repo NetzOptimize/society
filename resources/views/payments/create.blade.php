@@ -46,7 +46,7 @@ Society Create Payment
                 <div class="month" id="houseSelect">
                     @foreach ($months as $key => $month)
                         <div class="d-flex flex-row align-items-center justify-content-between" id="months_gap">
-                            <label>{{ $month }}</label> <input type="checkbox" name="billingmonth[]"
+                            <label>{{ $month }}</label> <input type="checkbox" class="myCheckbox" name="billingmonth[]"
                                 value="{{ $key }}">
                             <p id="date"></p>
                             <p id="mode"></p>
@@ -90,13 +90,19 @@ Society Create Payment
                         {{ $message }}
                     @enderror
                 </div>
+
+                <label> <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <b>Total Payment:</b></label>
+                <input type="textbox"  class="form-control" id="payment"/>
                 <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
+
             </form>
         </div>
     </div>
     </div>
     {{-- checked checkboxes when house selected --}}
     <script>
+         var payment=0 ;
         $('#house_id').on('change', function() {
             $('#loading-text').show();
             var houseId = $(this).val();
@@ -109,6 +115,9 @@ Society Create Payment
                 },
                 dataType: 'json',
                 success: function(response) {
+                    // reseting the value of payment
+                    payment = 0;
+                    $("#payment").val(0)
 
                     var billingMonths = response.billingmonths;
                     var dates = response.dates;
@@ -137,6 +146,30 @@ Society Create Payment
                     console.log('Error occurred. Please try again.');
                 }
             });
+        });
+
+        // showing total payment
+
+         $('.myCheckbox').on('change', function() {
+            if (this.checked) {
+                var value = $(this).val();
+                if(value == "init") {
+                     payment += 2100;
+                }
+                else {
+                     payment += 700;
+                }
+
+            } else {
+                var value = $(this).val();
+                if(value == "init") {
+                     payment -= 2100;
+                }
+                else {
+                     payment -= 700;
+                }
+            }
+            $("#payment").val(payment)
         });
     </script>
 @endsection
