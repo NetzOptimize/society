@@ -48,7 +48,7 @@ Society Create Payment
                         <div class="d-flex flex-row align-items-center justify-content-between" id="months_gap">
                             <label>{{ $month }}</label> <input type="checkbox" class="myCheckbox" name="billingmonth[]"
                                 value="{{ $key }}">
-                            <p id="date{{ $key }}"></p>
+                            <p id="date{{ $key }}" ></p>
                             <p id="mode{{ $key }}"></p>
                         </div>
                     @endforeach
@@ -104,6 +104,7 @@ Society Create Payment
     <script>
          var payment=0 ;
         $('#house_id').on('change', function() {
+            $("p").empty();
             $('#loading-text').show();
             var houseId = $(this).val();
             $.ajax({
