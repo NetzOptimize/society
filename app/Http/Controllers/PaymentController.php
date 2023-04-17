@@ -235,19 +235,6 @@ class PaymentController extends Controller
 
    $payments = collect($payments)->toArray();
 
-        // $houseId = $request->input('house_id');
-        // $payments = Payment::where('house_id',$houseId)->get();
-        // $billingmonths = $payments->pluck('billingmonth');
-        // $dates = $payments->pluck('dateofdeposit');
-
-        // $paymentmodes =$payments->pluck('payment_modes_id');
-
-
-        // foreach($paymentmodes as $mode)
-        // {
-        //     $modes[] = PaymentMode::where('id',$mode)->pluck('name');
-        // }
-
         return response()->json([
             'payments' => isset($payments[0]) ? $payments : null
         ]);

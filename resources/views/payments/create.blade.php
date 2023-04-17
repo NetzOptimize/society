@@ -106,6 +106,7 @@ Society Create Payment
 <script>
   var payment = 0;
   $('#house_id').on('change', function() {
+    $("p").empty();
     $('#loading-text').show();
     var houseId = $(this).val();
     $.ajax({
