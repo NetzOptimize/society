@@ -81,9 +81,9 @@ Society Payments
 
     {{-- refresh button --}}
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-        <a href="{{ route('payments.index') }}" class="btn btn-success">Refresh</a>
+        <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center m-2">Refresh</a>
+        <button onclick="printDiv()" class="btn btn-success d-flex align-items-center m-2">Print</button>
     </div>
-
     <!-- table -->
     <div class="reports d-flex justify-content-end me-5">
         <table class="table w-auto table-bordered ">
@@ -114,6 +114,7 @@ Society Payments
     {{-- listing  --}}
     @php $i=0; @endphp
     <div class="table-payments ps-5 pe-5 pt-2 table-responsive">
+        <div id="printableArea">
         <table class="table table-light table-bordered table-hover ">
             @if($payments->first())
             <tr class="table-dark">
@@ -177,6 +178,7 @@ Society Payments
         @endif
         </table>
     </div>
+    </div>
     {{-- delete confirmation --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
@@ -196,5 +198,17 @@ Society Payments
                     }
                 });
         });
+
+        // for data printing
+    function printDiv() {
+        var printableArea = document.getElementById('printableArea').innerHTML;
+        var printWindow = window.open('', '', 'height=0,width=0');
+        printWindow.document.write('<html><head><title>Print Page</title></head><body>');
+        printWindow.document.write(printableArea);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
+    }
     </script>
 @endsection

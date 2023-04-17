@@ -11,6 +11,7 @@ Society Residents
         <div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
             <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
+
         </div>
     @endif
      {{-- search bar --}}
@@ -24,9 +25,11 @@ Society Residents
     </form>
      {{-- refresh button --}}
 <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-    <a href="{{ route('residents.index') }}" class="btn btn-success">Refresh</a>
+    <a href="{{ route('residents.index') }}" class="btn btn-success  d-flex align-items-center m-2">Refresh</a>
+    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center m-2">Print</button>
 </div>
     <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-4 table-responsive">
+        <div id="printableArea">
         <table class="table table-light table-hover table-borderd align-middle">
             <tr class="table-dark">
                 <th>House No.</th>
@@ -72,6 +75,7 @@ Society Residents
             @endif
         </table>
     </div>
+    </div>
     {{-- delete confirmation --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
@@ -91,5 +95,17 @@ Society Residents
                     }
                 });
         });
+
+// for data printing
+    function printDiv() {
+        var printableArea = document.getElementById('printableArea').innerHTML;
+        var printWindow = window.open('', '', 'height=0,width=0');
+        printWindow.document.write('<html><head><title>Print Page</title></head><body>');
+        printWindow.document.write(printableArea);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
+    }
     </script>
 @endsection

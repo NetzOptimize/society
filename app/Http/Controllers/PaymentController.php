@@ -221,24 +221,35 @@ class PaymentController extends Controller
     public function ajax(Request $request)
     {
         $houseId = $request->input('house_id');
-        $payments = Payment::where('house_id',$houseId)->get();
-        $billingmonths = $payments->pluck('billingmonth');
-        $dates = $payments->pluck('dateofdeposit');
 
-        $paymentmodes =$payments->pluck('payment_modes_id');
+        $payments = Payment::where('house_id', $houseId)
+        ->with('paymentmode')
+        ->get()
+        ->map(function ($payment) {
+        return [
+            'name' => $payment->paymentmode->name,
+            'billingmonth' => $payment->billingmonth,
+            'dateofdeposit' => $payment->dateofdeposit
+        ];
+    });
+
+   $payments = collect($payments)->toArray();
+
+        // $houseId = $request->input('house_id');
+        // $payments = Payment::where('house_id',$houseId)->get();
+        // $billingmonths = $payments->pluck('billingmonth');
+        // $dates = $payments->pluck('dateofdeposit');
+
+        // $paymentmodes =$payments->pluck('payment_modes_id');
 
 
-        foreach($paymentmodes as $mode)
-        {
-            $modes[] = PaymentMode::where('id',$mode)->pluck('name');
-        }
-
+        // foreach($paymentmodes as $mode)
+        // {
+        //     $modes[] = PaymentMode::where('id',$mode)->pluck('name');
+        // }
 
         return response()->json([
-            'status' => 'success',
-            'billingmonths' => $billingmonths ?? null,
-            'dates' => $dates ?? null,
-            'modes' => $modes ?? null
+            'payments' => isset($payments[0]) ? $payments : null
         ]);
     }
 }

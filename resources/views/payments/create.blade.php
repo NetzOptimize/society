@@ -48,8 +48,8 @@ Society Create Payment
                         <div class="d-flex flex-row align-items-center justify-content-between" id="months_gap">
                             <label>{{ $month }}</label> <input type="checkbox" class="myCheckbox" name="billingmonth[]"
                                 value="{{ $key }}">
-                            <p id="date"></p>
-                            <p id="mode"></p>
+                            <p id="date{{ $key }}"></p>
+                            <p id="mode{{ $key }}"></p>
                         </div>
                     @endforeach
                 </div>
@@ -119,25 +119,13 @@ Society Create Payment
                     payment = 0;
                     $("#payment").val(0)
 
-                    var billingMonths = response.billingmonths;
-                    var dates = response.dates;
-                    var modes = response.modes;
+                    var payments = response.payments;
+                    $('#houseSelect input[type="checkbox"]').prop('checked', false).attr('disabled', false);
+                    $.each(payments, function(index, payment) {
+                        $('#houseSelect input[value="' + payment.billingmonth + '"]').prop('checked', true).attr('disabled', true);
+                        $('#date'.concat(payment.billingmonth)).text(payment.dateofdeposit);
+                        $('#mode'.concat(payment.billingmonth)).text(payment.name);
 
-                    $('#houseSelect input[type="checkbox"]').prop('checked', false).attr('disabled',
-                        false);
-                    $.each(billingMonths, function(index, billingMonth) {
-                        $('#houseSelect input[value="' + billingMonth + '"]').prop('checked',
-                            true).attr('disabled', true);
-                    });
-
-                    $('#date').text(" ");
-                    $.each(dates, function(index, date) {
-                        $('#date').text($('#date').text() + date + ' ');
-                    });
-
-                    $('#mode').text(" ");
-                    $.each(modes, function(index, mode) {
-                        $('#mode').text($('#mode').text() + mode + ' ');
                     });
                     $('#loading-text').hide();
 

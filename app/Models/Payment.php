@@ -56,5 +56,5 @@ class Payment extends Model
         ->orderBy('houses.block1', 'ASC')
         ->orderBy('houses.block2', 'ASC')
         ->orderBy('houses.house_no', 'ASC');
-}
+    }
 }

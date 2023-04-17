@@ -9,7 +9,7 @@ Society Expenses
 <div class="main ">
 
 <div class="houses-list  text-center me-5 ms-5 bg-light p-4  mt-3">
-    <h3>Lists Of Payment</h3>
+    <h3>Lists Of Expenses</h3>
 </div>
 
 <form action="" method="GET" class="searchby-payee d-flex justify-content-end pt-4 pe-5 mt-2">
@@ -25,11 +25,13 @@ Society Expenses
 
 {{-- refresh button--}}
 <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
-    <a href="{{ route('expenses.index') }}" class="btn btn-success">Refresh</a>
+    <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center m-2">Refresh</a>
+    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center m-2">Print</button>
 </div>
 
 {{-- listing --}}
 <div class="table-expenses ps-5 pe-5 pt-3  mt-3 table-responsive">
+    <div id="printableArea">
     <table class="table table-light table-hover table-bordered">
         <tr class="table-dark">
             <th>Payee</th>
@@ -43,7 +45,6 @@ Society Expenses
                         Order By
                         @endif
                     </a>
-
                     <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
                         <li><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
@@ -64,4 +65,17 @@ Society Expenses
     </table>
 </div>
 </div>
+<script>
+    // for data printing
+        function printDiv() {
+        var printableArea = document.getElementById('printableArea').innerHTML;
+        var printWindow = window.open('', '', 'height=0,width=0');
+        printWindow.document.write('<html><head><title>Print Page</title></head><body>');
+        printWindow.document.write(printableArea);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
+    }
+    </script>
 @endsection
