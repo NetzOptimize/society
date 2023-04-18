@@ -21,7 +21,7 @@ Society User-Profile
                                 <div class="input-group mb-3">
 
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                    <input id="emailInput" placeholder="Current Password" class="form-control" type="Cpass" name="oldPassword">
+                                    <input  placeholder="Current Password" class="form-control password" type="password" name="oldPassword">
 
                                 </div>
                                 <div class="error mb-3"> @error('oldPassword')
@@ -32,7 +32,7 @@ Society User-Profile
                                 <div class="input-group  mb-3">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
-                                    <input id="emailInput" placeholder="New Password" class="form-control" type="Npass" name="newPassword">
+                                    <input  placeholder="New Password" class="form-control password" type="password" name="newPassword">
 
                                 </div>
                                 <div class="error mb-3"> @error('newPassword')
@@ -44,9 +44,9 @@ Society User-Profile
                                 <div class="input-group  mb-3">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
 
-                                    <input id="emailInput  mb-2" placeholder="Confirm Password" class="form-control" type="Confirm-passowrd" name="confirmPassword">
-
+                                    <input id="emailInput  mb-2" placeholder="Confirm Password" class="form-control password" type="password" name="confirmPassword">
                                 </div>
+                                <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
                                 <div class="error mb-3">
                                     @error('confirmPassword')
                                     {{ $message }}
@@ -64,4 +64,12 @@ Society User-Profile
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#checkbox').on('change', function(){
+            $('.password').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
+        });
+    });
+</script>
 @endsection
