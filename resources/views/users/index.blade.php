@@ -18,20 +18,19 @@ Society Users
     </div>
     <div class="table-add-user ps-5 pe-5 pt-5 table-responsive">
          {{-- search bar --}}
-
-         <form action="" method="GET" style="margin:0">
+        <input type="textbox" id="search" placeholder="Search">
+         {{-- <form action="" method="GET" style="margin:0">
             @if (request('search'))
                 <input type="search" name="search" value="{{ request('search') }}" />
             @else
                 <input type="search" placeholder="Search Name / Mobile" name="search" />
             @endif
-        </form>
+        </form> --}}
          {{-- refresh button --}}
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
         <a href="{{ route('users.index') }}" class="btn btn-success">Refresh</a>
     </div>
-     
-        <table class="table table-light  table-bordered table-hover  align-middle " id="user-data">
+        <table class="table table-light  table-bordered table-hover  align-middle data" id="user-data">
         <thead>
         <tr class="table-dark">
                 <th>Name</th>
@@ -49,7 +48,7 @@ Society Users
           <tbody>
             <tr>
                 @foreach ($users as $user)
-                    <td>{{ $user->name }}</td>
+                    <td id="name">{{ $user->name }}</td>
                     @if ($user->mobile1)
                         <td> {{ $user->mobile1 }}</td>
                     @else
@@ -104,5 +103,17 @@ Society Users
                     }
                 });
         });
+
+        // searching
+        $(document).ready(function() {
+        $("#search").keyup( function() {
+            var value = $(this).val().toLowerCase();
+            $(".data tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });
+
+
     </script>
 @endsection
