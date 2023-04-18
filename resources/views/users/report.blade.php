@@ -5,7 +5,15 @@ Society User-Report
 @endsection
 @section('content')
 @php $payments = Auth::user()->payments()->get() @endphp
-<div class="table-report p-4 table-responsive">
+
+<div class="main">
+    <div class="print-btn mt-4 d-flex justify-content-end me-5">
+    <button class="btn btn-success me-3">Refresh</button>
+
+        <button class="btn btn-success">Print</button>
+    </div>
+
+<div class="table-report p-4 table-responsive ms-4 me-4">
     <table class="table  table-bordered">
         <tr  class="bg-dark text-light">
             <th>Billing Month</th>
@@ -28,4 +36,6 @@ Society User-Report
         @endforeach
     </table>
     </div>
+    </div>
+
 @endsection
