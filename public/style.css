@@ -350,6 +350,12 @@ h3#resident-heading {
 #user-form{
     gap: 12px !important;
 }
+#users-nav a:hover{
+border: 1px solid white;
+}
+#user-a-link:hover{
+    border: 1px solid white;
+}
 /* responsiveness */
 /* responsiveness */
 /* responsiveness */
@@ -562,6 +568,14 @@ h3#resident-heading {
     #user-form {
          width: 70% !important;
     }
+    #users-nav{
+        display: flex;
+        flex-direction: column;
+        row-gap: 6px;
+       }
+       #users-nav a{
+        margin: 0px !important;
+       }
 }
 @media screen and (max-width: 520px) {
     #background {
@@ -639,14 +653,7 @@ h3#resident-heading {
     #user-form {
         width: 80% !important;
    }
-   #users-nav{
-    display: flex;
-    flex-direction: column;
-    row-gap: 6px;
-   }
-   #users-nav a{
-    margin: 0px !important;
-   }
+  
 }
 
 @media screen and (max-width: 460px) {
