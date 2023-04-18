@@ -15,7 +15,7 @@ Society Edit Resident
             @csrf
             @method('PUT')
             <label>House No.</label>
-            <select name="house_id" class="form-control cursor-resident">
+            <select name="house_id" class="form-select cursor-resident">
                 <option value="">Select House Number</option>
                 @foreach ($houses as $house)
                     @if ($house->id == $resident->house_id)
@@ -32,7 +32,7 @@ Society Edit Resident
             </div>
 
             <label>User</label>
-            <select name="user_id" class="form-control cursor-resident">
+            <select name="user_id" class="form-select cursor-resident">
                 <option></option>
                 @foreach ($users as $user)
                     @if ($user->id == $resident->user_id)
@@ -48,7 +48,7 @@ Society Edit Resident
                 @enderror
             </div>
             <label>Occupancy Type</label>
-            <select name="isOwner" class="form-control cursor-resident">
+            <select name="isOwner" class="form-select cursor-resident">
                 @foreach ($occupancyTypes as $key => $occupancytype)
                     @if ($key == $resident->isOwner)
                         <option value="{{ $key }}" selected>{{ $occupancytype }}</option>

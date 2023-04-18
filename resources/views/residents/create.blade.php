@@ -15,7 +15,7 @@ Society Create Resident
         @csrf
         <input type="text" name="house" value="{{ $id }}" hidden>
         <label>House No.</label>
-        <select name="house_id" class="form-control cursor-resident-create">
+        <select name="house_id" class="form-select cursor-resident-create">
             @if($id)
                 @foreach ($houses as $house)
                     @if($house->id == $id)
@@ -35,7 +35,7 @@ Society Create Resident
         @enderror
         </div>
         <label>User</label>
-        <select name="user_id" class="form-control cursor-resident-create">
+        <select name="user_id" class="form-select cursor-resident-create">
             <option value="">Select User</option>
             @foreach ($users as $user)
                 <option value="{{ $user->id }} ">{{ $user->name }} - {{ $user->mobile1 ? $user->mobile1 : 'Not Provided' }}</option>
@@ -47,7 +47,7 @@ Society Create Resident
         @enderror
         </div>
         <label>Occupancy Type</label>
-        <select name="isOwner" class="form-control cursor-resident-create">
+        <select name="isOwner" class="form-select cursor-resident-create">
             <option value="1">Owner</option>
             <option value="0">Tenant</option>
         </select>

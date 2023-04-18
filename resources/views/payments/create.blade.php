@@ -18,7 +18,7 @@ Society Create Payment
         <label>
           <i class="fa fa-home" aria-hidden="true"></i>
           <b>House No.</b></label>
-        <select name="house_id" class="form-control" id="house_id">
+        <select name="house_id" class="form-select" id="house_id">
           <option value="">Select House Number</option>
           @foreach ($houses as $house)
           @php
@@ -63,7 +63,7 @@ Society Create Payment
 
         <label> <i class="fa fa-credit-card"></i>
           <b>Payment Mode:</b></label>
-        <select name="payment_modes_id" class="form-control" id="payment_cursor">
+        <select name="payment_modes_id" class="form-select" id="payment_cursor">
           @foreach ($PaymentModes as $PaymentMode)
           <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
           @endforeach
