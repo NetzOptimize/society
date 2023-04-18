@@ -22,11 +22,11 @@
 </div>
 </div>
 
-<div class="user-links  bg-info p-3">
+<div class="user-links  bg-light mt-3 p-3">
 <nav class="navbar d-flex justify-content-end">
 
-    <a href="{{ route('user.profile.edit') }}"  class="btn btn-light me-3" >My Account</a>
-    <a href="{{ route('user.report') }}"  class="btn btn-light">Reports</a>
+    <a href="{{ route('user.profile.edit') }}"  class="btn btn-light me-3 border" >My Account</a>
+    <a href="{{ route('user.report') }}"  class="btn btn-light border">Reports</a>
 
 </nav>
 </div>
