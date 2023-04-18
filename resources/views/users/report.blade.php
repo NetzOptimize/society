@@ -6,8 +6,8 @@ Society User-Report
 @section('content')
 @php $payments = Auth::user()->payments()->get() @endphp
 <div class="table-report p-4 table-responsive">
-    <table class="table table-light table-hover table-bordered">
-        <tr  class=" ">
+    <table class="table  table-bordered">
+        <tr  class="bg-dark text-light">
             <th>Billing Month</th>
             <th>Payment Mode</th>
             <th>Date Of Deposit</th>
