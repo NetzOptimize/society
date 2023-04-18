@@ -93,7 +93,8 @@ Society Create Payment
           @enderror
         </div>
 
-        <label> <i class="fa fa-calendar" aria-hidden="true"></i>
+        <label><i class="fa fa-money" aria-hidden="true"></i>
+
           <b>Total Payment:</b></label>
         <input type="textbox" class="form-control" id="payment" />
         <input type="submit" name="login" value="Add Payment" class="btn btn-dark">

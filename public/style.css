@@ -397,6 +397,12 @@ h3#resident-heading {
     #resident-edit {
         width: 70% !important   ;
     }
+    .month {
+        gap: 4px 130px;
+    }
+    .main-payment-method {
+        height: unset;
+    }
 }
 @media screen and (max-width: 1200px) {
     #login-form {

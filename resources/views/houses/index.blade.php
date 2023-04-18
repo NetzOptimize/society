@@ -7,10 +7,10 @@ Society Houses
     <div class="Manage-houses  bg-light text-center me-5 ms-5 mt-3">
         <h3 class="mx-auto p-4 "> List Of Houses</h3>
     </div>
-    <div class="table-add-user ps-5 pe-5 pt-5 table-responsive">
+    <div class="table-add-user pt-5 table-responsive">
         {{-- search bar --}}
 
-        <form action="" method="GET" style="margin:0">
+        <form action="" method="GET" style="margin:0" class="ms-5 me-5">
            @if (request('search'))
                <input type="search" name="search" value="{{ request('search') }}" />
            @else

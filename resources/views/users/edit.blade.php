@@ -17,50 +17,50 @@ Society Edit User
     <form action="{{ route('users.update', $user) }}" method="POST"  class="d-flex flex-column pt-4 gap-3 pb-4 fw-bold" id="edit-user">
         @csrf
         @method('PUT')
-        <label>NAME</label>
+        <label>Name:</label>
         <input type="textbox" name="name"  value="{{ old('name', $user->name) }}" class="form-control">
         <div class="error">
         @error('name')
             {{ $message }}
         @enderror
         </div>
-        <label>MOBILE-1</label>
+        <label>Mobile-1:</label>
         <input type="tel" name="mobile1"  value="{{ old('mobile1', $user->mobile1) }}" class="form-control">
         <div class="error">
         @error('mobile1')
             {{ $message }}
         @enderror
         </div>
-        <label>MOBILE-2</label>
+        <label>Mobile-2:</label>
         <input type="tel" name="mobile2"  value="{{ old('mobile2', $user->mobile2 ) }}" class="form-control">
         <div class="error">
         @error('mobile2')
             {{ $message }}
         @enderror
         </div>
-        <label>EMAIL</label>
+        <label>Email:</label>
         <input type="email" name="email" class="form-control" value="{{ old('email', $user->email)}}">
         <div class="error">
         @error('email')
             {{ $message }}
         @enderror
         </div>
-        <label>PASSWORD</label>
+        <label>Password:</label>
         <input type="password" name="password" id="password" class="form-control">
         <div class="error">
         @error('password')
             {{ $message }}
         @enderror
         </div>
-        <label>CONFIRM-PASSWORD</label>
+        <label>Confirm-Password:</label>
          <input type="password" name="confirmPassword"  id="password" class="form-control">
-         <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
+         <div class="d-flex justify-content-start gap-2"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
         <div class="error">
         @error('confirmPassword')
             {{ $message }}
         @enderror
         </div>
-        <label>USER-TYPE</label>
+        <label>User-Type</label>
         <select name="usertype_id" class="form-control user-type1">
             @foreach ($usertypes as $usertype)
                 @if ($user->usertype_id == $usertype->id)
