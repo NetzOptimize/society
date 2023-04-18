@@ -48,7 +48,7 @@ Society Create User
         @enderror
         </div>
          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" class="form-control" value={{ old('confirmPassword')}}>
-         <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
+         <div class="d-flex justify-content-start gap-2 align-items-center"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
         <div class="error">
         @error('confirmPassword')
             {{ $message }}

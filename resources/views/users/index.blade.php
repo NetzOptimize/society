@@ -30,7 +30,7 @@ Society Users
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
         <a href="{{ route('users.index') }}" class="btn btn-success">Refresh</a>
     </div>
-    </div>
+     
         <table class="table table-light  table-bordered table-hover  align-middle " id="user-data">
         <thead>
         <tr class="table-dark">

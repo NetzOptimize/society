@@ -5,13 +5,13 @@ Society User-Report
 @endsection
 @section('content')
 @php $payments = Auth::user()->payments()->get() @endphp
-<div class="table-report p-4">
-    <table class="table table-light table-hover">
-        <tr  table-active>
-            <th>BILLING MONTH</th>
-            <th>PAYMENT MODE</th>
-            <th>DATE OF DEPOSIT</th>
-            <th>AMOUNT</th>
+<div class="table-report p-4 table-responsive">
+    <table class="table table-light table-hover table-bordered">
+        <tr  class=" ">
+            <th>Billing Month</th>
+            <th>Payment Mode</th>
+            <th>Date Of Deposit</th>
+            <th>Amount</th>
         </tr>
         <tr>
             @foreach ($payments as $payment)

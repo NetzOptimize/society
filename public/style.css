@@ -342,6 +342,14 @@ h3#resident-heading {
 .date-mode p span.label {
     font-weight: bold;
 }
+#main-user{
+    height: 80vh;
+    display: flex;
+     align-items: center;
+}
+#user-form{
+    gap: 12px !important;
+}
 /* responsiveness */
 /* responsiveness */
 /* responsiveness */
@@ -480,6 +488,20 @@ h3#resident-heading {
     nav#navbar {
         margin: 0 !important;
     }
+    #user-create {
+ 
+        gap: 6px;
+    }
+    #main-user {
+        height: 78vh;
+       
+    }
+    #user-form {
+        gap: 10px !important;
+        width: 60% !important;
+
+    }
+   
 }
 
 @media screen and (max-width: 700px) {
@@ -530,6 +552,9 @@ h3#resident-heading {
     }
     #edit-resident-form {
         width: 90% !important;
+    }
+    #user-form {
+         width: 70% !important;
     }
 }
 @media screen and (max-width: 520px) {
@@ -605,6 +630,9 @@ h3#resident-heading {
     #reset-your-password {
         font-size: 15px !important;
     }
+    #user-form {
+        width: 80% !important;
+   }
 }
 
 @media screen and (max-width: 460px) {
