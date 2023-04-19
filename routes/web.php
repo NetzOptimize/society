@@ -62,6 +62,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payments', PaymentController::class);
     Route::post('ajax', [PaymentController::class, 'ajax'])->name('ajax');
 
-    Route::resource('admins/expenses', AdminController::class)->middleware('userType');
+    Route::resource('admins/expenses', AdminController::class);
 });
 
