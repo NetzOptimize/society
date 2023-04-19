@@ -15,14 +15,7 @@ Society Residents
         </div>
     @endif
      {{-- search bar --}}
-
-     <form action="" method="GET" style="margin:50px">
-        @if (request('search'))
-            <input type="search" name="search" value="{{ request('search') }}" />
-        @else
-            <input type="search" placeholder="Search By User Name" name="search" />
-        @endif
-    </form>
+     <input type="search" id="search"   placeholder="Search" style="margin:50px"/>
      {{-- refresh button --}}
 <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
     <a href="{{ route('residents.index') }}" class="btn btn-success  d-flex align-items-center m-2">Refresh</a>
@@ -31,6 +24,7 @@ Society Residents
     <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-4 table-responsive">
         <div id="printableArea">
         <table class="table table-light table-hover table-borderd align-middle">
+            <thead>
             <tr class="table-dark">
                 <th>House No.</th>
                 <th>User</th>
@@ -41,6 +35,8 @@ Society Residents
                     <th>Delete</th>
                 @endif
             </tr>
+            </thead>
+            <tbody>
             @if ($residents->first())
                 @foreach ($residents as $resident)
                     <tr class="">
@@ -73,12 +69,25 @@ Society Residents
                     </tr>
                 @endforeach
             @endif
+            </tbody>
         </table>
     </div>
     </div>
-    {{-- delete confirmation --}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script type="text/javascript">
+    <script>
+    //for searching
+    $(document).ready(function() {
+        $("#search").keyup(function() {
+            var value = $(this).val().toLowerCase();
+
+            $("table tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    //  delete confirmation
         $('.show_confirm').click(function(event) {
             var form = $(this).closest("form");
             var name = $(this).data("name");
@@ -107,5 +116,6 @@ Society Residents
         printWindow.print();
         printWindow.close();
     }
+
     </script>
 @endsection

@@ -9,20 +9,15 @@ Society Houses
     </div>
     <div class="table-add-user pt-5 table-responsive">
         {{-- search bar --}}
-
-        <form action="" method="GET" style="margin:0" class="ms-5 me-5">
-           @if (request('search'))
-               <input type="search" name="search" value="{{ request('search') }}" />
-           @else
-               <input type="search" placeholder="Search By Address" name="search" />
-           @endif
-       </form>
+        <input type="search" placeholder="Search " id="search" style="margin:0" class="ms-5 me-5"/>
+        
         {{-- refresh button --}}
    <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
        <a href="{{ route('houses.index') }}" class="btn btn-success">Refresh</a>
    </div>
     <div class="table-manage-house ps-5 pe-5 pt-3  table-responsive">
         <table class="table table-light table-hover table-bordered align-middle">
+            <thead>
             <tr class="text-center  table-dark">
                 <th>Block-1</th>
                 <th>Block-2</th>
@@ -31,6 +26,8 @@ Society Houses
                 <th>House Type</th>
                 <th></th>
             </tr>
+            </thead>
+            <tbody>
             @foreach ($houses as $house)
                 <tr class="text-center">
                     <td> {{ $house->Block1 }}</td>
@@ -45,6 +42,17 @@ Society Houses
                     @endif
                 </tr>
             @endforeach
+            </tbody>
         </table>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+                var value = $(this).val().toLowerCase();
+                $("table tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 @endsection

@@ -46,7 +46,7 @@ Society User-Profile
 
                                     <input id="emailInput  mb-2" placeholder="Confirm Password" class="form-control password" type="password" name="confirmPassword">
                                 </div>
-                                <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
+                                <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static m-2">Show Password</div>
                                 <div class="error mb-3">
                                     @error('confirmPassword')
                                     {{ $message }}

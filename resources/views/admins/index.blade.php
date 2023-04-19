@@ -12,7 +12,8 @@ Society Expenses
     <h3>Lists Of Expenses</h3>
 </div>
 
-<form action="" method="GET" class="searchby-payee d-flex justify-content-end pt-4 pe-5 mt-2">
+<input type="search" id="search" style="margin:50px" placeholder="Search"  />
+{{-- <form action="" method="GET" class="searchby-payee d-flex justify-content-end pt-4 pe-5 mt-2">
     @if (request('search'))
     <input type="search" name="search" value="{{ request('search') }}"  />
     @else
@@ -21,7 +22,7 @@ Society Expenses
     </div>
     @endif
 </form>
-</div>
+</div> --}}
 
 {{-- refresh button--}}
 <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
@@ -33,6 +34,7 @@ Society Expenses
 <div class="table-expenses ps-5 pe-5 pt-3  mt-3 table-responsive">
     <div id="printableArea">
     <table class="table table-light table-hover table-bordered">
+        <thead>
         <tr class="table-dark">
             <th>Payee</th>
             <th>Amount</th>
@@ -53,7 +55,9 @@ Society Expenses
             </th>
             <th>Comments</th>
         </tr>
-        <tr class=" ">
+        </thead>
+        <tbody>
+            <tr>
             @foreach ($expenses as $expense)
             <td class="">{{ $expense->payee }}</td>
             <td class="">{{ $expense->amount }}</td>
@@ -61,11 +65,25 @@ Society Expenses
             <td class="">{{ $expense->dateofpayment }}</td>
             <td class="">{{ $expense->comments }}</td>
         </tr>
+        </tbody>
         @endforeach
     </table>
 </div>
 </div>
 <script>
+
+    // for searching
+    $(document).ready(function() {
+        $("#search").keyup(function() {
+            var value = $(this).val().toLowerCase();
+            $("table tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+
+
     // for data printing
         function printDiv() {
         var printableArea = document.getElementById('printableArea').innerHTML;
