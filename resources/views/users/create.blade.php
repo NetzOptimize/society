@@ -9,7 +9,7 @@ Society Create User
 
 <div class="heading-add-user pt-3 pb-2 text-center ">
     <div class="add-user-image d-flex justify-content-start align-items-center p-3 rounded" id="add-user-logo">
-        <div class="add-user-image1"><img src="{{asset('addimg.png')}}" style="height:70px; width:70px" alt="">
+        <div class="add-user-image1"><img src="{{asset('add-user.gif')}}" style="height:70px; width:70px" alt="">
 </div>
     <h3>Add User</h3>
 </div>
