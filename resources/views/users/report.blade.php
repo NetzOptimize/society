@@ -6,12 +6,6 @@ Society User-Report
 @section('content')
 @php $payments = Auth::user()->payments()->get() @endphp
 
-<div class="main">
-    <div class="print-btn mt-4 d-flex justify-content-end me-5">
-    <button class="btn btn-success me-3">Refresh</button>
-
-        <button class="btn btn-success">Print</button>
-    </div>
 
 <div class="table-report p-4 table-responsive ms-4 me-4">
     <table class="table  table-bordered">
@@ -20,22 +14,54 @@ Society User-Report
             <th>Payment Mode</th>
             <th>Date Of Deposit</th>
             <th>Amount</th>
+            <th>Payment Receipt</th>
         </tr>
-        <tr>
-            @foreach ($payments as $payment)
-                <td>{{ $address }}</td>
+        @foreach ($payments as $payment)
+            <tr>
                 @foreach ($months as $key => $month)
-                @if($key == $payment->billingmonth)
-                    <td>{{ $month }}</td>
-                @endif
+                    @if($key == $payment->billingmonth)
+                        <td>{{ $temp = $month }}</td>
+                    @endif
                 @endforeach
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit}}</td>
                 <td>{{ $payment->amount}}</td>
-        </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop{{$payment->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment Receipt</h1>
+                            </div>
+                            <div class="modal-body" id="my-div{{$payment->id}}">
+                                Billing Month : {{ $temp }}<br>
+                                Payment Mode : {{ $payment->paymentmode->name }}<br>
+                                Date Of Deposit : {{ $payment->dateofdeposit}}<br>
+                                Amount : {{ $payment->amount}}<br>
+                                Signature : Not Required<br>
+                            </div>
+                            <div class="modal-footer">
+                                <button onclick="printDiv('my-div{{$payment->id}}')" class="btn btn-dark">Print</button>
+                                <a type="button" class="btn btn-dark" href="{{  route('user.report') }}">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$payment->id}}">
+                  View
+                </button></td>
+            </tr>
         @endforeach
     </table>
-    </div>
-    </div>
-
+</div>
+<script>
+    function printDiv(divId) {
+        var divToPrint = document.getElementById(divId);
+        var printContents = divToPrint.innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>
 @endsection

@@ -11,7 +11,7 @@
       <h3>Society</h3>
     </div>
       </div>
-   
+
 <!-- <h4>WELCOME {{ Auth::user()->name }}</h4> -->
 
 <div class="user dropdown pe-3 me-3 d-flex align-items-center">
@@ -32,8 +32,4 @@
 
 </div>
 </div>
-
-
 </div>
-
- 

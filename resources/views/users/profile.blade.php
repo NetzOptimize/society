@@ -53,7 +53,7 @@ Society User-Profile
                                     {{ $message }}
                                     @enderror
                                 </div>
-                            <div class="d-flex justify-content-start"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
+                            <div class="d-flex justify-content-start gap-2 align-items-center"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
                             </div>
                             <div class="form-group ms-2">
                                 <input class="btn btn-lg btn-primary btn-block" value="Reset My Password" id="reset-your-password" type="submit">
