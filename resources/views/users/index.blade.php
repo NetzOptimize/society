@@ -11,14 +11,15 @@ Society Users
         </h3>
     </div>
     @if (auth()->user()->usertype_id != 3)
-        <div class="add-user mt-2 p-3 me-5 d-flex justify-content-end ">
+        <div class="add-user mt-2 pt-3 pb-2 me-5 d-flex justify-content-end gap-2 ">
+        <input type="search" id="search" placeholder="Search">
+
             <a href="{{ route('users.create') }}" class="btn btn-success">Add User <img src="{{ asset('add-user.png') }}"
                     class="" alt=""></a>
     @endif
     </div>
     <div class="table-add-user ps-5 pe-5 pt-3 table-responsive">
          {{-- search bar --}}
-        <input type="search" id="search" placeholder="Search">
         
         <table class="table table-light  table-bordered table-hover  align-middle data" id="user-data">
         <thead>

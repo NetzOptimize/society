@@ -41,8 +41,8 @@
     display: none;
 }
 .main-profile-password {
-    height: 70vh;
-    display: flex;
+    margin-top: 20px;
+     display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -355,6 +355,11 @@ border: 1px solid white;
 }
 #user-a-link:hover{
     border: 1px solid white;
+}
+#submit-cancel{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
 }
 /* responsiveness */
 /* responsiveness */

@@ -18,17 +18,18 @@ Society Residents
 
     {{-- refresh button --}}
 <!-- <div class="refresh-button pb-3 pt-3 ms-5 me-5 d-flex justify-content-between">
-<input type="search" id="search" placeholder="Search"/>
 <div class="print-refresh d-flex align-items-center">
 <a href="{{ route('residents.index') }}" class="btn btn-success  d-flex align-items-center ">Refresh</a>
     <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center ms-2">Print</button> -->
 
 
      {{-- search bar --}}
-     <input type="search" id="search"   placeholder="Search" style="margin:50px"/>
+     <!-- <input type="search" id="search"   placeholder="Search" style="margin:50px"/> -->
 
-<div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-<button onclick="printDiv()" class="btn btn-success  d-flex align-items-center m-2">Print</button>
+<div class="refresh-button pb-4 me-5 d-flex justify-content-end gap-2">
+<input type="search" id="search" placeholder="Search"/>
+
+<button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
 </div>
     
 </div>

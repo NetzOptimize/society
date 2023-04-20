@@ -19,7 +19,6 @@ Society Expenses
   {{-- refresh button--}}
   <div class="refresh-expenses mt-4 pe-5 d-flex align-items-center justify-content-between ms-5 me-5">
   @if (request('search'))
-      <input type="search" name="search" value="{{ request('search') }}"  />
       @else
       <div class="searchby-payee d-flex  ">
           <input type="search" placeholder="  Search By Payee" name="search" />
@@ -31,10 +30,12 @@ Society Expenses
       </div> -->
 
 
-<input type="search" id="search" style="margin:50px" placeholder="Search"  />
+<!-- <input type="search" id="search" style="margin:50px" placeholder="Search"  /> -->
 
-<div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
-    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center m-2">Print</button>
+<div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end gap-2">
+<input type="search" name="search" value="{{ request('search') }}"  />
+
+    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
 </div>
 
 {{-- listing --}}

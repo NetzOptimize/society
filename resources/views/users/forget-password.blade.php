@@ -26,9 +26,9 @@ Society Forget-Password
                                       <input id="emailInput" name="mobile" placeholder="Enter you registered mobile number " class="form-control" type="text" >
                                     </div>
                                   </div>
-                                  <div class="form-group mt-3 w-100">
+                                  <div class="form-group mt-3 w-100" id="submit-cancel">
                                     <input class="btn btn-lg btn-primary btn-block " value="Send My Password"  type="submit">
-                                    <a href= "{{ url('/') }}" class="btn btn-dark " value="cancel">Cancel</a>
+                                    <a href= "{{ url('/') }}" class="btn btn-dark  " value="cancel">Cancel</a>
                                   </div>
                                 </fieldset>
                               </form>
