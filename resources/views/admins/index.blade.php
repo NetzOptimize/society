@@ -11,26 +11,30 @@ Society Expenses
 <div class="houses-list  text-center me-5 ms-5 bg-light p-4  mt-3">
     <h3>Lists Of Expenses</h3>
 </div>
-
- {{-- <form action="" method="GET" class="searchby-payee d-flex justify-content-end pt-4 pe-5 mt-2">
+ <!-- <form action="" method="GET" class="searchby-payee d-flex justify-content-end pt-4 pe-5 mt-2">
   
-</form>
-</div> --}}
+  </form>
+  </div>
+  
+  {{-- refresh button--}}
+  <div class="refresh-expenses mt-4 pe-5 d-flex align-items-center justify-content-between ms-5 me-5">
+  @if (request('search'))
+      <input type="search" name="search" value="{{ request('search') }}"  />
+      @else
+      <div class="searchby-payee d-flex  ">
+          <input type="search" placeholder="  Search By Payee" name="search" />
+      </div>
+      @endif
+      <div class="print-refresh d-flex align-items-center">
+      <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center me-3">Refresh</a>
+      <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
+      </div> -->
 
-{{-- refresh button--}}
-<div class="refresh-expenses mt-4 pe-5 d-flex align-items-center justify-content-between ms-5 me-5">
-@if (request('search'))
-    <input type="search" name="search" value="{{ request('search') }}"  />
-    @else
-    <div class="searchby-payee d-flex  ">
-        <input type="search" placeholder="  Search By Payee" name="search" />
-    </div>
-    @endif
-    <div class="print-refresh d-flex align-items-center">
-    <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center me-3">Refresh</a>
-    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
-    </div>
-   
+
+<input type="search" id="search" style="margin:50px" placeholder="Search"  />
+
+<div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
+    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center m-2">Print</button>
 </div>
 
 {{-- listing --}}

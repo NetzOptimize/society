@@ -14,7 +14,6 @@ Society Houses
    <div class="refresh-button pb-4 me-5 d-flex justify-content-between">
    <input type="search" placeholder="Search " id="search" style="margin:0" class="ms-5 me-5"/>
 
-       <a href="{{ route('houses.index') }}" class="btn btn-success">Refresh</a>
    </div>
     <div class="table-manage-house ps-5 pe-5 pt-3  table-responsive">
         <table class="table table-light table-hover table-bordered align-middle">

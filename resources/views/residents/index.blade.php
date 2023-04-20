@@ -14,13 +14,21 @@ Society Residents
 
         </div>
     @endif
-     {{-- search bar --}}
-     {{-- refresh button --}}
-<div class="refresh-button pb-3 pt-3 ms-5 me-5 d-flex justify-content-between">
+
+
+    {{-- refresh button --}}
+<!-- <div class="refresh-button pb-3 pt-3 ms-5 me-5 d-flex justify-content-between">
 <input type="search" id="search" placeholder="Search"/>
 <div class="print-refresh d-flex align-items-center">
 <a href="{{ route('residents.index') }}" class="btn btn-success  d-flex align-items-center ">Refresh</a>
-    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center ms-2">Print</button>
+    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center ms-2">Print</button> -->
+
+
+     {{-- search bar --}}
+     <input type="search" id="search"   placeholder="Search" style="margin:50px"/>
+
+<div class="refresh-button pb-4 me-5 d-flex justify-content-end">
+<button onclick="printDiv()" class="btn btn-success  d-flex align-items-center m-2">Print</button>
 </div>
     
 </div>
@@ -31,8 +39,11 @@ Society Residents
             <tr class="table-dark">
                 <th>House No.</th>
                 <th>User</th>
+                <th>Mobile1</th>
+                <th>Mobile2</th>
                 <th>Occupancy Type</th>
                 <th>Date Of Occupancy</th>
+                <th>Detail</th>
                 @if (auth()->user()->usertype_id != 3)
                     <th>Edit</th>
                     <th>Delete</th>
@@ -42,6 +53,7 @@ Society Residents
             <tbody>
             @if ($residents->first())
                 @foreach ($residents as $resident)
+
                     <tr class="">
                         <td> {{ $resident->house->full_address }}</td>
                         @php
@@ -52,12 +64,23 @@ Society Residents
                             }
                         @endphp
                         <td>{{ $username }}</td>
+                        @if($resident->user->mobile1)
+                            <td>{{  $resident->user->mobile1}}</td>
+                            @else
+                            <td >Not Provided</td>
+                        @endif
+                        @if($resident->user->mobile2)
+                        <td>{{  $resident->user->mobile2}}</td>
+                        @else
+                        <td >Not Provided</td>
+                        @endif
                         @if ($resident->isOwner)
                             <td>Owner</td>
                         @else
                             <td>Tenant</td>
                         @endif
                         <td>{{ $resident->datofoccupancy }}</td>
+                        <td> <a href="{{ route('houses.show', $resident->house) }}" class="btn btn-success">View</a></td>
                         @if (auth()->user()->usertype_id != 3)
                             <td><a href="{{ route('residents.edit', $resident) }}" class="btn btn-success">Edit</a></td>
                             <td>

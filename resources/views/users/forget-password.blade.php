@@ -1,6 +1,6 @@
 @extends('layouts.mainWithoutNav')
 @section('title')
-Society Forget-Password 
+Society Forget-Password
 @endsection
 @section('content')
 
@@ -28,6 +28,7 @@ Society Forget-Password
                                   </div>
                                   <div class="form-group mt-3 w-100">
                                     <input class="btn btn-lg btn-primary btn-block " value="Send My Password"  type="submit">
+                                    <a href= "{{ url('/') }}" class="btn btn-dark " value="cancel">Cancel</a>
                                   </div>
                                 </fieldset>
                               </form>

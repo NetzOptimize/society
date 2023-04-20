@@ -43,7 +43,6 @@ Society Login
             <div class="forgot-password text-center">
                 <p class="text-center"><a href="{{ route('forget-password') }}" id="forgot">Forgot Password ?</a></p>
 
-                <p>Don't have an account? <span> <a href="" class="text-decoration-none" id="sign-up">Sign Up</a> </span></p>
              </div>
         </form>
     </nav>

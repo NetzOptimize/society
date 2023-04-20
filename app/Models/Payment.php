@@ -57,4 +57,13 @@ class Payment extends Model
         ->orderBy('houses.block2', 'ASC')
         ->orderBy('houses.house_no', 'ASC');
     }
+
+    public function scopeSort($query, $sort)
+    {
+        if($sort == 'Ascending')
+        {
+            return $query->orderBy('dateofdeposit', 'asc')->get();
+        }
+        return $query->orderBy('dateofdeposit', 'desc')->get();
+    }
 }

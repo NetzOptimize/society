@@ -48,17 +48,25 @@ class PaymentController extends Controller
                 return redirect()->route('payments.index')->with('error','Invalid Request');
             }
         }
-        elseif(isset($_GET['search']))
+        elseif(isset($_GET['sort']))
         {
-            $house=$_GET['search'];
-            $payments = Payment::whereHas('houses', function ($query) use ($house) {
-                $query->where('full_address', 'Like', '%'.$house.'%');
-            })->get()->pluck('id')->toarray();
-
-            $payments = Payment::sortedData($payments)->get();
+            $payments= Payment::sort($_GET['sort']);
+          
             $count = $payments->count();
             $sum = $payments->sum('amount');
+
         }
+        // elseif(isset($_GET['search']))
+        // {
+        //     $house=$_GET['search'];
+        //     $payments = Payment::whereHas('houses', function ($query) use ($house) {
+        //         $query->where('full_address', 'Like', '%'.$house.'%');
+        //     })->get()->pluck('id')->toarray();
+
+        //     $payments = Payment::sortedData($payments)->get();
+        //     $count = $payments->count();
+        //     $sum = $payments->sum('amount');
+        // }
         elseif(isset($_GET['unpaid']))
         {
             $month =  $_GET['unpaid'];

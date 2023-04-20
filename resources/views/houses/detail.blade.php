@@ -64,17 +64,17 @@ Society Houses Show
                                 @endif
                             </tbody>
                             @else
-                            <div class="error">No Record Found</div>
+                            <div class="error">Not Available</div>
                             @endif
                         </table>
                     </div>
                 </div>
                 <!-- tenants -->
+                @if (isset($tenants[0]))
                 <div class="tenants ">
                     <h4>Tenants Of The House</h4>
                     <div class="table-tenants table-responsive">
                         <table class="table table-hover table-bordered  ">
-                            @if (isset($tenants[0]))
                             <thead>
                                 <tr>
                                     <th scope="col">Serial No.</th>
@@ -107,18 +107,15 @@ Society Houses Show
                                     @endif
                                 </tr>
                                 @endforeach
-                                @else
-                                <div class="error">No Record Found</div>
-                                @endif
+
                             </tbody>
                         </table>
                     </div>
                 </div>
+                @endif
             </div>
-
-
         </div>
-         @if($house->id != $maxCount)
+        @if($house->id != $maxCount)
         <a class="btn btn-dark d-flex justify-content-end m-2" href="{{ route('houses.show', $next) }}"> Next</a>
         @endif
     </div>

@@ -18,19 +18,8 @@ Society Users
     </div>
     <div class="table-add-user ps-5 pe-5 pt-3 table-responsive">
          {{-- search bar --}}
-         {{-- <form action="" method="GET" style="margin:0">
-            @if (request('search'))
-                <input type="search" name="search" value="{{ request('search') }}" />
-            @else
-                <input type="search" placeholder="Search Name / Mobile" name="search" />
-            @endif
-        </form> --}}
-         {{-- refresh button --}}
-    <div class="refresh-button pb-4 me-5 d-flex justify-content-between">
-    <input type="search" id="search" placeholder="Search">
-
-        <a href="{{ route('users.index') }}" class="btn btn-success">Refresh</a>
-    </div>
+        <input type="search" id="search" placeholder="Search">
+        
         <table class="table table-light  table-bordered table-hover  align-middle data" id="user-data">
         <thead>
         <tr class="table-dark">
