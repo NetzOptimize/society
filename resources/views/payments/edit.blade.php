@@ -13,8 +13,8 @@ Society Edit Payment
                 </h3>
             </div>
             <div
-                class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded pb- mt-2">
-                <form action="{{ route('payments.update', $payment) }}" method="POST" class="d-flex flex-column gap-1"
+                class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded   mt-3">
+                <form action="{{ route('payments.update', $payment) }}" method="POST" class="d-flex flex-column gap-2"
                     id="payment-method-form">
                     @csrf
                     @method('PUT')
@@ -47,6 +47,7 @@ Society Edit Payment
                     <label>
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                         <b>Select Billing Months:</b>
+                    </label>
                         <select name="billingmonth" class="form-control">
                             @foreach ($months as $key => $month)
                                 @if ($key == $payment->billingmonth)

@@ -154,8 +154,8 @@ h3#resident-heading {
     top: 20%;
 }
 .main-payment-method {
-    height: 90vh;
-    display: flex;
+    margin-top: 5px;
+     display: flex;
     justify-content: center;
     align-items: center;
 }

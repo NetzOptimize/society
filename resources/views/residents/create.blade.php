@@ -8,7 +8,7 @@ Society Create Resident
 <div class="main-create d-flex justify-content-center align-items-center">
 <div class="main container shadow  rounded  p-4 w-50" id="create-resident">
 <div class="resident-create justify-content-start p-3 rounded" id="get-house">
-    <h3 class="d-flex justify-content-start align-items-center gap-2"> <img src="{{asset('keys.jpg')}}" alt="" class="rounded-pill" id="keys"> Get Your House No.</h3>
+    <h3 class="d-flex justify-content-start align-items-center gap-2"> <img src="{{asset('keys.jpg')}}" alt="" class="rounded-pill" id="keys">Add Resident</h3>
 </div>
 <div class="d-flex flex-column justify-content-center align-items-center align-content-center pt-4   ">
     <form action="{{ route('residents.store') }}" method="POST"  class="d-flex flex-column gap-3 fw-bold" id="resident-create-form">
