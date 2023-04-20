@@ -67,13 +67,6 @@ Society Payments
     {{-- search bar --}}
     <input type="textbox" id="search" placeholder="Search">
 
-    {{-- <form action="" method="GET" style="margin:0">
-        @if (request('search'))
-        <input type="search" name="search" value="{{ request('search') }}" />
-        @else
-        <input type="search" placeholder="Search By House No." name="search" />
-        @endif
-    </form> --}}
 </div>
 
 {{-- refresh button --}}
@@ -114,21 +107,35 @@ Society Payments
     <div id="printableArea">
         <table class="table table-light table-bordered table-hover data">
             <thead>
-            @if($payments->first())
-            <tr class="table-dark">
-                <th>Serial No</th>
-                <th>House No.</th>
-                <th>Billing Month</th>
-                @if (null == request('unpaid'))
-                <th>Payment Mode</th>
-                <th>Date Of Deposit</th>
-                <th>Amount</th>
-                @if (auth()->user()->usertype_id != 3)
-                <th>Actions</th>
-                <th></th>
-                @endif
-                @endif
-            </tr>
+                @if($payments->first())
+                <tr class="table-dark">
+                    <th>Serial No</th>
+                    <th>House No.</th>
+                    <th>Billing Month</th>
+                    @if (null == request('unpaid'))
+                    <th>Payment Mode</th>
+                    {{-- <th>Date Of Deposit</th> --}}
+                    <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2 order_by">
+                        <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if (request('sort'))
+                            {{ request('sort') }}
+                            @else
+                            Order By
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
+                            <li><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
+                        </ul>
+                    </div>
+                </th>
+                    <th>Amount</th>
+                    @if (auth()->user()->usertype_id != 3)
+                    <th>Actions</th>
+                    <th></th>
+                    @endif
+                    @endif
+                </tr>
             </thead>
             <tbody>
                 <tr>

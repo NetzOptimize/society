@@ -10,11 +10,7 @@ Society Houses
     <div class="table-add-user pt-5 table-responsive">
         {{-- search bar --}}
         <input type="search" placeholder="Search " id="search" style="margin:0" class="ms-5 me-5"/>
-        
-        {{-- refresh button --}}
-   <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-       <a href="{{ route('houses.index') }}" class="btn btn-success">Refresh</a>
-   </div>
+
     <div class="table-manage-house ps-5 pe-5 pt-3  table-responsive">
         <table class="table table-light table-hover table-bordered align-middle">
             <thead>
@@ -24,7 +20,7 @@ Society Houses
                 <th>House No</th>
                 <th>Address</th>
                 <th>House Type</th>
-                <th></th>
+                <th>Detail</th>
             </tr>
             </thead>
             <tbody>
@@ -36,7 +32,7 @@ Society Houses
                     <td> {{ $house->full_address }}</td>
                     <td> {{ $house->house_type }}</td>
                     @if($house->house_type == 'house')
-                    <td> <a href="{{ route('houses.show', $house) }}" class="btn btn-success">Detail</a></td>
+                    <td> <a href="{{ route('houses.show', $house) }}" class="btn btn-success">View</a></td>
                     @else
                     <td>N/A</td>
                     @endif

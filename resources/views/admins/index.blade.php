@@ -13,20 +13,8 @@ Society Expenses
 </div>
 
 <input type="search" id="search" style="margin:50px" placeholder="Search"  />
-{{-- <form action="" method="GET" class="searchby-payee d-flex justify-content-end pt-4 pe-5 mt-2">
-    @if (request('search'))
-    <input type="search" name="search" value="{{ request('search') }}"  />
-    @else
-    <div class="searchby-payee d-flex justify-content-end pt-4 mt-2">
-        <input type="search" placeholder="  Search By Payee" name="search" />
-    </div>
-    @endif
-</form>
-</div> --}}
 
-{{-- refresh button--}}
 <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
-    <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center m-2">Refresh</a>
     <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center m-2">Print</button>
 </div>
 

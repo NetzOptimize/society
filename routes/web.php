@@ -34,6 +34,7 @@ Route::get('forget-password', function() {
 Route::post('users/forgetpassword', [UserController::class, 'forgetpassword'])->name('forgetpassword');
 Route::get('/forget/{id}', [UserController::class, 'forget'])->name('forget');
 Route::post('forgetpassword/{user}/store', [UserController::class, 'forgetstore'])->name('forgetpassword.store');
+Route::post('users/image/store', [UserController::class, 'imagestore'])->name('users.image.store');
 
 Route::middleware(['auth'])->group(function () {
 
