@@ -7,10 +7,14 @@ Society Houses
     <div class="Manage-houses  bg-light text-center me-5 ms-5 mt-3">
         <h3 class="mx-auto p-4 "> List Of Houses</h3>
     </div>
-    <div class="table-add-user pt-5 table-responsive">
+    <div class="table-add-user pt-4 table-responsive">
         {{-- search bar --}}
-        <input type="search" placeholder="Search " id="search" style="margin:0" class="ms-5 me-5"/>
+        
+        {{-- refresh button --}}
+   <div class="refresh-button pb-4 me-5 d-flex justify-content-between">
+   <input type="search" placeholder="Search " id="search" style="margin:0" class="ms-5 me-5"/>
 
+   </div>
     <div class="table-manage-house ps-5 pe-5 pt-3  table-responsive">
         <table class="table table-light table-hover table-bordered align-middle">
             <thead>
@@ -20,7 +24,7 @@ Society Houses
                 <th>House No</th>
                 <th>Address</th>
                 <th>House Type</th>
-                <th>Detail</th>
+                <th>View Details</th>
             </tr>
             </thead>
             <tbody>

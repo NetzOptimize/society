@@ -16,7 +16,7 @@ Society Users
                     class="" alt=""></a>
     @endif
     </div>
-    <div class="table-add-user ps-5 pe-5 pt-5 table-responsive">
+    <div class="table-add-user ps-5 pe-5 pt-3 table-responsive">
          {{-- search bar --}}
         <input type="search" id="search" placeholder="Search">
         
@@ -29,9 +29,8 @@ Society Users
                 <th>Email</th>
                 <th>User-type</th>
                 @if (auth()->user()->usertype_id != 3)
-                    <th class="text-center">Actions</th>
-                    <th></th>
-                @endif
+                    <th colspan="2" class="text-center">Actions</th>
+                 @endif
             </tr>
             </thead>
 
