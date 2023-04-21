@@ -65,7 +65,7 @@ Society Payments
     </div>
 
     {{-- search bar --}}
-    <input type="textbox" id="search" placeholder="Search">
+    <input type="textbox" id="search" placeholder="Search" class="search">
 
 </div>
 

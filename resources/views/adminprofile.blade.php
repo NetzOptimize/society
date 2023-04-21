@@ -4,7 +4,28 @@ Society User-Profile
 @endsection
 @section('content')
 {{-- profile picture --}}
- 
+<div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-5">
+    <div class="img">
+        @php $image = Auth()->user()->user_image;@endphp
+        @if($image)
+        <img src="{{ asset( str_replace("public","storage",$image)) }}" alt="" >
+        @endif
+    </div>
+    <form action="{{ route('users.image.store') }}" method="POST" class="shadow p-4 mt-3" enctype="multipart/form-data">
+        @csrf
+        <p class="fw-bold">Update Your Profile Picture ?</p>
+        <label class="block mb-4">
+            <span class="sr-only">Choose File</span>
+            <input type="file" name="image"
+                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+            @error('image')
+            <span class="error">{{ $message }}</span>
+            @enderror
+        </label>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+</div>
+
 
 {{-- reset password --}}
 <div class="main-profile-password">
@@ -66,20 +87,6 @@ Society User-Profile
             </div>
         </div>
     </div>
-</div>
-<div class="upload d-flex justify-content-center">
-<form action="{{ route('users.image.store') }}" method="POST" class="shadow p-4 mt-3" enctype="multipart/form-data">
-    @csrf
-    <label class="block mb-4">
-        <span class="sr-only">Choose File</span>
-        <input type="file" name="image"
-            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-        @error('image')
-        <span class="error">{{ $message }}</span>
-        @enderror
-    </label>
-    <button type="submit" class="btn btn-dark">Submit</button>
-</form>
 </div>
 
 <script>

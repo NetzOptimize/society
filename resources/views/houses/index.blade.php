@@ -9,10 +9,9 @@ Society Houses
     </div>
     <div class="table-add-user pt-4 table-responsive">
         {{-- search bar --}}
-        
-        {{-- refresh button --}}
+
    <div class="refresh-button pb-3 me-5 d-flex justify-content-end">
-   <input type="search" placeholder="Search " id="search" style="margin:0" class=""/>
+   <input type="search" placeholder="Search " id="search" style="margin:0" class="search"/>
 
    </div>
     <div class="table-manage-house ps-5 pe-5 pt-3  table-responsive">
