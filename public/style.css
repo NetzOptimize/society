@@ -581,6 +581,50 @@ border: 1px solid white;
        #users-nav a{
         margin: 0px !important;
        }
+       .refresh-expenses.pt-3.pe-5.d-flex.justify-content-end.gap-2{
+        justify-content: center !important;
+        padding: 0px !important;
+        margin-top: 20px;
+       }
+       .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2{
+        justify-content: center !important;
+        padding: 0px !important;
+        margin: 20px 0px 0px 0px !important;
+       }
+       .refresh-button.pb-3.me-5.d-flex.justify-content-end{
+        justify-content: center !important;
+        padding: 0px !important;
+      
+        margin: 10px 0px 10px 0px !important;
+       }
+       .resident-create.mt-3.p-3.me-5.d-flex.justify-content-end{
+        justify-content: center !important;
+        margin: 10px 0px 10px 0px !important;
+       }
+       .refresh-button.pb-4.me-5.d-flex.justify-content-end.gap-2{
+        justify-content: center !important;
+padding: 0px !important;
+        margin: 10px 0px 10px 0px !important;
+       }
+       .reports.d-flex.justify-content-end.me-5,.refresh-button.pb-4.me-5.d-flex.justify-content-end{
+        justify-content: center !important;
+        padding: 0px !important;
+                margin: 10px 0px 10px 0px !important;
+       }
+       div#main-details1{
+        margin: 0 !important;
+       }
+
+       .table-add-user.ps-5.pe-5.pt-3.table-responsive{
+        margin: 0px !important;
+        padding: 10px 0px 0px 0px !important;
+       }
+       .table-manage-house.ps-5.pe-5.pt-3.table-responsive,.table-resident.table-hover.table-bordered.align-middle.ps-5.pe-5.pt-3.table-responsive{
+        padding: 10px 0px 0px 0px !important;
+       }
+       .main-details-house.me-5.ms-5{
+        margin: 10px 0px 10px 0px !important;
+       }
 }
 @media screen and (max-width: 520px) {
     #background {
@@ -618,6 +662,7 @@ border: 1px solid white;
     }
     #expense-create-form {
         width: 100%;
+        gap: 4px !important;
     }
     #expense-create {
         width: 90% !important;
@@ -657,6 +702,12 @@ border: 1px solid white;
     }
     #user-form {
         width: 80% !important;
+   }
+   a#previous {
+    order:2;
+   }
+   div#main-details1{
+    flex-direction: column;
    }
   
 }

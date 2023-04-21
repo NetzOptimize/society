@@ -71,8 +71,8 @@ Society Payments
 
 {{-- refresh button --}}
 <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-    <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center m-2">Refresh</a>
-    <button onclick="printDiv()" class="btn btn-success d-flex align-items-center m-2">Print</button>
+    <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
+    <button onclick="printDiv()" class="btn btn-success d-flex align-items-center ">Print</button>
 </div>
 <!-- table -->
 <div class="reports d-flex justify-content-end me-5">
