@@ -27,11 +27,11 @@ Society Residents
      <!-- <input type="search" id="search"   placeholder="Search" style="margin:50px"/> -->
 
 <div class="refresh-button pb-4 me-5 d-flex justify-content-end gap-2">
-<input type="search" id="search" placeholder="Search"/>
+<input type="search" id="search" placeholder="Search" class="search"/>
 
 <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
 </div>
-    
+
 </div>
     <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-3 table-responsive">
         <div id="printableArea">

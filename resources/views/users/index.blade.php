@@ -10,17 +10,18 @@ Society Users
             List Of Users
         </h3>
     </div>
-    @if (auth()->user()->usertype_id != 3)
-        <div class="add-user mt-2 pt-3 pb-2 me-5 d-flex justify-content-end gap-2 ">
-        <input type="search" id="search" placeholder="Search">
 
+        <div class="add-user mt-2 pt-3 pb-2 me-5 d-flex justify-content-end gap-2 ">
+              {{-- search bar --}}
+        <input type="search" id="search" placeholder="Search" class="search">
+        @if (auth()->user()->usertype_id != 3)
             <a href="{{ route('users.create') }}" class="btn btn-success">Add User <img src="{{ asset('add-user.png') }}"
                     class="" alt=""></a>
-    @endif
+        @endif
     </div>
     <div class="table-add-user ps-5 pe-5 pt-3 table-responsive">
-         {{-- search bar --}}
-        
+
+
         <table class="table table-light  table-bordered table-hover  align-middle data" id="user-data">
         <thead>
         <tr class="table-dark">
