@@ -11,7 +11,21 @@ Society User-Profile
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
     <div class="card p-4"> 
         <div class=" image d-flex flex-column justify-content-center align-items-center gap-3"> 
-             <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
+             <!-- <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" /> -->
+
+<!--  -->
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <label for="fileToUpload">
+  <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/med/men/65.jpg')">
+      <span class="glyphicon glyphicon-camera"></span>
+      <span>Change Image</span>
+  </div>
+  </label>
+  <input type="File" name="fileToUpload" id="fileToUpload">
+</form>
+<!--  -->
+
+
         <div class="profile-details">
         <p class="name fw-bold text-primary m-0 display-6">Mishra</p> 
               <p class="house fw-bold m-2">DSA-1-23</p> 
@@ -49,7 +63,7 @@ Society User-Profile
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit-Profile</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Reset-Profile</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -61,7 +75,7 @@ Society User-Profile
         <img src="{{ asset( str_replace("public","storage",$image)) }}" alt="" >
         @endif
     </div>
-    <form action="{{ route('users.image.store') }}" method="POST" class="shadow p-4 mt-3" enctype="multipart/form-data">
+    <!-- <form action="{{ route('users.image.store') }}" method="POST" class="shadow p-4 mt-3" enctype="multipart/form-data">
         @csrf
         <p class="fw-bold">Update Your Profile Picture ?</p>
         <label class="block mb-4">
@@ -73,7 +87,7 @@ Society User-Profile
             @enderror
         </label>
         <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
+    </form> -->
 </div>
 
 

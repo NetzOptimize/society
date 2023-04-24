@@ -41,20 +41,9 @@ Society Create User
             {{ $message }}
         @enderror
         </div>
-        <input type="password" id="password" name="password" placeholder="Password" class="form-control" value={{ old('password')}}>
-        <div class="error">
-        @error('password')
-            {{ $message }}
-        @enderror
-        </div>
-         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" class="form-control " value={{ old('confirmPassword')}}>
+          
+         
         
- <div class="d-flex justify-content-start gap-2 align-items-center"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
-        <div class="error">
-        @error('confirmPassword')
-            {{ $message }}
-        @enderror
-        </div>
          <select name="usertype_id" class="form-select user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)

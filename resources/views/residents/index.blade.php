@@ -4,11 +4,12 @@
 Society Residents
 @endsection
 @section('content')
+
     <div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
         <h3>List Of Residents</h3>
     </div>
     @if (auth()->user()->usertype_id != 3)
-        <div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
+        <div class="resident-create mt-3 p-3 me-4 d-flex justify-content-end">
             <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
 
@@ -46,8 +47,9 @@ Society Residents
                 <th>Date Of Occupancy</th>
                 <th>Detail</th>
                 @if (auth()->user()->usertype_id != 3)
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th colspan="2" class="text-center"
+                    > Actions    
+                     </th>
                 @endif
             </tr>
             </thead>
