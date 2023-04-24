@@ -130,7 +130,7 @@ Society Payments
                 </th>
                     <th>Amount</th>
                     @if (auth()->user()->usertype_id != 3)
-                    <th  colspan="2" class="text-center">Actions</th>
+                    <th  colspan="2" class="text-center" id="th-payment-print">Actions</th>
                      @endif
                     @endif
                 </tr>

@@ -27,31 +27,34 @@ Society User-Profile
 
 
         <div class="profile-details">
-        <p class="name fw-bold text-primary m-0 display-6">Mishra</p>
-              <p class="house fw-bold m-2">DSA-1-23</p>
-              <p class="Mobile fw-bold">6786576544</p>
+        <p class="name fw-bold text-primary m-0 display-6">Mishra</p> 
+              <p class="house fw-bold m-2">DSA-1-23</p> 
+              <p class="Mobile fw-bold">6786576544</p> 
 
 
-        </div> --}}
+        </div>
+            
 
-
-
-                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a>
+             
+                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a> 
                 </div>  -->
-                {{-- <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
  Edit Profile
 </button>
+<a href="" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
+Reset Password
+</a>
 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                          <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>
                           <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>
                            </div>
-
-                        <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">Joined May,2021</span>
-                    </div>
+             
+                        <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">Joined May,2021</span> 
+                    </div> 
                 </div>
              </div>
 </div>
-</div> --}}
+</div>
 
 
 <!-- modal -->
@@ -59,15 +62,8 @@ Society User-Profile
 
 
 <!-- Modal -->
-{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Reset-Profile</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
+         
+ 
       <div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-3">
     <div class="img">
         @php $image = Auth()->user()->user_image;@endphp
@@ -92,7 +88,7 @@ Society User-Profile
 
 
 {{-- reset password --}}
-{{-- <div class="main-profile-password">
+<div class="main-profile-password">
     <div class="container  mb-2 mt-3">
         <div class="row justify-content-center">
             <div class="w-100">
@@ -151,51 +147,14 @@ Society User-Profile
             </div>
         </div>
     </div>
-</div> --}}
-<!-- Profile card -->
-<div class="main" id="profile-main">
-    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" id="user-profile-show">
-        <div class="card p-4">
-            <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
-                <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
-                <div class="profile-details">
-                    <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
-                    <p class="house m-2"><span class="fw-bold"> Mobile-1 </span>: {{  auth()->user()->mobile1 }}</p>
-                    @isset(auth()->user()->mobile2)
-                    <p class="house m-2"><span class="fw-bold"> Mobile-2</span>: {{  auth()->user()->mobile2 }}</p>
-                    @endisset
-                    @isset(auth()->user()->email)
-                    <p class="house m-2"><span class="fw-bold"> Email </span>: {{  auth()->user()->email }}</p>
-                    @endisset
-                </div>
-                <a href="{{  route('users.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
-                <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
-                    <a href="www.twitter.com"><span><i class="fa fa-twitter text-dark"></i></span> </a>
-                    <a href="www.facebook.com"> <span><i class="fa fa-facebook-f text-dark"></i></span></a>
-                    <a href="www.instagram.com"><span><i class="fa fa-instagram text-dark"></i></span> </a>
-                    <a href="www.linkedin.in"><span><i class="fa fa-linkedin text-dark"></i></span></a>
-                </div>
-                <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">{{ date(" jS  F Y ")}}</span>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
-{{--
-       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-dark">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> --}}
-<!-- table   -->
 
-{{-- <div class="profile-table table-responsive ms-5 me-5">
+
+        
+ <!-- table   -->
+<!-- 
+<div class="profile-table table-responsive ms-5 me-5">
 <table class="table table-bordered table-hover">
   <thead  id="profile-heading-form">
     <tr class="table-dark">
@@ -208,7 +167,7 @@ Society User-Profile
     <li><a class="dropdown-item  " href="#">Paid</a></li>
     <li><a class="dropdown-item  " href="#">Unpaid</a></li>
 
-
+ 
   </ul>
 </div></th>
       <th scope="col">Payment-Methods</th>
@@ -220,7 +179,7 @@ Society User-Profile
   <tbody>
     <tr>
       <th scope="row">1</th>
-
+      
       <td class="text-danger">  Unpaid</td>
       <td>Gpay</td>
       <td>Febuary</td>
@@ -234,7 +193,7 @@ Society User-Profile
 
       <td>Rs.4000/-</td>
     </tr>
-
+    
     <tr>
       <th scope="row">3</th>
       <td class="text-success">Paid</td>
@@ -243,12 +202,10 @@ Society User-Profile
 
       <td>Rs.20000/-</td>
     </tr>
-
+  
   </tbody>
-</table>
-</div> --}}
-
-<script>
+</table> -->
+ <script>
     $(document).ready(function(){
         $('#checkbox').on('change', function(){
             $('.password').attr('type',$('#checkbox').prop('checked')==true?"text":"password");

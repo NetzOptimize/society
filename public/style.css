@@ -395,7 +395,7 @@ h3#resident-heading {
 }
 
 #edit-user {
-    gap: 5px !important;
+    gap: 3px !important;
 }
 
 .date-mode p {
@@ -467,12 +467,23 @@ thead#profile-heading-form
 @media print{
 
     .table-resident.table-hover.table-bordered.align-middle.ps-5.pe-5.pt-3.table-responsive{
-        width: 30%;
+        width: 100%;
         }
         table.table.table-light.table-hover.table-bordered.align-middle td{
-            background-color: #ff0f0f;
-            
+            background-color:#ffff;  
         }
+        #th-print{
+            display: none;
+         }
+         table.table.table-light.table-hover.table-bordered.align-middle td:nth-child(7) .table.table.table-light.table-hover.table-bordered.align-middle td:nth-child(8),   table.table.table-light.table-hover.table-bordered.align-middle td:nth-child(9){
+            display: none;
+         }
+         table.table.table-light.table-hover.table-bordered.align-middle th:nth-child(7),table.table.table-light.table-hover.table-bordered.align-middle th:nth-child(8){
+            display: none;
+         }
+         th#th-payment-print{
+display: none;
+}
 
 }
 .profile-pic {
@@ -509,11 +520,8 @@ form input[type="file"] {
           cursor: pointer;
  }
 
-/* print end */
 
-
-
-
+/* print end */ 
 /* responsiveness */
  
 @media screen and (max-width: 1600px) {

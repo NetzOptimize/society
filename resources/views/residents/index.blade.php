@@ -39,7 +39,7 @@ Society Residents
                 <th>Date Of Occupancy</th>
                 <th class="hide">Detail</th>
                 @if (auth()->user()->usertype_id != 3)
-                    <th colspan="2" class="text-center"
+                    <th colspan="2" class="text-center" id="th-print"
                     > Actions    
                      </th>
                 @endif
