@@ -114,7 +114,6 @@ Society Payments
                     <th>Billing Month</th>
                     @if (null == request('unpaid'))
                     <th>Payment Mode</th>
-                    {{-- <th>Date Of Deposit</th> --}}
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2 order_by">
                         <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             @if (request('sort'))
@@ -165,7 +164,7 @@ Society Payments
                 <td>{{ $payment->amount }}</td>
                 @if (auth()->user()->usertype_id == 1)
                 <td>
-                    <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success">Edit</a>
+                    <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success hide">Edit</a>
                 </td>
                 <td>
                     <form method="POST" action="{{ route('payments.destroy', $payment->id) }}" class="m-0">

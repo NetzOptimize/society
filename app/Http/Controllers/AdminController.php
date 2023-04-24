@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expense;
+use App\Models\House;
 use App\Models\PaymentMode;
 use Carbon\Carbon;
 
@@ -53,6 +54,18 @@ class AdminController extends Controller
             'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
         ]);
         return back()->with('success', 'Expenses Added Successfully');
+    }
+
+
+    public function report(Request $request)
+    {
+        $month = $request->input('month');
+
+        $houses = House::whereHas('payments', function($query) use ($month) {
+            $query->where('billingmonth', $month);
+        })->get()->toArray();
+
+        return ['houses' => $houses];
     }
 
 

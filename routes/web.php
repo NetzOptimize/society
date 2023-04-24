@@ -66,3 +66,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('admins/expenses', AdminController::class);
 });
 
+
+Route::get('/report', function()
+{
+    $months = config('global.months');
+
+    return view('report',compact('months'));
+
+});
+Route::post('report/data', [AdminController::class, 'report'])->name('report.data');

@@ -34,6 +34,9 @@ Society User-Report
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment Receipt</h1>
                             </div>
                             <div class="modal-body" id="my-div{{$payment->id}}">
+                                Name : {{ Auth()->user()->name }}<br>
+                                Date : {{date("l jS \of F Y") }}<br><br>
+                                
                                 Billing Month : {{ $temp }}<br>
                                 Payment Mode : {{ $payment->paymentmode->name }}<br>
                                 Date Of Deposit : {{ $payment->dateofdeposit}}<br>
