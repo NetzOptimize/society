@@ -36,7 +36,7 @@ Society User-Report
                             <div class="modal-body" id="my-div{{$payment->id}}">
                                 Name : {{ Auth()->user()->name }}<br>
                                 Date : {{date("l jS \of F Y") }}<br><br>
-                                
+
                                 Billing Month : {{ $temp }}<br>
                                 Payment Mode : {{ $payment->paymentmode->name }}<br>
                                 Date Of Deposit : {{ $payment->dateofdeposit}}<br>
@@ -44,8 +44,8 @@ Society User-Report
                                 Signature : Not Required<br>
                             </div>
                             <div class="modal-footer">
-                                <button onclick="printDiv('my-div{{$payment->id}}')" class="btn btn-dark">Print</button>
-                                <a type="button" class="btn btn-dark" href="{{  route('user.report') }}">Close</a>
+                                <button onclick="printDiv('my-div{{$payment->id}}')" class="btn btn-dark hide">Print</button>
+                                <a type="button" class="btn btn-dark hide" href="{{  route('user.report') }}">Close</a>
                             </div>
                         </div>
                     </div>
@@ -59,12 +59,9 @@ Society User-Report
 </div>
 <script>
     function printDiv(divId) {
-        var divToPrint = document.getElementById(divId);
-        var printContents = divToPrint.innerHTML;
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
+        $(".hide").hide();
         window.print();
-        document.body.innerHTML = originalContents;
+        location.reload(true);
     }
 </script>
 @endsection
