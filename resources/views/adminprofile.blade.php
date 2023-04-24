@@ -11,35 +11,37 @@ Society User-Profile
     <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
             <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
-                <!-- <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" /> -->
-
-                <!--  -->
-                <form action="upload.php" method="post" enctype="multipart/form-data">
+                <form action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <label for="fileToUpload">
                         <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/med/men/65.jpg')">
                             <span class="glyphicon glyphicon-camera"></span>
                             <span>Change Image</span>
                         </div>
                     </label>
-                    <input type="File" name="fileToUpload" id="fileToUpload">
+                    <input type="File" name="image" id="fileToUpload">
+                    <input type="submit" value="Done" class="btn btn-dark">
                 </form>
                 <div class="profile-details">
-                    <p class="name fw-bold text-primary m-0 display-6">Mishra</p>
-                    <p class="house fw-bold m-2">DSA-1-23</p>
-                    <p class="Mobile fw-bold">6786576544</p>
+                    <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
+                    <p class="house fw-bold m-2">Mobile-1 : {{  auth()->user()->mobile1 }}</p>
+                    @isset(auth()->user()->mobile2)
+                        <p class="Mobile fw-bold">Mobile-2 : {{  auth()->user()->mobile2 }}</p>
+                    @endisset
+                    @isset(auth()->user()->email)
+                    <p class="Mobile fw-bold">Email : {{  auth()->user()->email }}</p>
+                @endisset
                 </div>
                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a>
                 </div>  -->
-                <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Edit Profile
-                </button>
+                <a href="{{  route('users.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
                 <a href="{{  route('user.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                     <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>
                     <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>
                 </div>
 
-                <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">Joined May,2021</span>
+                <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">{{ date(" jS  F Y ")}}</span>
                 </div>
             </div>
         </div>
