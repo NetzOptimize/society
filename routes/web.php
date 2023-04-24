@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('users/profile/update/{user}', [UserController::class, 'profileupdate'])->name('user.profile.update');
     Route::get('/users/home', [UserController::class, 'home'])->name('user.home');
     Route::get('users/report', [UserController::class, 'report'])->name('user.report');
+    Route::get('users/report/{user}', [UserController::class, 'resetcreate'])->name('user.reset');
     Route::post('users/reset-password/{user}', [UserController::class, 'resetPassword'])->name('user.resetpassword');
 
     Route::resource('users', UserController::class);

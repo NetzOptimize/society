@@ -293,5 +293,11 @@ class UserController extends Controller
         return back()->with('success', 'Image Updated Successfully');
     }
 
+    public function resetcreate(User $user)
+    {
+
+        return view('reset',compact('user'));
+    }
+
 
 }
