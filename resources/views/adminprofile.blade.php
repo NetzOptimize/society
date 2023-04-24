@@ -30,9 +30,9 @@ Society User-Profile
                 </div>
                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a>
                 </div>  -->
-                <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Edit Profile
-                </button>
+                </button> -->
                 <a href="{{  route('user.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                     <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>

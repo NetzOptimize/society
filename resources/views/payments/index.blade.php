@@ -105,7 +105,7 @@ Society Payments
 @php $i=0; @endphp
 <div class="table-payments ps-5 pe-5 pt-2 table-responsive">
     <div id="printableArea">
-        <table class="table table-light table-bordered table-hover data">
+        <table class="table table-light table-bordered table-hover data" id="print-table">
             <thead>
                 @if($payments->first())
                 <tr class="table-dark">

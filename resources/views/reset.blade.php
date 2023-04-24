@@ -5,7 +5,7 @@ Society Reset-Password
 @section('content')
 {{-- reset password --}}
 <div class="main-profile-password">
-    <div class="container  mb-2 mt-3">
+    <div class="   mb-2 mt-3">
         <div class="row justify-content-center">
             <div class="w-100">
                 <div class="forgot">
@@ -54,7 +54,7 @@ Society Reset-Password
                                 </div>
                             </div>
                             <div class="form-group ms-2">
-                                <input class="btn btn-lg btn-dark btn-block" value="Reset My Password" id="reset-your-password" type="submit">
+                                <input class="btn btn-dark btn-block" value="Reset My Password" id="reset-your-password" type="submit">
                             </div>
                         </fieldset>
                     </form>

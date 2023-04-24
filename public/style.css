@@ -44,7 +44,7 @@
 }
 
 .main-profile-password {
-    margin-top: 20px;
+    margin-top: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -484,6 +484,7 @@ thead#profile-heading-form
          th#th-payment-print{
 display: none;
 }
+ 
 
 }
 .profile-pic {
@@ -669,7 +670,7 @@ form input[type="file"] {
 
     #edit-user {
         width: 90%;
-        gap: 3px !important;
+        gap: 0px !important;
     }
 
     #expense-create {
