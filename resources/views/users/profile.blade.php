@@ -97,38 +97,34 @@ Society User-Profile
 
 
 <!-- Profile card -->
-<div class="main" id="profile-main"> 
-<div class="container mt-4 mb-4 p-3 d-flex justify-content-center" id="user-profile-show"> 
-    <div class="card p-4"> 
-        <div class=" image d-flex flex-column justify-content-center align-items-center gap-3"> 
-             <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
-        <div class="profile-details">
-        <p class="name fw-bold text-primary m-0 display-6">Mishra</p> 
-              <p class="house m-2"><span class="fw-bold"> House </span>: DSA-1-23</p> 
-              <p class="user_id  "><span class="fw-bold">User_id </span> : #1245452</p> 
-
-
-        </div>
-            
-
-             
-                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a> 
-                </div>  -->
-                <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
- Edit Profile
-</button>
-<div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
-                       <a href="www.twitter.com"><span><i class="fa fa-twitter text-dark"></i></span> </a>  
-                       <a href="www.facebook.com">  <span><i class="fa fa-facebook-f text-dark"></i></span></a>
-                       <a href="www.instagram.com"><span><i class="fa fa-instagram text-dark"></i></span> </a>   
-                       <a href="www.linkedin.in"><span><i class="fa fa-linkedin text-dark"></i></span></a> 
-                           </div>
-             
-                        <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">Joined May,2021</span> 
-                    </div> 
+<div class="main" id="profile-main">
+    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" id="user-profile-show">
+        <div class="card p-4">
+            <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
+                <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
+                <div class="profile-details">
+                    <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
+                    <p class="house m-2"><span class="fw-bold"> Mobile-1 </span>: {{  auth()->user()->mobile1 }}</p>
+                    @isset(auth()->user()->mobile2)
+                    <p class="house m-2"><span class="fw-bold"> Mobile-2</span>: {{  auth()->user()->mobile2 }}</p>
+                    @endisset
+                    @isset(auth()->user()->email)
+                    <p class="house m-2"><span class="fw-bold"> Email </span>: {{  auth()->user()->email }}</p>
+                    @endisset
                 </div>
-             </div>
-</div>
+                <a href="{{  route('user.profile.edit') }}" class="btn btn-dark " > Edit Profile</a>
+                <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+                    <a href="www.twitter.com"><span><i class="fa fa-twitter text-dark"></i></span> </a>
+                    <a href="www.facebook.com"> <span><i class="fa fa-facebook-f text-dark"></i></span></a>
+                    <a href="www.instagram.com"><span><i class="fa fa-instagram text-dark"></i></span> </a>
+                    <a href="www.linkedin.in"><span><i class="fa fa-linkedin text-dark"></i></span></a>
+                </div>
+
+                <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">{{ date(" jS  F Y ")}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -137,8 +133,8 @@ Society User-Profile
 
 
 <!-- Modal -->
-    
-      <!-- <div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-3">
+
+<!-- <div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-3">
     <div class="img">
         @php $image = Auth()->user()->user_image;@endphp
         @if($image)
@@ -161,16 +157,17 @@ Society User-Profile
 </div> -->
 
 
- 
- 
 
- 
-   
+
+
+
+
 <script>
-    $(document).ready(function(){
-        $('#checkbox').on('change', function(){
-            $('.password').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
+    $(document).ready(function() {
+        $('#checkbox').on('change', function() {
+            $('.password').attr('type', $('#checkbox').prop('checked') == true ? "text" : "password");
         });
     });
+
 </script>
 @endsection

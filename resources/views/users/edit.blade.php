@@ -45,10 +45,26 @@ Society Edit User
             {{ $message }}
         @enderror
         </div>
-        
-        
+        <label>Password:</label>
+        <input type="password" name="password" id="password" class="form-control">
+        <div class="error">
+        @error('password')
+            {{ $message }}
+        @enderror
+        </div>
+        <label>Confirm-Password:</label>
+         <input type="password" name="confirmPassword"  id="password" class="form-control">
+         <div class="d-flex justify-content-start gap-2"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
+        <div class="error">
+        @error('confirmPassword')
+            {{ $message }}
+        @enderror
+        </div>
         <label>User-Type</label>
         <select name="usertype_id" class="form-select user-type1">
+            @if (auth()->user()->usertype_id ==3)
+                <option value="3" readonly>Moderator</option>
+            @else
             @foreach ($usertypes as $usertype)
                 @if ($user->usertype_id == $usertype->id)
                     <option value="{{ $usertype->id }}" selected>{{ $usertype->role }}</option>
@@ -56,12 +72,14 @@ Society Edit User
                     <option value="{{ $usertype->id }} ">{{ $usertype->role }}</option>
                 @endif
             @endforeach
+            @endif
         </select>
         <div class="error">
         @error('usertype_id')
             {{ $message }}
         @enderror
         </div>
+
         <input type="submit" name="login" value="Edit User" class="btn btn-dark ">
     </form>
 
