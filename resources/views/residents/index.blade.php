@@ -16,15 +16,7 @@ Society Residents
     @endif
 
 
-    {{-- refresh button --}}
-<!-- <div class="refresh-button pb-3 pt-3 ms-5 me-5 d-flex justify-content-between">
-<div class="print-refresh d-flex align-items-center">
-<a href="{{ route('residents.index') }}" class="btn btn-success  d-flex align-items-center ">Refresh</a>
-    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center ms-2">Print</button> -->
 
-
-     {{-- search bar --}}
-     <!-- <input type="search" id="search"   placeholder="Search" style="margin:50px"/> -->
 
 <div class="refresh-button pb-4 me-5 d-flex justify-content-end gap-2">
 <input type="search" id="search" placeholder="Search" class="search"/>
@@ -65,15 +57,15 @@ Society Residents
                             }
                         @endphp
                         <td>{{ $username }}</td>
-                        @if($resident->user->mobile1)
-                            <td>{{  $resident->user->mobile1}}</td>
-                            @else
-                            <td >Not Provided</td>
-                        @endif
-                        @if($resident->user->mobile2)
-                        <td>{{  $resident->user->mobile2}}</td>
+                        @if(isset($resident->user->mobile1))
+                            <td>{{ $resident->user->mobile1 }}
                         @else
-                        <td >Not Provided</td>
+                            <td>Not Provided</td>
+                        @endif
+                        @if(isset($resident->user->mobile2))
+                            <td>{{ $resident->user->mobile2 }}
+                        @else
+                            <td>Not Provided</td>
                         @endif
                         @if ($resident->isOwner)
                             <td>Owner</td>
