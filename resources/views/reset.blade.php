@@ -5,10 +5,10 @@ Society Reset-Password
 @section('content')
 {{-- reset password --}}
 <div class="main-profile-password">
-    <div class="   mb-2 mt-3">
+    <div class="mb-2 mt-3">
         <div class="row justify-content-center">
             <div class="w-100">
-                <div class="forgot">
+                <div class="forgot shadow p-5">
 
                     <h2>Reset your password?</h2>
                     <form class="form" action="{{ route('user.resetpassword', $user) }}" method="POST">
