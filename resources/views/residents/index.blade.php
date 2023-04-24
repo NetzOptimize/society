@@ -9,7 +9,7 @@ Society Residents
     </div>
     @if (auth()->user()->usertype_id != 3)
         <div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
-            <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
+            <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center hide"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
 
         </div>
@@ -19,9 +19,9 @@ Society Residents
 
 
 <div class="refresh-button pb-4 me-5 d-flex justify-content-end gap-2">
-<input type="search" id="search" placeholder="Search" class="search"/>
+<input type="search" id="search" placeholder="Search" class="search hide"/>
 
-<button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
+<button onclick="printDiv()" class="btn btn-success  d-flex align-items-center hide">Print</button>
 </div>
 
 </div>
@@ -36,11 +36,12 @@ Society Residents
                 <th>Mobile2</th>
                 <th>Occupancy Type</th>
                 <th>Date Of Occupancy</th>
-                <th>Detail</th>
+                <th class="hide">Detail</th>
                 @if (auth()->user()->usertype_id != 3)
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th class="hide">Edit</th>
+                    <th class="hide">Delete</th>
                 @endif
+
             </tr>
             </thead>
             <tbody>
@@ -73,14 +74,14 @@ Society Residents
                             <td>Tenant</td>
                         @endif
                         <td>{{ $resident->datofoccupancy }}</td>
-                        <td> <a href="{{ route('houses.show', $resident->house) }}" class="btn btn-success">View</a></td>
+                        <td> <a href="{{ route('houses.show', $resident->house) }}" class="btn btn-success hide">View</a></td>
                         @if (auth()->user()->usertype_id != 3)
-                            <td><a href="{{ route('residents.edit', $resident) }}" class="btn btn-success">Edit</a></td>
+                            <td><a href="{{ route('residents.edit', $resident) }}" class="btn btn-success hide">Edit</a></td>
                             <td>
                                 <form method="POST" class="m-0" action="{{ route('residents.destroy', $resident) }}">
                                     @csrf
                                     <input name="_method" type="hidden" value="DELETE">
-                                    <button type="submit" class="btn  btn-xs btn-danger btn-flat show_confirm"
+                                    <button type="submit" class="btn  btn-xs btn-danger btn-flat show_confirm hide"
                                         data-toggle="tooltip" title='Delete'>Delete</button>
                                 </form>
                             </td>
@@ -126,15 +127,9 @@ Society Residents
 
 // for data printing
     function printDiv() {
-        var printableArea = document.getElementById('printableArea').innerHTML;
-        var printWindow = window.open('', '', 'height=0,width=0');
-        printWindow.document.write('<html><head><title>Print Page</title></head><body>');
-        printWindow.document.write(printableArea);
-        printWindow.document.write('</body></html>');
-        printWindow.document.close();
-        printWindow.print();
-        printWindow.close();
+        $(".hide").hide();
+        window.print();
+        location.reload(true);
     }
-
     </script>
 @endsection
