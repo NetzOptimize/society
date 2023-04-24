@@ -13,7 +13,7 @@ Society User-Profile
         <div class=" image d-flex flex-column justify-content-center align-items-center gap-3"> 
              <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
         <div class="profile-details">
-        <p class="name fw-bold text-primary m-0 display-6">Mishra </p> 
+        <p class="name fw-bold text-primary m-0 display-6">Mishra</p> 
               <p class="house fw-bold m-2">DSA-1-23</p> 
               <p class="Mobile fw-bold">6786576544</p> 
 

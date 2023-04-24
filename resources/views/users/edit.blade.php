@@ -45,21 +45,8 @@ Society Edit User
             {{ $message }}
         @enderror
         </div>
-        <label>Password:</label>
-        <input type="password" name="password" id="password" class="form-control">
-        <div class="error">
-        @error('password')
-            {{ $message }}
-        @enderror
-        </div>
-        <label>Confirm-Password:</label>
-         <input type="password" name="confirmPassword"  id="password" class="form-control">
-         <div class="d-flex justify-content-start gap-2"><input type="checkbox"  id="checkbox" class="position-static">Show Password</div>
-        <div class="error">
-        @error('confirmPassword')
-            {{ $message }}
-        @enderror
-        </div>
+        
+        
         <label>User-Type</label>
         <select name="usertype_id" class="form-select user-type1">
             @foreach ($usertypes as $usertype)

@@ -6,7 +6,7 @@ Society User-Profile
 @section('content')
 
 {{-- profile picture --}}
-<div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-5">
+<!-- <div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-5">
     <div class="img">
         @php $image = Auth()->user()->user_image;@endphp
         @if($image)
@@ -89,7 +89,83 @@ Society User-Profile
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+
+
+
+<!-- Profile card -->
+<div class="main" id="profile-main"> 
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center" id="user-profile-show"> 
+    <div class="card p-4"> 
+        <div class=" image d-flex flex-column justify-content-center align-items-center gap-3"> 
+             <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
+        <div class="profile-details">
+        <p class="name fw-bold text-primary m-0 display-6">Mishra</p> 
+              <p class="house m-2"><span class="fw-bold"> House </span>: DSA-1-23</p> 
+              <p class="user_id  "><span class="fw-bold">User_id </span> : #1245452</p> 
+
+
+        </div>
+            
+
+             
+                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a> 
+                </div>  -->
+                <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Edit Profile
+</button>
+<div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+                       <a href="www.twitter.com"><span><i class="fa fa-twitter text-dark"></i></span> </a>  
+                       <a href="www.facebook.com">  <span><i class="fa fa-facebook-f text-dark"></i></span></a>
+                       <a href="www.instagram.com"><span><i class="fa fa-instagram text-dark"></i></span> </a>   
+                       <a href="www.linkedin.in"><span><i class="fa fa-linkedin text-dark"></i></span></a> 
+                           </div>
+             
+                        <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">Joined May,2021</span> 
+                    </div> 
+                </div>
+             </div>
 </div>
+</div>
+
+
+<!-- modal -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+    
+      <!-- <div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-3">
+    <div class="img">
+        @php $image = Auth()->user()->user_image;@endphp
+        @if($image)
+        <img src="{{ asset( str_replace("public","storage",$image)) }}" alt="" >
+        @endif
+    </div>
+    <form action="{{ route('users.image.store') }}" method="POST" class="shadow p-4 mt-3" enctype="multipart/form-data">
+        @csrf
+        <p class="fw-bold">Update Your Profile Picture ?</p>
+        <label class="block mb-4">
+            <span class="sr-only">Choose File</span>
+            <input type="file" name="image"
+                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+            @error('image')
+            <span class="error">{{ $message }}</span>
+            @enderror
+        </label>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+</div> -->
+
+
+ 
+ 
+
+ 
+   
 <script>
     $(document).ready(function(){
         $('#checkbox').on('change', function(){
