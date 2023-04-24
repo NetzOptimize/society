@@ -440,7 +440,7 @@ h3#resident-heading {
 
 .search::placeholder {
     color: black;
-  |}
+  }
 
 
 
@@ -451,7 +451,16 @@ h3#resident-heading {
     width: 120px;
     height: 110px;
 }
+.card.p-4 {
+    width: 25%;
+}
+thead#profile-heading-form  
 
+   {
+        vertical-align: middle !important;
+     }
+ 
+ 
 /* responsiveness */
 /* responsiveness */
 /* responsiveness */
@@ -550,7 +559,9 @@ h3#resident-heading {
     #payment-method {
         width: 80% !important;
     }
-
+    .card.p-4 {
+        width: 40%;
+    }
     /* navbar */
 
     /* navbar end */
@@ -642,7 +653,9 @@ h3#resident-heading {
         width: 60% !important;
 
     }
-
+    .card.p-4 {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -766,6 +779,9 @@ padding: 0px !important;
        .main-details-house.me-5.ms-5{
         margin: 10px 0px 10px 0px !important;
        }
+       .card.p-4 {
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 520px) {
@@ -868,6 +884,9 @@ padding: 0px !important;
    div#main-details1{
     flex-direction: column;
    }
+   .card.p-4 {
+    width: 70%;
+}
   
 }
 
@@ -949,6 +968,9 @@ padding: 0px !important;
 
     .month {
         gap: 3px 95px;
+    }
+    .card.p-4 {
+        width: 80%;
     }
 }
 

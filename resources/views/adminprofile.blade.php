@@ -4,7 +4,57 @@ Society User-Profile
 @endsection
 @section('content')
 {{-- profile picture --}}
-<div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-5">
+
+
+<!-- Profile card -->
+<div class="main" id="profile-main"> 
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
+    <div class="card p-4"> 
+        <div class=" image d-flex flex-column justify-content-center align-items-center gap-3"> 
+             <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
+        <div class="profile-details">
+        <p class="name fw-bold text-primary m-0 display-6">Mishra </p> 
+              <p class="house fw-bold m-2">DSA-1-23</p> 
+              <p class="Mobile fw-bold">6786576544</p> 
+
+
+        </div>
+            
+
+             
+                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a> 
+                </div>  -->
+                <button type="button" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Edit Profile
+</button>
+<div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+                         <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>
+                          <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>
+                           </div>
+             
+                        <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">Joined May,2021</span> 
+                    </div> 
+                </div>
+             </div>
+</div>
+</div>
+
+
+<!-- modal -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit-Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+      <div class="upload d-flex justify-content-center align-items-center gap-3 flex-wrap mt-3">
     <div class="img">
         @php $image = Auth()->user()->user_image;@endphp
         @if($image)
@@ -29,9 +79,9 @@ Society User-Profile
 
 {{-- reset password --}}
 <div class="main-profile-password">
-    <div class="container  mb-2 mt-5">
+    <div class="container  mb-2 mt-3">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10">
+            <div class="w-100">
                 <div class="forgot">
 
                     <h2>Reset your password?</h2>
@@ -78,7 +128,7 @@ Society User-Profile
                                 </div>
                             </div>
                             <div class="form-group ms-2">
-                                <input class="btn btn-lg btn-primary btn-block" value="Reset My Password" id="reset-your-password" type="submit">
+                                <input class="btn btn-lg btn-dark btn-block" value="Reset My Password" id="reset-your-password" type="submit">
                             </div>
                         </fieldset>
                     </form>
@@ -87,6 +137,71 @@ Society User-Profile
             </div>
         </div>
     </div>
+</div>
+
+
+
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-dark">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- table   -->
+
+<div class="profile-table table-responsive ms-5 me-5">
+<table class="table table-bordered table-hover">
+  <thead  id="profile-heading-form">
+    <tr class="table-dark">
+      <th scope="col">Sno.</th>
+      <th scope="col"><div class="dropdown">
+  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Status
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark " aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item  " href="#">Paid</a></li>
+    <li><a class="dropdown-item  " href="#">Unpaid</a></li>
+
+ 
+  </ul>
+</div></th>
+      <th scope="col">Payment-Methods</th>
+      <th scope="col">Months</th>
+
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      
+      <td class="text-danger">  Unpaid</td>
+      <td>Gpay</td>
+      <td>Febuary</td>
+      <td class="text-danger">Rs.2300/-</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td class="text-success">Paid</td>
+      <td>Cash</td>
+      <td>March</td>
+
+      <td>Rs.4000/-</td>
+    </tr>
+    
+    <tr>
+      <th scope="row">3</th>
+      <td class="text-success">Paid</td>
+      <td>Card</td>
+      <td>April-December</td>
+
+      <td>Rs.20000/-</td>
+    </tr>
+  
+  </tbody>
+</table>
 </div>
 
 <script>

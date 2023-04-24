@@ -22,7 +22,7 @@ Society Houses Show
         <div class="main-details rounded bg-light p-4 ">
 
             @if (auth()->user()->usertype_id != 3)
-            <div class="resident-create mt-3 p-3 me-5 d-flex justify-content-end">
+            <div class="resident-create mt-3 p-3 me-3 d-flex justify-content-end">
                 <a href="{{ route('residents.create', $house->id) }}" class="btn btn-success d-flex align-items-center"> Add Resident</a>
             </div>
             @endif
