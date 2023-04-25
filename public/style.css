@@ -23,6 +23,11 @@
     font-size: 13px;
 }
 
+#my-div1{
+    background-color: whitesmoke;
+    border: 2px solid black;
+    margin: 18px;
+}
 .form-control:focus {
     color: #495057;
     background-color: #fff;
