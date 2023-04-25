@@ -11,16 +11,16 @@ Society User-Profile
     <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
             <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
-                <form action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
+                <form id="profile-pic-form" action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label for="fileToUpload">
-                        <div class="profile-pic" style="background-image: url('https://randomuser.me/api/portraits/med/men/65.jpg')">
+                        <div class="profile-pic" style="background-image: url('https://cdn-icons-png.flaticon.com/512/21/21104.png')">
                             <span class="glyphicon glyphicon-camera"></span>
-                            <span>Change Image</span>
+                            <span >Change Image</span>
                         </div>
                     </label>
-                    <input type="File" name="image" id="fileToUpload">
-                    <input type="submit" value="Done" class="btn btn-dark">
+                    <input type="file" name="image" id="fileToUpload" onchange="submitForm()">
+                    {{-- <input type="button" value="Update Profile" class="btn btn-light" onclick="submitForm()"> --}}
                 </form>
                 <div class="profile-details">
                     <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
@@ -143,6 +143,10 @@ Society User-Profile
             $('.password').attr('type', $('#checkbox').prop('checked') == true ? "text" : "password");
         });
     });
+
+    function submitForm() {
+        document.getElementById("profile-pic-form").submit();
+    }
 
 </script>
 @endsection

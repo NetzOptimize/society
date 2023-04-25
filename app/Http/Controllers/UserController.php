@@ -281,7 +281,7 @@ class UserController extends Controller
     public function imagestore(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
 
         $image_path = $request->file('image')->storeAs('public/image', 'UserImage'.time().'.jpg');

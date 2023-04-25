@@ -60,11 +60,9 @@ Society Edit User
             {{ $message }}
         @enderror
         </div>
+        @if (auth()->user()->usertype_id == 1)
         <label>User-Type</label>
         <select name="usertype_id" class="form-select user-type1">
-            @if (auth()->user()->usertype_id ==3)
-                <option value="3" readonly>Moderator</option>
-            @else
             @foreach ($usertypes as $usertype)
                 @if ($user->usertype_id == $usertype->id)
                     <option value="{{ $usertype->id }}" selected>{{ $usertype->role }}</option>
