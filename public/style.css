@@ -484,6 +484,10 @@ thead#profile-heading-form
          th#th-payment-print{
 display: none;
 }
+tr.table-dark th:last-child {
+    display: none !important;
+    border: none !important;
+}
  
 
 }

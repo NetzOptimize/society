@@ -19,7 +19,7 @@ Society Residents
 
 
 
-<div class="refresh-button pb-4 me-5 d-flex justify-content-end gap-2">
+<div class="refresh-button pb-4 me-5 d-flex justify-content-end align-items-center gap-2">
 <input type="search" id="search" placeholder="Search" class="search hide"/>
 
 <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center hide">Print</button>
