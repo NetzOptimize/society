@@ -106,7 +106,7 @@ class UserController extends Controller
         ]);
 
         $password = $request->validate([
-            'password' => 'nullable',
+            'password' => 'nullable|min:8',
             'confirmPassword' => 'same:password',
         ]);
 
@@ -297,6 +297,12 @@ class UserController extends Controller
     {
 
         return view('reset',compact('user'));
+    }
+
+    public function userresetcreate(User $user)
+    {
+
+        return view('users.reset',compact('user'));
     }
 
 

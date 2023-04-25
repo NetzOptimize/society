@@ -14,13 +14,20 @@ Society User-Profile
                 <form id="profile-pic-form" action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label for="fileToUpload">
+                        @php $image = Auth()->user()->user_image; @endphp
+                        @if($image)
+                        <div class="profile-pic" style="background-image:{{ url('https://8.zeroguess.us/society/storage/app/'.$image) }}">
+                            <span class="glyphicon glyphicon-camera"></span>
+                            <span >Change Image</span>
+                        </div>
+                        @else
                         <div class="profile-pic" style="background-image: url('https://cdn-icons-png.flaticon.com/512/21/21104.png')">
                             <span class="glyphicon glyphicon-camera"></span>
                             <span >Change Image</span>
                         </div>
+                        @endif
                     </label>
                     <input type="file" name="image" id="fileToUpload" onchange="submitForm()">
-                    {{-- <input type="button" value="Update Profile" class="btn btn-light" onclick="submitForm()"> --}}
                 </form>
                 <div class="profile-details">
                     <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
@@ -32,10 +39,8 @@ Society User-Profile
                     <p class="Mobile fw-bold">Email : {{  auth()->user()->email }}</p>
                 @endisset
                 </div>
-                <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a>
-                </div>  -->
                 <a href="{{  route('users.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
-                <a href="{{  route('user.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
+                <a href="{{  route('admin.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                     <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>
                     <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>
