@@ -11,9 +11,9 @@ Society Users
         </h3>
     </div>
 
-        <div class="add-user mt-2 pt-3 pb-2 me-5 d-flex justify-content-end gap-2 ">
+        <div class="add-user mt-2 pt-3 pb-2 me-5 d-flex justify-content-end align-items-end gap-2 ">
               {{-- search bar --}}
-        <input type="search" id="search" placeholder="Search" class="search ">
+        <input type="search" id="search" placeholder="Search" class="search mb-1">
         
         @if (auth()->user()->usertype_id != 3)
             <a href="{{ route('users.create') }}" class="btn btn-success">Add User <img src="{{ asset('add-user.png') }}"

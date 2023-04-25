@@ -11,7 +11,7 @@ Society Expenses
         <h3>Lists Of Expenses</h3>
     </div>
 
-    <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end gap-2">
+    <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end align-items-center gap-2">
         <input type="search" id="search" placeholder="Search" class="search" />
 
         <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>

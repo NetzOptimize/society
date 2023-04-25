@@ -475,14 +475,18 @@ thead#profile-heading-form
         #th-print{
             display: none;
          }
-         table.table.table-light.table-hover.table-bordered.align-middle td:nth-child(7) .table.table.table-light.table-hover.table-bordered.align-middle td:nth-child(8),   table.table.table-light.table-hover.table-bordered.align-middle td:nth-child(9){
+         table.table.table-light.table-hover.table-bordered.align-middle td:last-child .table.table.table-light.table-hover.table-bordered.align-middle td:last-child,   table.table.table-light.table-hover.table-bordered.align-middle td:last-child{
             display: none;
          }
-         table.table.table-light.table-hover.table-bordered.align-middle th:nth-child(7),table.table.table-light.table-hover.table-bordered.align-middle th:nth-child(8){
+         table.table.table-light.table-hover.table-bordered.align-middle th:last-child,table.table.table-light.table-hover.table-bordered.align-middle th:nth-last-child(9){
             display: none;
          }
          th#th-payment-print{
 display: none;
+}
+tr.table-dark th:last-child {
+    display: none !important;
+    border: none !important;
 }
  
 
