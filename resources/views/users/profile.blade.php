@@ -91,34 +91,44 @@ Society User-Profile
     </div>
 </div> -->
 
-
-
-
-
-
 <!-- Profile card -->
 <div class="main" id="profile-main">
-    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" id="user-profile-show">
+    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
             <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
-                <img src="{{asset('dummy.jpg')}}" class="rounded-pill border border-primary" height="100" width="100" />
+                <form id="profile-pic-form" action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <label for="fileToUpload">
+                        @php $image = Auth()->user()->user_image; @endphp
+                        @if($image)
+                        <div class="profile-pic" style="background-image:{{ url('https://8.zeroguess.us/society/storage/app/'.$image) }}">
+                            <span class="glyphicon glyphicon-camera"></span>
+                            <span >Change Image</span>
+                        </div>
+                        @else
+                        <div class="profile-pic" style="background-image: url('https://cdn-icons-png.flaticon.com/512/21/21104.png')">
+                            <span class="glyphicon glyphicon-camera"></span>
+                            <span >Change Image</span>
+                        </div>
+                        @endif
+                    </label>
+                    <input type="file" name="image" id="fileToUpload" onchange="submitForm()">
+                </form>
                 <div class="profile-details">
                     <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
-                    <p class="house m-2"><span class="fw-bold"> Mobile-1 </span>: {{  auth()->user()->mobile1 }}</p>
+                    <p class="house fw-bold m-2">Mobile-1 : {{  auth()->user()->mobile1 }}</p>
                     @isset(auth()->user()->mobile2)
-                    <p class="house m-2"><span class="fw-bold"> Mobile-2</span>: {{  auth()->user()->mobile2 }}</p>
+                        <p class="Mobile fw-bold">Mobile-2 : {{  auth()->user()->mobile2 }}</p>
                     @endisset
                     @isset(auth()->user()->email)
-                    <p class="house m-2"><span class="fw-bold"> Email </span>: {{  auth()->user()->email }}</p>
-                    @endisset
+                    <p class="Mobile fw-bold">Email : {{  auth()->user()->email }}</p>
+                @endisset
                 </div>
-                <a href="{{  route('user.profile.edit') }}" class="btn btn-dark " > Edit Profile</a>
-                <a href="{{  route('user.reset', auth()->user()) }}" class="btn btn-dark " >Reset Password</a>
+                <a href="{{  route('user.profile.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
+                <a href="{{  route('user.reset',auth()->user() ) }}" class="btn btn-dark " >Reset Password</a>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
-                    <a href="www.twitter.com"><span><i class="fa fa-twitter text-dark"></i></span> </a>
-                    <a href="www.facebook.com"> <span><i class="fa fa-facebook-f text-dark"></i></span></a>
-                    <a href="www.instagram.com"><span><i class="fa fa-instagram text-dark"></i></span> </a>
-                    <a href="www.linkedin.in"><span><i class="fa fa-linkedin text-dark"></i></span></a>
+                    <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>
+                    <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>
                 </div>
 
                 <div class=" px-2 rounded mt-4 date "> <span class="join bg-light rounded p-2">{{ date(" jS  F Y ")}}</span>
@@ -127,7 +137,6 @@ Society User-Profile
         </div>
     </div>
 </div>
-
 
 <!-- modal -->
 <!-- Button trigger modal -->
@@ -169,6 +178,8 @@ Society User-Profile
             $('.password').attr('type', $('#checkbox').prop('checked') == true ? "text" : "password");
         });
     });
-
+    function submitForm() {
+        document.getElementById("profile-pic-form").submit();
+    }
 </script>
 @endsection
