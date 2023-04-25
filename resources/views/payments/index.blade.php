@@ -115,7 +115,7 @@ Society Payments
                     @if (null == request('unpaid'))
                     <th>Payment Mode</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2 order_by">
-                        <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-success btn-sm dropdown-toggle hide" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             @if (request('sort'))
                             {{ request('sort') }}
                             @else
@@ -123,14 +123,14 @@ Society Payments
                             @endif
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
-                            <li><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
+                            <li class="hide"><a class="dropdown-item " href="?sort=Ascending">Ascending</a></li>
+                            <li class="hide"><a class="dropdown-item " href="?sort=Descending">Descending</a></li>
                         </ul>
                     </div>
                 </th>
                     <th>Amount</th>
                     @if (auth()->user()->usertype_id != 3)
-                    <th  colspan="2" class="text-center" id="th-payment-print">Actions</th>
+                    <th  colspan="2" class="text-center hide" id="th-payment-print">Actions</th>
                      @endif
                     @endif
                 </tr>
@@ -170,7 +170,7 @@ Society Payments
                     <form method="POST" action="{{ route('payments.destroy', $payment->id) }}" class="m-0">
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
-                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm hide" data-toggle="tooltip" title='Delete'>Delete</button>
                     </form>
                 </td>
                 @endif
@@ -206,14 +206,16 @@ Society Payments
 
     // for data printing
     function printDiv() {
+        $(".hide").hide();
         var printableArea = document.getElementById('printableArea').innerHTML;
         var printWindow = window.open('', '', 'height=0,width=0');
-        printWindow.document.write('<html><head><title>Print Page</title></head><body>');
+        printWindow.document.write('<html><head><title>Print Page</title></head><body><div><b>List Of Payments</b</div>');
         printWindow.document.write(printableArea);
         printWindow.document.write('</body></html>');
         printWindow.document.close();
         printWindow.print();
         printWindow.close();
+        $(".hide").show();
     }
 
     // searching

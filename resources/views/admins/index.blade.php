@@ -27,7 +27,7 @@ Society Expenses
                         <th>Amount</th>
                         <th>Payment Mode</th>
                         <th class="d-flex align-items-center ">Date Of Payments <div class="dropdown ms-2 order_by">
-                                <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="btn btn-success btn-sm dropdown-toggle hide" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     @if (request('sort'))
                                     {{ request('sort') }}
                                     @else
@@ -35,8 +35,8 @@ Society Expenses
                                     @endif
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
-                                    <li><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
+                                    <li class="hide"><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
+                                    <li class="hide"><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
                                 </ul>
                             </div>
                         </th>
@@ -46,11 +46,15 @@ Society Expenses
                 <tbody>
                     <tr>
                         @foreach ($expenses as $expense)
-                        <td class="">{{ $expense->payee }}</td>
-                        <td class="">{{ $expense->amount }}</td>
-                        <td class="">{{ $expense->paymentmode->name }}</td>
-                        <td class="">{{ $expense->dateofpayment }}</td>
-                        <td class="">{{ $expense->comments }}</td>
+                        <td >{{ $expense->payee }}</td>
+                        <td >{{ $expense->amount }}</td>
+                        <td >{{ $expense->paymentmode->name }}</td>
+                        <td >{{ $expense->dateofpayment }}</td>
+                        @if( $expense->comments)
+                        <td >{{ $expense->comments }}</td>
+                        @else
+                        <td >-</td>
+                        @endif
                     </tr>
                 </tbody>
                 @endforeach
@@ -72,14 +76,16 @@ Society Expenses
 
         // for data printing
         function printDiv() {
+            $(".hide").hide();
             var printableArea = document.getElementById('printableArea').innerHTML;
             var printWindow = window.open('', '', 'height=0,width=0');
-            printWindow.document.write('<html><head><title>Print Page</title></head><body>');
+            printWindow.document.write('<html><head><title>Print Page</title></head><body><div><b>List Of Expenses</b</div>');
             printWindow.document.write(printableArea);
             printWindow.document.write('</body></html>');
             printWindow.document.close();
             printWindow.print();
             printWindow.close();
+            $(".hide").show();
         }
 
     </script>
