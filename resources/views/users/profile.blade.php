@@ -113,6 +113,7 @@ Society User-Profile
                     @endisset
                 </div>
                 <a href="{{  route('user.profile.edit') }}" class="btn btn-dark " > Edit Profile</a>
+                <a href="{{  route('user.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                     <a href="www.twitter.com"><span><i class="fa fa-twitter text-dark"></i></span> </a>
                     <a href="www.facebook.com"> <span><i class="fa fa-facebook-f text-dark"></i></span></a>

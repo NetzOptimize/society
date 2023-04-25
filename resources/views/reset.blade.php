@@ -1,4 +1,4 @@
-@extends('layouts.mainWithoutNav')
+@extends('layouts.main')
 @section('title')
 Society Reset-Password
 @endsection
@@ -64,4 +64,14 @@ Society Reset-Password
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#checkbox').on('change', function() {
+            $('.password').attr('type', $('#checkbox').prop('checked') == true ? "text" : "password");
+        });
+    });
+
+
+</script>
 @endsection
+
