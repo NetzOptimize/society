@@ -10,7 +10,8 @@ Society Payments
     <h3>Payment History</h3>
 </div>
 
-<div class="d-flex justify-content-center align-items-center  p-4 payment1">
+<div class="hide">
+<div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
     <div class="paid-month-flex d-flex me-3">
         <div class="dropdown me-2">
             <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -74,6 +75,7 @@ Society Payments
     <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
     <button onclick="printDiv()" class="btn btn-success d-flex align-items-center ">Print</button>
 </div>
+</div>
 <!-- table -->
 <div class="reports d-flex justify-content-end me-5">
     <table class="table w-auto table-bordered ">
@@ -130,8 +132,10 @@ Society Payments
                 </th>
                     <th>Amount</th>
                     @if (auth()->user()->usertype_id != 3)
+                    <div class="hide">
                     <th  colspan="2" class="text-center hide" id="th-payment-print">Actions</th>
                      @endif
+                    </div>
                     @endif
                 </tr>
             </thead>
@@ -162,6 +166,7 @@ Society Payments
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
+                <div class="hide">
                 @if (auth()->user()->usertype_id == 1)
                 <td>
                     <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success hide">Edit</a>
@@ -180,6 +185,7 @@ Society Payments
                 @else
                 <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
                 @endif
+                </div>
             </tbody>
         </table>
     </div>
@@ -207,14 +213,15 @@ Society Payments
     // for data printing
     function printDiv() {
         $(".hide").hide();
-        var printableArea = document.getElementById('printableArea').innerHTML;
-        var printWindow = window.open('', '', 'height=0,width=0');
-        printWindow.document.write('<html><head><title>Print Page</title></head><body><div><b>List Of Payments</b</div>');
-        printWindow.document.write(printableArea);
-        printWindow.document.write('</body></html>');
-        printWindow.document.close();
-        printWindow.print();
-        printWindow.close();
+        // var printableArea = document.getElementById('printableArea').innerHTML;
+        // var printWindow = window.open('', '', 'height=0,width=0');
+        // printWindow.document.write('<html><head><title>Print Page</title></head><body><div><b>List Of Payments</b</div>');
+        // printWindow.document.write(printableArea);
+        // printWindow.document.write('</body></html>');
+        // printWindow.document.close();
+        // printWindow.print();
+        // printWindow.close();
+        window.print();
         $(".hide").show();
     }
 

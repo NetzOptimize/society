@@ -8,21 +8,18 @@ Society Residents
     <h3>List Of Residents</h3>
 </div>
 @if (auth()->user()->usertype_id != 3)
+<div class="hide">
 <div class="resident-create mt-3 p-3 me-4 d-flex justify-content-end">
     <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
-
 </div>
 @endif
-
-
-
 
 <div class="refresh-button pb-4 me-5 d-flex justify-content-end align-items-center gap-2">
     <input type="search" id="search" placeholder="Search" class="search hide" />
 
     <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center hide">Print</button>
 </div>
-
+</div>
 </div>
 <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-3 table-responsive">
     <div id="printableArea">
@@ -35,12 +32,13 @@ Society Residents
                     <th>Mobile2</th>
                     <th>Occupancy Type</th>
                     <th>Date Of Occupancy</th>
-                    <th class="hide">Detail</th>
-                    @if (auth()->user()->usertype_id != 3)
-                    <th colspan="2" class="text-center hide" id="th-print"> Actions
-                    </th>
-                    @endif
-
+                    <div class="hide">
+                        <th> Detail</th>
+                        @if (auth()->user()->usertype_id != 3)
+                        <th colspan="2" class="text-center" id="th-print"> Actions
+                        </th>
+                        @endif
+                    </div>
                 </tr>
             </thead>
             <tbody>
@@ -61,18 +59,19 @@ Society Residents
                     <td class="error1">Not Provided</td>
                     @else
                     <td>{{ $resident->user->mobile1 }}
-                    @endif
-                    @if(empty($resident->user->mobile2))
+                        @endif
+                        @if(empty($resident->user->mobile2))
                     <td class="error1">Not Provided</td>
                     @else
                     <td>{{ $resident->user->mobile2 }}
-                    @endif
-                    @if ($resident->isOwner)
+                        @endif
+                        @if ($resident->isOwner)
                     <td>Owner</td>
                     @else
                     <td>Tenant</td>
                     @endif
                     <td>{{ $resident->datofoccupancy }}</td>
+                    <div class="hide">
                     <td> <a href="{{ route('houses.show', $resident->house) }}" class="btn btn-success hide">View</a></td>
                     @if (auth()->user()->usertype_id != 3)
                     <td><a href="{{ route('residents.edit', $resident) }}" class="btn btn-success hide">Edit</a></td>
@@ -84,6 +83,7 @@ Society Residents
                         </form>
                     </td>
                     @endif
+                    </div>
                 </tr>
                 @endforeach
                 @endif
@@ -126,14 +126,7 @@ Society Residents
     // for data printing
     function printDiv() {
         $(".hide").hide();
-        var printableArea = document.getElementById('printableArea').innerHTML;
-        var printWindow = window.open('', '', 'height=0,width=0');
-        printWindow.document.write('<html><head><title>Print Page</title></head><body> <div><b>List Of Residents</b</div>');
-        printWindow.document.write(printableArea);
-        printWindow.document.write('</body></html>');
-        printWindow.document.close();
-        printWindow.print();
-        printWindow.close();
+        window.print();
         $(".hide").show();
 
     }
