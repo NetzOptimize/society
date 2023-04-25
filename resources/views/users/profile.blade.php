@@ -99,17 +99,19 @@ Society User-Profile
                 <form id="profile-pic-form" action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label for="fileToUpload">
-                        @php $image = Auth()->user()->user_image; @endphp
+                        @php
+                            $image = Auth()->user()->user_image;
+                        @endphp
                         @if($image)
-                        <div class="profile-pic" style="background-image:{{ url('https://8.zeroguess.us/society/storage/app/'.$image) }}">
-                            <span class="glyphicon glyphicon-camera"></span>
-                            <span >Change Image</span>
-                        </div>
+                            <div class="profile-pic" style="background-image: url('https://8.zeroguess.us/society/storage/app/{{$image}}')">
+                                <span class="glyphicon glyphicon-camera"></span>
+                                <span>Change Image</span>
+                            </div>
                         @else
-                        <div class="profile-pic" style="background-image: url('https://cdn-icons-png.flaticon.com/512/21/21104.png')">
-                            <span class="glyphicon glyphicon-camera"></span>
-                            <span >Change Image</span>
-                        </div>
+                            <div class="profile-pic" style="background-image: url('https://cdn-icons-png.flaticon.com/512/21/21104.png')">
+                                <span class="glyphicon glyphicon-camera"></span>
+                                <span >Change Image</span>
+                            </div>
                         @endif
                     </label>
                     <input type="file" name="image" id="fileToUpload" onchange="submitForm()">
