@@ -241,6 +241,8 @@ h3#resident-heading {
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px 130px;
+    align-items: self-end;
+
 }
 
 .main-height {
