@@ -637,6 +637,10 @@ form input[type="file"] {
         flex-direction: column-reverse;
         gap: 15px;
     }
+    .navbar-expand-lg .navbar-collapse {
+       
+        justify-content: end !important;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -741,7 +745,32 @@ form input[type="file"] {
     .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2{
         justify-content: center !important;
     }
+    .user-links.d-block.p-1{
+
+    }
+    .d-flex .justify-content-end .form-user-nav{
+
+    }
+    .user .dropdown .pe-3 .me-3{
+        display: block !important;
+    }
+    .user-links .p-3{
+        display: block !important;
+        padding: 0px !important;
+    }
+    .user.dropdown.pe-3.me-3.d-flex.align-items-center{
+        display: block !important;
+        text-align: inherit;
+    }
+    nav#users-nav{
+flex-direction: column; 
+gap: 20px;  
+justify-content: end !important;
+ }
 }
+nav#users-nav a{
+    border: 1px solid #fff;
+ }
 
 @media screen and (max-width: 700px) {
     #login-height {
@@ -870,33 +899,7 @@ padding: 0px !important;
     #main-user {
         margin-top: 40px;
            }
-           .user-nav.text-center.p-2.bg-light.d-flex.align-items-center.justify-content-between.bg-dark.text-light.ms-5.me-5{
-            display: block !important;
-            padding: 30px !important;
-
-           }
-           .user.dropdown.pe-3.me-3.d-flex.align-items-center{
-            display: block !important;
-            padding: 0px !important ;
-            margin: 0px !important;
-           }
-           nav#users-nav a{
-            border: 1px solid white;
-            cursor: pointer !important;
-           }
-           .user-logo.d-flex.align-items-center.gap-2{
-display: flex;
-justify-content: center; 
-margin-bottom: 10px !important;          
-}
-.user-links.p-3{
-    padding: 0px !important;
-}
-#user-a-link{
-    margin-top: 10px !important;
-    border: 1px solid white;
-
-}
+    
 }
 
 
