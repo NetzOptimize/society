@@ -35,7 +35,7 @@ Society User-Profile
                 <!-- <div class=" d-flex mt-2"> <a href="" class="btn btn-dark"> Edit Profile</a>
                 </div>  -->
                 <a href="{{  route('users.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
-                <a href="{{  route('user.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
+                <a href="{{  route('admin.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                     <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>
                     <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>

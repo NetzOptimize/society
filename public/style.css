@@ -456,12 +456,12 @@ h3#resident-heading {
 .card.p-4 {
     width: 25%;
 }
-thead#profile-heading-form  
+thead#profile-heading-form
 
    {
         vertical-align: middle !important;
      }
- 
+
  #user-profile-show{
     margin-top: 80px !important;
  }
@@ -472,7 +472,7 @@ thead#profile-heading-form
         width: 100%;
         }
         table.table.table-light.table-hover.table-bordered.align-middle td{
-            background-color:#ffff;  
+            background-color:#ffff;
         }
         #th-print{
             display: none;
@@ -490,7 +490,7 @@ tr.table-dark th:last-child {
     display: none !important;
     border: none !important;
 }
- 
+
 
 }
 .profile-pic {
@@ -528,12 +528,14 @@ form input[type="file"] {
  }
 
 
-/* print end */ 
+/* print end */
 /* responsiveness */
- 
+
 @media screen and (max-width: 1600px) {
     #payment-method-form {
-        width: 80%;
+       {
+            width: 95%;
+        }
     }
 
     #edit-user {
@@ -631,14 +633,14 @@ form input[type="file"] {
     }
     /* navbar */
 
-  
+
     /* navbar end */
     .payment1 {
         flex-direction: column-reverse;
         gap: 15px;
     }
     .navbar-expand-lg .navbar-collapse {
-       
+
         justify-content: end !important;
     }
 }
@@ -763,8 +765,8 @@ form input[type="file"] {
         text-align: inherit;
     }
     nav#users-nav{
-flex-direction: column; 
-gap: 20px;  
+flex-direction: column;
+gap: 20px;
 justify-content: end !important;
  }
 }
@@ -862,7 +864,7 @@ nav#users-nav a{
        .refresh-button.pb-3.me-5.d-flex.justify-content-end{
         justify-content: center !important;
         padding: 0px !important;
-      
+
         margin: 10px 0px 10px 0px !important;
        }
        .resident-create.mt-3.p-3.me-5.d-flex.justify-content-end{
@@ -899,7 +901,7 @@ padding: 0px !important;
     #main-user {
         margin-top: 40px;
            }
-    
+
 }
 
 
@@ -1009,7 +1011,7 @@ padding: 0px !important;
 .payment-heading.text-center.bg-light.me-5.ms-5.rounded.mt-3.p-4{
     width: 80%;
 }
-  
+
 }
 
 @media screen and (max-width: 460px) {
