@@ -41,9 +41,19 @@ Society Create User
             {{ $message }}
         @enderror
         </div>
-          
-         
-        
+        <input type="password" name="password" placeholder="password"  class="form-control" value={{ old('password')}}>
+        <div class="error">
+        @error('password')
+            {{ $message }}
+        @enderror
+        </div>
+        <input type="password" name="confirmPassword" placeholder="confirm-password"  class="form-control" value={{ old('confirmPassword')}}>
+        <div class="error">
+        @error('confirmPassword')
+            {{ $message }}
+        @enderror
+        </div>
+
          <select name="usertype_id" class="form-select user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)

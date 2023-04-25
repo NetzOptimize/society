@@ -57,15 +57,15 @@ Society Residents
                     }
                     @endphp
                     <td>{{ $username }}</td>
-                    @if(isset($resident->user->mobile1))
+                    @if(empty($resident->user->mobile1))
+                    <td class="error1">Not Provided</td>
+                    @else
                     <td>{{ $resident->user->mobile1 }}
-                        @else
-                    <td>Not Provided</td>
                     @endif
-                    @if(isset($resident->user->mobile2))
+                    @if(empty($resident->user->mobile2))
+                    <td class="error1">Not Provided</td>
+                    @else
                     <td>{{ $resident->user->mobile2 }}
-                        @else
-                    <td>Not Provided</td>
                     @endif
                     @if ($resident->isOwner)
                     <td>Owner</td>
