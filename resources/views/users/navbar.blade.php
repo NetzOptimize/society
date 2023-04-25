@@ -73,7 +73,7 @@
             
     <!--  -->
     <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
   @php $image = Auth()->user()->user_image;@endphp
                 @if($image)
                     <img src="{{ asset( str_replace("public","storage",$image)) }}" alt="" class="rounded-pill" height="30px" width="30px">{{ Auth::user()->name }}</a>

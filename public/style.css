@@ -149,8 +149,8 @@ h3#resident-heading {
 }
 
 .main-edit {
-    height: 90vh;
-    display: flex;
+    margin: 30px;
+     display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -490,9 +490,14 @@ tr.table-dark th:last-child {
     display: none !important;
     border: none !important;
 }
- 
 
+@page:first{
+ 
+    background: black !important;
 }
+}
+
+ 
 .profile-pic {
     border-radius: 50%;
     height: 150px;
