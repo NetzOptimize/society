@@ -126,7 +126,7 @@ Society Residents
     // for data printing
     function printDiv() {
         $(".hide").hide();
-        $('#printableArea td').css('background-color','red');
+        // $('#printableArea td').css('background-color','blue');
         window.print();
         $(".hide").show();
 
