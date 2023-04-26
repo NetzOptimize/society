@@ -7,6 +7,8 @@ use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AdminController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -20,15 +22,29 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function()
-{
+Route::get('/', function () {
+    if (Auth::check()) {
+        if (auth()->user()->usertype_id == User::ADMIN) {
+
+            return redirect('home')->with('success', 'Welcome Admin');
+        } elseif (auth()->user()->usertype_id == User::RESIDENT) {
+
+            return redirect()->route('user.home')
+                ->with('success', 'Welcome Resident');
+        } else {
+            
+            return redirect('home')
+                ->with('success', 'Welcome Moderator');
+        }
+    }
+
     return view('login');
 })->name('login');
 
-Route::post('login/check',[LoginController::class, 'login'])->name('login.check');
-Route::get('logout',[LoginController::class, 'logout'])->name('logout');
+Route::post('login/check', [LoginController::class, 'login'])->name('login.check');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('forget-password', function() {
+Route::get('forget-password', function () {
     return view('users.forget-password');
 })->name('forget-password');
 Route::post('users/forgetpassword', [UserController::class, 'forgetpassword'])->name('forgetpassword');
@@ -39,10 +55,8 @@ Route::post('users/image/store', [UserController::class, 'imagestore'])->name('u
 Route::middleware(['auth'])->group(function () {
 
 
-    Route::get('/home', function()
-    {
+    Route::get('/home', function () {
         return view('home');
-
     });
     Route::get('admin/profile', [UserController::class, 'adminProfile'])->name('admin.user.profile');
 
@@ -60,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('houses', HouseController::class);
 
     Route::resource('residents', ResidentController::class)->except(['create']);;
-    Route::get('residents/create/{id?}', [ResidentController::class,'create'])->name('residents.create');
+    Route::get('residents/create/{id?}', [ResidentController::class, 'create'])->name('residents.create');
 
     Route::resource('payments', PaymentController::class);
     Route::post('ajax', [PaymentController::class, 'ajax'])->name('ajax');
@@ -69,11 +83,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::get('/report', function()
-{
+Route::get('/report', function () {
     $months = config('global.months');
 
-    return view('report',compact('months'));
-
+    return view('report', compact('months'));
 });
 Route::post('report/data', [AdminController::class, 'report'])->name('report.data');

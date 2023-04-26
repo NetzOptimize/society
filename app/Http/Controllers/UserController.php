@@ -110,7 +110,7 @@ class UserController extends Controller
             'confirmPassword' => 'same:password',
         ]);
 
-        if($password['password'])
+        if(!empty($password['password']))
         {
             $user->update([
                 'password' => Hash::make( $password['password'])
