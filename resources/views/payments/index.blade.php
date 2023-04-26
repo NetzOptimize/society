@@ -116,8 +116,8 @@ Society Payments
                     <th>Billing Month</th>
                     @if (null == request('unpaid'))
                     <th>Payment Mode</th>
-                    <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2 order_by">
-                        <a class="btn btn-success btn-sm dropdown-toggle hide" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
+                        <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             @if (request('sort'))
                             {{ request('sort') }}
                             @else
@@ -125,8 +125,8 @@ Society Payments
                             @endif
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li class="hide"><a class="dropdown-item " href="?sort=Ascending">Ascending</a></li>
-                            <li class="hide"><a class="dropdown-item " href="?sort=Descending">Descending</a></li>
+                            <li class=""><a class="dropdown-item " href="?sort=Ascending">Ascending</a></li>
+                            <li class=""><a class="dropdown-item " href="?sort=Descending">Descending</a></li>
                         </ul>
                     </div>
                 </th>

@@ -65,7 +65,7 @@ Society Edit User
             @enderror
         </div>
         @if (auth()->user()->usertype_id == 1)
-        <p>Want to change password ?<input type="checkbox" id="pass"></p>
+        <p>Want to change password ?<input type="checkbox" id="pass" class="ms-2"></p>
         <div class="error">
             @error('password')
             {{ $message }}

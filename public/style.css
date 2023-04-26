@@ -192,8 +192,8 @@ h3#resident-heading {
 }
 
 .main-expense-create {
-    height: 85vh;
-    display: flex;
+    margin: 10px 0px;
+     display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -473,6 +473,9 @@ thead#profile-heading-form
  div#printableArea th {
     vertical-align: middle;
 }
+.user-logo.d-flex.align-items-center.gap-2 {
+    padding: 10px 10px;
+}
 /* print-screen*/
 @media print{
 
@@ -540,7 +543,10 @@ form input[type="file"] {
           cursor: pointer;
  }
 
+#user-form1{
+    margin: 0px !important;
 
+}
 /* print end */
 /* responsiveness */
 
@@ -605,6 +611,8 @@ form input[type="file"] {
 
     .main-payment-method {
         height: unset;
+        margin: 10px;
+
     }
 }
 
@@ -634,8 +642,12 @@ form input[type="file"] {
 
     #create-resident {
         width: 75% !important;
+ 
     }
 
+    .main-create.d-flex.justify-content-center.align-items-center{
+        margin: 10px !important;
+    }
     #payment-method {
         width: 80% !important;
     }
@@ -653,6 +665,10 @@ form input[type="file"] {
     .navbar-expand-lg .navbar-collapse {
 
         justify-content: end !important;
+    }
+    .main-profile-password {
+        margin: 10px 0px;
+ 
     }
 }
 
@@ -759,12 +775,7 @@ form input[type="file"] {
         justify-content: center !important;
         margin: 0px !important;
     }
-    .user-links.d-block.p-1{
-
-    }
-    .d-flex .justify-content-end .form-user-nav{
-
-    }
+    
     .user .dropdown .pe-3 .me-3{
         display: block !important;
     }
@@ -778,12 +789,10 @@ form input[type="file"] {
     }
     nav#users-nav{
 flex-direction: column;
-gap: 20px;
+gap: 5px;
 justify-content: end !important;
  }
- nav#users-nav a{
-    border: 1px solid #fff;
- }
+ 
  .table-add-user.ps-5.pe-5.pt-3.table-responsive,.table-manage-house.ps-5.pe-5.pt-3.table-responsive,.table-resident.table-hover.table-bordered.align-middle.ps-5.pe-5.pt-3.table-responsive{
     padding: 0px !important;
  }
@@ -795,6 +804,13 @@ justify-content: end !important;
     margin: 0px !important;
      justify-content:center !important ;
  }
+ .d-flex.justify-content-center.align-items-center.p-4.payment1{
+    padding: 0px !important;
+ }
+ 
+ #main-user {
+    margin: 20px 0px;
+}
 }
 
  
@@ -908,6 +924,7 @@ padding: 0px !important;
        }
        div#main-details1{
         margin: 0 !important;
+        flex-direction: column-reverse;
        }
 
        .table-add-user.ps-5.pe-5.pt-3.table-responsive{
@@ -926,7 +943,9 @@ padding: 0px !important;
     #main-user {
         margin-top: 40px;
            }
-
+           .main-details.rounded.bg-light.p-4{
+            order: 2;
+           }
 }
 
 
@@ -1121,6 +1140,14 @@ padding: 0px !important;
     .card.p-4 {
         width: 80%;
     }
+    div#heading-edit{
+        justify-content: center !important;
+    }
+    h3#user-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
 }
 
 @media screen and (max-width: 320px) {

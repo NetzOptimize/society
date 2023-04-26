@@ -11,14 +11,10 @@ Society Residents
         <div class="resident-create mt-3 me-5 pt-3 pb-3 d-flex justify-content-end">
             <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
-
         </div>
     @endif
 
-
-
-
-<div class="refresh-button pb-4 me-5 d-flex justify-content-end align-items-center gap-2">
+<div class="refresh-button  p-4 me-5 d-flex justify-content-end align-items-center gap-2">
     <input type="search" id="search" placeholder="Search" class="search hide" />
 
     <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center hide">Print</button>
