@@ -32,7 +32,7 @@ Route::get('/', function () {
             return redirect()->route('user.home')
                 ->with('success', 'Welcome Resident');
         } else {
-            
+
             return redirect('home')
                 ->with('success', 'Welcome Moderator');
         }
@@ -50,14 +50,13 @@ Route::get('forget-password', function () {
 Route::post('users/forgetpassword', [UserController::class, 'forgetpassword'])->name('forgetpassword');
 Route::get('/forget/{id}', [UserController::class, 'forget'])->name('forget');
 Route::post('forgetpassword/{user}/store', [UserController::class, 'forgetstore'])->name('forgetpassword.store');
-Route::post('users/image/store', [UserController::class, 'imagestore'])->name('users.image.store');
 
-Route::middleware(['auth'])->group(function () {
-
+Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
     Route::get('/home', function () {
         return view('home');
     });
+    Route::post('users/image/store', [UserController::class, 'imagestore'])->name('users.image.store');
     Route::get('admin/profile', [UserController::class, 'adminProfile'])->name('admin.user.profile');
 
     Route::get('users/profile', [UserController::class, 'profile'])->name('user.profile');
