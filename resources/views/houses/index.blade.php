@@ -23,7 +23,7 @@ Society Houses
                 <th>House No</th>
                 <th>Address</th>
                 <th>House Type</th>
-                <th>View Details</th>
+                <th>Details</th>
             </tr>
             </thead>
             <tbody>

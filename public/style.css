@@ -465,6 +465,9 @@ thead#profile-heading-form
  #user-profile-show{
     margin-top: 80px !important;
  }
+ div#printableArea th {
+    vertical-align: middle;
+}
 /* print-screen*/
 @media print{
 
@@ -749,6 +752,7 @@ form input[type="file"] {
     }
     .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2{
         justify-content: center !important;
+        margin: 0px !important;
     }
     .user-links.d-block.p-1{
 
@@ -772,10 +776,23 @@ flex-direction: column;
 gap: 20px;  
 justify-content: end !important;
  }
-}
-nav#users-nav a{
+ nav#users-nav a{
     border: 1px solid #fff;
  }
+ .table-add-user.ps-5.pe-5.pt-3.table-responsive,.table-manage-house.ps-5.pe-5.pt-3.table-responsive,.table-resident.table-hover.table-bordered.align-middle.ps-5.pe-5.pt-3.table-responsive{
+    padding: 0px !important;
+ }
+ .table-payments.ps-5.pe-5.pt-2.table-responsive,.table-expenses.ps-5.pe-5.pt-3.mt-3.table-responsive{
+    padding: 0px !important;
+
+ }
+ .resident-create.mt-3.p-3.me-3.d-flex.justify-content-end{
+    margin: 0px !important;
+     justify-content:center !important ;
+ }
+}
+
+ 
 
 @media screen and (max-width: 700px) {
     #login-height {
@@ -862,7 +879,7 @@ nav#users-nav a{
        .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2{
         justify-content: center !important;
         padding: 0px !important;
-        margin: 20px 0px 0px 0px !important;
+        margin:0px !important;
        }
        .refresh-button.pb-3.me-5.d-flex.justify-content-end{
         justify-content: center !important;

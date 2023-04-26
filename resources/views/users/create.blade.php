@@ -29,7 +29,7 @@ Society Create User
         @enderror
         </div>
 
-        <input type="tel" name="mobile2" placeholder="Mobile2"  class="form-control" value={{ old('mobile2')}}>
+        <input type="tel" name="mobile2" placeholder="Enter your alternate mobile"  class="form-control" value={{ old('mobile2')}}>
         <div class="error">
         @error('mobile2')
             {{ $message }}

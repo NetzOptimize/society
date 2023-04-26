@@ -9,7 +9,7 @@ Society Residents
         <h3>List Of Residents</h3>
     </div>
     @if (auth()->user()->usertype_id != 3)
-        <div class="resident-create mt-3 p-3 me-4 d-flex justify-content-end">
+        <div class="resident-create mt-3 me-5 pt-3 pb-3 d-flex justify-content-end">
             <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
 
@@ -130,6 +130,7 @@ Society Residents
 // for data printing
     function printDiv() {
         $(".hide").hide();
+        $('#printableArea td').css('background-color','red');
         window.print();
         location.reload(true);
     }
