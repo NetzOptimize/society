@@ -19,8 +19,10 @@ class LoginController extends Controller
         return redirect('/')->with('error','Incorrect Password' );
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+
+        $request->session()->put('logged_out', true);
 
         Auth::logout();
 
