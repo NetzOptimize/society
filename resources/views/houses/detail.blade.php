@@ -16,9 +16,7 @@ Society Houses Show
 
 <body>
     <div class=" main-details1 w-100 main d-flex justify-content-center align-items-center text-dark mt-5 pt-5" id="main-details1">
-        @if($house->id != 1)
-        <a class="btn btn-dark d-flex justify-content-start m-2" href="{{ route('houses.show', $previous) }}" id="previous"> Previous</a>
-        @endif
+      
         <div class="main-details rounded bg-light p-4 ">
 
             @if (auth()->user()->usertype_id != 3)
@@ -115,8 +113,14 @@ Society Houses Show
                 @endif
             </div>
         </div>
+      
+    </div>
+      <div class="next-prev-button"> 
         @if($house->id != $maxCount)
         <a class="btn btn-dark d-flex justify-content-end m-2" href="{{ route('houses.show', $next) }}" id="next"> Next</a>
+        @endif
+        @if($house->id != 1)
+        <a class="btn btn-dark d-flex justify-content-start m-2" href="{{ route('houses.show', $previous) }}" id="previous"> Previous</a>
         @endif
     </div>
     <div class="main-details-house me-5 ms-5">

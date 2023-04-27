@@ -23,7 +23,7 @@
                     <div class="user-links  ">
                         <nav class="navbar d-flex justify-content-end" id="users-nav">
                             <a href="{{ route('user.profile.edit') }}" class="btn btn-dark me-3  ">My Account</a>
-                            <a href="{{ route('user.report') }}" class="btn btn-dark me-5 ">Reports</a>
+                            <a href="{{ route('user.report') }}" class="btn btn-dark me-3 ">Reports</a>
                         </nav>
                     </div>
 

@@ -418,8 +418,8 @@ h3#resident-heading {
 #main-user {
      display: flex;
     align-items: center;
-    margin-top: 80px;
-}
+    margin-top: 70px    ;
+ }
 
 #user-form {
     gap: 12px !important;
@@ -646,7 +646,7 @@ form input[type="file"] {
     }
 
     .main-create.d-flex.justify-content-center.align-items-center{
-        margin: 10px !important;
+        margin: 20px !important;
     }
     #payment-method {
         width: 80% !important;
@@ -811,6 +811,13 @@ justify-content: end !important;
  #main-user {
     margin: 20px 0px;
 }
+.resident-create.mt-3.me-5.pt-3.pb-3.d-flex.justify-content-end{
+    justify-content: center !important;
+    margin: 0px !important;
+}
+.refresh-button.pt-2.me-5.d-flex.justify-content-end.align-items-center.gap-2{
+     justify-content: center !important;padding: 10px !important;
+}
 }
 
  
@@ -926,7 +933,6 @@ padding: 0px !important;
         margin: 0 !important;
         flex-direction: column-reverse;
        }
-
        .table-add-user.ps-5.pe-5.pt-3.table-responsive{
         margin: 0px !important;
         padding: 10px 0px 0px 0px !important;
@@ -940,12 +946,15 @@ padding: 0px !important;
        .card.p-4 {
         width: 70%;
     }
-    #main-user {
-        margin-top: 40px;
-           }
+  
            .main-details.rounded.bg-light.p-4{
             order: 2;
            }
+           div#pass1 {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
 }
 
 
@@ -1047,7 +1056,7 @@ padding: 0px !important;
     order:2;
    }
    div#main-details1{
-    flex-direction: column;
+    flex-direction: column-reverse;
    }
    .card.p-4 {
     width: 70%;

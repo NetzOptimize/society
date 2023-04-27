@@ -14,7 +14,7 @@ Society Residents
         </div>
     @endif
 
-<div class="refresh-button  p-4 me-5 d-flex justify-content-end align-items-center gap-2">
+<div class="refresh-button  pt-2 me-5 d-flex justify-content-end align-items-center gap-2">
     <input type="search" id="search" placeholder="Search" class="search hide" />
 
     <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center hide">Print</button>
