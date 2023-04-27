@@ -14,7 +14,7 @@ Society Edit Payment
             </div>
             <div
                 class="d-flex flex-column justify-content-center align-items-center align-content-center  container rounded   mt-3">
-                <form action="{{ route('payments.update', $payment) }}" method="POST" class="d-flex flex-column gap-1"
+                <form action="{{ route('payments.update', $payment) }}" method="POST" class="d-flex flex-column gap-1              "
                     id="payment-method-form">
                     @csrf
                     @method('PUT')
