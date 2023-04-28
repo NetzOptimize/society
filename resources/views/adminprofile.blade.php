@@ -30,7 +30,6 @@ Society User-Profile
                     @endif
                     </label>
                     <input type="file" name="image" id="fileToUpload" onchange="submitForm()">
-                    <a href="{{  route('user.removePicture', auth()->user()) }}" class="error1" method="post"><img src="https://8.zeroguess.us/society/storage/app/cancel2.png" height="30px" width="30px" alt=""></a>
                 </form>
                 <div class="profile-details">
                     <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>

@@ -68,8 +68,6 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
     Route::get('users/reset-password/{user}', [UserController::class, 'userresetcreate'])->name('user.reset');
     Route::post('users/reset-password/{user}', [UserController::class, 'resetPassword'])->name('user.resetpassword');
 
-    Route::get('users/remove-Picture/{user}', [UserController::class, 'removePicture'])->name('user.removePicture');
-
     Route::resource('users', UserController::class);
 
     Route::resource('houses', HouseController::class);

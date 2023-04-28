@@ -304,13 +304,6 @@ class UserController extends Controller
 
         return view('users.reset',compact('user'));
     }
-    public function removePicture(User $user)
-    {
-        $user->update([
-            'user_image' => null
-        ]);
 
-        return back()->with('success', 'Image removed successfully');
-    }
 
 }

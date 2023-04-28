@@ -1,7 +1,7 @@
 
 
 <!-- user navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center none">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
     <div class="container-fluid">
         <div class="user-logo d-flex align-items-center gap-2">
             <img src="{{asset('logo.png')}}" class="rounded-pill" style="height: 60px;

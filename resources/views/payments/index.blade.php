@@ -10,74 +10,74 @@ Society Payments
     <h3>Payment History</h3>
 </div>
 
-<div class="none">
-    <div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
-        <div class="paid-month-flex d-flex me-3">
-            <div class="dropdown me-2">
-                <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    @if (request('month') || request('unpaid'))
-                    {{ request('month') }}
-                    {{ request('unpaid') }}
-                    @else
-                    Months
-                    @endif
-                </label>
-                <ul class="dropdown-menu">
-                    @foreach ($months as $key => $month)
-                    <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-
-            <div class="dropdown">
-                <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    @if (request('unpaid'))
-                    Unpaid
-                    @else
-                    Paid
-                    @endif
-                </label>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('payments.index') }}">Paid</a></li>
-                    @if (request('month'))
-                    <li><a class="dropdown-item" href="{{ route('payments.index') }}?unpaid={{ request('month') }}">Unpaid</a></li>
-                    @endif
-                </ul>
-            </div>
+<div class="hide">
+<div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
+    <div class="paid-month-flex d-flex me-3">
+        <div class="dropdown me-2">
+            <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @if (request('month') || request('unpaid'))
+                {{ request('month') }}
+                {{ request('unpaid') }}
+                @else
+                Months
+                @endif
+            </label>
+            <ul class="dropdown-menu">
+                @foreach ($months as $key => $month)
+                <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                @endforeach
+            </ul>
         </div>
 
-        {{-- datewise filter --}}
-        <div class="payment">
-            <form action="" method="GET" style="margin:0" id="payment-history-form">
-                <label class="ms-3 me-3"><b>Start Date</b></label>
-                @if (request('start_date'))
-                <input type="date" name="start_date" value={{ request('start_date') }}>
+        <div class="dropdown">
+            <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @if (request('unpaid'))
+                Unpaid
                 @else
-                <input type="date" name="start_date">
+                Paid
                 @endif
-                <label class="ms-3 me-3"><b>End Date</b></label>
-                @if (request('end_date'))
-                <input type="date" name="end_date" value={{ request('end_date') }}>
-                @else
-                <input type="date" class="me-3" name="end_date">
+            </label>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('payments.index') }}">Paid</a></li>
+                @if (request('month'))
+                <li><a class="dropdown-item" href="{{ route('payments.index') }}?unpaid={{ request('month') }}">Unpaid</a></li>
                 @endif
-                <button class="btn btn-success me-3" type="submit">Filter</button>
-            </form>
+            </ul>
         </div>
-
-        {{-- search bar --}}
-        <input type="textbox" id="search" placeholder="Search" class="search">
-
     </div>
 
-    {{-- refresh button --}}
-    <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-        <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
-        <button onclick="printDiv()" class="btn btn-success d-flex align-items-center ">Print</button>
+    {{-- datewise filter --}}
+    <div class="payment">
+        <form action="" method="GET" style="margin:0" id="payment-history-form">
+            <label class="ms-3 me-3"><b>Start Date</b></label>
+            @if (request('start_date'))
+            <input type="date" name="start_date" value={{ request('start_date') }}>
+            @else
+            <input type="date" name="start_date">
+            @endif
+            <label class="ms-3 me-3"><b>End Date</b></label>
+            @if (request('end_date'))
+            <input type="date" name="end_date" value={{ request('end_date') }}>
+            @else
+            <input type="date" class="me-3" name="end_date">
+            @endif
+            <button class="btn btn-success me-3" type="submit">Filter</button>
+        </form>
     </div>
+
+    {{-- search bar --}}
+    <input type="textbox" id="search" placeholder="Search" class="search">
+
+</div>
+
+{{-- refresh button --}}
+<div class="refresh-button pb-4 me-5 d-flex justify-content-end">
+    <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
+    <button onclick="printDiv()" class="btn btn-success d-flex align-items-center ">Print</button>
+</div>
 </div>
 <!-- table -->
-<div class="reports d-flex justify-content-end me-5 none">
+<div class="reports d-flex justify-content-end me-5">
     <table class="table w-auto table-bordered ">
 
         <tr>
@@ -118,24 +118,24 @@ Society Payments
                     <th>Payment Mode</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
 
-                            <a class="btn btn-success btn-sm dropdown-toggle none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                @if (request('sort'))
-                                {{ request('sort') }}
-                                @else
-                                Order By
-                                @endif
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li class=""><a class="dropdown-item " href="?sort=Ascending">Ascending</a></li>
-                                <li class=""><a class="dropdown-item " href="?sort=Descending">Descending</a></li>
-                            </ul>
-                        </div>
-                    </th>
+                        <a class="btn btn-success btn-sm dropdown-toggle hide" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if (request('sort'))
+                            {{ request('sort') }}
+                            @else
+                            Order By
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li class=""><a class="dropdown-item " href="?sort=Ascending">Ascending</a></li>
+                            <li class=""><a class="dropdown-item " href="?sort=Descending">Descending</a></li>
+                        </ul>
+                    </div>
+                </th>
                     <th>Amount</th>
                     @if (auth()->user()->usertype_id != 3)
-                    <div class="none">
-                        <th colspan="2" class="text-center " id="th-payment-print">Actions</th>
-                        @endif
+                    <div class="hide">
+                    <th  colspan="2" class="text-center hide" id="th-payment-print">Actions</th>
+                     @endif
                     </div>
                     @endif
                 </tr>
@@ -167,25 +167,25 @@ Society Payments
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
-                <div class="">
-                    @if (auth()->user()->usertype_id == 1)
-                    <td class="none">
-                        <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success ">Edit</a>
-                    </td>
-                    <td class="none">
-                        <form method="POST" action="{{ route('payments.destroy', $payment->id) }}" class="m-0">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm " data-toggle="tooltip" title='Delete'>Delete</button>
-                        </form>
-                    </td>
-                    @endif
-                    </tr>
-                    @endforeach
-                    @endif
-                    @else
-                    <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
-                    @endif
+                <div class="hide">
+                @if (auth()->user()->usertype_id == 1)
+                <td>
+                    <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success hide">Edit</a>
+                </td>
+                <td>
+                    <form method="POST" action="{{ route('payments.destroy', $payment->id) }}" class="m-0">
+                        @csrf
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm hide" data-toggle="tooltip" title='Delete'>Delete</button>
+                    </form>
+                </td>
+                @endif
+                </tr>
+                @endforeach
+                @endif
+                @else
+                <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
+                @endif
                 </div>
             </tbody>
         </table>
@@ -218,8 +218,8 @@ Society Payments
             window.print();
             setTimeout(function() {
                 $(".hide").show();
-            }, 400);
-        }, 400);
+            }, 2000);
+        }, 2000);
     }
 
     // searching
