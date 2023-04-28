@@ -547,6 +547,22 @@ form input[type="file"] {
     margin: 0px !important;
 
 }
+div#pass1 {
+    display: flex;
+    flex-direction: column;
+     gap: 3px;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    margin: 0px;
+}
+.main-resident-create {
+    margin: 50px 0px !important;
+}
+form#payment-method-form{
+    gap: 10px !important;
+}
 /* print end */
 /* responsiveness */
 
@@ -646,7 +662,7 @@ form input[type="file"] {
     }
 
     .main-create.d-flex.justify-content-center.align-items-center{
-        margin: 20px !important;
+        margin: 20px 0px !important;
     }
     #payment-method {
         width: 80% !important;
@@ -659,8 +675,7 @@ form input[type="file"] {
 
     /* navbar end */
     .payment1 {
-        flex-direction: column-reverse;
-        gap: 15px;
+         gap: 15px;
     }
     .navbar-expand-lg .navbar-collapse {
 
@@ -669,6 +684,11 @@ form input[type="file"] {
     .main-profile-password {
         margin: 10px 0px;
  
+    }
+}
+@media screen and (max-width:1130px) {
+    div#login-height{
+        padding: 10px !important;
     }
 }
 
@@ -725,8 +745,7 @@ form input[type="file"] {
     }
 
     .payment1 {
-        flex-direction: column-reverse;
-        gap: 15px;
+         gap: 15px;
     }
 
     form#payment-history-form {
@@ -805,7 +824,7 @@ justify-content: end !important;
      justify-content:center !important ;
  }
  .d-flex.justify-content-center.align-items-center.p-4.payment1{
-    padding: 0px !important;
+    padding: 10px !important;
  }
  
  #main-user {
@@ -817,10 +836,16 @@ justify-content: end !important;
 }
 .refresh-button.pt-2.me-5.d-flex.justify-content-end.align-items-center.gap-2{
      justify-content: center !important;padding: 10px !important;
+     margin: 0px !important;
+}
+#filter{
+    margin: 0px !important;
+}
+#end-date{
+    margin: 0px !important;
 }
 }
 
- 
 
 @media screen and (max-width: 700px) {
     #login-height {
@@ -906,7 +931,7 @@ justify-content: end !important;
        }
        .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2{
         justify-content: center !important;
-        padding: 0px !important;
+        padding: 20px !important;
         margin:0px !important;
        }
        .refresh-button.pb-3.me-5.d-flex.justify-content-end{
@@ -927,11 +952,13 @@ padding: 0px !important;
        .reports.d-flex.justify-content-end.me-5,.refresh-button.pb-4.me-5.d-flex.justify-content-end{
         justify-content: center !important;
         padding: 0px !important;
-                margin: 10px 0px 10px 0px !important;
+                margin: 5px 0px 10px 0px !important;
        }
        div#main-details1{
         margin: 0 !important;
         flex-direction: column-reverse;
+        padding: 35px 0px;
+        
        }
        .table-add-user.ps-5.pe-5.pt-3.table-responsive{
         margin: 0px !important;
@@ -955,6 +982,10 @@ padding: 0px !important;
             flex-direction: column;
             gap: 3px;
         }
+        .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+             flex-direction: column-reverse;
+        }
+       
 }
 
 
@@ -981,7 +1012,7 @@ padding: 0px !important;
     }
 
     #edit {
-        width: 90% !important;
+        width: 100% !important;
     }
 
     #edit-user {
@@ -1038,7 +1069,7 @@ padding: 0px !important;
     }
 
     #create-resident {
-        width: 85% !important;
+        width: 100% !important;
     }
 
     .month {
@@ -1053,7 +1084,7 @@ padding: 0px !important;
         width: 80% !important;
    }
    a#previous {
-    order:2;
+    order:0;
    }
    div#main-details1{
     flex-direction: column-reverse;
@@ -1156,6 +1187,9 @@ padding: 0px !important;
         display: flex;
         flex-direction: column;
         align-items: center;
+     }
+     .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.align-items-end.gap-2 input#search{
+        width: 50%;
      }
 }
 

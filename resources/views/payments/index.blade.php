@@ -49,19 +49,19 @@ Society Payments
     {{-- datewise filter --}}
     <div class="payment">
         <form action="" method="GET" style="margin:0" id="payment-history-form">
-            <label class="ms-3 me-3"><b>Start Date</b></label>
+            <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
             @if (request('start_date'))
             <input type="date" name="start_date" value={{ request('start_date') }}>
             @else
-            <input type="date" name="start_date">
+            <input type="date" name="start_date" class="start-date">
             @endif
-            <label class="ms-3 me-3"><b>End Date</b></label>
+            <label class="ms-3 me-3 text-center"><b>End Date</b></label>
             @if (request('end_date'))
             <input type="date" name="end_date" value={{ request('end_date') }}>
             @else
-            <input type="date" class="me-3" name="end_date">
+            <input type="date" class="me-3" name="end_date" id="end-date">
             @endif
-            <button class="btn btn-success me-3" type="submit">Filter</button>
+            <button class="btn btn-success me-3" type="submit" id="filter">Filter</button>
         </form>
     </div>
 

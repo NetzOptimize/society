@@ -4,6 +4,7 @@
 Society Create Resident
 @endsection
 @section('content')
+<div class="resident-margin">
 <div class="main-resident-create">
 <div class="main-create d-flex justify-content-center align-items-center">
 <div class="main container shadow  rounded  p-4 w-50" id="create-resident">
@@ -69,4 +70,5 @@ Society Create Resident
 </div>
  </div>
 @endsection
+</div>
 </div>
