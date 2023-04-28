@@ -10,7 +10,7 @@ Society Payments
     <h3>Payment History</h3>
 </div>
 
-<div class="hide">
+<div class="none">
 <div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
     <div class="paid-month-flex d-flex me-3">
         <div class="dropdown me-2">
@@ -118,7 +118,7 @@ Society Payments
                     <th>Payment Mode</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
 
-                        <a class="btn btn-success btn-sm dropdown-toggle hide" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-success btn-sm dropdown-toggle none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             @if (request('sort'))
                             {{ request('sort') }}
                             @else
@@ -133,8 +133,8 @@ Society Payments
                 </th>
                     <th>Amount</th>
                     @if (auth()->user()->usertype_id != 3)
-                    <div class="hide">
-                    <th  colspan="2" class="text-center hide" id="th-payment-print">Actions</th>
+                    <div class="none">
+                    <th  colspan="2" class="text-center none" id="th-payment-print">Actions</th>
                      @endif
                     </div>
                     @endif
@@ -167,16 +167,16 @@ Society Payments
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
-                <div class="hide">
+                <div class="none">
                 @if (auth()->user()->usertype_id == 1)
-                <td>
-                    <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success hide">Edit</a>
+                <td class="none">
+                    <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success none">Edit</a>
                 </td>
-                <td>
+                <td class="none">
                     <form method="POST" action="{{ route('payments.destroy', $payment->id) }}" class="m-0">
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
-                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm hide" data-toggle="tooltip" title='Delete'>Delete</button>
+                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm none" data-toggle="tooltip" title='Delete'>Delete</button>
                     </form>
                 </td>
                 @endif
@@ -218,8 +218,8 @@ Society Payments
             window.print();
             setTimeout(function() {
                 $(".hide").show();
-            }, 2000);
-        }, 2000);
+            }, 400);
+        }, 400);
     }
 
     // searching

@@ -10,7 +10,7 @@ Society Expenses
     <div class="houses-list  text-center me-5 ms-5 bg-light p-4  mt-3">
         <h3>Lists Of Expenses</h3>
     </div>
-    <div class="hide">
+    <div class="none">
         <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end align-items-center gap-2">
             <input type="search" id="search" placeholder="Search" class="search" />
 
@@ -26,8 +26,8 @@ Society Expenses
                         <th>Payee</th>
                         <th>Amount</th>
                         <th>Payment Mode</th>
-                        <th class="d-flex align-items-center ">Date Of Payments <div class="dropdown ms-2 order_by">
-                                <a class="btn btn-success btn-sm dropdown-toggle hide" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <th class="d-flex align-items-center none ">Date Of Payments <div class="dropdown ms-2 order_by none">
+                                <a class="btn btn-success btn-sm dropdown-toggle none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     @if (request('sort'))
                                     {{ request('sort') }}
                                     @else
@@ -35,8 +35,8 @@ Society Expenses
                                     @endif
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li class="hide"><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
-                                    <li class="hide"><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
+                                    <li class="none"><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
+                                    <li class="none"><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
                                 </ul>
                             </div>
                         </th>
@@ -81,8 +81,8 @@ Society Expenses
                 window.print();
                 setTimeout(function() {
                     $(".hide").show();
-                }, 2000);
-            }, 2000);
+                }, 400);
+            }, 400);
         }
 
     </script>
