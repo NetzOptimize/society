@@ -54,6 +54,6 @@ Society User-Profile-Edit
             {{ $message }}
         @enderror
         </div>
-        <input type="submit" name="login" value="Edit Profile" class="btn btn-dark">
+        <input type="submit" name="login" value="Save Changes" class="btn btn-dark">
     </form>
 @endsection

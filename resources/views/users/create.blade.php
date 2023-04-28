@@ -66,7 +66,7 @@ Society Create User
             @enderror
             </div>
         <div class="add-user text-center pb-3">
-        <input type="submit" name="login" value="Add User" class="btn btn-dark w-100">
+        <input type="submit" name="login" value="Save Changes" class="btn btn-dark w-100">
         </div>
     </form>
 </div>
