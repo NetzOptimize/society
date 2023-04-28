@@ -74,23 +74,6 @@ Society Payments
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
         <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
         <button onclick="printDiv()" class="btn btn-success d-flex align-items-center ">Print</button>
-    {{-- datewise filter --}}
-    <div class="payment">
-        <form action="" method="GET" style="margin:0" id="payment-history-form">
-            <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
-            @if (request('start_date'))
-            <input type="date" name="start_date" value={{ request('start_date') }}>
-            @else
-            <input type="date" name="start_date" class="start-date">
-            @endif
-            <label class="ms-3 me-3 text-center"><b>End Date</b></label>
-            @if (request('end_date'))
-            <input type="date" name="end_date" value={{ request('end_date') }}>
-            @else
-            <input type="date" class="me-3" name="end_date" id="end-date">
-            @endif
-            <button class="btn btn-success me-3" type="submit" id="filter">Filter</button>
-        </form>
     </div>
 </div>
 <!-- table -->
