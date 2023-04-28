@@ -95,7 +95,7 @@ Society Edit Payment
                                 {{ $message }}
                             @enderror
                         </div>
-                        <input type="submit" name="login" value="Submit" class="btn btn-dark">
+                        <input type="submit" name="login" value="Save Changes" class="btn btn-dark">
                 </form>
                 <a href="{{ route('payments.index') }}"  class="btn btn-dark">Cancel</a>
             </div>

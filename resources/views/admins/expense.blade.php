@@ -52,7 +52,7 @@ Society Expense Create
                     {{ $message }}
                 @enderror
             </div>
-            <input type="submit" value="Add Payment" class="btn btn-dark">
+            <input type="submit" value="Save Changes" class="btn btn-dark">
         </form>
     </div>
     </div>

@@ -63,7 +63,7 @@ Society Create Resident
             {{ $message }}
         @enderror
         </div>
-        <input type="submit" name="login" value="Add Resident" class="btn btn-dark">
+        <input type="submit" name="login" value="Save Changes" class="btn btn-dark">
     </form>
 </div>
 </div>
