@@ -7,18 +7,18 @@ Society Residents
     <div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
         <h3>List Of Residents</h3>
     </div>
+    <span class="hide">
     @if (auth()->user()->usertype_id != 3)
         <div class="resident-create mt-3 me-5 pt-3 pb-3 d-flex justify-content-end">
-            <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
+            <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center hide"> Add Resident <img
                     src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
         </div>
     @endif
-
-<div class="refresh-button  pt-2 me-5 d-flex justify-content-end align-items-center gap-2">
-    <input type="search" id="search" placeholder="Search" class="search hide" />
-
-    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center hide">Print</button>
-</div>
+    <div class="refresh-button  pt-2 me-5 d-flex justify-content-end align-items-center gap-2">
+        <input type="search" id="search" placeholder="Search" class="search" />
+        <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
+    </div>
+</span>
 </div>
 </div>
 <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-3 table-responsive">
@@ -126,10 +126,12 @@ Society Residents
     // for data printing
     function printDiv() {
         $(".hide").hide();
-        // $('#printableArea td').css('background-color','blue');
-        window.print();
-        $(".hide").show();
-
+        setTimeout(function() {
+            window.print();
+            setTimeout(function() {
+                $(".hide").show();
+            }, 2000);
+        }, 2000);
     }
 
 </script>
