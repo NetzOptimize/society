@@ -83,7 +83,7 @@ Society Edit User
             <div class="d-flex justify-content-start gap-2"><input type="checkbox" id="checkbox" class="position-static">Show Password</div>
         </div>
         @endif
-        <input type="submit" name="login" value="Save Changes" class="btn btn-dark mt-2 ">
+        <input type="submit" name="login" value="Save Changes" class="btn btn-dark ">
     </form>
 
     <script>
