@@ -13,21 +13,17 @@ Society Houses Show
     <title>Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-
 <body>
     <div class=" main-details1 w-100 main d-flex justify-content-center align-items-center text-dark mt-5 pt-5" id="main-details1">
-
-        @if($house->id != 1)
+    @if($house->id != 1)
         <a class="btn btn-dark d-flex justify-content-start m-2" href="{{ route('houses.show', $previous) }}" id="previous"> Previous</a>
         @endif
         <div class="main-details rounded bg-light p-4 ">
-
             @if (auth()->user()->usertype_id != 3)
             <div class="resident-create mt-3 p-3 me-3 d-flex justify-content-end">
                 <a href="{{ route('residents.create', $house->id) }}" class="btn btn-success d-flex align-items-center"> Add Resident</a>
             </div>
             @endif
-
             <div class="detail-heading text-center ">
                 <h3>Details of House {{ $house->full_address }}</h3>
             </div>
@@ -115,14 +111,15 @@ Society Houses Show
                 </div>
                 @endif
             </div>
+            
         </div>
         @if($house->id != $maxCount)
         <a class="btn btn-dark d-flex justify-content-end m-2" href="{{ route('houses.show', $next) }}" id="next"> Next</a>
         @endif
-
+      
     </div>
-
-
+       
+       
      <div class="main-details-house me-5 ms-5">
 
 
