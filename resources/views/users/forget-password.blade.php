@@ -27,7 +27,7 @@ Society Forget-Password
                                     </div>
                                   </div>
                                   <div class="form-group mt-3 w-100" id="submit-cancel">
-                                    <input class="btn btn-lg btn-primary btn-block " value="Submit"  type="submit">
+                                    <input class="btn btn-lg btn-primary btn-block " value="Send My Password"  type="submit">
                                     <a href= "{{ url('/') }}" class="btn btn-dark  " value="cancel">Cancel</a>
                                   </div>
                                 </fieldset>

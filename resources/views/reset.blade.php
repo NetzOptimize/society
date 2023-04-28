@@ -54,7 +54,7 @@ Society Reset-Password
                                 </div>
                             </div>
                             <div class="form-group ms-2">
-                                <input class="btn btn-dark btn-block" value="Submit" id="reset-your-password" type="submit">
+                                <input class="btn btn-dark btn-block" value="Reset My Password" id="reset-your-password" type="submit">
                             </div>
                         </fieldset>
                     </form>

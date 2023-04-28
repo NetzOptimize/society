@@ -43,7 +43,7 @@ Society Forget-Password
                                             </div>
                                         </div>
                                         <div class="form-group mt-3 w-100">
-                                            <input class="btn btn-lg btn-primary btn-block " id="reset-my-pass  " value="Submit"
+                                            <input class="btn btn-lg btn-primary btn-block " id="reset-my-pass  " value="Send My Password"
                                                 type="submit">
                                         </div>
                                     </fieldset>

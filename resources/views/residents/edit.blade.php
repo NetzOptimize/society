@@ -70,7 +70,7 @@ Society Edit Resident
                     {{ $message }}
                 @enderror
             </div>
-            <input type="submit" name="login" value="Save Changes" class="btn btn-dark">
+            <input type="submit" name="login" value="Edit Resident" class="btn btn-dark">
         </form>
     </div>
 @endsection

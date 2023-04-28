@@ -10,13 +10,19 @@ Society Expenses
     <div class="houses-list  text-center me-5 ms-5 bg-light p-4  mt-3">
         <h3>Lists Of Expenses</h3>
     </div>
+<<<<<<< HEAD
     <div class="none">
         <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end align-items-center gap-2">
             <input type="search" id="search" placeholder="Search" class="search" />
+=======
+<div class="hide">
+    <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end align-items-center gap-2">
+        <input type="search" id="search" placeholder="Search" class="search" />
+>>>>>>> parent of bcf1f2a (Merge branch 'staging' of https://github.com/NetzOptimize/society into staging)
 
-            <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
-        </div>
+        <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
     </div>
+</div>
     {{-- listing --}}
     <div class="table-expenses ps-5 pe-5 pt-3  mt-3 table-responsive">
         <div id="printableArea">
@@ -46,19 +52,19 @@ Society Expenses
                     </tr>
                 </thead>
                 <tr>
-                    <tbody>
+                        <tbody>
                         @foreach ($expenses as $expense)
-                        <td>{{ $expense->payee }}</td>
-                        <td>{{ $expense->amount }}</td>
-                        <td>{{ $expense->paymentmode->name }}</td>
-                        <td>{{ $expense->dateofpayment }}</td>
+                        <td >{{ $expense->payee }}</td>
+                        <td >{{ $expense->amount }}</td>
+                        <td >{{ $expense->paymentmode->name }}</td>
+                        <td >{{ $expense->dateofpayment }}</td>
                         @if( $expense->comments)
-                        <td>{{ $expense->comments }}</td>
+                        <td >{{ $expense->comments }}</td>
                         @else
-                        <td>-</td>
+                        <td >-</td>
                         @endif
                     </tbody>
-                </tr>
+                    </tr>
                 @endforeach
             </table>
         </div>
@@ -79,12 +85,17 @@ Society Expenses
         // for data printing
         function printDiv() {
             $(".hide").hide();
+<<<<<<< HEAD
             setTimeout(function() {
                 window.print();
                 setTimeout(function() {
                     $(".hide").show();
                 }, 400);
             }, 400);
+=======
+            window.print();
+            $(".hide").show();
+>>>>>>> parent of bcf1f2a (Merge branch 'staging' of https://github.com/NetzOptimize/society into staging)
         }
 
     </script>

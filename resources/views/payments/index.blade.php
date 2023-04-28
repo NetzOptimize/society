@@ -117,6 +117,7 @@ Society Payments
                     @if (null == request('unpaid'))
                     <th>Payment Mode</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
+<<<<<<< HEAD
 
                             <a class="btn btn-success btn-sm dropdown-toggle none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if (request('sort'))
@@ -131,6 +132,21 @@ Society Payments
                             </ul>
                         </div>
                     </th>
+=======
+                        <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if (request('sort'))
+                            {{ request('sort') }}
+                            @else
+                            Order By
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li class=""><a class="dropdown-item " href="?sort=Ascending">Ascending</a></li>
+                            <li class=""><a class="dropdown-item " href="?sort=Descending">Descending</a></li>
+                        </ul>
+                    </div>
+                </th>
+>>>>>>> parent of bcf1f2a (Merge branch 'staging' of https://github.com/NetzOptimize/society into staging)
                     <th>Amount</th>
                     @if (auth()->user()->usertype_id != 3)
                     <div class="none">
@@ -214,12 +230,25 @@ Society Payments
     // for data printing
     function printDiv() {
         $(".hide").hide();
+<<<<<<< HEAD
         setTimeout(function() {
             window.print();
             setTimeout(function() {
                 $(".hide").show();
             }, 400);
         }, 400);
+=======
+        // var printableArea = document.getElementById('printableArea').innerHTML;
+        // var printWindow = window.open('', '', 'height=0,width=0');
+        // printWindow.document.write('<html><head><title>Print Page</title></head><body><div><b>List Of Payments</b</div>');
+        // printWindow.document.write(printableArea);
+        // printWindow.document.write('</body></html>');
+        // printWindow.document.close();
+        // printWindow.print();
+        // printWindow.close();
+        window.print();
+        $(".hide").show();
+>>>>>>> parent of bcf1f2a (Merge branch 'staging' of https://github.com/NetzOptimize/society into staging)
     }
 
     // searching

@@ -97,7 +97,7 @@ Society Create Payment
 
           <b>Total Payment:</b></label>
         <input type="textbox" class="form-control" id="payment" />
-        <input type="submit" name="login" value="Save Changes" class="btn btn-dark">
+        <input type="submit" name="login" value="Add Payment" class="btn btn-dark">
 
       </form>
     </div>

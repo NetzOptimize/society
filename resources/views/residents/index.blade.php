@@ -4,6 +4,7 @@ Society Residents
 @endsection
 @section('content')
 
+<<<<<<< HEAD
 <div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
     <h3>List Of Residents</h3>
 </div>
@@ -12,12 +13,23 @@ Society Residents
     <div class="resident-create mt-3 me-5 pt-3 pb-3 d-flex justify-content-end ">
         <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center "> Add Resident <img src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
     </div>
-    @endif
-    <div class="refresh-button  pt-2 me-5 d-flex justify-content-end align-items-center gap-2">
-        <input type="search" id="search" placeholder="Search" class="search" />
-        <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
+=======
+    <div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
+        <h3>List Of Residents</h3>
     </div>
-</span>
+    @if (auth()->user()->usertype_id != 3)
+        <div class="resident-create mt-3 me-5 pt-3 pb-3 d-flex justify-content-end">
+            <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center"> Add Resident <img
+                    src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
+        </div>
+>>>>>>> parent of bcf1f2a (Merge branch 'staging' of https://github.com/NetzOptimize/society into staging)
+    @endif
+
+<div class="refresh-button  pt-2 me-5 d-flex justify-content-end align-items-center gap-2">
+    <input type="search" id="search" placeholder="Search" class="search hide" />
+
+    <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center hide">Print</button>
+</div>
 </div>
 </div>
 <div class="table-resident table-hover table-bordered align-middle ps-5 pe-5 pt-3 table-responsive">
@@ -125,6 +137,7 @@ Society Residents
     // for data printing
     function printDiv() {
         $(".hide").hide();
+<<<<<<< HEAD
         setTimeout(function() {
             window.print();
             setTimeout(function() {
@@ -132,3 +145,13 @@ Society Residents
             }, 400);
         }, 400);
 00);
+=======
+        // $('#printableArea td').css('background-color','blue');
+        window.print();
+        $(".hide").show();
+
+    }
+
+</script>
+@endsection
+>>>>>>> parent of bcf1f2a (Merge branch 'staging' of https://github.com/NetzOptimize/society into staging)

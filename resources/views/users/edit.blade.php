@@ -83,7 +83,11 @@ Society Edit User
             <div class="d-flex justify-content-start gap-2"><input type="checkbox" id="checkbox" class="position-static">Show Password</div>
         </div>
         @endif
+<<<<<<< HEAD
         <input type="submit" name="login" value="Save Changes" class="btn btn-dark ">
+=======
+        <input type="submit" name="login" value="Edit User "  class="btn btn-dark mt-2">
+>>>>>>> parent of bcf1f2a (Merge branch 'staging' of https://github.com/NetzOptimize/society into staging)
     </form>
 
     <script>
