@@ -4,15 +4,14 @@ Society Residents
 @endsection
 @section('content')
 
-    <div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
-        <h3>List Of Residents</h3>
-    </div>
-    <span class="hide">
+<div class="heading-resident text-center bg-light me-5 ms-5  rounded mt-3  p-4">
+    <h3>List Of Residents</h3>
+</div>
+<span class="none">
     @if (auth()->user()->usertype_id != 3)
-        <div class="resident-create mt-3 me-5 pt-3 pb-3 d-flex justify-content-end">
-            <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center hide"> Add Resident <img
-                    src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
-        </div>
+    <div class="resident-create mt-3 me-5 pt-3 pb-3 d-flex justify-content-end ">
+        <a href="{{ route('residents.create',0) }}" class="btn btn-success d-flex align-items-center "> Add Resident <img src="{{ 'house.png' }}" style="width:20px" alt="" class="ms-2"></a>
+    </div>
     @endif
     <div class="refresh-button  pt-2 me-5 d-flex justify-content-end align-items-center gap-2">
         <input type="search" id="search" placeholder="Search" class="search" />
@@ -32,8 +31,8 @@ Society Residents
                     <th>Mobile2</th>
                     <th>Occupancy Type</th>
                     <th>Date Of Occupancy</th>
-                    <div class="hide">
-                        <th> Detail</th>
+                    <div class="none">
+                        <th class="none"> Detail</th>
                         @if (auth()->user()->usertype_id != 3)
                         <th colspan="2" class="text-center" id="th-print"> Actions
                         </th>
@@ -71,18 +70,18 @@ Society Residents
                     <td>Tenant</td>
                     @endif
                     <td>{{ $resident->datofoccupancy }}</td>
-                    <div class="hide">
-                    <td> <a href="{{ route('houses.show', $resident->house) }}" class="btn btn-success hide">View</a></td>
-                    @if (auth()->user()->usertype_id != 3)
-                    <td><a href="{{ route('residents.edit', $resident) }}" class="btn btn-success hide">Edit</a></td>
-                    <td>
-                        <form method="POST" class="m-0" action="{{ route('residents.destroy', $resident) }}">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="btn  btn-xs btn-danger btn-flat show_confirm hide" data-toggle="tooltip" title='Delete'>Delete</button>
-                        </form>
-                    </td>
-                    @endif
+                    <div class="none">
+                        <td class="none"> <a href="{{ route('houses.show', $resident->house) }}" class="btn btn-success ">View</a></td>
+                        @if (auth()->user()->usertype_id != 3)
+                        <td class="none"><a href="{{ route('residents.edit', $resident) }}" class="btn btn-success ">Edit</a></td>
+                        <td class="none">
+                            <form method="POST" class="m-0" action="{{ route('residents.destroy', $resident) }}">
+                                @csrf
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button type="submit" class="btn  btn-xs btn-danger btn-flat show_confirm " data-toggle="tooltip" title='Delete'>Delete</button>
+                            </form>
+                        </td>
+                        @endif
                     </div>
                 </tr>
                 @endforeach
@@ -130,8 +129,8 @@ Society Residents
             window.print();
             setTimeout(function() {
                 $(".hide").show();
-            }, 2000);
-        }, 2000);
+            }, 400);
+        }, 400);
     }
 
 </script>

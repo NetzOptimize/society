@@ -11,7 +11,7 @@ td,th {
 <!-- Bootstrap Navbar -->
 
 <div class="main">
-<nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between" id="navbar">
+<nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between none" id="navbar">
   <div class="container-fluid">
 
 
