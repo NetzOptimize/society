@@ -22,14 +22,14 @@ Society Create User
             {{ $message }}
         @enderror
         </div>
-          <input type="tel" name="mobile1" placeholder="Enter your mobile"  class="form-control" value={{ old('mobile1')}}>
+          <input type="tel" name="mobile1" placeholder="Enter your mobile" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  class="form-control" value={{ old('mobile1')}}>
         <div class="error">
         @error('mobile1')
             {{ $message }}
         @enderror
         </div>
 
-        <input type="tel" name="mobile2" placeholder="Enter your mobile 2"  class="form-control" value={{ old('mobile2')}}>
+        <input type="tel" name="mobile2" placeholder="Enter your mobile 2" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  class="form-control" value={{ old('mobile2')}}>
         <div class="error">
         @error('mobile2')
             {{ $message }}
@@ -41,18 +41,21 @@ Society Create User
             {{ $message }}
         @enderror
         </div>
-        <input type="password" name="password" placeholder="password"  class="form-control" value={{ old('password')}}>
+        <input type="password" name="password" placeholder="password"  class="form-control show"  value={{ old('password')}}>
         <div class="error">
         @error('password')
             {{ $message }}
         @enderror
         </div>
-        <input type="password" name="confirmPassword" placeholder="confirm-password"  class="form-control" value={{ old('confirmPassword')}}>
+        <input type="password" name="confirmPassword" placeholder="confirm-password"   class="form-control show"  value={{ old('confirmPassword')}}>
         <div class="error">
         @error('confirmPassword')
             {{ $message }}
         @enderror
         </div>
+        {{-- <input type="checkbox" onclick="myFunction()">Show Password --}}
+
+
 
          <select name="usertype_id" class="form-select user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
@@ -79,6 +82,17 @@ Society Create User
             $('#password, #confirmPassword').attr('type',$('#checkbox').prop('checked')==true?"text":"password");
         });
     });
+
+    // show password
+//     function myFunction() {
+//   var x = document.getElementsByClass("show");
+//   console.log(x.type,"xxxxx")
+//   if (x.type === "password") {
+//     x.type = "text";
+//   } else {
+//     x.type = "password";
+//   }
+// }
 </script>
 
 @endsection

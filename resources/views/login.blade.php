@@ -25,14 +25,18 @@ Society Login
 
         </div>
             <label>MOBILE:</label>
-            <input type="tel" name="mobile1" class="form-control" placeholder="Enter your mobile">
+            <input type="tel" name="mobile1" class="form-control"  maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Enter your mobile">
             <!-- <div class="error">
                 @error('mobile1')
                 {{ $message }}
                 @enderror
             </div> -->
+            <div class="demo">
             <label>PASSWORD:</label>
-            <input type="password" name="password"  class="form-control" placeholder="Enter your password">
+            <input type="password" name="password"  class="form-control mt-3" id="password" placeholder="Enter your password">
+            <i class="fa-solid fa-eye" id="eye"></i>
+
+        </div>
             <!-- <div class="error">
                 @error('password')
                 {{ $message }}
@@ -66,6 +70,16 @@ messages:{
 });
 
     })
+// js
 
-    </script>
+const passwordInput = document.querySelector("#password")
+const eye = document.querySelector("#eye")
+eye.addEventListener("click", function(){
+  this.classList.toggle("fa-eye-slash")
+  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+  passwordInput.setAttribute("type", type)
+})
+
+// js
+</script>
 @endsection

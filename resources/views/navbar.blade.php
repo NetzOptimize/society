@@ -7,11 +7,15 @@
 td,th {
     padding-left: 18px !important;
 }
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
+}
 </style>
 <!-- Bootstrap Navbar -->
 
 <div class="main">
-<nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between" id="navbar">
+<nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between none" id="navbar">
   <div class="container-fluid">
 
 

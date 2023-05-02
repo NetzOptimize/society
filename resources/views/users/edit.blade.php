@@ -24,14 +24,14 @@ Society Edit User
             @enderror
         </div>
         <label>Mobile-1:</label>
-        <input type="tel" name="mobile1" value="{{ old('mobile1', $user->mobile1) }}" class="form-control">
+        <input type="tel" name="mobile1" maxlength="10"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  value="{{ old('mobile1', $user->mobile1) }}" class="form-control">
         <div class="error">
             @error('mobile1')
             {{ $message }}
             @enderror
         </div>
         <label>Mobile-2:</label>
-        <input type="tel" name="mobile2" value="{{ old('mobile2', $user->mobile2 ) }}" class="form-control">
+        <input type="tel" name="mobile2"  maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"   value="{{ old('mobile2', $user->mobile2 ) }}" class="form-control">
         <div class="error">
             @error('mobile2')
             {{ $message }}
@@ -80,7 +80,7 @@ Society Edit User
             <input type="password" name="password" id="password" class="form-control">
             <label>Confirm-Password:</label>
             <input type="password" name="confirmPassword" id="password" class="form-control">
-            <div class="d-flex justify-content-start gap-2"><input type="checkbox" id="checkbox" class="position-static">Show Password</div>
+            <div class="d-flex justify-content-start gap-2 align-items-center"><input type="checkbox" id="checkbox" class="position-static">Show Password</div>
         </div>
         @endif
         <input type="submit" name="login" value="Save Changes" class="btn btn-dark mt-2 ">
@@ -106,6 +106,6 @@ Society Edit User
                 }
             });
         });
-    </script>
+    </scrip     t>
     @endsection
 </div>
