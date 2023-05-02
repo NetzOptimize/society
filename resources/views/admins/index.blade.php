@@ -11,14 +11,40 @@ Society Expenses
         <h3>Lists Of Expenses</h3>
     </div>
     <div class="hide">
-        <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end align-items-center gap-2">
+        <div class="refresh-expenses pt-3 pb-3 pe-5 d-flex justify-content-end align-items-center gap-2">
             <input type="search" id="search" placeholder="Search" class="search" />
 
             <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
         </div>
     </div>
+    <!--  -->
+    <div class="reports d-flex justify-content-end  me-5">
+    <table class="table w-auto table-bordered ">
+
+        <tr>
+            <th class="text-center table-info" colspan="2">Expenses Report</th>
+        </tr>
+
+        <tbody>
+            <tr class="table-light">
+                <td>Date</td>
+                <td>{{ date('d-m-Y') }}</td>
+            </tr>
+            <tr class="table-light">
+                <td>Count</td>
+                <td> Count</td>
+            </tr>
+            <tr class="table-light">
+                <td>Total Amount</td>
+                <td> Sum</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <!--  -->
     {{-- listing --}}
-    <div class="table-expenses ps-5 pe-5 pt-3  mt-3 table-responsive">
+    <div class="table-expenses ps-5 pe-5  mt-3 table-responsive">
         <div id="printableArea">
             <table class="table table-light table-hover table-bordered">
                 <thead>
@@ -41,6 +67,9 @@ Society Expenses
                             </div>
                         </th>
                         <th>Comments</th>
+                        <th colspan="2">
+                            Actions
+                        </th>
                     </tr>
                 </thead>
                 <tr>
@@ -52,8 +81,12 @@ Society Expenses
                         <td>{{ $expense->dateofpayment }}</td>
                         @if( $expense->comments)
                         <td>{{ $expense->comments }}</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
                         @else
                         <td>-</td>
+                       
+
                         @endif
                     </tbody>
                 </tr>
