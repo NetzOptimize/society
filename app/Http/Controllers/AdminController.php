@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\House;
 use App\Models\PaymentMode;
+use App\Models\User;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -16,17 +17,23 @@ class AdminController extends Controller
         if(isset($_GET['sort']))
         {
             $expenses= Expense::sort($_GET['sort']);
+            $count = $expenses->count();
+            $sum = $expenses->sum('amount');
         }
         elseif(isset($_GET['search']))
         {
             $expenses= Expense::search($_GET['search']);
+            $count = $expenses->count();
+            $sum = $expenses->sum('amount');
         }
         else
         {
             $expenses= Expense::simplepaginate(15);
+            $count = $expenses->count();
+            $sum = $expenses->sum('amount');
         }
 
-        return view('admins.index', compact('expenses'));
+        return view('admins.index', compact('expenses','sum', 'count'));
     }
 
     public function create()
@@ -75,19 +82,40 @@ class AdminController extends Controller
     }
 
 
-    public function edit(string $id)
+    public function edit(Expense $expense)
     {
-        //
+        $PaymentModes = PaymentMode::get();
+
+        return view('admins.edit', compact('expense', 'PaymentModes'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Expense $expense)
     {
-        //
+
+        $attributes= $request->validate([
+            'payee' =>'required|min:3|max:255',
+            'amount' => 'required|gt:0',
+            'comments' => 'nullable',
+            'payment_modes_id' =>'required',
+            'dateofpayment' => 'required|date',
+        ]);
+
+        $expense->update([
+            'payee' => $attributes['payee'],
+            'amount' => $attributes['amount'],
+            'comments' => $attributes['comments'],
+            'payment_modes_id' =>$attributes['payment_modes_id'],
+            'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
+        ]);
+        return redirect()->route('expenses.index')->with('success', 'Expenses Updated Successfully');
     }
 
 
-    public function destroy(string $id)
+    public function destroy(Expense $expense)
     {
-        //
+        abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
+
+        $expense->delete();
+        return back()->with('success','expense deleted successfully');
     }
 }

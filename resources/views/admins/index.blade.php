@@ -17,6 +17,33 @@ Society Expenses
             <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
         </div>
     </div>
+
+    <!-- table -->
+<div class="reports d-flex justify-content-end me-5">
+    <table class="table w-auto table-bordered ">
+
+        <tr>
+            <th class="text-center table-info" colspan="2">Financial Reports</th>
+        </tr>
+
+        <tbody>
+            <tr class="table-light">
+                <td>Date</td>
+                <td>{{ date('d-m-Y') }}</td>
+            </tr>
+            <tr class="table-light">
+                <td>Count</td>
+                <td>{{ $count }}</td>
+            </tr>
+            <tr class="table-light">
+                <td>Total Amount</td>
+                <td>{{ $sum }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- table end -->
     {{-- listing --}}
     <div class="table-expenses ps-5 pe-5 pt-3  mt-3 table-responsive">
         <div id="printableArea">
@@ -41,6 +68,8 @@ Society Expenses
                             </div>
                         </th>
                         <th>Comments</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tr>
@@ -55,13 +84,46 @@ Society Expenses
                         @else
                         <td>-</td>
                         @endif
+                        <div class="none">
+                            @if (auth()->user()->usertype_id == 1)
+                            <td class="none">
+                                <a href="{{ route('expenses.edit', $expense) }}" class="btn btn-success none">Edit</a>
+                            </td>
+                            <td class="none">
+                                <form method="POST" action="{{ route('expenses.destroy', $expense->id) }}" class="m-0">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm none" data-toggle="tooltip" title='Delete'>Delete</button>
+                                </form>
+                            </td>
+                            @endif
+                        </div>
                     </tbody>
                 </tr>
                 @endforeach
             </table>
         </div>
     </div>
-    <script>
+    {{-- delete confirmation --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: `Do You Want To Delete This?`
+                    , icon: "warning"
+                    , buttons: true
+                    , dangerMode: true
+                , })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+        });
+
         // for searching
         $(document).ready(function() {
             $("#search").keyup(function() {
@@ -83,6 +145,7 @@ Society Expenses
                     $(".hide").show();
                 }, 400);
             }, 400);
+
         }
 
     </script>

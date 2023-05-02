@@ -65,7 +65,11 @@ Society Create Payment
           <b>Payment Mode:</b></label>
         <select name="payment_modes_id" class="form-select" id="payment_cursor">
           @foreach ($PaymentModes as $PaymentMode)
+          @if($PaymentMode->id==2)
+          <option value="{{ $PaymentMode->id }} "selected>{{ $PaymentMode->name }}</option>
+          @else
           <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
+          @endif
           @endforeach
         </select>
 
@@ -86,7 +90,7 @@ Society Create Payment
         </div>
 
         <label><b>Add Comment:</b></label>
-        <textarea name="comments" class="form-control"></textarea>
+        <textarea name="comments" class="form-control" >Updated on whatsapp</textarea>
         <div class="error">
           @error('comments')
           {{ $message }}

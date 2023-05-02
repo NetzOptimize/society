@@ -43,7 +43,7 @@ class Payment extends Model
     public function scopeDatebetween($query, $start, $end)
     {
         return $query->whereBetween(
-            \DB::raw("STR_TO_DATE(billingmonth, '%d-%m-%Y')"),
+            \DB::raw("STR_TO_DATE(dateofdeposit, '%d-%m-%Y')"),
             [date('Y-m-d', strtotime($start)), date('Y-m-d', strtotime($end))]
         )->get();
     }
@@ -65,5 +65,17 @@ class Payment extends Model
             return $query->orderBy('dateofdeposit', 'asc')->get();
         }
         return $query->orderBy('dateofdeposit', 'desc')->get();
+    }
+
+    public function Owner()
+    {
+        return $this->hasOneThrough(
+            User::class,
+            Resident::class,
+            'house_id',
+            'id',
+            'house_id',
+            'user_id' 
+        );
     }
 }

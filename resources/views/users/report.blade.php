@@ -4,20 +4,21 @@
 Society User-Report
 @endsection
 @section('content')
-@php $payments = Auth::user()->payments()->get() @endphp
-
-
+@php $payments = Auth::user()->payments()->get()->groupby('house_id') @endphp
+@foreach ($payments as $pay)
 <div class="table-report p-4 table-responsive ms-4 me-4">
     <table class="table  table-bordered">
         <tr  class="bg-dark text-light">
+            <th>House No.</th>
             <th>Billing Month</th>
             <th>Payment Mode</th>
             <th>Date Of Deposit</th>
             <th>Amount</th>
             <th>Payment Receipt</th>
         </tr>
-        @foreach ($payments as $payment)
-            <tr>
+        @foreach ($pay as $payment)
+        <tr>
+                <td>{{ $payment->houses->full_address }}</td>
                 @foreach ($months as $key => $month)
                     @if($key == $payment->billingmonth)
                         <td>{{ $temp = $month }}</td>
@@ -34,7 +35,7 @@ Society User-Report
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment Receipt</h1>
                             </div>
                             <div class="modal-body" id="my-div{{$payment->id}}">
-                                Name : {{ Auth()->user()->name }}<br>
+                                Name : {{ ucfirst(Auth()->user()->name) }}<br>
                                 Date : {{date("l jS \of F Y") }}<br><br>
 
                                 Billing Month : {{ $temp }}<br>
@@ -54,9 +55,10 @@ Society User-Report
                   View
                 </button></td>
             </tr>
-        @endforeach
-    </table>
-</div>
+            @endforeach
+        </table>
+    </div>
+    @endforeach
 <script>
     function printDiv(divId) {
         $(".hide").hide();

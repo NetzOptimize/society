@@ -40,7 +40,7 @@ class PaymentController extends Controller
             $enddate = strtotime($_GET['end_date']);
 
             if ( $startdate == true &&  $enddate == true) {
-                $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();;
+                $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();
                 $payments = Payment::sortedData($payments)->get();
                 $count = $payments->count();
                 $sum = $payments->sum('amount');
@@ -51,7 +51,7 @@ class PaymentController extends Controller
         elseif(isset($_GET['sort']))
         {
             $payments= Payment::sort($_GET['sort']);
-          
+
             $count = $payments->count();
             $sum = $payments->sum('amount');
 
@@ -210,10 +210,22 @@ class PaymentController extends Controller
 
         if($exists)
         {
-            return back()->with('error', 'Payment Already Exists');
+            $payment->update([
+                'payment_modes_id' => $req['payment_modes_id'],
+                'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+                'comments' => $req['comments']
+            ]);
+
+            return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
         }
 
-        $payment->update($attributes);
+        $payment->update([
+            'house_id' => $req['house_id'],
+            'billingmonth' => $req['billingmonth'],
+            'payment_modes_id' => $req->payment_modes_id,
+            'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+            'comments' => $req['comments']
+        ]);
 
         return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
     }
