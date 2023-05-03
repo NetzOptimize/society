@@ -26,6 +26,19 @@ class AdminController extends Controller
             $count = $expenses->count();
             $sum = $expenses->sum('amount');
         }
+        elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
+        {
+            $startdate = strtotime($_GET['start_date']);
+            $enddate = strtotime($_GET['end_date']);
+
+            if ( $startdate == true &&  $enddate == true) {
+                $expenses = Expense::Datebetween($_GET['start_date'], $_GET['end_date']);
+                $count = $expenses->count();
+                $sum = $expenses->sum('amount');
+            } else {
+                return redirect()->route('payments.index')->with('error','Invalid Request');
+            }
+        }
         else
         {
             $expenses= Expense::simplepaginate(15);

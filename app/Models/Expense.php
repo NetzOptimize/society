@@ -35,4 +35,11 @@ class Expense extends Model
     {
         return $query->where('payee', 'LIKE', '%'.$search.'%')->get();
     }
+    public function scopeDatebetween($query, $start, $end)
+    {
+        return $query->whereBetween(
+            \DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"),
+            [date('Y-m-d', strtotime($start)), date('Y-m-d', strtotime($end))]
+        )->get();
+    }
 }
