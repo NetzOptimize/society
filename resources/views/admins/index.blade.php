@@ -98,9 +98,13 @@ Society Expenses
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tr>
                 <tbody>
                     @foreach ($expenses as $expense)
+                    @if($expense->id==$id)
+                    <tr class="highlight">
+                    @else
+                    <tr>
+                    @endif
                     <td>{{ $expense->payee }}</td>
                     <td>{{ $expense->amount }}</td>
                     <td>{{ $expense->paymentmode->name }}</td>

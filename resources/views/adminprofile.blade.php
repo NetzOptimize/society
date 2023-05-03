@@ -3,8 +3,6 @@
 Society User-Profile
 @endsection
 @section('content')
-{{-- profile picture --}}
-
 
 <!-- Profile card -->
 <div class="main" id="profile-main">

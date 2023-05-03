@@ -75,6 +75,9 @@ td,th {
           </ul>
         </li>
 </div>
+<li class="nav-item">
+    <a href="{{ route('activitylog') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Activity Log</a>
+</li>
 <!--  -->
  <div class="dropdown me-2 user-hover">
 <a class="btn bg-transparent dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

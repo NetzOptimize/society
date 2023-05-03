@@ -8,11 +8,14 @@ use App\Models\House;
 use App\Models\PaymentMode;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Models\Activitylog;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
 
-    public function index()
+    public function index($id=0)
     {
         if(isset($_GET['sort']))
         {
@@ -46,7 +49,7 @@ class AdminController extends Controller
             $sum = $expenses->sum('amount');
         }
 
-        return view('admins.index', compact('expenses','sum', 'count'));
+        return view('admins.index', compact('expenses','sum', 'count','id'));
     }
 
     public function create()
@@ -66,13 +69,21 @@ class AdminController extends Controller
             'dateofpayment' => 'required|date',
         ]);
 
-        Expense::create([
+        $expense=Expense::create([
             'payee' => $attributes['payee'],
             'amount' => $attributes['amount'],
             'comments' => $attributes['comments'],
             'payment_modes_id' =>$attributes['payment_modes_id'],
             'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
         ]);
+
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Created',
+            'module_id' => 2,
+            'module_item_id' => $expense->id
+        ]);
+
         return back()->with('success', 'Expenses Added Successfully');
     }
 
@@ -120,6 +131,14 @@ class AdminController extends Controller
             'payment_modes_id' =>$attributes['payment_modes_id'],
             'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
         ]);
+
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Updated',
+            'module_id' => 2,
+            'module_item_id' => $expense->id
+        ]);
+
         return redirect()->route('expenses.index')->with('success', 'Expenses Updated Successfully');
     }
 
@@ -128,7 +147,15 @@ class AdminController extends Controller
     {
         abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
 
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Deleted',
+            'module_id' => 2,
+            'module_item_id' => $expense->id
+        ]);
+
         $expense->delete();
+
         return back()->with('success','expense deleted successfully');
     }
 }

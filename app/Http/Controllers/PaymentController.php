@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\House;
 use App\Models\PaymentMode;
+use App\Models\Activitylog;
 use App\Models\Payment;
 use App\Models\Resident;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
     public $initialpayment = 2100;
     public $monthlypayment = 700;
-    public function index()
+    public function index($id=0)
     {
 
         $months = config('global.months');
@@ -56,17 +58,6 @@ class PaymentController extends Controller
             $sum = $payments->sum('amount');
 
         }
-        // elseif(isset($_GET['search']))
-        // {
-        //     $house=$_GET['search'];
-        //     $payments = Payment::whereHas('houses', function ($query) use ($house) {
-        //         $query->where('full_address', 'Like', '%'.$house.'%');
-        //     })->get()->pluck('id')->toarray();
-
-        //     $payments = Payment::sortedData($payments)->get();
-        //     $count = $payments->count();
-        //     $sum = $payments->sum('amount');
-        // }
         elseif(isset($_GET['unpaid']))
         {
             $month =  $_GET['unpaid'];
@@ -92,7 +83,7 @@ class PaymentController extends Controller
             $sum = $payments->sum('amount');
         }
 
-        return view('payments.index', compact('payments', 'months', 'count', 'sum'));
+        return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id'));
     }
 
 
@@ -125,7 +116,7 @@ class PaymentController extends Controller
 
             if($initialpayment == null)
             {
-                Payment::create([
+                $payment=Payment::create([
 
                     'house_id' => $req['house_id'],
                     'billingmonth' => $req['billingmonth'][0],
@@ -135,13 +126,20 @@ class PaymentController extends Controller
                     'comments' => $req['comments'],
                 ]);
 
+                Activitylog::create([
+                    'user_id' => Auth::user()->id,
+                    'action' => 'Created',
+                    'module_id' => 1,
+                    'module_item_id' => $payment->id
+                ]);
+
                 if($req['billingmonth'])
                 {
                     foreach($req['billingmonth'] as $month)
                     {
                         if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first() == null)
                         {
-                            Payment::create([
+                            $payment=Payment::create([
 
                                 'house_id' => $req['house_id'],
                                 'billingmonth' => $month,
@@ -149,6 +147,12 @@ class PaymentController extends Controller
                                 'payment_modes_id' => $req->payment_modes_id,
                                 'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
                                 'comments' => $req['comments']
+                            ]);
+                            Activitylog::create([
+                                'user_id' => Auth::user()->id,
+                                'action' => 'Created',
+                                'module_id' => 1,
+                                'module_item_id' => $payment->id
                             ]);
                         }
                     }
@@ -162,7 +166,7 @@ class PaymentController extends Controller
             {
                 if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first() == null)
                 {
-                    Payment::create([
+                    $payment=Payment::create([
                         'house_id' => $req['house_id'],
                         'billingmonth' => $month,
                         'amount' => $this->monthlypayment,
@@ -170,7 +174,12 @@ class PaymentController extends Controller
                         'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
                         'comments' => $req['comments']
                     ]);
-
+                    Activitylog::create([
+                        'user_id' => Auth::user()->id,
+                        'action' => 'Created',
+                        'module_id' => 1,
+                        'module_item_id' => $payment->id
+                    ]);
                 }
             }
             return back()->with('success', 'Payment Added Successfully');
@@ -216,6 +225,13 @@ class PaymentController extends Controller
                 'comments' => $req['comments']
             ]);
 
+            Activitylog::create([
+                'user_id' => Auth::user()->id,
+                'action' => 'Updated',
+                'module_id' => 1,
+                'module_item_id' => $payment->id
+            ]);
+
             return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
         }
 
@@ -227,6 +243,13 @@ class PaymentController extends Controller
             'comments' => $req['comments']
         ]);
 
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Updated',
+            'module_id' => 1,
+            'module_item_id' => $payment->id
+        ]);
+
         return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
     }
 
@@ -234,7 +257,15 @@ class PaymentController extends Controller
     {
         abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
 
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Deleted',
+            'module_id' => 1,
+            'module_item_id' => $payment->id
+        ]);
+
         $payment->delete();
+
         return back()->with('success','payment deleted successfully');
     }
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AdminController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use  App\Models\Activitylog;
 
 
 /*
@@ -75,10 +76,24 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
     Route::resource('residents', ResidentController::class)->except(['create']);;
     Route::get('residents/create/{id?}', [ResidentController::class, 'create'])->name('residents.create');
 
-    Route::resource('payments', PaymentController::class);
+    Route::get('payments/{id?}', [PaymentController::class,'index'])->name('payments.index');
+    Route::resource('payments', PaymentController::class)->except(['index']);
+
+    Route::get('admins/{id?}', [AdminController::class,'index'])->name('expenses.index');
+    Route::resource('admins/expenses', AdminController::class)->except(['index']);
+
+
     Route::post('ajax', [PaymentController::class, 'ajax'])->name('ajax');
 
-    Route::resource('admins/expenses', AdminController::class);
+
+
+
+    Route::get('/activity-log', function () {
+        $activities= Activitylog::get();
+
+        return view('activitylog', compact('activities'));
+    })->name('activitylog');
+
 });
 
 

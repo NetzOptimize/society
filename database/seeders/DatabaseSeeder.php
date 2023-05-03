@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\ModuleSeeder;
 use Database\Seeders\UserTypeSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\PaymentModeSeeder;
@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
             SocietySeeder::class,
             UserTypeSeeder::class,
             UserSeeder::class,
-            PaymentModeSeeder::class
-
+            PaymentModeSeeder::class,
+            ModuleSeeder::class
         ]);
     }
 }

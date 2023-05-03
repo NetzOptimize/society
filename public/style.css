@@ -148,7 +148,7 @@ h3#resident-heading {
 }
 
 #add-user-position {
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px 0px;
@@ -172,7 +172,7 @@ h3#resident-heading {
 }
 
 .resident-edit {
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px 0px;
@@ -479,20 +479,23 @@ div#printableArea th {
 .user-logo.d-flex.align-items-center.gap-2 {
     padding: 10px 10px;
 }
-.demo{
-     position: relative;
-  }
-  .demo input[type="password"],
-  .demo input[type="text"]{
-     box-sizing: border-box;
-  }
-  .fa-eye{
+
+.demo {
+    position: relative;
+}
+
+.demo input[type="password"],
+.demo input[type="text"] {
+    box-sizing: border-box;
+}
+
+.fa-eye {
     position: absolute;
     top: 64%;
     right: 4%;
     cursor: pointer;
     color: lightgray;
-  }
+}
 
 /* print-screen*/
 @media print {
@@ -594,6 +597,9 @@ form#payment-method-form {
     gap: 10px !important;
 }
 
+/* .highlight{
+    background-color: #bc70a4;
+} */
 /* print end */
 /* responsiveness */
 
@@ -661,6 +667,7 @@ form#payment-method-form {
         margin: 10px;
 
     }
+
     div#pass1 {
 
         gap: 5px;
@@ -726,13 +733,15 @@ form#payment-method-form {
         margin: 10px 0px;
 
     }
+
     div#pass1 {
         display: flex;
         flex-direction: column;
-        gap:3px;
+        gap: 3px;
     }
-    .d-flex.justify-content-center.align-items-center.p-4.payment1{
-         gap: 10px;
+
+    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+        gap: 10px;
     }
 }
 
@@ -915,15 +924,18 @@ form#payment-method-form {
     #end-date {
         margin: 0px !important;
     }
+
     div#pass1 {
 
         gap: 2px;
     }
-       .navbar-dark .navbar-toggler {
-        color: rgba(255,255,255,.55);
-        border-color:none !important
+
+    .navbar-dark .navbar-toggler {
+        color: rgba(255, 255, 255, .55);
+        border-color: none !important
     }
-    .paid-month-flex.d-flex.me-3{
+
+    .paid-month-flex.d-flex.me-3 {
         margin: 0px !important;
     }
 }
@@ -1196,6 +1208,7 @@ form#payment-method-form {
     .payment-heading.text-center.bg-light.me-5.ms-5.rounded.mt-3.p-4 {
         width: 80%;
     }
+
     @media print {
         .none {
             display: none !important;

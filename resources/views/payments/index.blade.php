@@ -4,8 +4,6 @@ Society Payments
 @endsection
 @section('content')
 {{-- monthwise filter --}}
-
-
 <div class="heading-payment-history bg-light me-5 ms-5  p-4 mt-3 text-center">
     <h3>Payment History</h3>
 </div>
@@ -142,7 +140,7 @@ Society Payments
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr >
                     @if (request('unpaid'))
                     @foreach ($payments as $payment)
                     @php
@@ -155,6 +153,11 @@ Society Payments
                 @endforeach
                 @else
                 @foreach ($payments as $payment)
+                @if($payment->id == $id)
+                <tr class="bg-info">
+                @else
+                <tr>
+                @endif
                 @php
                 $i++;
                 @endphp
