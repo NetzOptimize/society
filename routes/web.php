@@ -7,6 +7,8 @@ use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AdminController;
+use App\Models\Expense;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,7 +56,11 @@ Route::post('forgetpassword/{user}/store', [UserController::class, 'forgetstore'
 Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
     Route::get('/home', function () {
-        return view('home');
+
+        $expense=Expense::sum('amount');
+        $payment=Payment::sum('amount');
+
+        return view('home', compact('expense','payment'));
     });
     Route::post('users/image/store', [UserController::class, 'imagestore'])->name('users.image.store');
     Route::get('admin/profile', [UserController::class, 'adminProfile'])->name('admin.user.profile');

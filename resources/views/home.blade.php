@@ -13,7 +13,7 @@ Society Home
     <div class="card dash  bg-primary text-light">
       <div class="card-body">
         <h5 class="card-title">Total Amount</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">{{ $payment }}</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
       </div>
     </div>
@@ -21,8 +21,8 @@ Society Home
   <div class="col-3">
     <div class="card dash bg-warning text-light">
       <div class="card-body">
-        <h5 class="card-title"> User Amount</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <h5 class="card-title"> Total Expenditure</h5>
+        <p class="card-text">{{  $expense }}</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
       </div>
     </div>
@@ -30,8 +30,8 @@ Society Home
   <div class="col-3">
     <div class="card dash bg-dark text-light">
       <div class="card-body">
-        <h5 class="card-title">Tenant Amount</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <h5 class="card-title">Remaining</h5>
+        <p class="card-text">{{$payment-$expense  }}</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
       </div>
     </div>
@@ -46,8 +46,7 @@ Society Home
 
 <div class="container">
 <div>
-  <canvas id="user-chart" class="p-4"   style="    border: 1px solid darkgrey;
-"></canvas>
+  <canvas id="user-chart" class="p-4"   style="    border: 1px solid darkgrey;"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -86,13 +85,12 @@ Society Home
 
 
 </script>
- 
+
 </div>
 <!-- doughnut -->
 <script>
   <div>
-  <canvas id="dough-chart" class="p-4"   style="    border: 1px solid darkgrey;
-"></canvas>
+  <canvas id="dough-chart" class="p-4"   style="    border: 1px solid darkgrey;"></canvas>
 </div>
 const config = {
   type: 'doughnut',
