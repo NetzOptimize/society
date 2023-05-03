@@ -57,10 +57,16 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
     Route::get('/home', function () {
 
+        $paymentsByMonth = Payment::get()->groupBy('billingmonth')->map(function ($group) {
+            return $group->sum('amount');
+        });
+
+        $paymentsByMonth =$paymentsByMonth->toarray();
+
         $expense=Expense::sum('amount');
         $payment=Payment::sum('amount');
 
-        return view('home', compact('expense','payment'));
+        return view('home', compact('expense','payment','paymentsByMonth'));
     });
     Route::post('users/image/store', [UserController::class, 'imagestore'])->name('users.image.store');
     Route::get('admin/profile', [UserController::class, 'adminProfile'])->name('admin.user.profile');

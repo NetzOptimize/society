@@ -46,45 +46,48 @@ Society Home
 
 <div class="container">
 <div>
-  <canvas id="user-chart" class="p-4"   style="    border: 1px solid darkgrey;"></canvas>
-</div>
+    <canvas id="user-chart"></canvas>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-  const ctx = document.getElementById('user-chart');
+    @php ksort($paymentsByMonth);@endphp
+    <script>
+      const ctx = document.getElementById('user-chart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['January', 'Febuary', 'March', 'April', 'May', 'June','July','August','September','October','November','December'],
-      datasets: [{
-        label:'Graph of users',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-        backgroundColor: [
-      'rgba(255, 99, 132, 0.2)',
-      'rgba(255, 159, 64, 0.2)',
-      'rgba(255, 205, 86, 0.2)',
-      'rgba(75, 192, 192, 0.2)',
-      'rgba(54, 162, 235, 0.2)',
-      'rgba(153, 102, 255, 0.2)',
-      'rgba(201, 203, 207, 0.2)'
-    ],
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels:<?= json_encode(array_keys($paymentsByMonth)) ?>,
+          datasets: [{
+            label: 'Received Payments by Month',
+            data: <?= json_encode(array_values($paymentsByMonth)) ?>,
+            borderWidth: 1,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(201, 203, 207, 0.2)',
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+            ],
+          }]
         },
-      },
-      responsive:true
-    }
-  });
-
-
-</script>
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          responsive: true,
+        },
+      });
+    </script>
 
 </div>
 <!-- doughnut -->
