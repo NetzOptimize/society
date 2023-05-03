@@ -110,13 +110,11 @@ Society Payments
                 @if($payments->first())
                 <tr class="table-dark">
                     <th>Serial No</th>
-                    <th>Name</th>
                     <th>House No.</th>
                     <th>Owner</th>
                     <th>Billing Month</th>
                     @if (null == request('unpaid'))
                     <th>Payment Mode</th>
-                    <th>Date of Occupancy</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
 
                             <a class="btn btn-success btn-sm dropdown-toggle none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -166,7 +164,7 @@ Society Payments
                 @endphp
 
                 <td>@php echo $i; @endphp</td>
-                <td></td>
+
 
                 <td>{{ $payment->houses->full_address }}</td>
                 @if(isset($payment->owner))
@@ -180,8 +178,7 @@ Society Payments
                 @endif
                 @endforeach
                 <td>{{ $payment->paymentmode->name }}</td>
-                <td></td>
-
+               
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
 
