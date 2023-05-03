@@ -111,15 +111,15 @@ Society Houses Show
                 </div>
                 @endif
             </div>
-            
+
         </div>
         @if($house->id != $maxCount)
         <a class="btn btn-dark d-flex justify-content-end m-2" href="{{ route('houses.show', $next) }}" id="next"> Next</a>
         @endif
-      
+
     </div>
-       
-       
+
+
      <div class="main-details-house me-5 ms-5">
 
 

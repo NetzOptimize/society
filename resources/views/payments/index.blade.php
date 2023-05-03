@@ -4,6 +4,8 @@ Society Payments
 @endsection
 @section('content')
 {{-- monthwise filter --}}
+
+
 <div class="heading-payment-history bg-light me-5 ms-5  p-4 mt-3 text-center">
     <h3>Payment History</h3>
 </div>
@@ -47,13 +49,13 @@ Society Payments
         {{-- datewise filter --}}
         <div class="payment">
             <form action="" method="GET" style="margin:0" id="payment-history-form">
-                <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
+                <label class="ms-3 me-3 text-center"><b>Date of deposit (SD)</b></label>
                 @if (request('start_date'))
                 <input type="date" name="start_date" value={{ request('start_date') }}>
                 @else
                 <input type="date" name="start_date" class="start-date">
                 @endif
-                <label class="ms-3 me-3 text-center"><b>End Date</b></label>
+                <label class="ms-3 me-3 text-center"><b>Date of deposit (ED)</b></label>
                 @if (request('end_date'))
                 <input type="date" name="end_date" value={{ request('end_date') }}>
                 @else
@@ -140,13 +142,12 @@ Society Payments
                 </tr>
             </thead>
             <tbody>
-                <tr >
+                <tr>
                     @if (request('unpaid'))
                     @foreach ($payments as $payment)
                     @php
                     $i++;
                     @endphp
-                    <td> </td>
                     <td>@php echo $i; @endphp</td>
                     <td>{{ $payment->full_address }}</td>
                     <td>{{ request('unpaid') }}</td>
@@ -154,18 +155,10 @@ Society Payments
                 @endforeach
                 @else
                 @foreach ($payments as $payment)
-                @if($payment->id == $id)
-                <tr class="bg-info">
-                @else
-                <tr>
-                @endif
                 @php
                 $i++;
                 @endphp
-
                 <td>@php echo $i; @endphp</td>
-
-
                 <td>{{ $payment->houses->full_address }}</td>
                 @if(isset($payment->owner))
                 <td>{{ $payment->owner->name }}</td>
@@ -178,29 +171,27 @@ Society Payments
                 @endif
                 @endforeach
                 <td>{{ $payment->paymentmode->name }}</td>
-               
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
-
-                <div class="hide">
-                @if (auth()->user()->usertype_id == 1)
-                <td>
-                    <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success hide">Edit</a>
-                </td>
-                <td>
-                    <form method="POST" action="{{ route('payments.destroy', $payment->id) }}" class="m-0">
-                        @csrf
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm hide" data-toggle="tooltip" title='Delete'>Delete</button>
-                    </form>
-                </td>
-                @endif
-                </tr>
-                @endforeach
-                @endif
-                @else
-                <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
-                @endif
+                <div class="none">
+                    @if (auth()->user()->usertype_id == 1)
+                    <td class="none">
+                        <a href="{{ route('payments.edit', $payment) }}" class="btn btn-success none">Edit</a>
+                    </td>
+                    <td class="none">
+                        <form method="POST" action="{{ route('payments.destroy', $payment->id) }}" class="m-0">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm none" data-toggle="tooltip" title='Delete'>Delete</button>
+                        </form>
+                    </td>
+                    @endif
+                    </tr>
+                    @endforeach
+                    @endif
+                    @else
+                    <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
+                    @endif
                 </div>
             </tbody>
         </table>

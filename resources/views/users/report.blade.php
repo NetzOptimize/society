@@ -18,7 +18,7 @@ Society User-Report
         </tr>
         @foreach ($pay as $payment)
         <tr>
-                <td>{{ $payment->houses->full_address }}</td>
+            <td>{{ $payment->houses->full_address }}</td>
                 @foreach ($months as $key => $month)
                     @if($key == $payment->billingmonth)
                         <td>{{ $temp = $month }}</td>
@@ -59,6 +59,7 @@ Society User-Report
         </table>
     </div>
     @endforeach
+</div>
 <script>
     function printDiv(divId) {
         $(".hide").hide();

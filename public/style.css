@@ -4,7 +4,20 @@
     width: 100%;
     margin-top: 5px;
 }
+.profile-pic{
+border:1px solid black;
+}
+.pwd-icon {
+    position: relative;
+    height: 36px;
+    margin-bottom: 16px;
+}
 
+.pwd-icon #eye {
+    top: 50%;
+    right: 15px;
+    transform: translate(0%, -50%);
+}
 .forgot {
     background-color: #fff;
     padding: 12px;
@@ -148,7 +161,7 @@ h3#resident-heading {
 }
 
 #add-user-position {
-    display: flex;
+     display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px 0px;
@@ -172,7 +185,7 @@ h3#resident-heading {
 }
 
 .resident-edit {
-    display: flex;
+     display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px 0px;
@@ -479,23 +492,27 @@ div#printableArea th {
 .user-logo.d-flex.align-items-center.gap-2 {
     padding: 10px 10px;
 }
-
-.demo {
-    position: relative;
-}
-
-.demo input[type="password"],
-.demo input[type="text"] {
-    box-sizing: border-box;
-}
-
-.fa-eye {
+.demo{
+     position: relative;
+  }
+  .demo input[type="password"],
+  .demo input[type="text"]{
+     box-sizing: border-box;
+  }
+  .fa-eye{
     position: absolute;
-    top: 64%;
+    top: 65%;
     right: 4%;
     cursor: pointer;
     color: lightgray;
-}
+z-index:999;
+
+
+background-color:transparent;
+justify-content:center;
+align-items:center;
+border:none !important;
+  }
 
 /* print-screen*/
 @media print {
@@ -596,26 +613,6 @@ p {
 form#payment-method-form {
     gap: 10px !important;
 }
-.navbar-toggler-icon {
-    filter: invert(1) brightness(1);
-}
-.navbar-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    filter: invert(0);
-}
-
-/* user-chart */
-
-#user-chart{
-    display: block;
-     box-sizing: border-box;
-      min-height: 636px;
-       max-width: 1272px;
-}
-
-.card.dash {
-    padding: 20px 0px 20px 0px;
-}
 
 /* print end */
 /* responsiveness */
@@ -684,10 +681,13 @@ form#payment-method-form {
         margin: 10px;
 
     }
-
     div#pass1 {
 
         gap: 5px;
+    }
+    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+        flex-direction: column-reverse;
+        gap: 10px;
     }
 
 }
@@ -750,15 +750,13 @@ form#payment-method-form {
         margin: 10px 0px;
 
     }
-
     div#pass1 {
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap:3px;
     }
-
-    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
-        gap: 10px;
+    .d-flex.justify-content-center.align-items-center.p-4.payment1{
+         gap: 10px;
     }
 }
 
@@ -766,6 +764,10 @@ form#payment-method-form {
     div#login-height {
         padding: 10px !important;
     }
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+    flex-direction: column-reverse;
+gap:10px;
+}
 }
 
 @media screen and (max-width: 992px) {
@@ -861,9 +863,8 @@ form#payment-method-form {
     .refresh-button.pb-4.me-5.d-flex.justify-content-end {
         justify-content: center !important;
         padding: 0px !important;
-        margin: 20px 0px 10px 0px !important;
+        margin: 10px;
     }
-
     .resident-create.mt-3.p-3.me-4.d-flex.justify-content-end,
     .refresh-button.pb-3.me-5.d-flex.justify-content-end {
         justify-content: center !important;
@@ -871,7 +872,7 @@ form#payment-method-form {
 
     .refresh-expenses.pt-3.pe-5.d-flex.justify-content-end.gap-2 {
         justify-content: center !important;
-        padding: 30px 0px 0px 0px!important;
+        padding:30px  0px 0px 0px !important;
     }
 
     .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2 {
@@ -942,22 +943,50 @@ form#payment-method-form {
     #end-date {
         margin: 0px !important;
     }
-
     div#pass1 {
 
         gap: 2px;
     }
-
-    .navbar-dark .navbar-toggler {
-        color: rgba(255, 255, 255, .55);
-        border-color: none !important
+       .navbar-dark .navbar-toggler {
+        color: rgba(255,255,255,.55);
+        border-color:none !important
     }
-
-    .paid-month-flex.d-flex.me-3 {
+    .paid-month-flex.d-flex.me-3{
         margin: 0px !important;
     }
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+    flex-direction: inherit;
+    gap: 10px;
 }
+.reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+justify-content:flex-end !important;
+padding:10px !important
+}
+.d-flex.justify-content-center.align-items-center.p-4.payment1{
 
+padding:0px !important;
+
+}
+.reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+    justify-content: center !important;
+    padding: 0px !important;
+    margin: 1
+20px 0px 10px 0px !important;
+}
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+    padding: 10px 0px 0px 0px !important;
+}
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+    gap: 10px;
+}
+.refresh-button.pb-3.me-5.d-flex.justify-content-end {
+    justify-content: center !important;
+}
+.navbar-toggler {
+
+    filter: invert(1) brightness(1);
+}
+}
 
 @media screen and (max-width: 700px) {
     #login-height {
@@ -1099,23 +1128,29 @@ form#payment-method-form {
         width: 70%;
     }
 
-           .main-details.rounded.bg-light.p-4{
-            order: 2;
-           }
-           div#pass1 {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        .d-flex.justify-content-center.align-items-center.p-4.payment1 {
-             flex-direction: column-reverse;
-        }
-        .table-expenses.ps-5.pe-5.mt-3.table-responsive{
-            margin: 0px !important;
-        }
+    .main-details.rounded.bg-light.p-4 {
+        order: 2;
+    }
+
+    div#pass1 {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+        flex-direction: column-reverse;
+    }
+.reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+    justify-content: center !important;
+    padding: 0px !important;
+    margin: 10px 0px 10px 0px !important;
+}
+.table-expenses.ps-5.pe-5.pt-3.table-responsive{
+padding:0px !important;
 
 }
-
+}
 
 @media screen and (max-width: 520px) {
     #background {
@@ -1228,11 +1263,6 @@ form#payment-method-form {
         width: 80%;
     }
 
-    @media print {
-        .none {
-            display: none !important;
-        }
-    }
 
 }
 
@@ -1333,6 +1363,12 @@ form#payment-method-form {
     .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.align-items-end.gap-2 input#search {
         width: 50%;
     }
+.reports.d-flex.justify-content-end.me-5 {
+    margin: 16px !important;
+    padding: 0px;
+    display: flex;
+    justify-content: center !important;
+}
 }
 
 @media screen and (max-width: 320px) {
@@ -1385,4 +1421,6 @@ form#payment-method-form {
     .none {
         display: none !important;
     }
+
 }
+

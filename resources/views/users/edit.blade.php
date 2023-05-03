@@ -106,6 +106,6 @@ Society Edit User
                 }
             });
         });
-    </scrip     t>
+    </script>
     @endsection
 </div>

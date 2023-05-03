@@ -33,9 +33,10 @@ Society Login
             </div> -->
             <div class="demo">
             <label>PASSWORD:</label>
-            <input type="password" name="password"  class="form-control mt-3" id="password" placeholder="Enter your password">
-            <i class="fa-solid fa-eye" id="eye"></i>
-
+            <div class="pwd-icon">
+                <input type="password" name="password"  class="form-control mt-3" id="password" placeholder="Enter your password">
+                <i class="fa-solid fa-eye" id="eye"></i>
+            </div>
         </div>
             <!-- <div class="error">
                 @error('password')

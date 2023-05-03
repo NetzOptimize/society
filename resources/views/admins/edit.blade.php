@@ -31,7 +31,7 @@ Society Expense Edit
             <select name="payment_modes_id"class="form-select payment-cursor">
                 <option value="">Select Payment Method</option>
                 @foreach ($PaymentModes as $PaymentMode)
-                @if ($PaymentMode->id == $expense->payment_modes_id)
+                @if ($PaymentMode->id == $expense->id)
                 <option value="{{ $PaymentMode->id }} " selected>{{ $PaymentMode->name }}</option>
                 @else
                 <option value="{{ $PaymentMode->id }} ">{{ $PaymentMode->name }}</option>
@@ -51,7 +51,7 @@ Society Expense Edit
                 @enderror
             </div>
             <label><b>Add Comment:</b></label>
-            <textarea name="comments"class="form-control" value=>{{ $expense->comments }}</textarea>
+            <textarea name="comments"class="form-control" value="{{ $expense->comments }}"></textarea>
             <div class="error">
                 @error('comments')
                     {{ $message }}
