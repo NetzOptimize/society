@@ -596,10 +596,27 @@ p {
 form#payment-method-form {
     gap: 10px !important;
 }
+.navbar-toggler-icon {
+    filter: invert(1) brightness(1);
+}
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    filter: invert(0);
+}
 
-/* .highlight{
-    background-color: #bc70a4;
-} */
+/* user-chart */
+
+#user-chart{
+    display: block;
+     box-sizing: border-box;
+      min-height: 636px;
+       max-width: 1272px;
+}
+
+.card.dash {
+    padding: 20px 0px 20px 0px;
+}
+
 /* print end */
 /* responsiveness */
 
@@ -844,7 +861,7 @@ form#payment-method-form {
     .refresh-button.pb-4.me-5.d-flex.justify-content-end {
         justify-content: center !important;
         padding: 0px !important;
-        margin: 10px 0px 10px 0px !important;
+        margin: 20px 0px 10px 0px !important;
     }
 
     .resident-create.mt-3.p-3.me-4.d-flex.justify-content-end,
@@ -854,6 +871,7 @@ form#payment-method-form {
 
     .refresh-expenses.pt-3.pe-5.d-flex.justify-content-end.gap-2 {
         justify-content: center !important;
+        padding: 30px 0px 0px 0px!important;
     }
 
     .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2 {
@@ -1081,19 +1099,20 @@ form#payment-method-form {
         width: 70%;
     }
 
-    .main-details.rounded.bg-light.p-4 {
-        order: 2;
-    }
-
-    div#pass1 {
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
-    }
-
-    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
-        flex-direction: column-reverse;
-    }
+           .main-details.rounded.bg-light.p-4{
+            order: 2;
+           }
+           div#pass1 {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+             flex-direction: column-reverse;
+        }
+        .table-expenses.ps-5.pe-5.mt-3.table-responsive{
+            margin: 0px !important;
+        }
 
 }
 
