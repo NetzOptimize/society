@@ -101,7 +101,7 @@ Society Expenses
                 <tbody>
                     @foreach ($expenses as $expense)
                     @if($expense->id==$id)
-                    <tr class="highlight">
+                    <tr class="bg-info">
                     @else
                     <tr>
                     @endif
