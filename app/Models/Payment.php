@@ -18,6 +18,7 @@ class Payment extends Model
         'payment_modes_id',
         'dateofdeposit',
         'amount',
+        'comments'
     ];
 
     public function houses()
@@ -75,7 +76,7 @@ class Payment extends Model
             'house_id',
             'id',
             'house_id',
-            'user_id' 
+            'user_id'
         );
     }
 }

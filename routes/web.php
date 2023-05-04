@@ -90,8 +90,8 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
     Route::resource('residents', ResidentController::class)->except(['create']);;
     Route::get('residents/create/{id?}', [ResidentController::class, 'create'])->name('residents.create');
 
-    Route::get('payments/{id?}', [PaymentController::class,'index'])->name('payments.index');
     Route::resource('payments', PaymentController::class)->except(['index']);
+    Route::get('payments/{id?}', [PaymentController::class,'index'])->name('payments.index');
 
     Route::get('admins/{id?}', [AdminController::class,'index'])->name('expenses.index');
     Route::resource('admins/expenses', AdminController::class)->except(['index']);

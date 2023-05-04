@@ -133,6 +133,7 @@ Society Payments
                         </div>
                     </th>
                     <th>Amount</th>
+                    <th>Comment</th>
                     @if (auth()->user()->usertype_id != 3)
                     <div class="none">
                         <th colspan="2" class="text-center none" id="th-payment-print">Actions</th>
@@ -173,6 +174,11 @@ Society Payments
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
+                @if($payment->comments)
+                <td>{{ $payment->comments }}</td>
+                @else
+                <td>Not Provided</td>
+                @endif
                 <div class="none">
                     @if (auth()->user()->usertype_id == 1)
                     <td class="none">

@@ -207,6 +207,7 @@ class PaymentController extends Controller
 
     public function update(Request $req, Payment $payment)
     {
+
         $attributes= $req->validate([
             'house_id' =>'required',
             'billingmonth' => 'required',
