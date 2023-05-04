@@ -49,7 +49,7 @@
 
            <div class="dropdown drop-hover">
           <li class="nav-item dropdown">
-          <button class="btn btn-transparent dropdown-toggle  text-light btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-transparent dropdown-toggle  text-light btn1 ms-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Payment
         </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -63,7 +63,7 @@
   </div>
   <div class="dropdown drop-hover ">
             <li class="nav-item dropdown">
-            <button class="btn btn-transparent dropdown-toggle text-light btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-transparent dropdown-toggle text-light btn1 ms-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Expense
         </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -79,7 +79,7 @@
     </li>
   <!--  -->
    <div class="dropdown me-2 user-hover">
-  <a class="btn bg-transparent dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn bg-transparent dropdown-toggle text-light ms-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       @php $image = Auth()->user()->user_image;@endphp
       @if($image)
       <img src="{{ 'https://8.zeroguess.us/society/storage/app/'.$image }}" class="rounded-pill" height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
