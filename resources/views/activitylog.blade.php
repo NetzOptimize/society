@@ -5,11 +5,11 @@ Society User-Profile
 @section('content')
 <div class="main">
 <div class="activiy-log-heading text-center mt-3 mb-3 ">
-    <h2 class="p-4 bg-light ms-5 me-5">Activity-logs</h2>
+    <h2 class="p-4 bg-light ms-5 me-5">Activity-Log History</h2>
 
     </div>
-<div class="activty-log w-100 d-flex justify-content-center table-responsive "> 
-  
+<div class="activty-log w-100 d-flex justify-content-center table-responsive ">
+
 <table class=" ms-5 me-5 table-bordered w-100   ">
     <thead>
     <tr class="bg-dark text-light">
@@ -17,14 +17,14 @@ Society User-Profile
         <th>Done By</th>
         <th>Action</th>
         <th>Module</th>
-        <th>Item</th>
-        <th>Edit on</th>
-        <th>Delete</th>
+        <th>Summary</th>
+        <th>Edited at</th>
+        {{-- <th>Delete</th> --}}
 
     </tr>
     </thead>
     @foreach($activities as $activity)
-    <tbody> 
+    <tbody>
     <tr>
         @php
         $timestamp = time();
@@ -55,7 +55,7 @@ Society User-Profile
                         Date of deposit:{{  $activity->payment->dateofdeposit }}<br>
                         Comment:{{  $activity->payment->comments }}
                         @else
-                        This item has been removed
+                        This data has been removed
                         @endif
                     </div>
                     <div class="modal-footer">
@@ -74,7 +74,7 @@ Society User-Profile
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Expense</h5>
                     </div>
                     <div class="modal-body">
                         @if(!empty( $activity->expense))
@@ -83,7 +83,7 @@ Society User-Profile
                         Date of payment:{{  $activity->expense->dateofpayment }}<br>
                         Comment:{{  $activity->expense->comments }}
                         @else
-                        This item has been removed
+                        This data has been removed
                         @endif
                     </div>
                     <div class="modal-footer">
@@ -106,7 +106,7 @@ Society User-Profile
 
         @endphp
         <td>{{ $activity->created_at->diffForHumans() }}</td>
-<td> <button class="btn btn-danger"> Delete</button></td>
+{{-- <td> <button class="btn btn-danger"> Delete</button></td> --}}
         @endforeach
     </tr>
 </tbody>
