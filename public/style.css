@@ -613,7 +613,16 @@ p {
 form#payment-method-form {
     gap: 10px !important;
 }
-
+.activty-log td,.activty-log th{
+    padding: 10px !important;
+}
+.activty-log  button.btn.btn-primary {
+    border-radius: 20px;
+ }
+ .activty-log .view{
+/* display: flex;
+justify-content: center; */
+ } 
 /* print end */
 /* responsiveness */
 

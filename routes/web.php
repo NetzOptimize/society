@@ -103,7 +103,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
 
     Route::get('/activity-log', function () {
-        $activities= Activitylog::get();
+        $activities = Activitylog::orderBy('created_at', 'desc')->get();
 
         return view('activitylog', compact('activities'));
     })->name('activitylog');

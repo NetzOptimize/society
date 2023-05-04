@@ -3,25 +3,32 @@
 Society User-Profile
 @endsection
 @section('content')
-<h2>Acitivity-logs</h2>
-<table>
-    <tr>
+<div class="main">
+<div class="activiy-log-heading text-center mt-3 mb-3 ">
+    <h2 class="p-4 bg-light ms-5 me-5">Activity-Log History</h2>
+
+    </div>
+<div class="activty-log w-100 d-flex justify-content-center table-responsive ">
+
+<table class=" ms-5 me-5 table-bordered w-100   ">
+    <thead>
+    <tr class="bg-dark text-light">
         <th>Date</th>
         <th>Done By</th>
         <th>Action</th>
         <th>Module</th>
-        <th>Item</th>
-    </tr>
-    @foreach($activities as $activity)
-    <tr>
-        @php
-        $timestamp = time();
-        $date = date('d-m-Y', $timestamp);
+        <th>Summary</th>
+        <th>Edited at</th>
+        {{-- <th>Delete</th> --}}
 
-        @endphp
-        <td>{{ $date }}</td>
+    </tr>
+    </thead>
+    @foreach($activities as $activity)
+    <tbody>
+    <tr>
+        <td>{{ $activity->created_at->format('d-m-y')}}</td>
         @if ($activity->user)
-        <td>{{ ucfirst($activity->user->name) }} <br><small>{{ $activity->user->mobile1 }}</small></td>
+        <td>{{ ucfirst($activity->user->name) }} <br><small class="text-muted">{{ $activity->user->mobile1 }}</small></td>
         @else
         <td>N/A</td>
         @endif
@@ -53,7 +60,7 @@ Society User-Profile
             </div>
         </div>
         <!-- Button trigger modal -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{ $activity->id }}">
+        <td class="view"><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal{{ $activity->id }}">
             view
         </button></td>
         @else
@@ -62,7 +69,7 @@ Society User-Profile
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Expense</h5>
                     </div>
                     <div class="modal-body">
                         @if(!empty( $activity->expense))
@@ -71,7 +78,7 @@ Society User-Profile
                         Date of payment:{{  $activity->expense->dateofpayment }}<br>
                         Comment:{{  $activity->expense->comments }}
                         @else
-                        This item has been removed
+                        This data has been removed
                         @endif
                     </div>
                     <div class="modal-footer">
@@ -94,8 +101,11 @@ Society User-Profile
 
         @endphp
         <td>{{ $activity->created_at->diffForHumans() }}</td>
-
+{{-- <td> <button class="btn btn-danger"> Delete</button></td> --}}
         @endforeach
     </tr>
+</tbody>
 </table>
+</div>
+</div>
 @endsection
