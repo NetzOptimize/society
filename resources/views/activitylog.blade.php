@@ -13,8 +13,8 @@ Society User-Profile
 </div>
 
 {{-- datewise filter --}}
-<div class="payment hide">
-<form action="" method="GET" style="margin:0" id="payment-history-form">
+<div class="payment hide d-flex justify-content-center">
+<form action="" method="GET" style="margin:0" id="payment-history-form" class="w-50">
     <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
     @if (request('start_date'))
     <input type="date" name="start_date" value={{ request('start_date') }}>
