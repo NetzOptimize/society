@@ -19,8 +19,7 @@ Society User-Profile
         <th>Module</th>
         <th>Item</th>
         <th>Edit on</th>
-        <th>Delete</th>
-
+ 
     </tr>
     </thead>
     @foreach($activities as $activity)
@@ -106,8 +105,7 @@ Society User-Profile
 
         @endphp
         <td>{{ $activity->created_at->diffForHumans() }}</td>
-<td> <button class="btn btn-danger"> Delete</button></td>
-        @endforeach
+         @endforeach
     </tr>
 </tbody>
 </table>
