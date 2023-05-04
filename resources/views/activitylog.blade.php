@@ -3,16 +3,28 @@
 Society User-Profile
 @endsection
 @section('content')
-<h2>Acitivity-logs</h2>
-<table>
-    <tr>
+<div class="main">
+<div class="activiy-log-heading text-center mt-3 mb-3 ">
+    <h2 class="p-4 bg-light ms-5 me-5">Activity-logs</h2>
+
+    </div>
+<div class="activty-log w-100 d-flex justify-content-center table-responsive "> 
+  
+<table class=" ms-5 me-5 table-bordered w-100   ">
+    <thead>
+    <tr class="bg-dark text-light">
         <th>Date</th>
         <th>Done By</th>
         <th>Action</th>
         <th>Module</th>
         <th>Item</th>
+        <th>Edit on</th>
+        <th>Delete</th>
+
     </tr>
+    </thead>
     @foreach($activities as $activity)
+    <tbody> 
     <tr>
         @php
         $timestamp = time();
@@ -21,7 +33,7 @@ Society User-Profile
         @endphp
         <td>{{ $date }}</td>
         @if ($activity->user)
-        <td>{{ ucfirst($activity->user->name) }} <br><small>{{ $activity->user->mobile1 }}</small></td>
+        <td>{{ ucfirst($activity->user->name) }} <br><small class="text-muted">{{ $activity->user->mobile1 }}</small></td>
         @else
         <td>N/A</td>
         @endif
@@ -53,7 +65,7 @@ Society User-Profile
             </div>
         </div>
         <!-- Button trigger modal -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{ $activity->id }}">
+        <td class="view"><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal{{ $activity->id }}">
             view
         </button></td>
         @else
@@ -94,8 +106,11 @@ Society User-Profile
 
         @endphp
         <td>{{ $activity->created_at->diffForHumans() }}</td>
-
+<td> <button class="btn btn-danger"> Delete</button></td>
         @endforeach
     </tr>
+</tbody>
 </table>
+</div>
+</div>
 @endsection
