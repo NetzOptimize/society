@@ -613,9 +613,7 @@ p {
 form#payment-method-form {
     gap: 10px !important;
 }
-.activty-log td,.activty-log th{
-    padding: 10px !important;
-}
+ 
 .activty-log  button.btn.btn-primary {
     border-radius: 20px;
  }
@@ -623,6 +621,12 @@ form#payment-method-form {
 /* display: flex;
 justify-content: center; */
  } 
+ .card.dash {
+     padding: 0px !important;
+}
+.activty-log td{
+    padding: 0px !important;
+}
 
 /* print end */
 /* responsiveness */
@@ -699,7 +703,9 @@ justify-content: center; */
         flex-direction: column-reverse;
         gap: 10px;
     }
-
+    h5.card-title {
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -996,6 +1002,9 @@ padding:0px !important;
 
     filter: invert(1) brightness(1);
 }
+.row .col-3 {
+     width: 40%;
+}
  
 }
 
@@ -1274,7 +1283,9 @@ padding:0px !important;
         width: 80%;
     }
 
-
+    .row .col-3 {
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 460px) {
