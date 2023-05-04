@@ -613,14 +613,14 @@ p {
 form#payment-method-form {
     gap: 10px !important;
 }
- 
+
 .activty-log  button.btn.btn-primary {
     border-radius: 20px;
  }
  .activty-log .view{
 /* display: flex;
 justify-content: center; */
- } 
+ }
  .card.dash {
      padding: 0px !important;
 }
@@ -774,6 +774,9 @@ justify-content: center; */
     .d-flex.justify-content-center.align-items-center.p-4.payment1{
          gap: 10px;
     }
+    nav#navbar {
+        margin: 0px !important;
+    }
 }
 
 @media screen and (max-width:1130px) {
@@ -783,6 +786,12 @@ justify-content: center; */
 .d-flex.justify-content-center.align-items-center.p-4.payment1 {
     flex-direction: column-reverse;
 gap:10px;
+}
+li.nav-item a {
+    margin: -3px !important;
+}
+.container-fluid {
+    padding: 0px !important;
 }
 }
 
@@ -1003,9 +1012,9 @@ padding:0px !important;
     filter: invert(1) brightness(1);
 }
 .row .col-3 {
-     width: 40%;
+     width: 46%;
 }
- 
+
 }
 
 @media screen and (max-width: 700px) {
