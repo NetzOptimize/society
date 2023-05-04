@@ -49,7 +49,7 @@
 
            <div class="dropdown drop-hover">
           <li class="nav-item dropdown">
-          <button class="btn btn-transparent dropdown-toggle  text-light btn1 ms-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-transparent dropdown-toggle  text-light btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Payment
         </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -63,7 +63,7 @@
   </div>
   <div class="dropdown drop-hover ">
             <li class="nav-item dropdown">
-            <button class="btn btn-transparent dropdown-toggle text-light btn1 ms-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-transparent dropdown-toggle text-light btn1 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Expense
         </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">

@@ -627,7 +627,12 @@ justify-content: center; */
 .activty-log td{
     padding: 0px !important;
 }
-
+form#payment-history-form {
+    /* margin: 0px !important; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* print end */
 /* responsiveness */
 
@@ -654,6 +659,9 @@ justify-content: center; */
 
     #expense-create-form {
         gap: 8px !important;
+    }
+    form#payment-history-form {
+        padding: 10px;
     }
 }
 
@@ -853,8 +861,10 @@ li.nav-item a {
 
     form#payment-history-form {
         display: flex;
-        flex-direction: column;
-        gap: 9px;
+         gap: 9px;
+         padding: 10px;
+         width: 100% !important;
+
     }
 
     .main-details {
@@ -1013,6 +1023,9 @@ padding:0px !important;
 }
 .row .col-3 {
      width: 46%;
+}
+.refresh-button.pb-4.me-5.d-flex.justify-content-end.hide{
+    margin: 10px !important;
 }
 
 }
@@ -1177,6 +1190,10 @@ padding:0px !important;
 }
 .table-expenses.ps-5.pe-5.pt-3.table-responsive{
 padding:0px !important;
+
+}
+form#payment-history-form {
+  flex-direction: column;
 
 }
 }

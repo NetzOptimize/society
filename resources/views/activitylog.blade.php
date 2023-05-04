@@ -38,10 +38,10 @@ Society User-Profile
 </div>
 <div class="activty-log w-100 d-flex justify-content-center table-responsive ">
 
-<table class=" ms-5 me-5 table-bordered w-100 data">
+<table class=" ms-5 me-5 table-bordered w-100 data ">
     <thead>
     <tr class="bg-dark text-light">
-        <th>Date</th>
+        <th class="p-2">Date</th>
         <th>Done By</th>
         <th>Action</th>
         <th>Module</th>
@@ -53,7 +53,7 @@ Society User-Profile
     </thead>
     @foreach($activities as $activity)
     <tbody>
-    <tr>
+    <tr >
         <td>{{ $activity->created_at->format('d-m-y')}}</td>
         @if ($activity->user)
         <td>{{ ucfirst($activity->user->name) }} <br><small class="text-muted">{{ $activity->user->mobile1 }}</small></td>

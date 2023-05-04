@@ -59,7 +59,7 @@ Society Home
         data: {
           labels:<?= json_encode(array_keys($paymentsByMonth)) ?>,
           datasets: [{
-
+            label: 'Received Payments by Month',
             data: <?= json_encode(array_values($paymentsByMonth)) ?>,
             borderWidth: 1,
             backgroundColor: [
@@ -79,16 +79,13 @@ Society Home
           }]
         },
         options: {
-
           scales: {
             y: {
               beginAtZero: true,
             },
           },
-
           responsive: true,
         },
-
       });
     </script>
 
