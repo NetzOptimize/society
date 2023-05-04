@@ -6,11 +6,39 @@ Society User-Profile
 <div class="main">
 <div class="activiy-log-heading text-center mt-3 mb-3 ">
     <h2 class="p-4 bg-light ms-5 me-5">Activity-Log History</h2>
+</div>
 
-    </div>
+<div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end align-items-center gap-2">
+    <input type="search" id="search" placeholder="Search" class="search" />
+</div>
+
+{{-- datewise filter --}}
+<div class="payment hide">
+<form action="" method="GET" style="margin:0" id="payment-history-form">
+    <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
+    @if (request('start_date'))
+    <input type="date" name="start_date" value={{ request('start_date') }}>
+    @else
+    <input type="date" name="start_date" class="start-date">
+    @endif
+    <label class="ms-3 me-3 text-center"><b>End Date</b></label>
+    @if (request('end_date'))
+    <input type="date" name="end_date" value={{ request('end_date') }}>
+    @else
+    <input type="date" class="me-3" name="end_date" id="end-date">
+    @endif
+    <button class="btn btn-success me-3" type="submit" id="filter">Filter</button>
+</form>
+</div>
+
+{{-- refresh button --}}
+<div class="refresh-button pb-4 me-5 d-flex justify-content-end hide">
+<a href="{{ route('activitylog') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
+
+</div>
 <div class="activty-log w-100 d-flex justify-content-center table-responsive ">
 
-<table class=" ms-5 me-5 table-bordered w-100   ">
+<table class=" ms-5 me-5 table-bordered w-100 data">
     <thead>
     <tr class="bg-dark text-light">
         <th>Date</th>
@@ -108,4 +136,19 @@ Society User-Profile
 </table>
 </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+
+    // searching
+    $(document).ready(function() {
+        $("#search").keyup(function() {
+            var value = $(this).val().toLowerCase();
+            $(".data tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+</script>
 @endsection

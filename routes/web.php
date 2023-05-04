@@ -103,7 +103,19 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
 
     Route::get('/activity-log', function () {
-        $activities = Activitylog::orderBy('created_at', 'desc')->get();
+
+        if(isset($_GET['start_date']) && isset($_GET['end_date']))
+        {
+            $startdate = strtotime($_GET['start_date']);
+            $enddate = strtotime($_GET['end_date']);
+
+            $activities = Activitylog::Datebetween($_GET['start_date'], $_GET['end_date']);
+          
+        }
+        else
+        {
+            $activities = Activitylog::orderBy('created_at', 'desc')->get();
+        }
 
         return view('activitylog', compact('activities'));
     })->name('activitylog');

@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\Expense;
 use App\Models\Module;
+use Illuminate\Support\Facades\DB;
+
 
 
 class Activitylog extends Model
@@ -41,4 +43,8 @@ class Activitylog extends Model
         return $this->belongsTo(Expense::class,'module_item_id','id');
     }
 
+    public function scopeDatebetween($query, $start, $end)
+    {
+        return $query->wherebetween('created_at',[$start, $end])->get();
+    }
 }
