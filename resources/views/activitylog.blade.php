@@ -26,12 +26,7 @@ Society User-Profile
     @foreach($activities as $activity)
     <tbody>
     <tr>
-        @php
-        $timestamp = time();
-        $date = date('d-m-Y', $timestamp);
-
-        @endphp
-        <td>{{ $date }}</td>
+        <td>{{ $activity->created_at->format('d-m-y')}}</td>
         @if ($activity->user)
         <td>{{ ucfirst($activity->user->name) }} <br><small class="text-muted">{{ $activity->user->mobile1 }}</small></td>
         @else
