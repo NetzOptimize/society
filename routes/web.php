@@ -68,7 +68,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
         $payment=Payment::sum('amount');
 
         return view('home', compact('expense','payment','paymentsByMonth'));
-    });
+    })->name('home');
     Route::post('users/image/store', [UserController::class, 'imagestore'])->name('users.image.store');
     Route::get('admin/profile', [UserController::class, 'adminProfile'])->name('admin.user.profile');
 

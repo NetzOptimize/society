@@ -34,6 +34,9 @@
 
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 w-100 d-flex justify-content-end none" id="hover-li">
+            <li class="nav-item">
+                <a href="{{ route('home') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Dashboard</a>
+            </li>
           <li class="nav-item">
           <a href="{{ route('users.index') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Users</a>
           </li>
@@ -71,6 +74,9 @@
             </ul>
           </li>
   </div>
+    <li class="nav-item">
+        <a href="{{ route('activitylog') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Activity-Log</a>
+    </li>
   <!--  -->
    <div class="dropdown me-2 user-hover">
   <a class="btn bg-transparent dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
