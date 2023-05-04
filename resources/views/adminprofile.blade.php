@@ -11,6 +11,7 @@ Society User-Profile
     <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
             <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
+                <a href="{{ route('imageDestroy', auth()->user()) }}"><img src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/82-512.png" height="40px" width="40px"/></a>
                 <form id="profile-pic-form" action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label for="fileToUpload">

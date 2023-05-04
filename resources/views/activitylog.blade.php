@@ -43,7 +43,7 @@ Society User-Profile
                         Date of deposit:{{  $activity->payment->dateofdeposit }}<br>
                         Comment:{{  $activity->payment->comments }}
                         @else
-                        This item has been removed
+                        This data has been removed
                         @endif
                     </div>
                     <div class="modal-footer">

@@ -5,10 +5,11 @@ Society User-Report
 @endsection
 @section('content')
 @php $payments = Auth::user()->payments()->get()->groupby('house_id') @endphp
+
 @foreach ($payments as $pay)
 <div class="table-report p-4 table-responsive ms-4 me-4">
     <table class="table  table-bordered">
-        <tr  class="bg-dark text-light">
+        <tr  class="bg-dark text-light hide">
             <th>House No.</th>
             <th>Billing Month</th>
             <th>Payment Mode</th>
@@ -17,7 +18,7 @@ Society User-Report
             <th>Payment Receipt</th>
         </tr>
         @foreach ($pay as $payment)
-        <tr>
+        <tr class="hide">
             <td>{{ $payment->houses->full_address }}</td>
                 @foreach ($months as $key => $month)
                     @if($key == $payment->billingmonth)
@@ -27,14 +28,13 @@ Society User-Report
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit}}</td>
                 <td>{{ $payment->amount}}</td>
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop{{$payment->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                <div class="modal fade" id="modal{{ $payment->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $payment->id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment Receipt</h1>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
                             </div>
-                            <div class="modal-body" id="my-div{{$payment->id}}">
+                            <div class="modal-body">
                                 Name : {{ ucfirst(Auth()->user()->name) }}<br>
                                 Date : {{date("l jS \of F Y") }}<br><br>
 
@@ -46,13 +46,13 @@ Society User-Report
                             </div>
                             <div class="modal-footer">
                                 <button onclick="printDiv('my-div{{$payment->id}}')" class="btn btn-dark hide">Print</button>
-                                <a type="button" class="btn btn-dark hide" href="{{  route('user.report') }}">Close</a>
+                                <button type="button" class="btn btn-dark hide" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$payment->id}}">
-                  View
+                <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modal{{ $payment->id }}">
+                    view
                 </button></td>
             </tr>
             @endforeach
