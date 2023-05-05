@@ -120,12 +120,14 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
         return view('activitylog', compact('activities'));
     })->name('activitylog');
 
+
+    Route::get('/report', function () {
+        $months = config('global.months');
+
+        return view('report', compact('months'));
+    })->name('report');
+    Route::post('report/data', [AdminController::class, 'report'])->name('report.data');
+
 });
 
 
-Route::get('/report', function () {
-    $months = config('global.months');
-
-    return view('report', compact('months'));
-})->name('report');
-Route::post('report/data', [AdminController::class, 'report'])->name('report.data');

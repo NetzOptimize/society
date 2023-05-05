@@ -1027,7 +1027,9 @@ padding:0px !important;
 .refresh-button.pb-4.me-5.d-flex.justify-content-end.hide{
     margin: 10px !important;
 }
-
+.navbar-dark .navbar-toggler-icon {
+     filter: invert(1);
+}
 }
 
 @media screen and (max-width: 700px) {
