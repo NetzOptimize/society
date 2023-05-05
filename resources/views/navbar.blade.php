@@ -15,7 +15,6 @@
     <div class="container-fluid">
 
 
-
       <div class="logo-user d-flex align-items-center just">
       <div class="logo d-flex align-items-center">
           <img src="{{asset('logo.png')}}" class="rounded-pill" style="    height: 60px;
@@ -76,6 +75,9 @@
   </div>
     <li class="nav-item">
         <a href="{{ route('activitylog') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Activity-Log</a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ route('report') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Report</a>
     </li>
   <!--  -->
    <div class="dropdown me-2 user-hover">

@@ -110,7 +110,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
             $enddate = strtotime($_GET['end_date']);
 
             $activities = Activitylog::Datebetween($_GET['start_date'], $_GET['end_date']);
-          
+
         }
         else
         {
@@ -127,5 +127,5 @@ Route::get('/report', function () {
     $months = config('global.months');
 
     return view('report', compact('months'));
-});
+})->name('report');
 Route::post('report/data', [AdminController::class, 'report'])->name('report.data');

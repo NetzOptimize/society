@@ -96,6 +96,7 @@ Society User-Profile
     <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
             <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
+                <a href="" class="show_confirm"><img src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/82-512.png" height="40px" width="40px"/></a>
                 <form id="profile-pic-form" action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label for="fileToUpload">
@@ -169,12 +170,26 @@ Society User-Profile
 </div> -->
 
 
+{{-- delete confirmation --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+                title: `Remove Profile Picture ?`
+                , icon: "warning"
+                , buttons: true
+                , dangerMode: true
+            , })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = "{{ route('imageDestroy', auth()->user()) }}";
+                }
+            });
+    });
 
-
-
-
-
-<script>
     $(document).ready(function() {
         $('#checkbox').on('change', function() {
             $('.password').attr('type', $('#checkbox').prop('checked') == true ? "text" : "password");
