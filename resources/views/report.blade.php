@@ -160,10 +160,45 @@ Society Report
             justify-content: center;
             align-items: center;
         }
-    </style>
+        .structure {
+    overflow: scroll;
+    height: 100vh;
+    width: 100%;
+    border: 1px solid red;
+    overflow-x: scroll;
+
+}
+.structure-container {
+    overflow-x: auto;
+}
+@media screen and (max-width:992px) {
+    .left-tables, .right-tables {
+width: unset; 
+   display: flex;
+    flex-direction: column;
+}
+.left-tables, .right-tables{
+    width: unset;
+}
+.left-tables {
+    padding-bottom: 4.8rem;
+    border-right: 80px solid #ed7d31;    width: unset;
+}
+ 
+
+}
+@media screen and (max-width:768px) {
+    p {
+ 
+ font-size: 9px;
+}
+}
+ 
+            
+     </style>
 </head>
 <body>
-    <select name="month" id="month">
+    <select name="month" id="month" class="form-select  mt-2 mb-2 ms-5 w-auto">
         <option>Select Month</option>
         @foreach ($months as $key => $month)
             <option value="{{ $key }}">{{ $month }}</option>
