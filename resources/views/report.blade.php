@@ -164,7 +164,7 @@ Society Report
     overflow: scroll;
     height: 100vh;
     width: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     overflow-x: scroll;
 
 }
@@ -173,7 +173,7 @@ Society Report
 }
 @media screen and (max-width:992px) {
     .left-tables, .right-tables {
-width: unset; 
+width: unset;
    display: flex;
     flex-direction: column;
 }
@@ -184,17 +184,17 @@ width: unset;
     padding-bottom: 4.8rem;
     border-right: 80px solid #ed7d31;    width: unset;
 }
- 
+
 
 }
 @media screen and (max-width:768px) {
     p {
- 
+
  font-size: 9px;
 }
 }
- 
-            
+
+
      </style>
 </head>
 <body>
