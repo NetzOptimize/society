@@ -44,7 +44,7 @@ class AdminController extends Controller
         }
         else
         {
-            $expenses= Expense::simplepaginate(15);
+            $expenses= Expense::get();
             $count = $expenses->count();
             $sum = $expenses->sum('amount');
         }
@@ -61,13 +61,21 @@ class AdminController extends Controller
 
     public function store(Request $req)
     {
+        $messages = [
+            'payee.required' => 'The name field is required.',
+            'payee.min' => 'The name field must be at least 3 characters.',
+            'payee.max' => 'The name may not be greater than 255 characters.',
+            'amount.required' => 'The amount field is required.',
+            'amount.gt' => 'The amount field must be greater than zero or numeric.',
+            'payment_modes_id.required' => 'The payment mode field is required.',
+        ];
         $attributes= $req->validate([
             'payee' =>'required|min:3|max:255',
             'amount' => 'required|gt:0',
             'comments' => 'nullable',
             'payment_modes_id' =>'required',
             'dateofpayment' => 'required|date',
-        ]);
+        ], $messages);
 
         $expense=Expense::create([
             'payee' => $attributes['payee'],

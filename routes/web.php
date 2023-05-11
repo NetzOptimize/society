@@ -93,7 +93,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
     Route::resource('payments', PaymentController::class)->except(['index']);
     Route::get('payments/{id?}', [PaymentController::class,'index'])->name('payments.index');
 
-    Route::get('admins/{id?}', [AdminController::class,'index'])->name('expenses.index');
+    Route::get('expenses/{id?}', [AdminController::class,'index'])->name('expenses.index');
     Route::resource('admins/expenses', AdminController::class)->except(['index']);
 
 

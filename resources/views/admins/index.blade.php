@@ -18,7 +18,7 @@ Society Expenses
         </div>
     </div>
      {{-- datewise filter --}}
-     <div class="payment hide">
+     <div class="payment none">
         <form action="" method="GET" style="margin:0" id="payment-history-form">
             <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
             @if (request('start_date'))
@@ -37,10 +37,11 @@ Society Expenses
     </div>
 
     {{-- refresh button --}}
-    <div class="refresh-button pb-4 me-5 d-flex justify-content-end hide">
-        <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
 
+    <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
+        <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
     </div>
+
 </div>
 <!-- table -->
     <!-- table -->
@@ -70,11 +71,13 @@ Society Expenses
 
     <!-- table end -->
     {{-- listing --}}
+    @php $i=0; @endphp
     <div class="table-expenses ps-5 pe-5 pt-3   table-responsive">
         <div id="printableArea">
-            <table class="table table-light table-hover table-bordered">
+            <table class="table table-light table-hover table-bordered data">
                 <thead>
                     <tr class="table-dark">
+                        <th>Serial no.</th>
                         <th>Payee</th>
                         <th>Amount</th>
                         <th>Payment Mode</th>
@@ -101,6 +104,10 @@ Society Expenses
                 <tr>
                     <tbody>
                         @foreach ($expenses as $expense)
+                        @php
+                        $i++;
+                        @endphp
+                        <td>@php echo $i; @endphp</td>
                         <td>{{ $expense->payee }}</td>
                         <td>{{ $expense->amount }}</td>
                         <td>{{ $expense->paymentmode->name }}</td>
@@ -153,7 +160,7 @@ Society Expenses
         $(document).ready(function() {
             $("#search").keyup(function() {
                 var value = $(this).val().toLowerCase();
-                $("table tbody tr").filter(function() {
+                $(".data tbody tr").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
