@@ -96,6 +96,7 @@ Society Expenses
                             </div>
                         </th>
                         <th>Comments</th>
+                        <th>Done By</th>
                         <th colspan="2">
                             Actions
                         </th>
@@ -117,6 +118,12 @@ Society Expenses
                         @else
                         <td>-</td>
                         @endif
+                        <td class="done">{{ $expense->doneby ? $expense->doneby->value('name'): null }}
+                            @php $image = $expense->doneby ? $expense->doneby->value('user_image') : null ;@endphp
+                            @if($image)
+                                <img src="{{ 'https://8.zeroguess.us/society/storage/app/'.$image }}">
+                            @endif
+                         </td>
                         <div class="none">
                             @if (auth()->user()->usertype_id == 1)
                             <td class="none">

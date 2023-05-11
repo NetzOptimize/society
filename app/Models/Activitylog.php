@@ -20,6 +20,7 @@ class Activitylog extends Model
         'action',
         'module_id',
         'module_item_id' ,
+        'created_at'
     ];
 
     protected $table='activity_logs';

@@ -134,6 +134,7 @@ Society Payments
                     </th>
                     <th>Amount</th>
                     <th>Comment</th>
+                    <th>Done By</th>
                     @if (auth()->user()->usertype_id != 3)
                     <div class="none">
                         <th colspan="2" class="text-center none" id="th-payment-print">Actions</th>
@@ -179,6 +180,7 @@ Society Payments
                 @else
                 <td>Not Provided</td>
                 @endif
+                <td>{{ $payment->doneby ? $payment->doneby->value('name'): null }}</td>
                 <div class="none">
                     @if (auth()->user()->usertype_id == 1)
                     <td class="none">

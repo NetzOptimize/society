@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\User;
+use App\Models\Activitylog;
 
 class Expense extends Model
 {
@@ -41,5 +42,17 @@ class Expense extends Model
             \DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"),
             [date('Y-m-d', strtotime($start)), date('Y-m-d', strtotime($end))]
         )->get();
+    }
+
+    public function doneby()
+    {
+        return $this->hasManyThrough(
+            User::class,
+            Activitylog::class,
+            'Module_item_id',
+            'id',
+            'id',
+            'user_id'
+        )->latest('activity_logs.created_at');
     }
 }
