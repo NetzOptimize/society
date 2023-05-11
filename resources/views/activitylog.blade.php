@@ -55,14 +55,13 @@ Society User-Profile
     <tbody>
     <tr >
         <td>{{ $activity->created_at->format('d-m-y')}}</td>
-        @if ($activity->user)
-        <td>{{ ucfirst($activity->user->name) }} <br><small class="text-muted">{{ $activity->user->mobile1 }}</small></td>
+        @if ($activity->Username())
+        <td>{{ ucfirst($activity->Username()) }} <br><small class="text-muted">{{ $activity->Usermobile() }}</small></td>
         @else
         <td>N/A</td>
         @endif
-        <td>{{ $activity->action }}</td>
-        <td>{{ $activity->module->name }}</td>
-        @if($activity->module_id==1)
+        <td>{{ $activity->event }}</td>
+        @if($activity->subject_type !='App\Models\Expense')
 
         <!-- Modal -->
         <div class="modal fade" id="modal{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $activity->id }}" aria-hidden="true">
@@ -100,14 +99,19 @@ Society User-Profile
                         <h5 class="modal-title" id="exampleModalLongTitle">Expense</h5>
                     </div>
                     <div class="modal-body">
-                        @if(!empty( $activity->expense))
-                        Payee: {{ $activity->expense->payee }}<br>
-                        Amount:{{  $activity->expense->amount }}<br>
-                        Date of payment:{{  $activity->expense->dateofpayment }}<br>
-                        Comment:{{  $activity->expense->comments }}
-                        @else
-                        This data has been removed
-                        @endif
+                        <h4>Old Data</h4>
+                        @php $details = json_decode($activity->properties, true) @endphp
+                        <h4>Old Data</h4>
+                        Payee: {{ $details['old']['payee'] }}<br>
+                        Amount: {{ $details['old']['amount'] }}<br>
+                        Date of payment: {{ $details['old']['dateofpayment'] }}<br>
+                        Comment: {{ $details['old']['comments'] }}
+                        <h4>New Data</h4>
+                        Payee: {{ $details['attributes']['payee'] }}<br>
+                        Amount: {{ $details['attributes']['amount'] }}<br>
+                        Date of payment: {{ $details['attributes']['dateofpayment'] }}<br>
+                        Comment: {{ $details['attributes']['comments'] }}
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -152,3 +156,4 @@ Society User-Profile
 
 </script>
 @endsection
+

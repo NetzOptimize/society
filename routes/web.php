@@ -11,7 +11,7 @@ use App\Models\Expense;
 use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use  App\Models\Activitylog;
+use  App\Models\Activity;
 
 
 /*
@@ -109,12 +109,12 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
             $startdate = strtotime($_GET['start_date']);
             $enddate = strtotime($_GET['end_date']);
 
-            $activities = Activitylog::Datebetween($_GET['start_date'], $_GET['end_date']);
+            $activities = Activity::Datebetween($_GET['start_date'], $_GET['end_date']);
 
         }
         else
         {
-            $activities = Activitylog::orderBy('created_at', 'desc')->get();
+            $activities = Activity::all();
         }
 
         return view('activitylog', compact('activities'));

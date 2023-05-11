@@ -14,6 +14,7 @@ use App\Models\Payment;
 
 
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;

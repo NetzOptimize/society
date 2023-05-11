@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 
 class Expense extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $fillable=[
         'payee' ,
@@ -18,6 +20,14 @@ class Expense extends Model
         'payment_modes_id' ,
         'dateofpayment' ,
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['*']);
+
+    }
+
     public function paymentmode()
     {
         return $this->belongsto(PaymentMode::class,'payment_modes_id', 'id');
