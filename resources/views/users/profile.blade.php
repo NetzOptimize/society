@@ -104,7 +104,7 @@ Society User-Profile
                             $image = Auth()->user()->user_image;
                         @endphp
                         @if($image)
-                            <div class="profile-pic" style="background-image: url('https://8.zeroguess.us/society/storage/app/{{$image}}')">
+                            <div class="profile-pic" style="background-image: url({{  asset('storage/'.$image) }})">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </div>

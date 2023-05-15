@@ -308,7 +308,8 @@ class UserController extends Controller
         $image_path = $request->file('image')->storeAs('public/image', 'UserImage'.time().'.jpg');
 
         Auth()->user()->update([
-            'user_image' => $image_path
+            
+            'user_image' => str_replace('public/','',$image_path)
         ]);
 
         return back()->with('success', 'Image Updated Successfully');

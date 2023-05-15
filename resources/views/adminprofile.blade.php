@@ -19,8 +19,8 @@ Society User-Profile
                         $image = Auth()->user()->user_image;
                         @endphp
                         @if($image)
-
-                        <div class="profile-pic" style="background-image:url('{{  asset('storage/' . $image) }}')">
+                        {{-- @dd($image) --}}
+                        <div class="profile-pic" style="background-image:url('{{  asset('storage/'.$image) }}')">
                             <span class="glyphicon glyphicon-camera"></span>
                             <span>Change Image</span>
                         </div>

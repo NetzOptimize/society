@@ -132,3 +132,12 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
 
 Route::get('loginsertion', [AdminController::class, 'loginsertion']);
+
+
+
+
+Route::get('/run', function () {
+
+    Artisan::call('your:artisan-command');
+    return 'Command executed successfully';
+});

@@ -36,7 +36,7 @@
                         <button class="btn btn-transparent text-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             @php $image = Auth()->user()->user_image;@endphp
                             @if($image)
-                            <img src="{{ 'https://8.zeroguess.us/society/storage/app/'.$image }}" class="rounded-pill me-2  " height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
+                            <img src="{{  asset('storage/'.$image) }}" class="rounded-pill me-2  " height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
                             @else
                             <img src="{{asset('user-icons.gif')}}" alt="" class="rounded-pill me-2" height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
                             @endif

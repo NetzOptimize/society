@@ -114,8 +114,8 @@ Society Payments
                     <th>Serial No</th>
                     <th>House No.</th>
                     <th>Billing Month</th>
-                    @if (null == request('unpaid'))
                     <th>Owner</th>
+                    @if (null == request('unpaid'))
                     <th>Payment Mode</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
 
@@ -153,6 +153,11 @@ Society Payments
                     <td>@php echo $i; @endphp</td>
                     <td>{{ $payment->full_address }}</td>
                     <td>{{ request('unpaid') }}</td>
+                    @if(isset($payment->detail))
+                    <td>{{ $payment->detail->name }}<br><small class="text-muted">{{ $payment->detail->mobile1 }}</small></td>
+                    @else
+                    <td>N/A</td>
+                    @endif
                 </tr>
                 @endforeach
                 @else
@@ -168,7 +173,7 @@ Society Payments
                 @endif
                 @endforeach
                 @if(isset($payment->owner))
-                <td>{{ $payment->owner->name }}</td>
+                <td>{{ $payment->owner->name }}<br><small class="text-muted">{{ $payment->owner->mobile1 }}</small></td>
                 @else
                 <td>N/A</td>
                 @endif
@@ -199,6 +204,7 @@ Society Payments
                     @endif
                     @else
                     <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
+
                     @endif
                 </div>
             </tbody>

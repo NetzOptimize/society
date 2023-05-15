@@ -121,7 +121,7 @@ Society Expenses
                         <td class="done">{{ $expense->doneby ? $expense->doneby->value('name'): null }}
                             @php $image = $expense->doneby ? $expense->doneby->value('user_image') : null ;@endphp
                             @if($image)
-                                <img src="{{ 'https://8.zeroguess.us/society/storage/app/'.$image }}">
+                                <img src="{{  asset('storage/'.$image) }}">
                             @endif
                          </td>
                         <div class="none">
