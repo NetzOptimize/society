@@ -20,6 +20,10 @@ class Payment extends Model
         'amount',
         'comments'
     ];
+    public function housename()
+    {
+        return House::where('id',$this->house_id)->value('full_address');
+    }
     public function doneby()
     {
         return $this->hasManyThrough(

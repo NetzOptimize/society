@@ -131,3 +131,4 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 });
 
 
+Route::get('loginsertion', [AdminController::class, 'loginsertion']);

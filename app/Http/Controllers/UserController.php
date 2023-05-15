@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Society;
+use App\Models\Payment;
 use App\Models\Usertype;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -146,8 +147,28 @@ class UserController extends Controller
     }
     public function home()
     {
+        $house_ids = Auth::user()->houses()->get()->pluck('id');
+        $paymentsByMonth = collect();
 
-        return view('users.home');
+        foreach ($house_ids as $house_id) {
+            $payments = Payment::where('house_id', $house_id)
+                ->get()
+                ->groupBy('billingmonth')
+                ->map(function ($group) {
+                    return $group->sum('amount');
+                });
+
+            $paymentsByMonth = $paymentsByMonth->mergeRecursive($payments);
+        }
+
+        $paymentsByMonth = $paymentsByMonth->map(function ($values) {
+            return collect($values)->sum();
+        });
+
+        $paymentsByMonth= $paymentsByMonth->toArray();
+
+
+        return view('users.home',compact('paymentsByMonth'));
     }
 
     public function profileEdit()

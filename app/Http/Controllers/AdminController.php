@@ -9,7 +9,10 @@ use App\Models\PaymentMode;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Activitylog;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use League\Flysystem\Ftp\FtpAdapter;
 
 
 class AdminController extends Controller
@@ -172,5 +175,33 @@ class AdminController extends Controller
         $expense->delete();
 
         return back()->with('success','expense deleted successfully');
+    }
+
+    public function loginsertion()
+    {
+        $ids= Payment::get()->pluck('id')->toArray();
+
+        foreach($ids as $id)
+        {
+            Activitylog::create([
+                'user_id' => 198,
+                'action' => 'Created',
+                'module_id' => 1,
+                'module_item_id' => $id
+            ]);
+        }
+
+
+        $ids= Expense::get()->pluck('id')->toArray();
+
+        foreach($ids as $id)
+        {
+            Activitylog::create([
+                'user_id' => 198,
+                'action' => 'Created',
+                'module_id' => 2,
+                'module_item_id' => $id
+            ]);
+        }
     }
 }

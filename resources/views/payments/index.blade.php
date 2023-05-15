@@ -113,9 +113,9 @@ Society Payments
                 <tr class="table-dark">
                     <th>Serial No</th>
                     <th>House No.</th>
-                    <th>Owner</th>
                     <th>Billing Month</th>
                     @if (null == request('unpaid'))
+                    <th>Owner</th>
                     <th>Payment Mode</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
 
@@ -162,16 +162,16 @@ Society Payments
                 @endphp
                 <td>@php echo $i; @endphp</td>
                 <td>{{ $payment->houses->full_address }}</td>
-                @if(isset($payment->owner))
-                <td>{{ $payment->owner->name }}</td>
-                @else
-                <td>N/A</td>
-                @endif
                 @foreach ($months as $key => $month)
                 @if ($key == $payment->billingmonth)
                 <td>{{ $month }}</td>
                 @endif
                 @endforeach
+                @if(isset($payment->owner))
+                <td>{{ $payment->owner->name }}</td>
+                @else
+                <td>N/A</td>
+                @endif
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
@@ -180,7 +180,7 @@ Society Payments
                 @else
                 <td>Not Provided</td>
                 @endif
-                <td>{{ $payment->doneby ? $payment->doneby->value('name'): null }}</td>
+                <td>{{ $payment->doneby->value('name') }}</td>
                 <div class="none">
                     @if (auth()->user()->usertype_id == 1)
                     <td class="none">
