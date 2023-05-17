@@ -106,11 +106,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
         if(isset($_GET['start_date']) && isset($_GET['end_date']))
         {
-            $startdate = strtotime($_GET['start_date']);
-            $enddate = strtotime($_GET['end_date']);
-
-            $activities = Activitylog::Datebetween($_GET['start_date'], $_GET['end_date']);
-
+            $activities =Activitylog::whereBetween(DB::raw('DATE(created_at)'), [$_GET['start_date'], $_GET['end_date']])->get();
         }
         else
         {
