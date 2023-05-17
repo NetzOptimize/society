@@ -114,7 +114,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
         }
         else
         {
-            $activities = Activity::all();
+            $activities = Activity::orderBy('id', 'desc')->get();
         }
 
         return view('activitylog', compact('activities'));

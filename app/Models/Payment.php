@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\House;
 use App\Models\Resident;
 use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Payment extends Model
 {
-    use HasFactory;
+    use HasFactory,LogsActivity;
 
     protected $fillable=[
         'house_id',
@@ -20,6 +22,12 @@ class Payment extends Model
         'amount',
         'comments'
     ];
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['*']);
+
+    }
 
     public function houses()
     {

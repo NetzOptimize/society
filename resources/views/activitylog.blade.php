@@ -3,6 +3,7 @@
 Society User-Profile
 @endsection
 @section('content')
+
 <div class="main">
 <div class="activiy-log-heading text-center mt-3 mb-3 ">
     <h2 class="p-4 bg-light ms-5 me-5">Activity-Log History</h2>
@@ -61,69 +62,102 @@ Society User-Profile
         <td>N/A</td>
         @endif
         <td>{{ $activity->event }}</td>
+        <td>{{ str_replace("App\Models\\","",$activity->subject_type) }}</td>
         @if($activity->subject_type !='App\Models\Expense')
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $activity->id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
+                        </div>
+                        <div class="modal-body">
+                            @php $details = json_decode($activity->properties, true);
+                            foreach($details as $detail)
+                            {
 
-        <!-- Modal -->
-        <div class="modal fade" id="modal{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $activity->id }}" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
-                    </div>
-                    <div class="modal-body">
-                       @if(!empty( $activity->payment))
-                        Billing Month: {{ $activity->payment->billingmonth }}<br>
-                        Amount:{{  $activity->payment->amount }}<br>
-                        Date of deposit:{{  $activity->payment->dateofdeposit }}<br>
-                        Comment:{{  $activity->payment->comments }}
-                        @else
-                        This data has been removed
-                        @endif
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                $house_id=$detail['house_id'];
+                                $comments=$detail['comments'];
+                                $billingmonth=$detail['billingmonth'];
+                                $dateofdeposit=$detail['dateofdeposit'];
+                                $payment_modes_id=$detail['payment_modes_id'];
+                            }
+                            @endphp
+                            @if(isset($details['old']))
+                                <b>Old Data</b><br>
+                                House : {{ $activity->house($details['old']['house_id']) }}<br>
+                                Billing Month: {{ $details['old']['billingmonth'] }}<br>
+                                Date of deposit: {{ $details['old']['dateofdeposit'] }}<br>
+                                Payment mode : {{ $activity->paymentmode($details['old']['payment_modes_id']) }}<br>
+                                Comment: {{ $details['old']['comments'] }}<br>
+                            @endif
+                            @if($activity->event != 'deleted')
+                                <b>New Data</b><br>
+
+                                House : {{ $activity->house($house_id) }}<br>
+                                Billing Month: {{$billingmonth }}<br>
+                                Date of deposit: {{ $dateofdeposit }}<br>
+                                Payment mode: {{ $activity->paymentmode($payment_modes_id) }}<br>
+                                Comment: {{ $comments }}<br>
+                            @endif
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Button trigger modal -->
-        <td class="view"><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal{{ $activity->id }}">
-            view
-        </button></td>
+            <!-- Button trigger modal -->
+            <td class="view"><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal{{ $activity->id }}">
+                view
+            </button></td>
         @else
-        <!-- Modal -->
-        <div class="modal fade" id="modal{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $activity->id }}" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Expense</h5>
-                    </div>
-                    <div class="modal-body">
-                        <h4>Old Data</h4>
-                        @php $details = json_decode($activity->properties, true) @endphp
-                        <h4>Old Data</h4>
-                        Payee: {{ $details['old']['payee'] }}<br>
-                        Amount: {{ $details['old']['amount'] }}<br>
-                        Date of payment: {{ $details['old']['dateofpayment'] }}<br>
-                        Comment: {{ $details['old']['comments'] }}
-                        <h4>New Data</h4>
-                        Payee: {{ $details['attributes']['payee'] }}<br>
-                        Amount: {{ $details['attributes']['amount'] }}<br>
-                        Date of payment: {{ $details['attributes']['dateofpayment'] }}<br>
-                        Comment: {{ $details['attributes']['comments'] }}
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $activity->id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Expense</h5>
+                        </div>
+                        <div class="modal-body">
+                            @php $details = json_decode($activity->properties, true);
+                            foreach($details as $detail)
+                            {
+                                $comments=$detail['comments'];
+                                $amount=$detail['amount'];
+                                $payee=$detail['payee'];
+                                $dateofpayment=$detail['dateofpayment'];
+                                $payment_modes_id=$detail['payment_modes_id'];
+                            }
+                            @endphp
+                            @if(isset($details['old']))
+                                <b>Old Data</b><br>
+                                Payee: {{ $details['old']['payee'] }}<br>
+                                Amount: {{ $details['old']['amount'] }}<br>
+                                Date of payment: {{ $details['old']['dateofpayment'] }}<br>
+                                Payment mode : {{ $activity->paymentmode($details['old']['payment_modes_id']) }}<br>
+                                Comment: {{ $details['old']['comments'] }}<br>
+                            @endif
+                            @if($activity->event != 'deleted')
+                                <b>New Data</b><br>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                Payee: {{$payee }}<br>
+                                Amount: {{ $amount }}<br>
+                                Date of payment: {{ $dateofpayment }}<br>
+                                Payment mode: {{ $activity->paymentmode($payment_modes_id) }}<br>
+                                Comment: {{ $comments }}<br>
+                            @endif
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Button trigger modal -->
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{ $activity->id }}">
-            view
-        </button></td>
-        {{-- <td><a href="{{ route('expenses.index',$activity->module_item_id) }}" class="btn btn-dark">View</a></td> --}}
+            <!-- Button trigger modal -->
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{ $activity->id }}">
+                view
+            </button></td>
         @endif
         @php
 

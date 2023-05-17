@@ -20,6 +20,15 @@ class Activity extends Model
     {
         return User::where('id', $this->causer_id)->value('mobile1');
     }
+
+    public function paymentmode($id)
+    {
+        return PaymentMode::where('id',$id)->value('name');
+    }
+    public function house($id)
+    {
+        return House::where('id',$id)->value('full_address');
+    }
 }
 
 
