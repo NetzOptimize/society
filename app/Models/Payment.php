@@ -24,16 +24,27 @@ class Payment extends Model
     {
         return House::where('id',$this->house_id)->value('full_address');
     }
+    // public function doneby()
+    // {
+    //     return $this->hasManyThrough(
+    //         User::class,
+    //         Activitylog::class,
+    //         'subject_id',
+    //         'id',
+    //         'id',
+    //         'causer_id'
+    //     )->latest('activity_log.created_at');
+    // }
     public function doneby()
     {
         return $this->hasManyThrough(
             User::class,
             Activitylog::class,
-            'Module_item_id',
+            'subject_id',
             'id',
             'id',
-            'user_id'
-        )->where('module_id',1)->latest('activity_logs.created_at');
+            'causer_id'
+        )->latest('activity_log.created_at');
     }
     public function houses()
     {
@@ -93,4 +104,6 @@ class Payment extends Model
             'user_id'
         );
     }
+
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ResidentController;
@@ -10,9 +11,8 @@ use App\Http\Controllers\AdminController;
 use App\Models\Expense;
 use App\Models\Payment;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use  App\Models\Activitylog;
-
+use App\Models\Activitylog;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,7 +87,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
     Route::resource('houses', HouseController::class);
 
-    Route::resource('residents', ResidentController::class)->except(['create']);;
+    Route::resource('residents', ResidentController::class)->except(['create']);
     Route::get('residents/create/{id?}', [ResidentController::class, 'create'])->name('residents.create');
 
     Route::resource('payments', PaymentController::class)->except(['index']);
@@ -114,6 +114,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
         }
 
         return view('activitylog', compact('activities'));
+
     })->name('activitylog');
 
 

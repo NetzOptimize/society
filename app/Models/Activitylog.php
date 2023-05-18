@@ -23,7 +23,28 @@ class Activitylog extends Model
         'created_at'
     ];
 
-    protected $table='activity_logs';
+    protected $table='activity_log';
+
+
+    public function scopeUsername()
+    {
+        return User::where('id', $this->causer_id)->value('name');
+    }
+
+    public function scopeUsermobile()
+    {
+        return User::where('id', $this->causer_id)->value('mobile1');
+    }
+
+    public function paymentmode($id)
+    {
+        return PaymentMode::where('id',$id)->value('name');
+    }
+    public function house($id)
+    {
+        return House::where('id',$id)->value('full_address');
+    }
+
 
     public function user()
     {

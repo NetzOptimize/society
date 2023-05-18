@@ -131,12 +131,12 @@ class PaymentController extends Controller
                     'comments' => $req['comments'],
                 ]);
 
-                Activitylog::create([
-                    'user_id' => Auth::user()->id,
-                    'action' => 'Created',
-                    'module_id' => 1,
-                    'module_item_id' => $payment->id
-                ]);
+                // Activitylog::create([
+                //     'user_id' => Auth::user()->id,
+                //     'action' => 'Created',
+                //     'module_id' => 1,
+                //     'module_item_id' => $payment->id
+                // ]);
 
                 if($req['billingmonth'])
                 {
@@ -153,12 +153,12 @@ class PaymentController extends Controller
                                 'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
                                 'comments' => $req['comments']
                             ]);
-                            Activitylog::create([
-                                'user_id' => Auth::user()->id,
-                                'action' => 'Created',
-                                'module_id' => 1,
-                                'module_item_id' => $payment->id
-                            ]);
+                            // Activitylog::create([
+                            //     'user_id' => Auth::user()->id,
+                            //     'action' => 'Created',
+                            //     'module_id' => 1,
+                            //     'module_item_id' => $payment->id
+                            // ]);
                         }
                     }
                 }
@@ -179,12 +179,12 @@ class PaymentController extends Controller
                         'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
                         'comments' => $req['comments']
                     ]);
-                    Activitylog::create([
-                        'user_id' => Auth::user()->id,
-                        'action' => 'Created',
-                        'module_id' => 1,
-                        'module_item_id' => $payment->id
-                    ]);
+                    // Activitylog::create([
+                    //     'user_id' => Auth::user()->id,
+                    //     'action' => 'Created',
+                    //     'module_id' => 1,
+                    //     'module_item_id' => $payment->id
+                    // ]);
                 }
             }
             return back()->with('success', 'Payment Added Successfully');
@@ -231,12 +231,12 @@ class PaymentController extends Controller
                 'comments' => $req['comments']
             ]);
 
-            Activitylog::create([
-                'user_id' => Auth::user()->id,
-                'action' => 'Updated',
-                'module_id' => 1,
-                'module_item_id' => $payment->id
-            ]);
+            // Activitylog::create([
+            //     'user_id' => Auth::user()->id,
+            //     'action' => 'Updated',
+            //     'module_id' => 1,
+            //     'module_item_id' => $payment->id
+            // ]);
 
             return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
         }
@@ -249,12 +249,12 @@ class PaymentController extends Controller
             'comments' => $req['comments']
         ]);
 
-        Activitylog::create([
-            'user_id' => Auth::user()->id,
-            'action' => 'Updated',
-            'module_id' => 1,
-            'module_item_id' => $payment->id
-        ]);
+        // Activitylog::create([
+        //     'user_id' => Auth::user()->id,
+        //     'action' => 'Updated',
+        //     'module_id' => 1,
+        //     'module_item_id' => $payment->id
+        // ]);
 
         return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
     }
@@ -263,12 +263,12 @@ class PaymentController extends Controller
     {
         abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
 
-        Activitylog::create([
-            'user_id' => Auth::user()->id,
-            'action' => 'Deleted',
-            'module_id' => 1,
-            'module_item_id' => $payment->id
-        ]);
+        // Activitylog::create([
+        //     'user_id' => Auth::user()->id,
+        //     'action' => 'Deleted',
+        //     'module_id' => 1,
+        //     'module_item_id' => $payment->id
+        // ]);
 
         $payment->delete();
 
