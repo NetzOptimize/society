@@ -11,39 +11,40 @@ Society User-Profile
     <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div class="card p-4">
             <div class=" image d-flex flex-column justify-content-center align-items-center gap-3">
-                <a href="" class="show_confirm"><img src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/82-512.png" height="40px" width="40px"/></a>
+                <a href="" class="show_confirm"><img src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/82-512.png" height="40px" width="40px" /></a>
                 <form id="profile-pic-form" action="{{ route('users.image.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label for="fileToUpload">
                         @php
                         $image = Auth()->user()->user_image;
-                    @endphp
-                    @if($image)
-                        <div class="profile-pic" style="background-image: url('https://8.zeroguess.us/society/storage/app/{{$image}}')">
+                        @endphp
+                        @if($image)
+                        {{-- @dd($image) --}}
+                        <div class="profile-pic" style="background-image:url('{{  asset('storage/'.$image) }}')">
                             <span class="glyphicon glyphicon-camera"></span>
                             <span>Change Image</span>
                         </div>
-                    @else
+                        @else
                         <div class="profile-pic" style="background-image: url('https://cdn-icons-png.flaticon.com/512/21/21104.png')">
                             <span class="glyphicon glyphicon-camera"></span>
-                            <span >Change Image</span>
+                            <span>Change Image</span>
                         </div>
-                    @endif
+                        @endif
                     </label>
                     <input type="file" name="image" id="fileToUpload" onchange="submitForm()">
                 </form>
                 <div class="profile-details">
                     <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
-                    <p class="house fw-bold m-2">Mobile-1 : {{  auth()->user()->mobile1 }}</p>
+                    <p class="house fw-bold m-2">Mobile-1 : {{ auth()->user()->mobile1 }}</p>
                     @isset(auth()->user()->mobile2)
-                        <p class="Mobile fw-bold">Mobile-2 : {{  auth()->user()->mobile2 }}</p>
+                    <p class="Mobile fw-bold">Mobile-2 : {{ auth()->user()->mobile2 }}</p>
                     @endisset
                     @isset(auth()->user()->email)
-                    <p class="Mobile fw-bold">Email : {{  auth()->user()->email }}</p>
-                @endisset
+                    <p class="Mobile fw-bold">Email : {{ auth()->user()->email }}</p>
+                    @endisset
                 </div>
-                <a href="{{  route('users.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
-                <a href="{{  route('admin.reset', $user) }}" class="btn btn-dark " >Reset Password</a>
+                <a href="{{  route('users.edit', auth()->user()) }}" class="btn btn-dark "> Edit Profile</a>
+                <a href="{{  route('admin.reset', $user) }}" class="btn btn-dark ">Reset Password</a>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                     <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span>
                     <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span>

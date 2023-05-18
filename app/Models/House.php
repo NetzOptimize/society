@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Payment;
+use App\Models\Resident;
+
 
 class House extends Model
 {
@@ -58,6 +60,18 @@ class House extends Model
     public function payments()
     {
         return $this->hasMany(Payment::class);
+    }
+
+    public function detail()
+    {
+        return $this->hasOneThrough(
+            User::class,
+            Resident::class,
+            'house_id',
+            'id',
+            'id',
+            'user_id'
+        );
     }
 
 }

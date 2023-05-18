@@ -3,13 +3,14 @@
 <!-- user navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
     <div class="container-fluid">
+        <a href="{{  route('user.home') }}" style="text-decoration:none;">
         <div class="user-logo d-flex align-items-center gap-2">
-            <img src="{{asset('logo.png')}}" class="rounded-pill" style="height: 60px;
-    width: 70px;" alt="">
+            <img src="{{asset('logo.png')}}" class="rounded-pill" style="height: 60px;width: 70px;" alt="">
             <div class="user-logo-heading">
                 <h3 class="text-light">Society</h3>
             </div>
-        </div> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        </div></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -35,7 +36,7 @@
                         <button class="btn btn-transparent text-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             @php $image = Auth()->user()->user_image;@endphp
                             @if($image)
-                            <img src="{{ 'https://8.zeroguess.us/society/storage/app/'.$image }}" class="rounded-pill me-2  " height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
+                            <img src="{{  asset('storage/'.$image) }}" class="rounded-pill me-2  " height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
                             @else
                             <img src="{{asset('user-icons.gif')}}" alt="" class="rounded-pill me-2" height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
                             @endif

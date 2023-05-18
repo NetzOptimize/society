@@ -94,7 +94,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
     Route::resource('payments', PaymentController::class)->except(['index']);
     Route::get('payments/{id?}', [PaymentController::class,'index'])->name('payments.index');
 
-    Route::get('admins/{id?}', [AdminController::class,'index'])->name('expenses.index');
+    Route::get('expenses/{id?}', [AdminController::class,'index'])->name('expenses.index');
     Route::resource('admins/expenses', AdminController::class)->except(['index']);
 
 
@@ -112,6 +112,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
             $activities = Activity::Datebetween($_GET['start_date'], $_GET['end_date']);
 
+            // $activities =Activitylog::whereBetween(DB::raw('DATE(created_at)'), [$_GET['start_date'], $_GET['end_date']])->get();
         }
         else
         {
@@ -132,3 +133,13 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 });
 
 
+Route::get('loginsertion', [AdminController::class, 'loginsertion']);
+
+
+
+
+Route::get('/run', function () {
+
+    Artisan::call('your:artisan-command');
+    return 'Command executed successfully';
+});

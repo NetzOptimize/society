@@ -207,7 +207,7 @@ h3#resident-heading {
 
 .main-expense-create {
     margin: 10px 0px;
-    display: flex;
+
     justify-content: center;
     align-items: center;
 }
@@ -1474,3 +1474,8 @@ form#payment-history-form {
 
 }
 
+.done > img{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}

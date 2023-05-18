@@ -30,6 +30,21 @@ class Payment extends Model
 
     }
 
+    public function housename()
+    {
+        return House::where('id',$this->house_id)->value('full_address');
+    }
+    public function doneby()
+    {
+        return $this->hasManyThrough(
+            User::class,
+            Activitylog::class,
+            'Module_item_id',
+            'id',
+            'id',
+            'user_id'
+        )->where('module_id',1)->latest('activity_logs.created_at');
+    }
     public function houses()
     {
         return $this->belongsTo(House::class,'house_id', 'id');

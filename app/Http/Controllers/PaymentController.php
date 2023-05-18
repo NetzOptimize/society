@@ -63,17 +63,22 @@ class PaymentController extends Controller
             $month =  $_GET['unpaid'];
 
             $payments = DB::table('houses')
-            ->selectRaw('houses.full_address')
-            ->where('houses.house_type', 'house')
-            ->whereNotIn('houses.id', function ($query) use ($month) {
-                $query->select('house_id')
-                    ->from('payments')
-                    ->distinct()
-                    ->where('billingmonth', $month);
-            })->get();
+                ->selectRaw('houses.full_address')
+                ->where('houses.house_type', 'house')
+                ->whereNotIn('houses.id', function ($query) use ($month) {
+                    $query->select('house_id')
+                        ->from('payments')
+                        ->distinct()
+                        ->where('billingmonth', $month);
+                })->get();
 
             $count = $payments->count();
-            $sum = 0 ;
+            foreach ($payments as $payment) {
+                $array[] = House::where('full_address',$payment->full_address)->first();
+            }
+
+            $sum=0;
+            $payments= collect($array);
         }
         else
         {

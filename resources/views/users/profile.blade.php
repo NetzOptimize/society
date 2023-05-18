@@ -104,7 +104,7 @@ Society User-Profile
                             $image = Auth()->user()->user_image;
                         @endphp
                         @if($image)
-                            <div class="profile-pic" style="background-image: url('https://8.zeroguess.us/society/storage/app/{{$image}}')">
+                            <div class="profile-pic" style="background-image: url({{  asset('storage/'.$image) }})">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </div>
@@ -120,12 +120,19 @@ Society User-Profile
                 <div class="profile-details">
                     <p class="name fw-bold text-primary m-0 display-6">{{ ucfirst(Auth()->user()->name) }}</p>
                     <p class="house fw-bold m-2">Mobile-1 : {{  auth()->user()->mobile1 }}</p>
-                    @isset(auth()->user()->mobile2)
+                    @if(!empty(auth()->user()->mobile2))
                         <p class="Mobile fw-bold">Mobile-2 : {{  auth()->user()->mobile2 }}</p>
-                    @endisset
+                    @endif
                     @isset(auth()->user()->email)
                     <p class="Mobile fw-bold">Email : {{  auth()->user()->email }}</p>
                 @endisset
+               @php $houses= Auth::user()->houses
+               @endphp
+               <p class="house fw-bold m-2"> Registered House :
+               @foreach ($houses as $house)
+               <br>{{ $house->full_address }}
+               @endforeach
+            </p>
                 </div>
                 <a href="{{  route('user.profile.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
                 <a href="{{  route('user.reset',auth()->user() ) }}" class="btn btn-dark " >Reset Password</a>

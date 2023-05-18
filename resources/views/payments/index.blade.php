@@ -113,8 +113,8 @@ Society Payments
                 <tr class="table-dark">
                     <th>Serial No</th>
                     <th>House No.</th>
-                    <th>Owner</th>
                     <th>Billing Month</th>
+                    <th>Owner</th>
                     @if (null == request('unpaid'))
                     <th>Payment Mode</th>
                     <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
@@ -134,6 +134,7 @@ Society Payments
                     </th>
                     <th>Amount</th>
                     <th>Comment</th>
+                    <th>Done By</th>
                     @if (auth()->user()->usertype_id != 3)
                     <div class="none">
                         <th colspan="2" class="text-center none" id="th-payment-print">Actions</th>
@@ -152,6 +153,11 @@ Society Payments
                     <td>@php echo $i; @endphp</td>
                     <td>{{ $payment->full_address }}</td>
                     <td>{{ request('unpaid') }}</td>
+                    @if(isset($payment->detail))
+                    <td>{{ $payment->detail->name }}<br><small class="text-muted">{{ $payment->detail->mobile1 }}</small></td>
+                    @else
+                    <td>N/A</td>
+                    @endif
                 </tr>
                 @endforeach
                 @else
@@ -161,16 +167,16 @@ Society Payments
                 @endphp
                 <td>@php echo $i; @endphp</td>
                 <td>{{ $payment->houses->full_address }}</td>
-                @if(isset($payment->owner))
-                <td>{{ $payment->owner->name }}</td>
-                @else
-                <td>N/A</td>
-                @endif
                 @foreach ($months as $key => $month)
                 @if ($key == $payment->billingmonth)
                 <td>{{ $month }}</td>
                 @endif
                 @endforeach
+                @if(isset($payment->owner))
+                <td>{{ $payment->owner->name }}<br><small class="text-muted">{{ $payment->owner->mobile1 }}</small></td>
+                @else
+                <td>N/A</td>
+                @endif
                 <td>{{ $payment->paymentmode->name }}</td>
                 <td>{{ $payment->dateofdeposit }}</td>
                 <td>{{ $payment->amount }}</td>
@@ -179,6 +185,7 @@ Society Payments
                 @else
                 <td>Not Provided</td>
                 @endif
+                <td>{{ $payment->doneby->value('name') }}</td>
                 <div class="none">
                     @if (auth()->user()->usertype_id == 1)
                     <td class="none">
@@ -197,6 +204,7 @@ Society Payments
                     @endif
                     @else
                     <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
+
                     @endif
                 </div>
             </tbody>

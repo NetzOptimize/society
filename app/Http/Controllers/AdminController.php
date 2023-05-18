@@ -9,7 +9,10 @@ use App\Models\PaymentMode;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Activitylog;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use League\Flysystem\Ftp\FtpAdapter;
 
 
 class AdminController extends Controller
@@ -61,13 +64,21 @@ class AdminController extends Controller
 
     public function store(Request $req)
     {
+        $messages = [
+            'payee.required' => 'The name field is required.',
+            'payee.min' => 'The name field must be at least 3 characters.',
+            'payee.max' => 'The name may not be greater than 255 characters.',
+            'amount.required' => 'The amount field is required.',
+            'amount.gt' => 'The amount field must be a number greater than zero .',
+            'payment_modes_id.required' => 'The payment mode field is required.',
+        ];
         $attributes= $req->validate([
             'payee' =>'required|min:3|max:255',
             'amount' => 'required|gt:0',
             'comments' => 'nullable',
             'payment_modes_id' =>'required',
             'dateofpayment' => 'required|date',
-        ]);
+        ], $messages);
 
         $expense=Expense::create([
             'payee' => $attributes['payee'],
@@ -108,14 +119,21 @@ class AdminController extends Controller
 
     public function update(Request $request, Expense $expense)
     {
-
+        $messages = [
+            'payee.required' => 'The name field is required.',
+            'payee.min' => 'The name field must be at least 3 characters.',
+            'payee.max' => 'The name may not be greater than 255 characters.',
+            'amount.required' => 'The amount field is required.',
+            'amount.gt' => 'The amount field must be a number greater than zero .',
+            'payment_modes_id.required' => 'The payment mode field is required.',
+        ];
         $attributes= $request->validate([
             'payee' =>'required|min:3|max:255',
             'amount' => 'required|gt:0',
             'comments' => 'nullable',
             'payment_modes_id' =>'required',
             'dateofpayment' => 'required|date',
-        ]);
+        ],$messages);
 
         $expense->update([
             'payee' => $attributes['payee'],
