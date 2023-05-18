@@ -70,10 +70,10 @@ class Expense extends Model
         return $this->hasManyThrough(
             User::class,
             Activitylog::class,
-            'Module_item_id',
+            'subject_id',
             'id',
             'id',
-            'user_id'
-        )->latest('activity_logs.created_at');
+            'causer_id'
+        )->latest('activity_log.created_at');
     }
 }

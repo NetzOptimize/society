@@ -88,6 +88,13 @@ class AdminController extends Controller
             'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
         ]);
 
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Created',
+            'module_id' => 2,
+            'module_item_id' => $expense->id
+        ]);
+
         return back()->with('success', 'Expenses Added Successfully');
     }
 
@@ -143,6 +150,13 @@ class AdminController extends Controller
             'dateofpayment' => Carbon::parse($attributes['dateofpayment'])->format('d-m-Y'),
         ]);
 
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Updated',
+            'module_id' => 2,
+            'module_item_id' => $expense->id
+        ]);
+
         return redirect()->route('expenses.index')->with('success', 'Expenses Updated Successfully');
     }
 
@@ -151,8 +165,43 @@ class AdminController extends Controller
     {
         abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
 
+        Activitylog::create([
+            'user_id' => Auth::user()->id,
+            'action' => 'Deleted',
+            'module_id' => 2,
+            'module_item_id' => $expense->id
+        ]);
+
         $expense->delete();
 
         return back()->with('success','expense deleted successfully');
+    }
+
+    public function loginsertion()
+    {
+        $ids= Payment::get()->pluck('id')->toArray();
+
+        foreach($ids as $id)
+        {
+            Activitylog::create([
+                'user_id' => 198,
+                'action' => 'Created',
+                'module_id' => 1,
+                'module_item_id' => $id
+            ]);
+        }
+
+
+        $ids= Expense::get()->pluck('id')->toArray();
+
+        foreach($ids as $id)
+        {
+            Activitylog::create([
+                'user_id' => 198,
+                'action' => 'Created',
+                'module_id' => 2,
+                'module_item_id' => $id
+            ]);
         }
     }
+}
