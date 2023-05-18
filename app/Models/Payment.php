@@ -9,6 +9,7 @@ use App\Models\Resident;
 use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Carbon\Carbon;
 
 class Payment extends Model
 {
@@ -71,9 +72,10 @@ class Payment extends Model
     {
         if($sort == 'Ascending')
         {
-            return $query->orderBy('dateofdeposit', 'asc')->get();
+            return $query->where('billingmonth',Carbon::now()->startOfMonth()->format('d-m-Y'))->orderBy('dateofdeposit', 'asc')->get();
         }
-        return $query->orderBy('dateofdeposit', 'desc')->get();
+        return $query->where('billingmonth',Carbon::now()->startOfMonth()->format('d-m-Y'))->orderBy('dateofdeposit', 'desc')->get();
+
     }
 
     public function Owner()

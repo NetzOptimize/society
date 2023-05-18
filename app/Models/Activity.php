@@ -29,6 +29,10 @@ class Activity extends Model
     {
         return House::where('id',$id)->value('full_address');
     }
+    public function scopeDatebetween($query, $start, $end)
+    {
+        return $query->wherebetween('created_at',[$start, $end])->get();
+    }
 }
 
 

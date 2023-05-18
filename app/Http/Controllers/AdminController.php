@@ -44,7 +44,7 @@ class AdminController extends Controller
         }
         else
         {
-            $expenses= Expense::simplepaginate(15);
+            $expenses= Expense::Datebetween(Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth());
             $count = $expenses->count();
             $sum = $expenses->sum('amount');
         }
@@ -136,5 +136,5 @@ class AdminController extends Controller
         $expense->delete();
 
         return back()->with('success','expense deleted successfully');
+        }
     }
-}

@@ -77,7 +77,7 @@ class PaymentController extends Controller
         }
         else
         {
-            $payments = Payment::get()->pluck('id')->toarray();
+            $payments = Payment::Monthlyfilter(Carbon::now()->startOfMonth()->format('d-m-Y'))->pluck('id')->toarray();
             $payments = Payment::sortedData($payments)->get();
             $count = $payments->count();
             $sum = $payments->sum('amount');

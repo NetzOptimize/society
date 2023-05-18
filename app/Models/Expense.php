@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -32,13 +33,22 @@ class Expense extends Model
     {
         return $this->belongsto(PaymentMode::class,'payment_modes_id', 'id');
     }
-    public function scopeSort($query, $sort)
+    public function scopeSort($query,$sort)
     {
         if($sort == 'Ascending')
         {
-            return $query->orderBy(DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), 'asc')->get();
+            return $query->whereBetween(\DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), [
+                Carbon::now()->startOfMonth()->format('Y-m-d'),
+                Carbon::now()->endOfMonth()->format('Y-m-d')
+            ])->orderBy(\DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), 'asc')->get();
+
+
         }
-        return $query->orderBy(DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), 'desc')->get();
+        return $query->whereBetween(\DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), [
+            Carbon::now()->startOfMonth()->format('Y-m-d'),
+            Carbon::now()->endOfMonth()->format('Y-m-d')
+        ])->orderBy(\DB::raw("STR_TO_DATE(dateofpayment, '%d-%m-%Y')"), 'desc')->get();
+
     }
 
     public function scopeSearch($query, $search)

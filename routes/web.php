@@ -10,9 +10,10 @@ use App\Http\Controllers\AdminController;
 use App\Models\Expense;
 use App\Models\Payment;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use  App\Models\Activity;
-
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +115,7 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
         }
         else
         {
-            $activities = Activity::orderBy('id', 'desc')->get();
+            $activities =Activity::whereBetween(DB::raw('DATE(created_at)'), [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get();
         }
 
         return view('activitylog', compact('activities'));
