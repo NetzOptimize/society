@@ -113,11 +113,10 @@ Route::middleware(['auth', 'disable_back_btn'])->group(function () {
 
             $activities = Activity::Datebetween($_GET['start_date'], $_GET['end_date']);
 
-            // $activities =Activitylog::whereBetween(DB::raw('DATE(created_at)'), [$_GET['start_date'], $_GET['end_date']])->get();
         }
         else
         {
-            $activities =Activity::whereBetween(DB::raw('DATE(created_at)'), [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get();
+            $activities =Activity::whereBetween(DB::raw('DATE(created_at)'), [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->orderBy('id', 'desc')->get();
         }
 
         return view('activitylog', compact('activities'));
