@@ -104,7 +104,7 @@ Society User-Profile
                             $image = Auth()->user()->user_image;
                         @endphp
                         @if($image)
-                            <div class="profile-pic" style="background-image: url({{  asset('storage/'.$image) }})">
+                            <div class="profile-pic" style="background-image: url('{{ preg_replace('/public/', '' , asset('/storage/app/'.$image), 1)}}')">
                                 <span class="glyphicon glyphicon-camera"></span>
                                 <span>Change Image</span>
                             </div>
@@ -126,13 +126,12 @@ Society User-Profile
                     @isset(auth()->user()->email)
                     <p class="Mobile fw-bold">Email : {{  auth()->user()->email }}</p>
                 @endisset
-               @php $houses= Auth::user()->houses
-               @endphp
-               <p class="house fw-bold m-2"> Registered House :
-               @foreach ($houses as $house)
-               <br>{{ $house->full_address }}
-               @endforeach
-            </p>
+                @php $houses= Auth::user()->houses
+                @endphp
+                <p class="house fw-bold m-2"> Registered House :
+                @foreach ($houses as $house)
+                <br>{{ $house->full_address }}
+                @endforeach
                 </div>
                 <a href="{{  route('user.profile.edit', auth()->user()) }}" class="btn btn-dark " > Edit Profile</a>
                 <a href="{{  route('user.reset',auth()->user() ) }}" class="btn btn-dark " >Reset Password</a>

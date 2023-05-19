@@ -161,9 +161,7 @@ Society Report
             align-items: center;
         }
         .structure {
-    overflow: scroll;
-    height: 100vh;
-    width: 100%;
+     width: 100%;
     /* border: 1px solid red; */
     overflow-x: scroll;
 
@@ -483,8 +481,8 @@ width: unset;
                             <div class="block-right">
                                 <div class="block-list">
                                     <div class="block-item" id="DS-A-15"><p>DS-A-15</p></div>
-                                    <div class="block-item" id="DS-A-16"><p>DS-A-16</p></div>
-                                    <div class="block-item" id="DS-A-16A"><p>DS-A-16A</p></div>
+                                    <div class="block-item" id="DS-A-16-1"><p>DS-A-16</p></div>
+                                    <div class="block-item" id="DS-A-16-2"><p>DS-A-16A</p></div>
                                     <div class="block-item" id="DS-A-17"><p>DS-A-17</p></div>
                                     <div class="block-item" id="DS-A-18"><p>DS-A-18</p></div>
                                     <div class="block-item" id="DS-A-19"><p>DS-A-19</p></div>
@@ -592,14 +590,14 @@ width: unset;
                     <div class="box">
                         <div class="table-item" style="flex-direction: column;">
                             <div class="block-list" style="height: 55px;">
-                                <div class="block-item" id="DS-C-92"><p>DS-C-92</p></div>
-                                <div class="block-item" id="DS-C-91"><p>DS-C-91</p></div>
-                                <div class="block-item" id="DS-C-90"><p>DS-C-90</p></div>
-                                <div class="block-item" id="DS-C-89"><p>DS-C-89</p></div>
-                                <div class="block-item" id="DS-C-88"><p>DS-C-88</p></div>
-                                <div class="block-item" id="DS-C-87"><p>DS-C-87</p></div>
-                                <div class="block-item" id="DS-C-86"><p>DS-C-86</p></div>
-                                <div class="block-item" style="width: calc(100% + 52%);" id="DS-C-85"><p>DS-C-85</p></div>
+                                <div class="block-item" id="DS-A-92"><p>DS-A-92</p></div>
+                                <div class="block-item" id="DS-A-91"><p>DS-A-91</p></div>
+                                <div class="block-item" id="DS-A-90"><p>DS-A-90</p></div>
+                                <div class="block-item" id="DS-A-89"><p>DS-A-89</p></div>
+                                <div class="block-item" id="DS-A-88"><p>DS-A-88</p></div>
+                                <div class="block-item" id="DS-A-87"><p>DS-A-87</p></div>
+                                <div class="block-item" id="DS-A-86"><p>DS-A-86</p></div>
+                                <div class="block-item" style="width: calc(100% + 52%);" id="DS-A-85"><p>DS-A-85</p></div>
                             </div>
                         </div>
                     </div>
@@ -614,7 +612,7 @@ width: unset;
                                   <div class="ms-block" style="height: 50px;" id="MS--5"><p>MS--5</p></div>
                                   <div class="ms-block" style="height: 50px;" id="MS--6"><p>MS--6</p></div>
                                   <div class="ms-block" id="MS--7"><p>MS--7</p></div>
-                                  <div class="ms-block" id="MS-7A"><p>MS-7A</p></div>
+                                  <div class="ms-block" id="MS-A-7"><p>MS-A-7</p></div>
                                   <div class="ms-block" id="MS--8"><p>MS--8</p></div>
                                   <div class="ms-block" id="MS--9"><p>MS--9</p></div>
                                   <div class="ms-block" id="MS-A-9"><p>MS-A-9</p></div>

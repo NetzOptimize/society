@@ -5,8 +5,8 @@ Society Expense Create
 @endsection
 @section('content')
 <div class="main-expense-create">
-<div class="main container w-50 shadow rounded mt-3 " id="expense-create">
-<div class="Manage-expenses-heading d-flex justify-content-start rounded p-4 mt-3" id="expense-heading">
+<div class="main container w-50 shadow rounded mt-3 pt-2" id="expense-create">
+<div class="Manage-expenses-heading d-flex justify-content-start rounded p-4" id="expense-heading">
     <h3 class="d-flex align-items-center justify-content-center"> <img src="{{asset('payment1.gif')}}" style="height:40px; width:60px;" alt=""> Manage Expenses</h3>
 </div>
     <div class="d-flex flex-column justify-content-center align-items-center align-content-center pb-2 pt-2 container">

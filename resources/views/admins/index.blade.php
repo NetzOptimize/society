@@ -37,11 +37,10 @@ Society Expenses
     </div>
 
     {{-- refresh button --}}
+    <div class="refresh-button pb-4 me-5 d-flex justify-content-end hide">
+        <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center">Refresh</a>
 
-    <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-        <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
     </div>
-
 </div>
 <!-- table -->
     <!-- table -->
@@ -118,11 +117,7 @@ Society Expenses
                         @else
                         <td>-</td>
                         @endif
-                        <td class="done">{{ $expense->doneby ? $expense->doneby->value('name'): null }}
-                            @php $image = $expense->doneby ? $expense->doneby->value('user_image') : null ;@endphp
-                            @if($image)
-                                <img src="{{  asset('storage/'.$image) }}">
-                            @endif
+                        <td>{{ $expense->doneby ? $expense->doneby->value('name'): null }}
                          </td>
                         <div class="none">
                             @if (auth()->user()->usertype_id == 1)

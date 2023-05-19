@@ -185,7 +185,9 @@ Society Payments
                 @else
                 <td>Not Provided</td>
                 @endif
-                <td>{{ $payment->doneby->value('name') }}</td>
+                <td >
+                    {{ $payment->doneby ? $payment->doneby->value('name'): null }}
+                </td>
                 <div class="none">
                     @if (auth()->user()->usertype_id == 1)
                     <td class="none">
@@ -204,7 +206,6 @@ Society Payments
                     @endif
                     @else
                     <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
-
                     @endif
                 </div>
             </tbody>

@@ -16,17 +16,15 @@
     <nav class="navbar bg-dark navbar-expand-lg p-3 me-5 ms-5  d-flex align-items-center justify-content-between" id="navbar">
         <div class="container-fluid">
 
-            <a href="{{  route('home') }}" style="text-decoration:none;">
-                <div class="logo-user d-flex align-items-center just">
-                    <div class="logo d-flex align-items-center">
-                        <img src="{{asset('logo.png')}}" class="rounded-pill" style="height: 60px;width: 70px;" alt="">
-                        <h2 class="text-light ms-2">Society</h2>
-                    </div>
+          <a href="{{  route('home') }}" style="text-decoration:none;">
+            <div class="logo-user d-flex align-items-center just">
+                <div class="logo d-flex align-items-center">
+                    <img src="{{asset('logo.png')}}" class="rounded-pill" style="height: 60px; width: 70px;" alt="">
+                    <h2 class="text-light ms-2">Society</h2>
                 </div>
-            </a>
+            </div>
+          </a>
             <div class="user-toggle  d-flex align-items-center justify-content-between">
-
-
                 <button class="navbar-toggler bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,22 +32,18 @@
 
 
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
-
                 <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 w-100 d-flex justify-content-end none" id="hover-li">
                     <div class="dropdown drop-hover">
-                        <li class="nav-item dropdown">
-                            <button class="btn btn-transparent dropdown-toggle  text-light btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dashboard
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                                <li><a href="{{ route('home') }}" class="dropdown-item  ">Analytics</a></li>
-                                <li><a href="{{ route('report') }}" class="dropdown-item ">Report</a></li>
-                            </ul>
-                        </li>
-                    </div>
-                    {{-- <li class="nav-item">
-                        <a href="{{ route('home') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Dashboard</a>
-                    </li> --}}
+                      <li class="nav-item dropdown">
+                          <button class="btn btn-transparent dropdown-toggle  text-light btn1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Dashboard
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                              <li><a href="{{ route('home') }}" class="dropdown-item  ">Analytics</a></li>
+                              <li><a href="{{ route('report') }}" class="dropdown-item ">Report</a></li>
+                          </ul>
+                      </li>
+                  </div>
                     <li class="nav-item">
                         <a href="{{ route('users.index') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Users</a>
                     </li>
@@ -90,15 +84,12 @@
                     <li class="nav-item">
                         <a href="{{ route('activitylog') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Activity-Log</a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a href="{{ route('report') }}" id="manage-users" class="btn btn-transparent  ms-1 text-light">Report</a>
-                    </li> --}}
                     <!--  -->
                     <div class="dropdown me-2 user-hover">
                         <a class="btn bg-transparent dropdown-toggle text-light ms-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @php $image = Auth()->user()->user_image;@endphp
                             @if($image)
-                            <img src="{{  asset('storage/'.$image) }}" class="rounded-pill" height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
+                            <img src="{{ preg_replace('/public/', '' , asset('/storage/app/'.$image), 1)}}" class="rounded-pill" height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
                         @else
                         <img src="{{asset('user-icons.gif')}}" alt="" class="rounded-pill me-2" height="30px" width="30px">{{ ucfirst(Auth::user()->name) }}</a>
                         @endif

@@ -31,7 +31,7 @@ Society Home
     <div class="card dash bg-dark text-light">
       <div class="card-body">
         <h5 class="card-title">Remaining</h5>
-        <p class="card-text">{{ $payment-$expense  }}</p>
+        <p class="card-text">{{$payment-$expense  }}</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
       </div>
     </div>

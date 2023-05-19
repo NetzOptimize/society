@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\Activitylog;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Ftp\FtpAdapter;
 
@@ -177,31 +178,79 @@ class AdminController extends Controller
         return back()->with('success','expense deleted successfully');
     }
 
-    // public function loginsertion()
-    // {
-    //     $ids= Payment::get()->pluck('id')->toArray();
+    public function loginsertion()
+    {
+        // for payment done by mishra
+        $logs = DB::table('activity_logs')->where('module_id', 1)->where('user_id',198)->get();
 
-    //     foreach($ids as $id)
-    //     {
-    //         Activitylog::create([
-    //             'user_id' => 198,
-    //             'action' => 'Created',
-    //             'module_id' => 1,
-    //             'module_item_id' => $id
-    //         ]);
-    //     }
+        foreach($logs as $log)
+        {
+            $data = [
+                'attributes' => Payment::where('id',$log->module_item_id)->first()->toarray()
+            ];
 
+            DB::table('activity_log')->insert([
+                'log_name' => 'default',
+                'description' => 'created',
+                'subject_type' => 'App\Models\Payment',
+                'event' => 'created',
+                'subject_id' => $log->module_item_id,
+                'causer_type' => 'App\Models\User',
+                'causer_id' => 198,
+                'properties' => json_encode($data),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
 
-    //     $ids= Expense::get()->pluck('id')->toArray();
+        }
 
-    //     foreach($ids as $id)
-    //     {
-    //         Activitylog::create([
-    //             'user_id' => 198,
-    //             'action' => 'Created',
-    //             'module_id' => 2,
-    //             'module_item_id' => $id
-    //         ]);
-    //     }
-    // }
+        //for payment done by amod sir
+        $logs = DB::table('activity_logs')->where('module_id', 1)->where('user_id',175)->get();
+
+        foreach($logs as $log)
+        {
+            $data = [
+                'attributes' => Payment::where('id',$log->module_item_id)->first()->toarray()
+            ];
+
+            DB::table('activity_log')->insert([
+                'log_name' => 'default',
+                'description' => 'created',
+                'subject_type' => 'App\Models\Payment',
+                'event' => 'created',
+                'subject_id' => $log->module_item_id,
+                'causer_type' => 'App\Models\User',
+                'causer_id' => 175,
+                'properties' => json_encode($data),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+        }
+
+        //foreaxpense
+        $logs = DB::table('activity_logs')->where('module_id', 2)->get();
+
+        foreach($logs as $log)
+        {
+            $data = [
+                'attributes' => Expense::where('id',$log->module_item_id)->first()->toarray()
+            ];
+
+            DB::table('activity_log')->insert([
+                'log_name' => 'default',
+                'description' => 'created',
+                'subject_type' => 'App\Models\Expense',
+                'event' => 'created',
+                'subject_id' => $log->module_item_id,
+                'causer_type' => 'App\Models\User',
+                'causer_id' => 198,
+                'properties' => json_encode($data),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+        }
+
+    }
 }
