@@ -39,7 +39,7 @@ Society User-Profile
 </div>
 <div class="activty-log w-100 d-flex justify-content-center table-responsive ">
 
-<table class=" ms-5 me-5 table-bordered w-100 data ">
+<table class=" ms-5 me-5 table-bordered w-100 data activity">
     <thead>
     <tr class="bg-dark text-light">
         <th class="p-2">Date</th>

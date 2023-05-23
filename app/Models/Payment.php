@@ -98,9 +98,11 @@ class Payment extends Model
     {
         if($sort == 'Ascending')
         {
-            return $query->where('billingmonth',Carbon::now()->startOfMonth()->format('d-m-Y'))->orderBy('dateofdeposit', 'asc')->get();
+           return $query->where('billingmonth',Carbon::now()->startOfMonth()->format('d-m-Y'))
+                        ->orderByRaw("STR_TO_DATE(dateofdeposit, '%d-%m-%y') ASC")->get();
         }
-        return $query->where('billingmonth',Carbon::now()->startOfMonth()->format('d-m-Y'))->orderBy('dateofdeposit', 'desc')->get();
+        return $query->where('billingmonth',Carbon::now()->startOfMonth()->format('d-m-Y'))
+                    ->orderByRaw("STR_TO_DATE(dateofdeposit, '%d-%m-%y') DESC")->get();
 
     }
 
