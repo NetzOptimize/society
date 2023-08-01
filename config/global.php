@@ -3,6 +3,7 @@
 return [
 
 'months' => [
+        'All' => 'All Records',
         'init'=> 'INITIAL PAYMENT',
         '01-01-2023' => 'January 2023',
         '01-02-2023'=> 'February 2023',
@@ -31,4 +32,3 @@ return [
         '01-12-2024' => 'December 2024'
     ]
 ];
-?>
