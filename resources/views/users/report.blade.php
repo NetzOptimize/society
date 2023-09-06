@@ -4,10 +4,12 @@
 Society User-Report
 @endsection
 @section('content')
-@php $payments = Auth::user()->payments()->get() @endphp
+@php $payments = Auth::user()->payments()->get()
+@endphp
 <div class="table-report p-4">
     <table class="table table-light table-hover">
         <tr  table-active>
+            <th>ADDRESS</th>
             <th>BILLING MONTH</th>
             <th>PAYMENT MODE</th>
             <th>DATE OF DEPOSIT</th>
@@ -15,7 +17,7 @@ Society User-Report
         </tr>
         <tr>
             @foreach ($payments as $payment)
-                <td>{{ $address }}</td>
+                <td>{{ $payment->houses->full_address }}</td>
                 @foreach ($months as $key => $month)
                 @if($key == $payment->billingmonth)
                     <td>{{ $month }}</td>

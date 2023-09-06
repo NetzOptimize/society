@@ -1,4 +1,3 @@
-
 @extends('layouts.main')
 @section('title')
 Society Create User
@@ -16,45 +15,45 @@ Society Create User
 <div class="d-flex flex-column justify-content-center align-items-center p-3 pb-3 ">
     <form action="{{ route('users.store') }}" method="POST"   class="d-flex flex-column gap-3" id="user-create" >
         @csrf
-          <input type="textbox" name="name" placeholder="Name"  class="form-control" value={{ old('name')}}>
+            <input type="textbox" name="name" placeholder="Name"  class="form-control" value={{ old('name')}}>
         <div class="error">
         @error('name')
             {{ $message }}
         @enderror
         </div>
-          <input type="tel" name="mobile1" placeholder="Enter your mobile"  class="form-control" value={{ old('mobile1')}}>
+            <input type="tel" name="mobile1" placeholder="Enter your mobile"  class="form-control" value={{ old('mobile1')}}>
         <div class="error">
         @error('mobile1')
             {{ $message }}
         @enderror
         </div>
 
-        <input type="tel" name="mobile2" placeholder="Mobile2"  class="form-control" value={{ old('mobile2')}}>
+            <input type="tel" name="mobile2" placeholder="Mobile2"  class="form-control" value={{ old('mobile2')}}>
         <div class="error">
         @error('mobile2')
             {{ $message }}
         @enderror
         </div>
-        <input type="email" name="email" placeholder="Email"  class="form-control" value={{ old('email')}}>
+            <input type="email" name="email" placeholder="Email"  class="form-control" value={{ old('email')}}>
         <div class="error">
         @error('email')
             {{ $message }}
         @enderror
         </div>
-        <input type="password" id="password" name="password" placeholder="Password" class="form-control" value={{ old('password')}}>
+            <input type="password" id="password" name="password" placeholder="Password" class="form-control" value={{ old('password')}}>
         <div class="error">
         @error('password')
             {{ $message }}
         @enderror
         </div>
-         <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" class="form-control" value={{ old('confirmPassword')}}>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" class="form-control" value={{ old('confirmPassword')}}>
         <div class="error">
         @error('confirmPassword')
             {{ $message }}
         @enderror
-        <input type="checkbox"  id="checkbox">Show Password
+            <input type="checkbox"  id="checkbox">Show Password
         </div>
-         <select name="usertype_id" class="form-control user-cursor" value={{ old('usertype_id')}}>
+        <select name="usertype_id" class="form-control user-cursor" value={{ old('usertype_id')}}>
             <option value="">Select User Type</option>
             @foreach($usertypes as $usertype)
                 <option value="{{ $usertype->id }}" {{ old('usertype_id') == $usertype->id ? 'selected' : '' }}>{{ $usertype->role }}</option>

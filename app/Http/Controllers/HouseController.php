@@ -25,7 +25,27 @@ class HouseController extends Controller
 
     public function store(Request $request)
     {
-        //
+        
+            $fulladress = $request->Block1;
+            if($request->Block2){
+                $fulladress = $fulladress . '-' . $request->Block2;
+            }
+            if($request->house_no){
+                $fulladress = $fulladress . '-' . $request->house_no;
+            }
+            if($request->floor){
+                $fulladress = $fulladress . '-' . $request->floor;
+            }
+
+            return response()->json([
+                'house_type' => $request->house_type,
+                'house_no' => $request->house_no,
+                'Block1' => $request->Block1,
+                'Block2' => $request->Block2,
+                'floor' => $request->floor,
+                'fulladress' => $fulladress
+            ]);
+
     }
 
 

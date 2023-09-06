@@ -43,7 +43,7 @@ class Payment extends Model
     public function scopeDatebetween($query, $start, $end)
     {
         return $query->whereBetween(
-            \DB::raw("STR_TO_DATE(billingmonth, '%d-%m-%Y')"),
+            DB::raw("STR_TO_DATE(billingmonth, '%d-%m-%Y')"),
             [date('Y-m-d', strtotime($start)), date('Y-m-d', strtotime($end))]
         )->get();
     }

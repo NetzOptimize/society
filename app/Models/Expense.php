@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 
 class Expense extends Model
-{
+{ 
     use HasFactory;
 
     protected $fillable=[
