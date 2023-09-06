@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         'userType' => \App\Http\Middleware\UserType::class,
+        'user-access' => \App\Http\Middleware\UserAccess::class,
     ];
 }

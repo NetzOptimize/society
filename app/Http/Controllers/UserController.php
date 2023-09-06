@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PasswordResetToken;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Society;
@@ -12,6 +13,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\ForgetPassword;
+use Carbon\Carbon;
+use Illuminate\Auth\Events\PasswordReset;
 
 class UserController extends Controller
 {
@@ -139,7 +142,6 @@ class UserController extends Controller
     }
     public function home()
     {
-
         return view('users.home');
     }
 
@@ -228,7 +230,7 @@ class UserController extends Controller
     public function forgetpassword(Request $request)
     {
         $user = User::where('mobile1', $request->mobile)->first();
-
+        
         if($user)
         {
             if($user->email)
@@ -251,11 +253,21 @@ class UserController extends Controller
         }
     }
 
-    public function forget($id)
+    public function forget($token)
     {
-        $user= User::where('id',$id)->first();
-
+        $email = PasswordResetToken::where('token',$token)->first();
+        if($email){
+            if($email->expires_at < Carbon::now('Asia/Kolkata')->format('Y-m-d H:i:s'))
+            {
+                $email->delete();
+                return redirect('/')->with('error', 'Token Expired');
+            }
+        $user = User::where('email',$email->email)->first();
         return view('users/forgetpasswordcreate', compact('user'));
+        }else{
+            return redirect('/')->with('error', 'Invalid Token');
+        }
+        
     }
     public function forgetstore(User $user, Request $req)
     {
@@ -263,11 +275,13 @@ class UserController extends Controller
             'password' => 'required|min:8',
             'confirmPassword' => 'required|same:password'
         ]);
-
+    
         $user->update([
             'password' => Hash::make($req->password)
         ]);
-
+        $token = PasswordResetToken::where('email',$user->email)->first();
+        $token->delete();
+    
         return redirect("/")->with('success', 'Password Changed Successfully');
     }
 
