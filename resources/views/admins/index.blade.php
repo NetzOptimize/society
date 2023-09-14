@@ -1,67 +1,432 @@
-
 @extends('layouts.main')
+
 @section('title')
+
 Society Expenses
+
 @endsection
+
 @section('content')
 
+
+
 {{-- search bar --}}
+
 <div class="main ">
 
-<div class="houses-list  text-center me-5 ms-5 bg-light p-4  mt-3">
-    <h3>Lists Of Payment</h3>
-</div>
 
-<form action="" method="GET" class="searchby-payee d-flex justify-content-end pt-4 pe-5 mt-2">
-    @if (request('search'))
-    <input type="search" name="search" value="{{ request('search') }}"  />
+
+    <div class="houses-list  text-center me-5 ms-5 bg-light p-4  mt-3">
+
+        <h3>Lists Of Expenses</h3>
+
+    </div>
+
+    <div class="none">
+
+        <div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end align-items-center gap-2">
+
+            <input type="search" id="search" placeholder="Search" class="search" />
+
+
+
+            <button onclick="printDiv()" class="btn btn-success  d-flex align-items-center">Print</button>
+
+        </div>
+
+    </div>
+
+    {{-- mont-wise filter--}}
+    @if (request('month'))
+    <div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
+        <div class="dropdown me-2">
+            <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @if (request('month'))
+                {{ request('month') }}
+                @else
+                Months
+                @endif
+            </label>
+            <ul class="dropdown-menu">
+                @foreach ($months as $key => $month)
+                @if($key == 'init')
+                @continue
+                @else
+                <li><a class="dropdown-item" href="{{ route('expenses.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                @endif
+                @endforeach
+            </ul>
+        </div>
+    </div>
     @else
-    <div class="searchby-payee d-flex justify-content-end pt-4 mt-2">
-        <input type="search" placeholder="  Search By Payee" name="search" />
+    <div class="none">
+        <div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
+            <div class="dropdown me-2">
+                <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @if (request('month'))
+                    {{ request('month') }}
+                    @else
+                    Months
+                    @endif
+                </label>
+                <ul class="dropdown-menu">
+                    @foreach ($months as $key => $month)
+                    @if($key == 'init')
+                    @continue
+                    @else
+                    <li><a class="dropdown-item" href="{{ route('expenses.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                    @endif
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
     @endif
-</form>
-</div>
+    {{-- datewise filter --}}
+    @if (request('start_date'))
+    <div class="payment">
+        <form action="" method="GET" style="margin:0" id="payment-history-form">
+            <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
+            @if (request('start_date'))
+            <input type="date" name="start_date" value={{ request('start_date') }}>
+            @else
+            <input type="date" name="start_date" class="start-date">
+            @endif
+            <label class="ms-3 me-3 text-center"><b>End Date</b></label>
+            @if (request('end_date'))
+            <input type="date" name="end_date" value={{ request('end_date') }}>
+            @else
+            <input type="date" class="me-3" name="end_date" id="end-date">
+            @endif
+            <div class="none">
+                <button class="btn btn-success me-3" type="submit" id="filter">Filter</button>
+            </div>
+        </form>
+    @else
+    <div class="payment none">
 
-{{-- refresh button--}}
-<div class="refresh-expenses pt-3 pe-5 d-flex justify-content-end">
-    <a href="{{ route('expenses.index') }}" class="btn btn-success">Refresh</a>
-</div>
+        <form action="" method="GET" style="margin:0" id="payment-history-form">
 
-{{-- listing --}}
-<div class="table-expenses ps-5 pe-5 pt-3  mt-3 table-responsive">
-    <table class="table table-light table-hover table-bordered">
-        <tr class="table-dark">
-            <th>Payee</th>
-            <th>Amount</th>
-            <th>Payment Mode</th>
-            <th class="d-flex align-items-center ">Date Of Payments <div class="dropdown ms-2 order_by">
-                    <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        @if (request('sort'))
-                        {{ request('sort') }}
+            <label class="ms-3 me-3 text-center"><b>Start Date</b></label>
+
+            @if (request('start_date'))
+
+            <input type="date" name="start_date" value={{ request('start_date') }}>
+
+            @else
+
+            <input type="date" name="start_date" class="start-date">
+
+            @endif
+
+            <label class="ms-3 me-3 text-center"><b>End Date</b></label>
+
+            @if (request('end_date'))
+
+            <input type="date" name="end_date" value={{ request('end_date') }}>
+
+            @else
+
+            <input type="date" class="me-3" name="end_date" id="end-date">
+
+            @endif
+
+            <button class="btn btn-success me-3" type="submit" id="filter">Filter</button>
+
+        </form>
+
+
+
+        @endif
+
+        {{-- refresh button --}}
+        <div class="none">
+        <div class="refresh-button pb-4 me-5 d-flex justify-content-end hide">
+
+            <a href="{{ route('expenses.index') }}" class="btn btn-success d-flex align-items-center">Refresh</a>
+
+
+        </div>
+        </div>
+
+    </div>
+
+    <!-- table -->
+
+    <!-- table -->
+
+    <div class="reports d-flex justify-content-end mt-3 me-5">
+
+        <table class="table w-auto table-bordered ">
+
+
+
+            <tr>
+
+                <th class="text-center table-info" colspan="2">Financial Reports</th>
+
+            </tr>
+
+
+
+            <tbody>
+
+                <!-- <tr class="table-light">
+
+                  <td>Date</td>
+
+                    <td>{{ date('d-m-Y') }}</td>
+
+                </tr> -->
+
+                <tr class="table-light">
+
+                    <td>Count</td>
+
+                    <td>{{ $count }}</td>
+
+                </tr>
+
+                <tr class="table-light">
+
+                    <td>Total Amount</td>
+
+                    <td>{{ $sum }}</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- table end -->
+
+    {{-- listing --}}
+
+    @php $i=0; @endphp
+
+    <div class="table-expenses ps-5 pe-5 pt-3   table-responsive">
+
+        <div id="printableArea">
+            @if($expenses->first())
+            <table class="table table-light table-hover table-bordered data">
+
+                <thead>
+
+                    <tr class="table-dark">
+
+                        <th>Serial no.</th>
+
+                        <th>Payee</th>
+
+                        <th>Amount</th>
+
+                        <th>Payment Mode</th>
+
+                        <th class="d-flex align-items-center none ">Date Of Payments <div class="dropdown ms-2 order_by none">
+
+                                <a class="btn btn-success btn-sm dropdown-toggle none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                    @if (request('sort'))
+
+                                    {{ request('sort') }}
+
+                                    @else
+
+                                    Order By
+
+                                    @endif
+
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+
+
+                                    <li class="none"><a class="dropdown-item" href="?sort=Ascending&start_date={{ request('start_date') }}&end_date={{ request('end_date') }}&month={{ request('month') }}">Ascending</a></li>
+                                    <li class="none"><a class="dropdown-item" href="?sort=Descending&start_date={{ request('start_date') }}&end_date={{ request('end_date') }}&month={{ request('month') }}">Descending</a></li>
+                                </ul>
+
+                            </div>
+
+                        </th>
+
+                        <th>Comments</th>
+
+                        <th>Done By</th>
+
+                        <th colspan="2">
+
+                            Actions
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tr>
+
+                    <tbody>
+
+                        @foreach ($expenses as $expense)
+
+                        @php
+
+                        $i++;
+
+                        @endphp
+
+                        <td>@php echo $i; @endphp</td>
+
+                        <td>{{ $expense->payee }}</td>
+
+                        <td>{{ $expense->amount }}</td>
+
+                        <td>{{ $expense->paymentmode->name }}</td>
+
+                        <td>{{ $expense->dateofpayment }}</td>
+
+                        @if( $expense->comments)
+
+                        <td>{{ $expense->comments }}</td>
+
                         @else
-                        Order By
-                        @endif
-                    </a>
 
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="?sort=Ascending">Ascending</a></li>
-                        <li><a class="dropdown-item" href="?sort=Descending">Descending</a></li>
-                    </ul>
-                </div>
-            </th>
-            <th>Comments</th>
-        </tr>
-        <tr class=" ">
-            @foreach ($expenses as $expense)
-            <td class="">{{ $expense->payee }}</td>
-            <td class="">{{ $expense->amount }}</td>
-            <td class="">{{ $expense->paymentmode->name }}</td>
-            <td class="">{{ $expense->dateofpayment }}</td>
-            <td class="">{{ $expense->comments }}</td>
-        </tr>
-        @endforeach
-    </table>
-</div>
-</div>
-@endsection
+                        <td>-</td>
+
+                        @endif
+
+                        <td>{{ $expense->doneby ? $expense->doneby->value('name'): null }}
+
+                        </td>
+
+                        <div class="none">
+
+                            @if (auth()->user()->usertype_id == 1)
+
+                            <td class="none">
+
+                                <a href="{{ route('expenses.edit', $expense) }}" class="btn btn-success none">Edit</a>
+
+                            </td>
+
+                            <td class="none">
+
+                                <form method="POST" action="{{ route('expenses.destroy', $expense->id) }}" class="m-0">
+
+                                    @csrf
+
+                                    <input name="_method" type="hidden" value="DELETE">
+
+                                    <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm none" data-toggle="tooltip" title='Delete'>Delete</button>
+
+                                </form>
+
+                            </td>
+
+                            @endif
+
+                        </div>
+
+                    </tbody>
+
+                </tr>
+
+                @endforeach
+                @else
+                <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
+                @endif
+            </table>
+
+        </div>
+
+    </div>
+
+    {{-- delete confirmation --}}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+
+            var form = $(this).closest("form");
+
+            var name = $(this).data("name");
+
+            event.preventDefault();
+
+            swal({
+
+                    title: `Do You Want To Delete This?`
+
+                    , icon: "warning"
+
+                    , buttons: true
+
+                    , dangerMode: true
+
+                , })
+
+                .then((willDelete) => {
+
+                    if (willDelete) {
+
+                        form.submit();
+
+                    }
+
+                });
+
+        });
+
+        // for searching
+
+        $(document).ready(function() {
+
+            $("#search").keyup(function() {
+
+                var value = $(this).val().toLowerCase();
+
+                $(".data tbody tr").filter(function() {
+
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+                });
+
+            });
+
+        });
+
+
+
+
+
+
+
+        // for data printing
+
+        function printDiv() {
+
+            $(".hide").hide();
+
+            setTimeout(function() {
+
+                window.print();
+
+                setTimeout(function() {
+
+                    $(".hide").show();
+
+                }, 400);
+
+            }, 400);
+
+        }
+
+    </script>
+
+    @endsection

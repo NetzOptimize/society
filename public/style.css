@@ -1,743 +1,2992 @@
+.error {
 
-.error{
     color: red;
+
     display: block;
+
     width: 100%;
+
     margin-top: 5px;
+
 }
 
-.forgot{
-    background-color: #fff;
-padding: 12px;
-border: 1px solid #dfdfdf;
+.profile-pic{
+
+border:1px solid black;
+
 }
+
+.pwd-icon {
+
+    position: relative;
+
+    height: 36px;
+
+    margin-bottom: 16px;
+
+}
+
+
+
+.pwd-icon #eye {
+
+    top: 50%;
+
+    right: 15px;
+
+    transform: translate(0%, -50%);
+
+}
+
+.forgot {
+
+    background-color: #fff;
+
+    padding: 12px;
+
+    border: 1px solid #dfdfdf;
+
+}
+
+
 
 .padding-bottom-3x {
-padding-bottom: 72px !important;
+
+    padding-bottom: 72px !important;
+
 }
 
-.card-footer{
-background-color: #fff;
+
+
+.card-footer {
+
+    background-color: #fff;
+
 }
 
-.btn{
 
-font-size: 13px;
+
+.btn {
+
+    font-size: 13px;
+
 }
+
+
+
+#my-div1 {
+
+    background-color: whitesmoke;
+
+    border: 2px solid black;
+
+    margin: 18px;
+
+}
+
+
 
 .form-control:focus {
-color: #495057;
-background-color: #fff;
-border-color: #76b7e9;
-outline: 0;
-box-shadow: 0 0 0 0px #28a745;
-}
-#loading-text {
-    display: none;
-  }
 
-.main-profile-password{
-    height: 70vh;
+    color: #495057;
+
+    background-color: #fff;
+
+    border-color: #76b7e9;
+
+    outline: 0;
+
+    box-shadow: 0 0 0 0px #28a745;
+
+}
+
+
+
+#loading-text {
+
+    display: none;
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+.loading-text {
+
+    display: none;
+
+}
+
+
+
+.main-profile-password {
+
+    margin-top: 80px;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
 }
-.order_by{
+
+
+
+.order_by {
+
     position: initial !important;
- }
-#forgot-password-row1{
+
+}
+
+
+
+#forgot-password-row1 {
+
     height: 85vh;
+
     display: flex;
+
     justify-content: center;
-    width:100%;
+
+    width: 100%;
+
 }
 
 
 
 /* profile */
 
-  .card-img-top {
+
+
+.card-img-top {
+
     width: 60%;
+
     border-radius: 50% !important;
+
     margin: 0 auto;
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  .card {
+
+}
+
+
+
+.card {
+
     padding: 1.5em 0.5em 0.5em;
+
     text-align: center;
+
     border-radius: 2em;
+
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
     padding: 50px;
-  }
-  .card-title {
+
+}
+
+
+
+.card-title {
+
     font-weight: bold;
+
     font-size: 1.5em;
-  }
-  .btn-primary {
+
+}
+
+
+
+.btn-primary {
+
     border-radius: 2em;
+
     padding: 0.5em 1.5em;
-  }
-  h3#resident-heading {
-    display: flex;
-align-items: center;}
 
- .user-type{
+}
+
+
+
+h3#resident-heading {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+
+.user-type {
+
     cursor: pointer !important;
+
 }
- .user-type1{
-    cursor: pointer;
-}
-.cursor-resident{
-cursor:pointer;
-}
-.cursor-resident-create{
-    cursor: pointer;
-}
-.payment-cursor{
+
+
+
+.user-type1 {
+
     cursor: pointer;
 
 }
 
-.error
-{
-    color:red;
+
+
+.cursor-resident {
+
+    cursor: pointer;
+
 }
-.order_by{
+
+
+
+.cursor-resident-create {
+
+    cursor: pointer;
+
+}
+
+
+
+.payment-cursor {
+
+    cursor: pointer;
+
+}
+
+
+
+.error1 {
+
+    color: red;
+
+}
+
+
+
+.order_by {
+
     position: initial !important;
+
 }
-#house_id{
+
+
+
+#house_id {
+
     cursor: pointer;
+
 }
-#payment_cursor{
+
+
+
+#payment_cursor {
+
     cursor: pointer;
+
 }
-#forgot{
-    color:#e597bf
-}
-#sign-up{
+
+
+
+#forgot {
+
     color: #e597bf;
+
 }
-#background{
-    background:rgb(229,151,191) !important;
+
+
+
+#sign-up {
+
+    color: #e597bf;
+
 }
-#add-user-position{
-   height:90vh;
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
-.main-edit{
-    height:90vh;
-    display: flex;
+
+
+
+#background {
+
+    background: rgb(229, 151, 191) !important;
+
+}
+
+
+
+#add-user-position {
+
+     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
+    margin: 20px 0px;
+
 }
-#edit_img{
-    height: 60px;
-    width:60px;
+
+
+
+.main-edit {
+
+    margin: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
 }
-#keys{
+
+
+
+#edit_img {
 
     height: 60px;
-    width:80px;
+
+    width: 60px;
+
 }
-.resident-edit{
-    height:90vh;
-    display: flex;
+
+
+
+#keys {
+
+    height: 60px;
+
+    width: 80px;
+
+}
+
+
+
+.resident-edit {
+
+     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
+    margin: 20px 0px;
+
 }
-#get-resident{
+
+
+
+#get-resident {
+
     position: absolute;
+
     left: 0;
+
     right: 0;
-    top:20%;
+
+    top: 20%;
+
 }
- .main-payment-method{
-    height:90vh;
+
+
+
+.main-payment-method {
+
+    margin-top: 5px;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
- }
+
+}
+
+
+
 .main-expense-create {
-    height:85vh;
-    display: flex;
+
+    margin: 10px 0px;
+
     justify-content: center;
+
     align-items: center;
 
 }
-#add_user_id{
+
+
+
+#add_user_id {
+
     border-left: 1px solid lavender;
- }
 
- .add-user-image  {
+}
+
+
+
+.add-user-image {
+
     background: beige !important;
-}
- #heading-edit{
-    background-color: beige;
- }
- #get-house{
-    background-color: beige;
- }
- .edit-resident{
-    background-color: beige;
 
- }
- #payment-heading{
-    background-color: beige;
-
- }
-#expense-heading{
-    background-color: beige;
 }
 
-#row1,#row2,#row3{
+
+
+#heading-edit {
+
+    background-color: beige;
+
+}
+
+
+
+#get-house {
+
+    background-color: beige;
+
+}
+
+
+
+.edit-resident {
+
+    background-color: beige;
+
+}
+
+
+
+#payment-heading {
+
+    background-color: beige;
+
+}
+
+
+
+#expense-heading {
+
+    background-color: beige;
+
+}
+
+
+
+#row1,
+
+#row2,
+
+#row3 {
+
     border-bottom: 1px solid aqua;
+
 }
 
- .receipt-main{
+
+
+.receipt-main {
+
     margin: 0 auto !important;
+
     border: 1px solid black;
- }
- .bottom-border{
-    height: 30px;
-    background-color: aqua;
- }
- .month {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 10px 130px;
+
 }
-.main-height{
+
+
+
+.bottom-border {
+
+    height: 30px;
+
+    background-color: aqua;
+
+}
+
+
+
+.month {
+
+    display: grid;
+
+    grid-template-columns: auto auto;
+
+    gap: 10px 130px;
+
+    align-items: self-end;
+
+
+
+}
+
+
+
+.main-height {
+
     height: 85vh !important;
 
- }
- .main-details{
+}
+
+
+
+.main-details {
+
     width: 60%;
- }
 
-#hover-li .nav-item :hover{
+}
+
+
+
+#hover-li .nav-item :hover {
 
     border: 1px solid white !important;
 
-
 }
-.drop-hover .btn:hover{
+
+
+
+.drop-hover .btn:hover {
+
     border: 1px solid white !important;
 
 }
 
-.user-hover a:hover{
+
+
+.user-hover a:hover {
+
     border: 1px solid white !important;
 
-
-}
-#user-create{
-     width: 70%;
 }
 
-#edit{
-    width: 50% !important;
-}
-#edit-user{
+
+
+#user-create {
+
     width: 70%;
-}
- #resident-create-form {
-    width: 80%;
-}
-#get-resident {
- z-index: -1; }
- #edit-resident-form{
-    width: 100% !important;
- }
- #expense-create-form{
-    width: 80%;
- }
- #expense-create{
-    top: 20%;
- }
- .side-image img{
-    width: 100%;
- }
- #login-form{
-    width: 50%;
- }
 
- .edit1{
-    width: 80% !important;
 }
+
+
+
+#edit {
+
+    width: 50% !important;
+
+}
+
+
+
+#edit-user {
+
+    width: 70%;
+
+}
+
+
+
+#resident-create-form {
+
+    width: 80%;
+
+}
+
+
+
+#get-resident {
+
+    z-index: -1;
+
+}
+
+
+
 #edit-resident-form {
+
+    width: 100% !important;
+
+}
+
+
+
+#expense-create-form {
+
+    width: 80%;
+
+}
+
+
+
+#expense-create {
+
+    top: 20%;
+
+}
+
+
+
+.side-image img {
+
+    width: 100%;
+
+}
+
+
+
+#login-form {
+
+    width: 50%;
+
+}
+
+
+
+.edit1 {
+
     width: 80% !important;
+
 }
-.main-create{
+
+
+
+#edit-resident-form {
+
+    width: 80% !important;
+
+}
+
+
+
+.main-create {
+
     height: 90vh;
+
 }
-.user-cursor{
+
+
+
+.user-cursor {
+
     cursor: pointer;
+
 }
+
+
+
 /* profile */
 
-  .card-img-top {
+
+
+.card-img-top {
+
     width: 60%;
+
     border-radius: 50% !important;
+
     margin: 0 auto;
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  .card {
+
+}
+
+
+
+.card {
+
     padding: 1.5em 0.5em 0.5em;
+
     text-align: center;
+
     border-radius: 2em;
+
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
     padding: 50px;
-  }
-  .card-title {
+
+}
+
+
+
+.card-title {
+
     font-weight: bold;
+
     font-size: 1.5em;
-  }
-  .btn-primary {
+
+}
+
+
+
+.btn-primary {
+
     border-radius: 2em;
+
     padding: 0.5em 1.5em;
-  }
-  h3#resident-heading {
-    display: flex;
-align-items: center;}
-
- .user-type{
-    cursor: pointer !important;
-}
- .user-type1{
-    cursor: pointer;
-}
-.cursor-resident{
-cursor:pointer;
-}
-.cursor-resident-create{
-    cursor: pointer;
-}
-.payment-cursor{
-    cursor: pointer;
 
 }
-/* reset */
-.main-reset{
-    height: 85vh;
+
+
+
+h3#resident-heading {
+
     display: flex;
+
     align-items: center;
+
 }
-#row2{
+
+
+
+.user-type {
+
+    cursor: pointer !important;
+
+}
+
+
+
+.user-type1 {
+
+    cursor: pointer;
+
+}
+
+
+
+.cursor-resident {
+
+    cursor: pointer;
+
+}
+
+
+
+.cursor-resident-create {
+
+    cursor: pointer;
+
+}
+
+
+
+.payment-cursor {
+
+    cursor: pointer;
+
+}
+
+
+
+/* reset */
+
+.main-reset {
+
+    height: 85vh;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+
+#row2 {
+
     padding: 10px 40px;
 
 }
-.user-hover a img{
+
+
+
+.user-hover a img {
+
     margin-right: 5px;
+
 }
-#payment-method-form{
+
+
+
+#payment-method-form {
+
     width: 60%;
+
 }
 
-#payment-method-form{
-    width:80%;
+
+
+#payment-method-form {
+
+    width: 80%;
+
 }
+
+
+
 #edit-user {
-     gap: 5px !important;
-}
-@media screen and (max-width:1600px) {
-    #payment-method-form {
-        width: 80%;
-    }
-    #edit-user{
-        gap: 4px !important;
-    }
-    #user-create{
-        gap: 10px !important;
-    }
-    #resident-create-form {
-        gap: 8px !important;
-     }
-     #edit-resident-form {
 
-        gap: 8px !important;
-    }
-    #expense-create-form{
-        gap: 8px !important;
-    }
+    gap: 3px !important;
+
+}
+
+
+
+.date-mode p {
+
+    margin: 0;
+
+    color: #ff0f0f;
+
+    font-size: 13px;
+
 }
 
 
 
-@media screen and (max-width:1280px) {
-    #user-create{
-         width: 70%;
-         gap:10px !important;
-    }
-    #add-user{
-        width: 70% !important;
-    }
-    #edit{
-        width: 50% !important;
-    }
-    #edit-user{
-        width: 70%;
-        gap: 2px !important;
-    }
-    #get-resident{
-        width: 70% !important;
+.date-mode p span.label {
 
-    }
-    #resident-create-form{
-
-    }
-    #resident-edit{
-        width: 70% !important   ;
-    }
+    font-weight: bold;
 
 }
-@media screen and (max-width:1200px) {
 
-    #login-form{
-        margin: 0 auto;
-        padding: 0;
+
+
+#main-user {
+
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 70px;
+
+}
+
+
+
+#user-form {
+
+    gap: 12px !important;
+
+}
+
+
+
+#users-nav a:hover {
+
+    border: 1px solid white;
+
+}
+
+
+
+#user-a-link:hover {
+
+    border: 1px solid white;
+
+}
+
+
+
+#submit-cancel {
+
+    display: flex;
+
+    flex-direction: column;
+
+    row-gap: 10px;
+
+}
+
+
+
+.search {
+
+    border: 2px solid black;
+
+    border-radius: 25px;
+
+    padding-left: 16px;
+
+}
+
+
+
+.search::placeholder {
+
+    color: black;
+
+}
+
+
+
+
+
+
+
+
+
+.img>img {
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    width: 120px;
+
+    height: 110px;
+
+}
+
+
+
+.card.p-4 {
+
+    width: 25%;
+
+}
+
+
+
+thead#profile-heading-form {
+
+    vertical-align: middle !important;
+
+}
+
+
+
+#user-profile-show {
+
+    margin-top: 80px !important;
+
+}
+
+
+
+div#printableArea th {
+
+    vertical-align: middle;
+
+}
+
+
+
+.user-logo.d-flex.align-items-center.gap-2 {
+
+    padding: 10px 10px;
+
+}
+
+.demo{
+
+     position: relative;
+
+  }
+
+  .demo input[type="password"],
+
+  .demo input[type="text"]{
+
+     box-sizing: border-box;
+
+  }
+
+  .fa-eye{
+
+    position: absolute;
+
+    top: 65%;
+
+    right: 4%;
+
+    cursor: pointer;
+
+    color: lightgray;
+
+z-index:999;
+
+
+
+
+
+background-color:transparent;
+
+justify-content:center;
+
+align-items:center;
+
+border:none !important;
+
+  }
+
+ 
+
+
+
+/* print-screen*/
+
+@media print {
+
+
+
+    .table-resident.table-hover.table-bordered.align-middle.ps-5.pe-5.pt-3.table-responsive {
+
+        width: 100%;
+
     }
-    .navbar-expand-lg .navbar-nav{
+
+
+
+    table.table.table-light.table-hover.table-bordered.align-middle td {
+
+        background-color: #ffff;
+
+    }
+
+
+
+    #th-print {
+
         display: none;
-    }
-      #payment-method-form{
-        max-width: 600px !important;
-        width: 100% !important;
-
-    }
-    #payment-method{
-        width: 100% !important;
-
-    }
-    #user-create{
-        max-width: 1000px;
-        width: 100%;
-    }
-    #create-resident{
-        width: 75%!important;
-
-    }
-    #payment-method{
-        width: 80% !important;
 
     }
 
-   /* navbar */
 
-   /* navbar end */
+
+    table.table.table-light.table-hover.table-bordered.align-middle td:last-child .table.table.table-light.table-hover.table-bordered.align-middle td:last-child,
+
+    table.table.table-light.table-hover.table-bordered.align-middle td:last-child {
+
+        display: none;
+
+    }
+
+
+
+    table.table.table-light.table-hover.table-bordered.align-middle th:last-child,
+
+    table.table.table-light.table-hover.table-bordered.align-middle th:nth-last-child(9) {
+
+        display: none;
+
+    }
+
+
+
+    th#th-payment-print {
+
+        display: none;
+
+    }
+
+
+
+    tr.table-dark th:last-child {
+
+        display: none !important;
+
+        border: none !important;
+
+    }
+
+
+
+    @page: first {
+
+
+
+        background: black !important;
+
+    }
+
 }
-@media screen and (max-width:992px) {
-    nav#login {
-        width: 70%;
-    }
-    #login-form {
-        margin: 0 auto;
-        padding: 0;
-        width: 85%;
+
+
+
+
+
+.profile-pic {
+
+    border-radius: 50%;
+
+    height: 150px;
+
+    width: 150px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-blend-mode: multiply;
+
+    vertical-align: middle;
+
+    text-align: center;
+
+    color: transparent;
+
+    transition: all .3s ease;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+}
+
+
+
+.profile-pic:hover {
+
+    background-color: rgba(0, 0, 0, .5);
+
+    z-index: 10000;
+
+    color: #fff;
+
+    transition: all .3s ease;
+
+    text-decoration: none;
+
+}
+
+
+
+.profile-pic span {
+
+    display: inline-block;
+
+    padding-top: 3.5em;
+
+    padding-bottom: 3.5em;
+
+}
+
+
+
+form input[type="file"] {
+
+    display: none;
+
+    cursor: pointer;
+
+}
+
+
+
+#user-form1 {
+
+    margin: 0px !important;
+
+
+
+}
+
+
+
+div#pass1 {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+
+p {
+
+    margin-top: 0;
+
+    margin-bottom: 1rem;
+
+    margin: 0px;
+
+}
+
+
+
+.main-resident-create {
+
+    margin: 50px 0px !important;
+
+}
+
+
+
+form#payment-method-form {
+
+    gap: 10px !important;
+
+}
+
+
+
+.activty-log  button.btn.btn-primary {
+
+    border-radius: 20px;
+
+ }
+
+ .activty-log .view{
+
+/* display: flex;
+
+justify-content: center; */
+
+ }
+
+ .card.dash {
+
+     padding: 0px !important;
+
+}
+
+.activty-log td{
+
+    padding: 5px !important;
+
+}
+
+form#payment-history-form {
+
+    /* margin: 0px !important; */
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+/* print end */
+
+/* responsiveness */
+
+
+
+@media screen and (max-width: 1600px) {
+
+    #payment-method-form {
+
+        width: 80%;
+
     }
 
-    .side-image {
-        margin: 0;
-         padding: 0;
-         display: none;
-    }
 
-    #payment-method-form{
-        max-width: 800px !important;
-        width: 100% !important;
 
-    }
-    #payment-method{
-        width: 90% !important;
+    #edit-user {
 
-    }
-    #user-create{
-        max-width: 900px;
-        width: 100%;
-    }
-    #edit{
-        width: 70% !important;
-    }
-    #edit-user{
-        width: 90%;
-        gap: 3px !important;
+        gap: 4px !important;
 
     }
 
-    #expense-create {
-        width: 70% !important;
+
+
+    #user-create {
+
+        gap: 10px !important;
+
     }
 
-    .edit1{
-        width: 80% !important;
+
+
+    #resident-create-form {
+
+        gap: 8px !important;
+
     }
+
+
+
     #edit-resident-form {
-        width: 80% !important;
+
+        gap: 8px !important;
+
     }
-    .payment1{
-        flex-direction: column-reverse;
-        gap: 15px;
+
+
+
+    #expense-create-form {
+
+        gap: 8px !important;
+
     }
+
     form#payment-history-form {
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-    }
-    .main-details {
-        width: 75%;
-    }
-    nav#navbar {
 
-        margin: 0 !important;
-    }
-
-}
-
-@media screen and (max-width:700px) {
-    #login-height{
-        width: 100%;
-     }
-    .side-image img{
-        margin: 0px;
-        width: 100%;
-
-    }
-    #login{
-        width: 100%;
         padding: 10px;
 
     }
-    #login-form{
-         padding: 0;
+
+}
+
+
+
+@media screen and (max-width: 1280px) {
+
+    #user-create {
+
+        width: 70%;
+
+        gap: 10px !important;
+
     }
-    #payment-method-form{
+
+
+
+    #add-user {
+
+        width: 70% !important;
+
+    }
+
+
+
+    #edit {
+
+        width: 50% !important;
+
+    }
+
+
+
+    #edit-user {
+
+        width: 70%;
+
+        gap: 2px !important;
+
+    }
+
+
+
+    #get-resident {
+
+        width: 70% !important;
+
+    }
+
+
+
+    #resident-create-form {}
+
+
+
+    #resident-edit {
+
+        width: 70% !important;
+
+    }
+
+
+
+    .month {
+
+        gap: 4px 130px;
+
+    }
+
+
+
+    .main-payment-method {
+
+        height: unset;
+
+        margin: 10px;
+
+
+
+    }
+
+    div#pass1 {
+
+
+
+        gap: 5px;
+
+    }
+
+    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+
+        flex-direction: column-reverse;
+
+        gap: 10px;
+
+    }
+
+    h5.card-title {
+
+        font-size: 20px;
+
+    }
+
+}
+
+
+
+@media screen and (max-width: 1200px) {
+
+    #login-form {
+
+        margin: 0 auto;
+
+        padding: 0;
+
+    }
+
+
+
+    .navbar-expand-lg .navbar-nav {
+
+        display: none;
+
+    }
+
+
+
+    #payment-method-form {
+
         max-width: 600px !important;
+
         width: 100% !important;
+
     }
-    #payment-method{
+
+
+
+    #payment-method {
+
+        width: 100% !important;
+
+    }
+
+
+
+    #user-create {
+
+        max-width: 1000px;
+
+        width: 100%;
+
+    }
+
+
+
+    #create-resident {
+
+        width: 75% !important;
+
+
+
+    }
+
+
+
+    .main-create.d-flex.justify-content-center.align-items-center {
+
+        margin: 20px 0px !important;
+
+    }
+
+
+
+    #payment-method {
+
+        width: 80% !important;
+
+    }
+
+
+
+    .card.p-4 {
+
+        width: 40%;
+
+    }
+
+
+
+    /* navbar */
+
+
+
+
+
+    /* navbar end */
+
+    .payment1 {
+
+        gap: 15px;
+
+    }
+
+
+
+    .navbar-expand-lg .navbar-collapse {
+
+
+
+        justify-content: end !important;
+
+    }
+
+
+
+    .main-profile-password {
+
+        margin: 10px 0px;
+
+
+
+    }
+
+    div#pass1 {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap:3px;
+
+    }
+
+    .d-flex.justify-content-center.align-items-center.p-4.payment1{
+
+         gap: 10px;
+
+    }
+
+    nav#navbar {
+
+        margin: 0px !important;
+
+    }
+
+}
+
+
+
+@media screen and (max-width:1130px) {
+
+    div#login-height {
+
+        padding: 10px !important;
+
+    }
+
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+
+    flex-direction: column-reverse;
+
+gap:10px;
+
+}
+
+li.nav-item a {
+
+    margin: -3px !important;
+
+}
+
+.container-fluid {
+
+    padding: 0px !important;
+
+}
+
+}
+
+
+
+@media screen and (max-width: 992px) {
+
+    nav#login {
+
+        width: 70%;
+
+    }
+
+
+
+    #login-form {
+
+        margin: 0 auto;
+
+        padding: 0;
+
+        width: 85%;
+
+    }
+
+
+
+    .side-image {
+
+        margin: 0;
+
+        padding: 0;
+
+        display: none;
+
+    }
+
+
+
+    #payment-method-form {
+
+        max-width: 800px !important;
+
+        width: 100% !important;
+
+    }
+
+
+
+    #payment-method {
+
         width: 90% !important;
 
     }
+
+
+
+    #user-create {
+
+        max-width: 900px;
+
+        width: 100%;
+
+    }
+
+
+
+    #edit {
+
+        width: 70% !important;
+
+    }
+
+
+
+    #edit-user {
+
+        width: 90%;
+
+        gap: 0px !important;
+
+    }
+
+
+
+    #expense-create {
+
+        width: 70% !important;
+
+    }
+
+
+
+    .edit1 {
+
+        width: 80% !important;
+
+    }
+
+
+
+    #edit-resident-form {
+
+        width: 80% !important;
+
+    }
+
+
+
+    .payment1 {
+
+        gap: 15px;
+
+    }
+
+
+
+    form#payment-history-form {
+
+        display: flex;
+
+         gap: 9px;
+
+         padding: 10px;
+
+         width: 100% !important;
+
+
+
+    }
+
+
+
+    .main-details {
+
+        width: 75%;
+
+    }
+
+
+
+    nav#navbar {
+
+        margin: 0 !important;
+
+    }
+
+
+
+    #user-create {
+
+
+
+        gap: 6px;
+
+    }
+
+
+
+    #main-user {
+
+        margin-top: 40px;
+
+    }
+
+
+
+    #user-form {
+
+        gap: 10px !important;
+
+        width: 60% !important;
+
+
+
+    }
+
+
+
+    .card.p-4 {
+
+        width: 50%;
+
+    }
+
+
+
+    .reports.d-flex.justify-content-end.me-5,
+
+    .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+
+        justify-content: center !important;
+
+        padding: 0px !important;
+
+        margin: 10px;
+
+    }
+
+    .resident-create.mt-3.p-3.me-4.d-flex.justify-content-end,
+
+    .refresh-button.pb-3.me-5.d-flex.justify-content-end {
+
+        justify-content: center !important;
+
+    }
+
+
+
+    .refresh-expenses.pt-3.pe-5.d-flex.justify-content-end.gap-2 {
+
+        justify-content: center !important;
+
+        padding:30px  0px 0px 0px !important;
+
+    }
+
+
+
+    .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2 {
+
+        justify-content: center !important;
+
+        margin: 0px !important;
+
+    }
+
+
+
+    .user .dropdown .pe-3 .me-3 {
+
+        display: block !important;
+
+    }
+
+
+
+    .user-links .p-3 {
+
+        display: block !important;
+
+        padding: 0px !important;
+
+    }
+
+
+
+    .user.dropdown.pe-3.me-3.d-flex.align-items-center {
+
+        display: block !important;
+
+        text-align: inherit;
+
+    }
+
+
+
+    nav#users-nav {
+
+        flex-direction: column;
+
+        gap: 5px;
+
+        justify-content: end !important;
+
+    }
+
+
+
+    .table-add-user.ps-5.pe-5.pt-3.table-responsive,
+
+    .table-manage-house.ps-5.pe-5.pt-3.table-responsive,
+
+    .table-resident.table-hover.table-bordered.align-middle.ps-5.pe-5.pt-3.table-responsive {
+
+        padding: 0px !important;
+
+    }
+
+
+
+    .table-payments.ps-5.pe-5.pt-2.table-responsive,
+
+    .table-expenses.ps-5.pe-5.pt-3.mt-3.table-responsive {
+
+        padding: 0px !important;
+
+
+
+    }
+
+
+
+    .resident-create.mt-3.p-3.me-3.d-flex.justify-content-end {
+
+        margin: 0px !important;
+
+        justify-content: center !important;
+
+    }
+
+
+
+    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+
+        padding: 10px 0px 0px 0px !important;
+
+    }
+
+
+
+    #main-user {
+
+        margin: 20px 0px;
+
+    }
+
+
+
+    .resident-create.mt-3.me-5.pt-3.pb-3.d-flex.justify-content-end {
+
+        justify-content: center !important;
+
+        margin: 0px !important;
+
+    }
+
+
+
+    .refresh-button.pt-2.me-5.d-flex.justify-content-end.align-items-center.gap-2 {
+
+        justify-content: center !important;
+
+        padding: 10px !important;
+
+        margin: 0px !important;
+
+    }
+
+
+
+    #filter {
+
+        margin: 0px !important;
+
+    }
+
+
+
+    #end-date {
+
+        margin: 0px !important;
+
+    }
+
+    div#pass1 {
+
+
+
+        gap: 2px;
+
+    }
+
+       .navbar-dark .navbar-toggler {
+
+        color: rgba(255,255,255,.55);
+
+        border-color:none !important
+
+    }
+
+    .paid-month-flex.d-flex.me-3{
+
+        margin: 0px !important;
+
+    }
+
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+
+    flex-direction: inherit;
+
+    gap: 10px;
+
+}
+
+.reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+
+justify-content:flex-end !important;
+
+padding:10px !important
+
+}
+
+.d-flex.justify-content-center.align-items-center.p-4.payment1{
+
+
+
+padding:0px !important;
+
+
+
+}
+
+.reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+
+    justify-content: center !important;
+
+    padding: 0px !important;
+
+   
+
+    margin: 13px 0px !important;
+
+}
+
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+
+    padding: 10px 0px 0px 0px !important;
+
+}
+
+.d-flex.justify-content-center.align-items-center.p-4.payment1 {
+
+    gap: 10px;
+
+    flex-direction: column;
+
+}
+
+.refresh-button.pb-3.me-5.d-flex.justify-content-end {
+
+    justify-content: center !important;
+
+}
+
+.navbar-toggler {
+
+
+
+    filter: invert(1) brightness(1);
+
+}
+
+.row .col-3 {
+
+     width: 46%;
+
+}
+
+.refresh-button.pb-4.me-5.d-flex.justify-content-end.hide{
+
+    margin: 10px !important;
+
+}
+
+.navbar-dark .navbar-toggler-icon {
+
+     filter: invert(1);
+
+}
+
+.table-expenses.ps-5.pe-5.pt-3.table-responsive{
+
+    padding: 0px !important;
+
+}
+
+}
+
+.done{
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    padding: 0px !important;
+
+}
+
+.done > img{
+
+    width: 50px;
+
+    height: 55px;
+
+    object-fit: contain;
+
+}
+
+
+
+@media screen and (max-width: 700px) {
+
+    #login-height {
+
+        width: 100%;
+
+    }
+
+
+
+    .side-image img {
+
+        margin: 0px;
+
+        width: 100%;
+
+    }
+
+
+
+    #login {
+
+        width: 100%;
+
+        padding: 10px;
+
+    }
+
+
+
+    #login-form {
+
+        padding: 0;
+
+    }
+
+
+
+    #payment-method-form {
+
+        max-width: 600px !important;
+
+        width: 100% !important;
+
+    }
+
+
+
+    #payment-method {
+
+        width: 90% !important;
+
+    }
+
+
+
     .table-payments.ps-5.pe-5.pt-2 {
+
         padding: 0px !important;
+
     }
-    .refresh-button a{
+
+
+
+    .refresh-button a {
+
         display: none;
+
     }
-    .table-add-user{
+
+
+
+    .table-add-user {
+
         padding: 0px !important;
+
     }
-    #expense-create{
+
+
+
+    #expense-create {
+
         z-index: -1;
 
     }
+
+
+
     .month {
 
         gap: 10px 120px;
-    }
-    .main-details {
-        width: 85%;
-    }
-    #create-resident{
-        width: 80%!important;
 
     }
+
+
+
+    .main-details {
+
+        width: 85%;
+
+    }
+
+
+
+    #create-resident {
+
+        width: 80% !important;
+
+    }
+
+
+
     #resident-edit {
+
         width: 75% !important;
 
     }
+
+
+
     #edit-resident-form {
-        width: 90% !important;
-    }
-}
-@media screen and (max-width:520px) {
-    #background{
-        background-color:transparent !important;
-        background-image:linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%) !important;
-     }
 
-    .side-image{
-        display: none;
-    }
-    #payment-method-form{
-        max-width: 500px !important;
-        width: 100% !important;
-    }
-    #payment-method{
-        width: 100% !important;
-     }
-    #edit{
         width: 90% !important;
-    }
-    #edit-user{
-        width: 90%;
-     }
-     #resident-create-form {
-        width: 95%;
-    }
-    #get-resident {
-        width: 80% !important;
-        z-index: -1;
 
     }
-    #expense-create-form{
-        width: 100%;
+
+
+
+    #user-form {
+
+        width: 70% !important;
 
     }
-    #expense-create {
-        width: 90% !important;
-        top: 25%;
+
+
+
+    #users-nav {
+
+        display: flex;
+
+        flex-direction: column;
+
+        row-gap: 16px;
+
     }
- #login {
-        width: 90% !important;
+
+
+
+    #users-nav a {
+
+        margin: 0px !important;
+
     }
-    #login-form {
-    margin: 0 auto;
-    padding: 0;
-    width: 90%;
-}
-.edit1 {
-    width: 100% !important;
-}
-.table-add-user{
+
+
+
+    .refresh-expenses.pt-3.pe-5.d-flex.justify-content-end.gap-2 {
+
+        justify-content: center !important;
+
+        padding: 0px !important;
+
+        margin-top: 20px;
+
+    }
+
+
+
+    .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.gap-2 {
+
+        justify-content: center !important;
+
+        padding: 20px !important;
+
+        margin: 0px !important;
+
+    }
+
+
+
+    .refresh-button.pb-3.me-5.d-flex.justify-content-end {
+
+        justify-content: center !important;
+
+        padding: 0px !important;
+
+
+
+        margin: 10px 0px 10px 0px !important;
+
+    }
+
+
+
+    .resident-create.mt-3.p-3.me-5.d-flex.justify-content-end {
+
+        justify-content: center !important;
+
+        margin: 10px 0px 10px 0px !important;
+
+    }
+
+
+
+    .refresh-button.pb-4.me-5.d-flex.justify-content-end.gap-2 {
+
+        justify-content: center !important;
+
+        padding: 0px !important;
+
+        margin: 10px 0px 10px 0px !important;
+
+    }
+
+
+
+    .reports.d-flex.justify-content-end.me-5,
+
+    .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+
+        justify-content: center !important;
+
+        padding: 0px !important;
+
+        margin: 5px 0px 10px 0px !important;
+
+    }
+
+
+
+    div#main-details1 {
+
+        margin: 0 !important;
+
+        flex-direction: column-reverse;
+
+        padding: 35px 0px;
+
+
+
+    }
+
+
+
+    .table-add-user.ps-5.pe-5.pt-3.table-responsive {
+
+        margin: 0px !important;
+
+        padding: 10px 0px 0px 0px !important;
+
+    }
+
+
+
+    .table-manage-house.ps-5.pe-5.pt-3.table-responsive,
+
+    .table-resident.table-hover.table-bordered.align-middle.ps-5.pe-5.pt-3.table-responsive {
+
+        padding: 10px 0px 0px 0px !important;
+
+    }
+
+
+
+    .main-details-house.me-5.ms-5 {
+
+        margin: 10px 0px 10px 0px !important;
+
+    }
+
+
+
+    .card.p-4 {
+
+        width: 70%;
+
+    }
+
+
+
+    .main-details.rounded.bg-light.p-4 {
+
+        order: 2;
+
+    }
+
+
+
+    div#pass1 {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 3px;
+
+    }
+
+
+
+    .d-flex.justify-content-center.align-items-center.p-4.payment1 {
+
+        flex-direction: column-reverse;
+
+    }
+
+.reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+
+    justify-content: center !important;
+
     padding: 0px !important;
 
- }
- #payment-method {
-    width: 90% !important;
- }
-.month {
-    gap: 6px 120px;
-}
-.main-details {
-    width: 90%;
-}
-#create-resident{
-    width: 85%!important;
+    margin: 10px 0px 10px 0px !important;
 
 }
-.month {
-    display: initial;
+
+.table-expenses.ps-5.pe-5.pt-3.table-responsive{
+
+padding:0px !important;
+
+
 
 }
-#reset-your-password{
-    font-size: 15px !important;
+
+form#payment-history-form {
+
+  flex-direction: column;
+
+
 
 }
+
 }
 
-@media screen and (max-width:460px) {
-    #login-height{
-         padding: 5px;
+
+
+@media screen and (max-width: 520px) {
+
+    #background {
+
+        background-color: transparent !important;
+
+        background-image: linear-gradient(140deg,
+
+                #eadedb 0%,
+
+                #bc70a4 50%,
+
+                #bfd641 75%) !important;
+
     }
-    #payment-method-form{
+
+
+
+    .side-image {
+
+        display: none;
+
+    }
+
+
+
+    #payment-method-form {
+
+        max-width: 500px !important;
+
+        width: 100% !important;
+
+    }
+
+
+
+    #payment-method {
+
+        width: 100% !important;
+
+    }
+
+
+
+    #edit {
+
+        width: 100% !important;
+
+    }
+
+
+
+    #edit-user {
+
+        width: 90%;
+
+    }
+
+
+
+    #resident-create-form {
+
+        width: 95%;
+
+    }
+
+
+
+    #get-resident {
+
+        width: 80% !important;
+
+        z-index: -1;
+
+    }
+
+
+
+    #expense-create-form {
+
+        width: 100%;
+
+        gap: 4px !important;
+
+    }
+
+
+
+    #expense-create {
+
+        width: 90% !important;
+
+        top: 25%;
+
+    }
+
+
+
+    #login {
+
+        width: 90% !important;
+
+    }
+
+
+
+    #login-form {
+
+        margin: 0 auto;
+
+        padding: 0;
+
+        width: 90%;
+
+    }
+
+
+
+    .edit1 {
+
+        width: 100% !important;
+
+    }
+
+
+
+    .table-add-user {
+
+        padding: 0px !important;
+
+    }
+
+
+
+    #payment-method {
+
+        width: 90% !important;
+
+    }
+
+
+
+    .month {
+
+        gap: 6px 120px;
+
+    }
+
+
+
+    .main-details {
+
+        width: 90%;
+
+    }
+
+
+
+    #create-resident {
+
+        width: 100% !important;
+
+    }
+
+
+
+    .month {
+
+        display: initial;
+
+    }
+
+
+
+    #reset-your-password {
+
+        font-size: 15px !important;
+
+    }
+
+
+
+    #user-form {
+
+        width: 80% !important;
+
+    }
+
+
+
+    a#previous {
+
+        order: 0;
+
+    }
+
+
+
+    div#main-details1 {
+
+        flex-direction: column-reverse;
+
+    }
+
+
+
+    .card.p-4 {
+
+        width: 70%;
+
+    }
+
+
+
+    .payment-heading.text-center.bg-light.me-5.ms-5.rounded.mt-3.p-4 {
+
+        width: 80%;
+
+    }
+
+
+
+    .row .col-3 {
+
+        width: 80%;
+
+    }
+
+}
+
+
+
+@media screen and (max-width: 460px) {
+
+    #login-height {
+
+        padding: 5px;
+
+    }
+
+
+
+    #payment-method-form {
+
         max-width: 400px;
+
         width: 100%;
 
     }
-    #payment-method{
+
+
+
+    #payment-method {
+
         width: 90% !important;
 
     }
-    #add-user{
+
+
+
+    #add-user {
+
         width: 90% !important;
 
     }
+
+
+
     #resident-create-form {
+
         width: 95%;
+
     }
+
+
+
     #get-resident {
+
         width: 90% !important;
+
         z-index: -1;
+
     }
-    #logo h3{
+
+
+
+    #logo h3 {
+
         font-size: 20px !important;
 
     }
+
+
+
     #login-form {
-         width: 100%;
-    }
-    .edit-resident h3 {
-        font-size: 20px;
-        text-align: center;
-    }
-    #resident-edit {
-        width: 85% !important;
 
-        top: 25%;
-    }
-    #navbar{
-        padding: 10px 0px !important;
-        margin: 0 !important;
-     }
-     .month {
-        gap: 3px 120px;
-    }
-
-    #resident-create h3{
-        font-size: 20px;
-
-    }
-    #resident-edit{
-        top: 18%;
-
-    }
-    h3#resident-heading {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    .reports.d-flex.justify-content-end.me-5{
-
-    margin: 0px !important;
-    padding: 0px;
-    display: flex;
-    justify-content: center !important;
-
-    }
-    .month {
-        gap: 3px 95px;
-    }
-}
-
-@media screen and (max-width:320px) {
-    .payment1{
-        flex-direction: column-reverse;
-        gap: 15px;
-    }
-    .refresh-button a{
-        display: none;
-    }
-
-    form#payment-history-form {
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-    }
-    #payment-method{
-        width: 100% !important;
-
-    }
-    #payment-method-form{
-        max-width: 300px;
         width: 100%;
 
     }
-    .month{
-        display: block !important;
-    }
-    #resident-create-form {
-        width: 95%;
-    }
-    #get-resident {
-        width: 90% !important;
-        top: 25%;
-     }
-     #navbar{
-        padding: 10px 0px !important;
-        margin: 0 !important;
-     }
 
- }
+
+
+    .edit-resident h3 {
+
+        font-size: 20px;
+
+        text-align: center;
+
+    }
+
+
+
+    #resident-edit {
+
+        width: 85% !important;
+
+
+
+        top: 25%;
+
+    }
+
+
+
+    #navbar {
+
+        padding: 10px 0px !important;
+
+        margin: 0 !important;
+
+    }
+
+
+
+    .month {
+
+        gap: 3px 120px;
+
+    }
+
+
+
+    #resident-create h3 {
+
+        font-size: 20px;
+
+    }
+
+
+
+    #resident-edit {
+
+        top: 18%;
+
+    }
+
+
+
+    h3#resident-heading {
+
+        display: flex;
+
+        align-items: center;
+
+        flex-direction: column;
+
+    }
+
+
+
+    .reports.d-flex.justify-content-end.me-5 {
+
+        margin: 0px !important;
+
+        padding: 0px;
+
+        display: flex;
+
+        justify-content: center !important;
+
+    }
+
+
+
+    .month {
+
+        gap: 3px 95px;
+
+    }
+
+
+
+    .card.p-4 {
+
+        width: 80%;
+
+    }
+
+
+
+    div#heading-edit {
+
+        justify-content: center !important;
+
+    }
+
+
+
+    h3#user-heading {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+
+
+    .add-user.mt-2.pt-3.pb-2.me-5.d-flex.justify-content-end.align-items-end.gap-2 input#search {
+
+        width: 50%;
+
+    }
+
+.reports.d-flex.justify-content-end.me-5 {
+
+    margin: 16px !important;
+
+    padding: 0px;
+
+    display: flex;
+
+    justify-content: center !important;
+
+}
+
+.container-fluid {
+
+    padding: 10px !important;
+
+}
+
+}
+
+
+
+@media screen and (max-width: 320px) {
+
+    .payment1 {
+
+        flex-direction: column-reverse;
+
+        gap: 15px;
+
+    }
+
+
+
+    .refresh-button a {
+
+        display: none;
+
+    }
+
+
+
+    form#payment-history-form {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 9px;
+
+    }
+
+
+
+    #payment-method {
+
+        width: 100% !important;
+
+    }
+
+
+
+    #payment-method-form {
+
+        max-width: 300px;
+
+        width: 100%;
+
+    }
+
+
+
+    .month {
+
+        display: block !important;
+
+    }
+
+
+
+    #resident-create-form {
+
+        width: 95%;
+
+    }
+
+
+
+    #get-resident {
+
+        width: 90% !important;
+
+        top: 25%;
+
+    }
+
+
+
+    #navbar {
+
+        padding: 10px 0px !important;
+
+        margin: 0 !important;
+
+    }
+
+
+
+
+
+}
+
+
+
+@media print {
+
+    .none {
+
+        display: none !important;
+
+    }
+
+
+
+}
+
+
+

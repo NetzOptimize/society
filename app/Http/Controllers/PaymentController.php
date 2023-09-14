@@ -5,33 +5,120 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\House;
 use App\Models\PaymentMode;
+use App\Models\Activitylog;
 use App\Models\Payment;
 use App\Models\Resident;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
     public $initialpayment = 2100;
     public $monthlypayment = 700;
-    public function index()
+    // public function index($id=0)
+    // {
+
+    //     $months = config('global.months');
+
+    //     if(isset($_GET['month']))
+    //     {
+
+    //         if (array_key_exists($_GET['month'], config('global.months'))) {
+
+    //             $payments = Payment::Monthlyfilter($_GET['month'])->pluck('id')->toarray();
+    //             $payments = Payment::sortedData($payments)->get();
+    //             $count = $payments->count();
+    //             $sum = $payments->sum('amount');
+    //         }
+    //         else {
+    //             return redirect()->route('payments.index')->with('error','Invalid Request');
+    //         }
+    //     }
+    //     elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
+    //     {
+    //         $startdate = strtotime($_GET['start_date']);
+    //         $enddate = strtotime($_GET['end_date']);
+
+    //         if ( $startdate == true &&  $enddate == true) {
+    //             $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();
+    //             $payments = Payment::sortedData($payments)->get();
+    //             $count = $payments->count();
+    //             $sum = $payments->sum('amount');
+    //         } else {
+    //             return redirect()->route('payments.index')->with('error','Invalid Request');
+    //         }
+    //     }
+    //     elseif(isset($_GET['sort']))
+    //     {
+    //         $payments= Payment::sort($_GET['sort']);
+
+    //         $count = $payments->count();
+    //         $sum = $payments->sum('amount');
+
+    //     }
+    //     elseif(isset($_GET['unpaid']))
+    //     {
+    //         $month =  $_GET['unpaid'];
+
+    //         $payments = DB::table('houses')
+    //             ->selectRaw('houses.full_address')
+    //             ->where('houses.house_type', 'house')
+    //             ->whereNotIn('houses.id', function ($query) use ($month) {
+    //                 $query->select('house_id')
+    //                     ->from('payments')
+    //                     ->distinct()
+    //                     ->where('billingmonth', $month);
+    //             })->get();
+
+    //         $count = $payments->count();
+    //         foreach ($payments as $payment) {
+    //             $array[] = House::where('full_address',$payment->full_address)->first();
+    //         }
+
+    //         $sum=0;
+    //         $payments= collect($array);
+    //     }
+    //     else
+    //     {
+    //         $payments = Payment::Monthlyfilter(Carbon::now()->startOfMonth()->format('d-m-Y'))->pluck('id')->toarray();
+    //         $payments = Payment::sortedData($payments)->get();
+    //         $count = $payments->count();
+    //         $sum = $payments->sum('amount');
+    //     }
+
+    //     return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id'));
+    // }
+    public function index($id=0)
     {
 
         $months = config('global.months');
 
-        if(isset($_GET['month']))
+        if(isset($_GET['sort']))
+        {
+            $payments= Payment::sort($_GET['sort'], $_GET['month'], $_GET['start_date'], $_GET['end_date']);
+
+            $count = $payments->count();
+            $sum = $payments->sum('amount');
+
+        }
+        elseif(isset($_GET['month']))
         {
 
-            if (array_key_exists($_GET['month'], config('global.months'))) {
-
-                $payments = Payment::Monthlyfilter($_GET['month'])->pluck('id')->toarray();
+            if($_GET['month']=='All')
+            {
+                $payments = Payment::get()->pluck('id')->toarray();
                 $payments = Payment::sortedData($payments)->get();
                 $count = $payments->count();
                 $sum = $payments->sum('amount');
             }
-            else {
-                return redirect()->route('payments.index')->with('error','Invalid Request');
+            else
+            {
+                $payments = Payment::Monthlyfilter($_GET['month'])->pluck('id')->toarray();
+                $payments = Payment::sortedData($payments)->get();
+                $count = $payments->count();
+                $sum = $payments->sum('amount');
             }
         }
         elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
@@ -40,7 +127,9 @@ class PaymentController extends Controller
             $enddate = strtotime($_GET['end_date']);
 
             if ( $startdate == true &&  $enddate == true) {
-                $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();;
+                $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();
+                // $data= Payment::whereNotIn('id', $payments)->get();
+
                 $payments = Payment::sortedData($payments)->get();
                 $count = $payments->count();
                 $sum = $payments->sum('amount');
@@ -48,43 +137,54 @@ class PaymentController extends Controller
                 return redirect()->route('payments.index')->with('error','Invalid Request');
             }
         }
-        elseif(isset($_GET['search']))
-        {
-            $house=$_GET['search'];
-            $payments = Payment::whereHas('houses', function ($query) use ($house) {
-                $query->where('full_address', 'Like', '%'.$house.'%');
-            })->get()->pluck('id')->toarray();
 
-            $payments = Payment::sortedData($payments)->get();
-            $count = $payments->count();
-            $sum = $payments->sum('amount');
-        }
         elseif(isset($_GET['unpaid']))
         {
             $month =  $_GET['unpaid'];
 
-            $payments = DB::table('houses')
-            ->selectRaw('houses.full_address')
-            ->where('houses.house_type', 'house')
-            ->whereNotIn('houses.id', function ($query) use ($month) {
-                $query->select('house_id')
-                    ->from('payments')
-                    ->distinct()
-                    ->where('billingmonth', $month);
-            })->get();
+            if($month == 'All') {
+                $payments = House::whereNotIn('id', function ($query) {
+                    $query->select('house_id')
+                        ->from('payments');
+                })
+                ->get();
 
-            $count = $payments->count();
-            $sum = 0 ;
+                $count = count($payments);
+                $sum=0;
+
+            }
+            else {
+
+                $payments = DB::table('houses')
+                    ->selectRaw('houses.full_address')
+                    ->where('houses.house_type', 'house')
+                    ->whereNotIn('houses.id', function ($query) use ($month) {
+                        $query->select('house_id')
+                            ->from('payments')
+                            ->distinct()
+                            ->where('billingmonth', $month);
+                    })->get();
+
+
+                $count = $payments->count();
+                foreach ($payments as $payment) {
+                    $array[] = House::where('full_address',$payment->full_address)->first();
+                }
+
+                $sum=0;
+                $payments= collect($array);
+            }
+
         }
         else
         {
-            $payments = Payment::get()->pluck('id')->toarray();
+            $payments = Payment::Monthlyfilter(Carbon::now()->startOfMonth()->format('d-m-Y'))->pluck('id')->toarray();
             $payments = Payment::sortedData($payments)->get();
             $count = $payments->count();
             $sum = $payments->sum('amount');
         }
 
-        return view('payments.index', compact('payments', 'months', 'count', 'sum'));
+        return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id'));
     }
 
 
@@ -117,7 +217,7 @@ class PaymentController extends Controller
 
             if($initialpayment == null)
             {
-                Payment::create([
+                $payment=Payment::create([
 
                     'house_id' => $req['house_id'],
                     'billingmonth' => $req['billingmonth'][0],
@@ -133,7 +233,7 @@ class PaymentController extends Controller
                     {
                         if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first() == null)
                         {
-                            Payment::create([
+                            $payment=Payment::create([
 
                                 'house_id' => $req['house_id'],
                                 'billingmonth' => $month,
@@ -154,7 +254,7 @@ class PaymentController extends Controller
             {
                 if(Payment::where('house_id', $req->house_id)->where('billingmonth',$month)->first() == null)
                 {
-                    Payment::create([
+                    $payment=Payment::create([
                         'house_id' => $req['house_id'],
                         'billingmonth' => $month,
                         'amount' => $this->monthlypayment,
@@ -162,7 +262,6 @@ class PaymentController extends Controller
                         'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
                         'comments' => $req['comments']
                     ]);
-
                 }
             }
             return back()->with('success', 'Payment Added Successfully');
@@ -190,6 +289,7 @@ class PaymentController extends Controller
 
     public function update(Request $req, Payment $payment)
     {
+
         $attributes= $req->validate([
             'house_id' =>'required',
             'billingmonth' => 'required',
@@ -202,10 +302,22 @@ class PaymentController extends Controller
 
         if($exists)
         {
-            return back()->with('error', 'Payment Already Exists');
+            $payment->update([
+                'payment_modes_id' => $req['payment_modes_id'],
+                'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+                'comments' => $req['comments']
+            ]);
+
+            return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
         }
 
-        $payment->update($attributes);
+        $payment->update([
+            'house_id' => $req['house_id'],
+            'billingmonth' => $req['billingmonth'],
+            'payment_modes_id' => $req->payment_modes_id,
+            'dateofdeposit' => Carbon::parse($req->dateofdeposit)->format('d-m-Y'),
+            'comments' => $req['comments']
+        ]);
 
         return redirect()->route('payments.index')->with('success', 'Payment Edited Succesfully');
     }
@@ -214,19 +326,30 @@ class PaymentController extends Controller
     {
         abort_if(auth()->user()->usertype_id != User::ADMIN, 403, 'Access Deined');
 
-        $payment->delete()->with('success','payment deleted successfully');
-        return redirect()->back();
+        $payment->delete();
+
+        return back()->with('success','payment deleted successfully');
     }
 
     public function ajax(Request $request)
     {
         $houseId = $request->input('house_id');
-        $payments = Payment::where('house_id',$houseId)->get();
-        $billingmonths = $payments->pluck('billingmonth');
+
+        $payments = Payment::where('house_id', $houseId)
+        ->with('paymentmode')
+        ->get()
+        ->map(function ($payment) {
+        return [
+            'name' => $payment->paymentmode->name,
+            'billingmonth' => $payment->billingmonth,
+            'dateofdeposit' => $payment->dateofdeposit
+        ];
+    });
+
+   $payments = collect($payments)->toArray();
 
         return response()->json([
-            'status' => 'success',
-            'billingmonths' => $billingmonths,
+            'payments' => isset($payments[0]) ? $payments : null
         ]);
     }
 }
