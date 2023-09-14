@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,13 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('createUser',function() {
+    $user = new User();
+    $user->name = 'Mohit';
+    $user->mobile1 = '1122334455';
+    $user->password = Hash::make('melonboy');
+    $user->usertype_id = 1;
+    $user->save();
+    $this->comment('User created successfully');
+});
