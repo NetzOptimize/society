@@ -57,7 +57,7 @@ class Payment extends Model
             ->logOnly(['*']);
     }
 
-
+    
 
     public function housename()
 

@@ -17,6 +17,8 @@ class PaymentController extends Controller
 {
     public $initialpayment = 2100;
     public $monthlypayment = 700;
+
+
     // public function index($id=0)
     // {
 
@@ -92,7 +94,7 @@ class PaymentController extends Controller
     // }
     public function index($id=0)
     {
-
+        $resident = null;
         $months = config('global.months');
 
         if(isset($_GET['sort']))
@@ -103,7 +105,7 @@ class PaymentController extends Controller
             $sum = $payments->sum('amount');
 
         }
-        elseif(isset($_GET['month']))
+        elseif(isset($_GET['month']) && !isset($_GET['tableView']))
         {
 
             if($_GET['month']=='All')
@@ -128,6 +130,8 @@ class PaymentController extends Controller
 
             if ( $startdate == true &&  $enddate == true) {
                 $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();
+                // $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date']);
+                // dd($payments->first());
                 // $data= Payment::whereNotIn('id', $payments)->get();
 
                 $payments = Payment::sortedData($payments)->get();
@@ -138,7 +142,7 @@ class PaymentController extends Controller
             }
         }
 
-        elseif(isset($_GET['unpaid']))
+        elseif(isset($_GET['unpaid']) && !isset($_GET['tableView']))
         {
             $month =  $_GET['unpaid'];
 
@@ -178,13 +182,60 @@ class PaymentController extends Controller
         }
         else
         {
-            $payments = Payment::Monthlyfilter(Carbon::now()->startOfMonth()->format('d-m-Y'))->pluck('id')->toarray();
-            $payments = Payment::sortedData($payments)->get();
-            $count = $payments->count();
-            $sum = $payments->sum('amount');
-        }
+        
+            if(isset($_GET['tableView'])){
+                
+                // i want to select where 01-06-2023 month is paid
+                $resident = Resident::Join('users','residents.user_id','=','users.id')
+                ->join('houses','residents.house_id','=','houses.id')
+                ->get()
+                ->map(function($item){
+                    $payments = Payment::where('house_id',$item->house_id)->get();
+                    foreach(config('global.months') as $key => $value){
+                        if($key == "All"){
+                            continue;
+                        }else{
+                            $item->$key = "Not Paid";
+                            foreach($payments as $payment){
+                                if($key == $payment->billingmonth){
+                                    // dump($payment->billingmonth);
+                                    $item->$key = "Paid";
+                                }
+                            }
+                        }
+                    }
+                    return $item;
+                });
+                
+                if(isset($_GET['month'])){
+                    if($_GET['month'] != 'All'){
+                        $resident = $resident->where($_GET['month'],'Paid');
+                    }
+                }
 
-        return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id'));
+                if(isset($_GET['unpaid'])){
+                    $resident = $resident->where($_GET['unpaid'],'Not Paid');
+                }
+                
+                $payments = Payment::Monthlyfilter(Carbon::now()->startOfMonth()->format('d-m-Y'))->pluck('id')->toarray();
+                $payments = Payment::sortedData($payments)->get();
+                // dd($payments);
+                $count = $payments->count();
+                $sum = $payments->sum('amount');
+                
+                // dd($resident->first());
+
+            }else{
+                $payments = Payment::Monthlyfilter(Carbon::now()->startOfMonth()->format('d-m-Y'))->pluck('id')->toarray();
+                $payments = Payment::sortedData($payments)->get();
+                // dd($payments->first());
+                $count = $payments->count();
+                $sum = $payments->sum('amount');
+            }
+            
+        }
+        
+        return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id', 'resident'));
     }
 
 

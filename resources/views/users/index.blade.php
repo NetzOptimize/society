@@ -18,6 +18,9 @@ Society Users
         @if (auth()->user()->usertype_id != 3)
             <a href="{{ route('users.create') }}" class="btn btn-success">Add User <img src="{{ asset('add-user.png') }}"
                     class="" alt=""></a>
+            <a href="{{ route('users.export') }}" class="btn btn-Warning">Export Users Data <img src="{{ asset('excel.png') }}"
+                    class="" alt=""></a>
+            
         @endif
     </div>
     <div class="table-add-user ps-5 pe-5 pt-3 table-responsive">

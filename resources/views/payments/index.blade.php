@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('title')
 Society Payments
 @endsection
@@ -9,8 +10,8 @@ Society Payments
 <div class="heading-payment-history bg-light me-5 ms-5  p-4 mt-3 text-center">
     <h3>Payment History</h3>
 </div>
-
-
+    
+    
     <div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
         <div class="paid-month-flex d-flex me-3">
             @if(request('month'))
@@ -25,7 +26,11 @@ Society Payments
                 </label>
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
-                    <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                    @if(request('tableView'))
+                        <li><a class="dropdown-item" href="/payments?tableView=All&month={{ $key }}">{{ $month }}</a></li>
+                    @else
+                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                    @endif
                     @endforeach
                 </ul>
             </div>
@@ -41,7 +46,11 @@ Society Payments
                 </label>
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
-                    <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                    @if(request('tableView'))
+                        <li><a class="dropdown-item" href="/payments?tableView=All&month={{ $key }}">{{ $month }}</a></li>
+                    @else
+                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                    @endif
                     @endforeach
                 </ul>
             </div>
@@ -57,15 +66,24 @@ Society Payments
                     @endif
                 </label>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ request('unpaid') }}">Paid</a></li>
+                    <li><a class="dropdown-item" @if (request('tableView'))
+                            href="/payments?tableView=All&paid={{ request('tableView') }}"
+                        @else    
+                            href="{{ route('payments.index') }}?month={{ request('unpaid') }}"@endif>Paid</a></li>
+                            
                     @if (request('month'))
-                    <li><a class="dropdown-item" href="{{ route('payments.index') }}?unpaid={{ request('month') }}">Unpaid</a></li>
+                    <li><a class="dropdown-item" @if(request('tableView')) 
+                        href="/payments?tableView=All&unpaid={{ request('month') }}"
+                        @else
+                        href="{{ route('payments.index') }}?unpaid={{ request('month') }}" @endif >Unpaid</a></li>
                     @endif
                 </ul>
             </div>
         </div>
     </div>
-
+        @if (!request('tableView'))
+            
+        
         {{-- datewise filter --}}
         @if(request('start_date'))
             <div class="payment ">
@@ -74,7 +92,7 @@ Society Payments
                     @if (request('start_date'))
                     <input type="date" name="start_date" value={{ request('start_date') }}>
                     @else
-                    <input type="date" name="start_date" class="start-date">
+                    <input type="date" name="start_date" class="start-date" value="{{ old('start_date') }}">
                     @endif
                     <label class="ms-3 me-3 text-center"><b>Date of deposit (ED)</b></label>
                     @if (request('end_date'))
@@ -108,10 +126,10 @@ Society Payments
             </form>
         </div>
         @endif
-
+        @endif
 
         {{-- search bar --}}
-        <div class="none">
+        <div class="none" style="text-align: center">
         <input type="textbox" id="search" placeholder="Search" class="search">
         </div>
     </div>
@@ -119,8 +137,14 @@ Society Payments
     {{-- refresh button --}}
     <div class="none">
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-        <a href="{{ route('payments.index') }}" class="btn btn-success d-flex align-items-center me-2">Refresh</a>
-        <button onclick="printDiv()" class="btn btn-success d-flex align-items-center ">Print</button>
+        <a @if(request('tableView')) href=""  @else href="{{ route('payments.index') }}" @endif class="btn btn-success d-flex align-items-center me-2">Refresh</a>
+        <button onclick="printDiv()" class="btn btn-success d-flex align-items-center me-2">Print</button>
+        @if (request('tableView'))
+        <a href="/payments" class="btn btn-success d-flex align-items-center me-2">View By: Payment Recieved</a>
+        @else
+        <a href="?tableView=All" class="btn btn-success d-flex align-items-center me-2">View By: Payments by Residents </a>
+        @endif
+
     </div>
     </div>
 <!-- table -->
@@ -151,9 +175,11 @@ Society Payments
 <!-- table end -->
 
 {{-- listing  --}}
+
 @php $i=0; @endphp
 <div class="table-payments ps-5 pe-5 pt-2 table-responsive">
     <div id="printableArea">
+        @if(!isset($_GET['tableView']))
         <table class="table table-light table-bordered table-hover data" id="print-table">
             <thead>
                 @if($payments->first())
@@ -164,8 +190,7 @@ Society Payments
                     <th>Owner</th>
                     @if (null == request('unpaid'))
                     <th>Payment Mode</th>
-                    <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2">
-
+                    <th class="d-flex align-items-center ">Date Of Deposit<div class="dropdown ms-2"> 
                             <a class="btn btn-success btn-sm dropdown-toggle none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if (request('sort'))
                                 {{ request('sort') }}
@@ -258,6 +283,64 @@ Society Payments
                 </div>
             </tbody>
         </table>
+        @else
+            <table class="table table-light table-bordered table-hover data" id="print-table">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        House No
+                    </th>
+                    <th>
+                        Owner
+                    </th>
+                    @foreach ($months as $key => $month)
+                    @if ($key == "All")
+                            @continue
+                        @endif
+                    <th>
+                        {{ $month }}
+                    </th>
+
+                    @endforeach
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {{-- {{dd($resident->first())}} --}}
+                @foreach ($resident ?? [] as $residentPayment)
+                <tr>
+                    <td>
+                        {{$residentPayment->id}}
+                    </td>
+                    <td>
+                        {{$residentPayment->full_address}}
+                    </td>
+                    <td>
+                        {{$residentPayment->name}}
+                    </td>
+                    @foreach ($months as $key => $month)
+                        @if ($key == "All")
+                            @continue
+                        @endif
+                        <td @if ($residentPayment[$key] == "Not Paid")
+                            style="color:red;"
+                            @elseif ($residentPayment[$key] == "Paid")
+                            style="color:green;"
+                        @endif >
+                            {{$residentPayment[$key]}}
+                        </td>
+                    @endforeach
+                </tr>
+
+                    
+                @endforeach
+            </tbody>
+        </table>
+        {{-- <table id="header-fixed" ></table> --}}
+        @endif
     </div>
 </div>
 {{-- delete confirmation --}}
@@ -300,6 +383,5 @@ Society Payments
             });
         });
     });
-
 </script>
 @endsection

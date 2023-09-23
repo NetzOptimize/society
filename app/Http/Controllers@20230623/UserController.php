@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Society;
@@ -13,6 +14,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\ForgetPassword;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -34,7 +36,7 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
-
+    
     public function create()
     {
         $usertypes = Usertype::get();
@@ -335,5 +337,10 @@ class UserController extends Controller
             return back()->with('success','image removed successfully');
         }
         return back();
+    }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }
