@@ -7,6 +7,7 @@ use App\Models\House;
 use App\Models\PaymentMode;
 use App\Models\Activitylog;
 use App\Models\Payment;
+use App\Models\PaymentType;
 use App\Models\Resident;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -193,12 +194,14 @@ class PaymentController extends Controller
                     $payments = Payment::where('house_id',$item->house_id)->get();
                     foreach(config('global.months') as $key => $value){
                         if($key == "All"){
+                            $item->$key = "Not Paid";
                             continue;
                         }else{
                             $item->$key = "Not Paid";
                             foreach($payments as $payment){
                                 if($key == $payment->billingmonth){
                                     // dump($payment->billingmonth);
+                                    $item->All = "Paid";
                                     $item->$key = "Paid";
                                 }
                             }
@@ -235,6 +238,21 @@ class PaymentController extends Controller
             
         }
         
+        $payments->map(function($payment){
+            if(!$payment->resident_type){
+                $residentType = House::where('id',$payment->house_id)->first()->resident_type;
+                $payment->resident_type = $residentType;
+            }
+            return $payment;
+        });
+        
+        if(isset($_GET['resident_type'])){
+            $payments = $payments->where('resident_type',$_GET['resident_type']);
+            if(isset($resident)){
+                $resident = $resident->where('resident_type',$_GET['resident_type']);
+            }
+        }
+        
         return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id', 'resident'));
     }
 
@@ -253,6 +271,23 @@ class PaymentController extends Controller
 
     public function store(Request $req, Payment $payment)
     {
+        $residentType = [1 => 'non commercial', 2 => 'commercial'];
+        $paymentType = [1 => 'monthly',2 => 'six_months',3 => 'twelve_months'];
+        $house = House::where('id',$req->house_id)->first()->resident_type;
+        $amount = PaymentType::where('resident_type',$residentType[$house])->first();
+        $initialMonth = $amount->initial_month;
+        if($paymentType[$req->payment_modes_id] == 'monthly'){
+            $monthly = $amount->monthly;
+        }elseif($paymentType[$req->payment_modes_id] == 'six_months'){
+            $monthly = $amount->six_months;
+        }elseif($paymentType[$req->payment_modes_id] == 'twelve_months'){
+            $monthly = $amount->twelve_months;
+        }
+        $this->initialpayment = $initialMonth;
+        $this->monthlypayment = $monthly;
+        // dd($this->initialpayment, $this->monthlypayment);
+        
+
         $req->validate([
             'house_id' =>'required',
             'billingmonth' => 'required',
@@ -385,7 +420,10 @@ class PaymentController extends Controller
     public function ajax(Request $request)
     {
         $houseId = $request->input('house_id');
-
+        $house = null;
+        if($houseId){
+            $house = House::where('id', $houseId)->first();
+        }
         $payments = Payment::where('house_id', $houseId)
         ->with('paymentmode')
         ->get()
@@ -393,14 +431,38 @@ class PaymentController extends Controller
         return [
             'name' => $payment->paymentmode->name,
             'billingmonth' => $payment->billingmonth,
-            'dateofdeposit' => $payment->dateofdeposit
+            'dateofdeposit' => $payment->dateofdeposit,
         ];
+        
     });
+    
 
-   $payments = collect($payments)->toArray();
+        $payments = collect($payments)->toArray();
 
         return response()->json([
-            'payments' => isset($payments[0]) ? $payments : null
+            'payments' => isset($payments[0]) ? $payments : null,
+            'resident_type' => $house ? $house->resident_type : null,
         ]);
     }
+
+    public function getAmount(Request $request){
+        $residentType = [1 => 'non commercial', 2 => 'commercial'];
+        $paymentType = [1 => 'monthly',2 => 'six_months',3 => 'twelve_months'];
+        $amount = PaymentType::where('resident_type',$residentType[$request->residentType])->first();
+        
+        $initialMonth = $amount->initial_month; 
+        if($paymentType[$request->paymentType] == 'monthly'){
+            $monthly = $amount->monthly;
+        }elseif($paymentType[$request->paymentType] == 'six_months'){
+            $monthly = $amount->six_months;
+        }elseif($paymentType[$request->paymentType] == 'twelve_months'){
+            $monthly = $amount->twelve_months;
+        }
+
+        return response()->json([
+            'initialMonth' => $initialMonth,
+            'monthly' => $monthly
+        ]);
+    }
+
 }

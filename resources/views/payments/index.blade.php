@@ -13,7 +13,27 @@ Society Payments
     
     
     <div class="d-flex justify-content-center align-items-center  p-4 payment1 ">
+        
         <div class="paid-month-flex d-flex me-3">
+            <div class="dropdown me-2" >
+                <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @if (request('resident_type'))
+                    {{request('resident_type') == 1 ? "Non Commercial" : "Commercial"  }}
+                    @else
+                    Resident Type
+                    @endif
+                </label>
+                <ul class="dropdown-menu">
+                    @if(request('tableView'))
+                    <li><a class="dropdown-item" href="?tableView=All&resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}">Non Commercial</a></li>
+                    <li><a class="dropdown-item" href="?tableView=All&resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}" >Commercial</a></li>
+                    @else
+                    <li><a class="dropdown-item" href="?resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}">Non Commercial</a></li>
+                    <li><a class="dropdown-item" href="?resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}" >Commercial</a></li>
+                    @endif
+                </ul>
+
+            </div>
             @if(request('month'))
             <div class="dropdown me-2">
                 <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,9 +47,9 @@ Society Payments
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
-                        <li><a class="dropdown-item" href="/payments?tableView=All&month={{ $key }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @else
-                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @endif
                     @endforeach
                 </ul>
@@ -47,9 +67,9 @@ Society Payments
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
-                        <li><a class="dropdown-item" href="/payments?tableView=All&month={{ $key }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @else
-                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @endif
                     @endforeach
                 </ul>
@@ -67,15 +87,15 @@ Society Payments
                 </label>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" @if (request('tableView'))
-                            href="/payments?tableView=All&paid={{ request('tableView') }}"
+                            href="{{route('payments.index')}}?tableView=All&month={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}"
                         @else    
-                            href="{{ route('payments.index') }}?month={{ request('unpaid') }}"@endif>Paid</a></li>
+                            href="{{ route('payments.index') }}?month={{ request('unpaid') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}"@endif>Paid</a></li>
                             
                     @if (request('month'))
                     <li><a class="dropdown-item" @if(request('tableView')) 
-                        href="/payments?tableView=All&unpaid={{ request('month') }}"
+                        href="{{route('payments.index')}}?tableView=All&unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}"
                         @else
-                        href="{{ route('payments.index') }}?unpaid={{ request('month') }}" @endif >Unpaid</a></li>
+                        href="{{ route('payments.index') }}?unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}" @endif >Unpaid</a></li>
                     @endif
                 </ul>
             </div>
@@ -140,7 +160,7 @@ Society Payments
         <a @if(request('tableView')) href=""  @else href="{{ route('payments.index') }}" @endif class="btn btn-success d-flex align-items-center me-2">Refresh</a>
         <button onclick="printDiv()" class="btn btn-success d-flex align-items-center me-2">Print</button>
         @if (request('tableView'))
-        <a href="/payments" class="btn btn-success d-flex align-items-center me-2">View By: Payment Recieved</a>
+        <a href="{{route('payments.index')}}" class="btn btn-success d-flex align-items-center me-2">View By: Payment Recieved</a>
         @else
         <a href="?tableView=All" class="btn btn-success d-flex align-items-center me-2">View By: Payments by Residents </a>
         @endif
@@ -297,7 +317,8 @@ Society Payments
                         Owner
                     </th>
                     @foreach ($months as $key => $month)
-                    @if ($key == "All")
+                    
+                    @if ($key == "All" ||  strtotime($key)>strtotime(date("d-m-Y")))
                             @continue
                         @endif
                     <th>
@@ -322,7 +343,7 @@ Society Payments
                         {{$residentPayment->name}}
                     </td>
                     @foreach ($months as $key => $month)
-                        @if ($key == "All")
+                        @if ($key == "All" ||  strtotime($key)>strtotime(date("d-m-Y")))
                             @continue
                         @endif
                         <td @if ($residentPayment[$key] == "Not Paid")
