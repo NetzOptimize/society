@@ -1,5 +1,12 @@
 @extends('layouts.main')
+@php
+    if(request('start'))
+    {
+        $start = "01-".request('start');
 
+        $end = "01-".request('end');
+    }
+@endphp
 @section('title')
 Society Payments
 @endsection
@@ -25,8 +32,8 @@ Society Payments
                 </label>
                 <ul class="dropdown-menu">
                     @if(request('tableView'))
-                    <li><a class="dropdown-item" href="?tableView=All&resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}">Non Commercial</a></li>
-                    <li><a class="dropdown-item" href="?tableView=All&resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}" >Commercial</a></li>
+                    <li><a class="dropdown-item" href="?tableView=All&resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">Non Commercial</a></li>
+                    <li><a class="dropdown-item" href="?tableView=All&resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}" >Commercial</a></li>
                     @else
                     <li><a class="dropdown-item" href="?resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}">Non Commercial</a></li>
                     <li><a class="dropdown-item" href="?resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}" >Commercial</a></li>
@@ -47,7 +54,7 @@ Society Payments
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">{{ $month }}</a></li>
                     @else
                         <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @endif
@@ -67,7 +74,7 @@ Society Payments
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">{{ $month }}</a></li>
                     @else
                         <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @endif
@@ -75,6 +82,21 @@ Society Payments
                 </ul>
             </div>
             @endif
+
+            @if(request('tableView'))
+            <div class="input-daterange input-group" id="datepicker">
+                <input type="text" class="form-control" name="start" placeholder="Start Date" value="{{isset($_GET['start']) ? $_GET['start'] : "03-2023"}}"/>
+                <div class="input-group-prepend">
+                    <span class="input-group-text">to</span>
+                </div>
+                <input type="text" class="form-control" name="end" placeholder="End Date"  value="{{isset($_GET['end']) ? $_GET['end'] : date("m-Y")}}"/>
+                {{-- bootstrap sort button --}}
+                <a href="" class="btn btn-success d-flex align-items-center me-2" id="sortDate">Sort</a>
+            </div>
+            @endif
+
+            
+
 
             <div class="none">
             <div class="dropdown">
@@ -87,13 +109,13 @@ Society Payments
                 </label>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" @if (request('tableView'))
-                            href="{{route('payments.index')}}?tableView=All&month={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}"
+                            href="{{route('payments.index')}}?tableView=All&month={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}"
                         @else    
                             href="{{ route('payments.index') }}?month={{ request('unpaid') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}"@endif>Paid</a></li>
                             
                     @if (request('month'))
                     <li><a class="dropdown-item" @if(request('tableView')) 
-                        href="{{route('payments.index')}}?tableView=All&unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}"
+                        href="{{route('payments.index')}}?tableView=All&unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}"
                         @else
                         href="{{ route('payments.index') }}?unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}" @endif >Unpaid</a></li>
                     @endif
@@ -101,6 +123,8 @@ Society Payments
             </div>
         </div>
     </div>
+
+       
         @if (!request('tableView'))
             
         
@@ -318,8 +342,20 @@ Society Payments
                     </th>
                     @foreach ($months as $key => $month)
                     
-                    @if ($key == "All" ||  strtotime($key)>strtotime(date("d-m-Y")))
-                            @continue
+                    @if(isset($start) && isset($end))
+                            @if($key == "All")
+                                @continue
+                            @endif
+                            @if($key != "init")
+                            @if (strtotime($key)<strtotime($start) || strtotime($key)>strtotime($end))
+                                @continue
+                            @endif
+                            @endif
+                            
+                        @else
+                            @if ($key == "All" ||  strtotime($key)>strtotime(date("d-m-Y")))
+                                @continue
+                            @endif
                         @endif
                     <th>
                         {{ $month }}
@@ -343,8 +379,20 @@ Society Payments
                         {{$residentPayment->name}}
                     </td>
                     @foreach ($months as $key => $month)
-                        @if ($key == "All" ||  strtotime($key)>strtotime(date("d-m-Y")))
-                            @continue
+                        @if(isset($start) && isset($end))
+                            @if($key == "All")
+                                @continue
+                            @endif
+                            @if($key != "init")
+                            @if (strtotime($key)<strtotime($start) || strtotime($key)>strtotime($end))
+                                @continue
+                            @endif
+                            @endif
+                            
+                        @else
+                            @if ($key == "All" ||  strtotime($key)>strtotime(date("d-m-Y")))
+                                @continue
+                            @endif
                         @endif
                         <td @if ($residentPayment[$key] == "Not Paid")
                             style="color:red;"
@@ -367,6 +415,44 @@ Society Payments
 {{-- delete confirmation --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script type="text/javascript">
+    $('#sortDate').click(function(e) {
+        e.preventDefault();
+        var start_date = $('input[name="start"]').val();
+        var end_date = $('input[name="end"]').val();
+        var month = "{{ request('month') ? request('month') : '' }}";
+        var resident_type = "{{ request('resident_type') ? request('resident_type') : '' }}";
+        var unpaid = "{{ request('unpaid') ? request('unpaid') : '' }}";
+        var tableView = "{{ request('tableView') ? request('tableView') : '' }}";
+        if (start_date == '' || end_date == '') {
+            alert('Please select both dates');
+            return false;
+        }
+        var url = "{{ route('payments.index') }}?start=" + start_date + "&end=" + end_date;
+        if (month) {
+            url += "&month=" + month;
+        }
+        if (resident_type) {
+            url += "&resident_type=" + resident_type;
+        }
+        if (unpaid) {
+            url += "&unpaid=" + unpaid;
+        }
+        if (tableView) {
+            url += "&tableView=" + tableView;
+        }
+        
+        location.replace(url);
+
+        
+    });
+
+    $(document).ready(function(){
+        $('#datepicker').datepicker({
+            format: 'mm-yyyy', // specify the date format
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
     $('.show_confirm').click(function(event) {
         var form = $(this).closest("form");
         var name = $(this).data("name");

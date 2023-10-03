@@ -271,7 +271,7 @@ class PaymentController extends Controller
 
     public function store(Request $req, Payment $payment)
     {
-        $residentType = [1 => 'non commercial', 2 => 'commercial'];
+        $residentType = [1 => 'non commercial', 2 => 'commercial'];         
         $paymentType = [1 => 'monthly',2 => 'six_months',3 => 'twelve_months'];
         $house = House::where('id',$req->house_id)->first()->resident_type;
         $amount = PaymentType::where('resident_type',$residentType[$house])->first();

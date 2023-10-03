@@ -5,8 +5,6 @@ return [
 'months' => [
         'All' => 'All Records',
         'init'=> 'INITIAL PAYMENT',
-        '01-01-2023' => 'January 2023',
-        '01-02-2023'=> 'February 2023',
         '01-03-2023' => 'March 2023',
         '01-04-2023'=> 'April 2023',
         '01-05-2023' => 'May 2023',
