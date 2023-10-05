@@ -212,7 +212,7 @@ class PaymentController extends Controller
                 
                 if(isset($_GET['month'])){
                     if($_GET['month'] != 'All'){
-                        $resident = $resident->where($_GET['month'],'Paid');
+                        $resident = $resident->where($_GET['month'],'!=','Not Paid');
                     }
                 }
 
@@ -220,12 +220,22 @@ class PaymentController extends Controller
                     $resident = $resident->where($_GET['unpaid'],'Not Paid');
                 }
                 
-                $payments = Payment::Monthlyfilter(Carbon::now()->startOfMonth()->format('d-m-Y'))->pluck('id')->toarray();
+                $payments = Payment::pluck('id')->toarray();
                 $payments = Payment::sortedData($payments)->get();
                 // dd($payments);
-                $count = $payments->count();
-                $sum = $payments->sum('amount');
-                
+
+                if(isset($_GET['month'])){
+                    if($_GET['month'] != 'All'){
+                        $count = $payments->where('billingmonth',$_GET['month'])->count();
+                        $sum = $payments->where('billingmonth',$_GET['month'])->sum('amount');
+                    }else{
+                        $count = $payments->count();
+                        $sum = $payments->sum('amount');
+                    }
+                }else{
+                    $count = $payments->count();
+                    $sum = $payments->sum('amount');
+                }
                 // dd($resident->first());
 
             }else{
@@ -245,6 +255,8 @@ class PaymentController extends Controller
             }
             return $payment;
         });
+
+
         
         if(isset($_GET['resident_type'])){
             $payments = $payments->where('resident_type',$_GET['resident_type']);
@@ -252,7 +264,30 @@ class PaymentController extends Controller
                 $resident = $resident->where('resident_type',$_GET['resident_type']);
             }
         }
-        
+
+        if(!isset($_GET['tableView'])){
+            if(isset($_GET['resident_type'])){
+                $payments->where('resident_type',$_GET['resident_type']);
+                $count = $payments->count();
+                $sum = $payments->sum('amount');
+            }
+        }else{
+            if(isset($_GET['resident_type'])){
+                if(!isset($_GET['month'])){
+                    $count = $payments->where('resident_type',$_GET['resident_type'])->count();
+                    $sum = $payments->where('resident_type',$_GET['resident_type'])->sum('amount');
+                }else{
+                    if($_GET['month'] != 'All'){
+                        $count = $payments->where('resident_type',$_GET['resident_type'])->where('billingmonth',$_GET['month'])->count();
+                        $sum = $payments->where('resident_type',$_GET['resident_type'])->where('billingmonth',$_GET['month'])->sum('amount');
+                    }else{
+                        $count = $payments->where('resident_type',$_GET['resident_type'])->count();
+                        $sum = $payments->where('resident_type',$_GET['resident_type'])->sum('amount');
+                    }
+                }
+            }
+        }
+        // dd($resident);
         return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id', 'resident'));
     }
 
