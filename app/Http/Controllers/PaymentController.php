@@ -202,7 +202,7 @@ class PaymentController extends Controller
                                 if($key == $payment->billingmonth){
                                     // dump($payment->billingmonth);
                                     $item->All = "Paid";
-                                    $item->$key = "Paid";
+                                    $item->$key = array('status'=>'Paid','amount'=>$payment->amount);
                                 }
                             }
                         }
@@ -271,20 +271,24 @@ class PaymentController extends Controller
 
     public function store(Request $req, Payment $payment)
     {
+        
         $residentType = [1 => 'non commercial', 2 => 'commercial'];         
         $paymentType = [1 => 'monthly',2 => 'six_months',3 => 'twelve_months'];
         $house = House::where('id',$req->house_id)->first()->resident_type;
         $amount = PaymentType::where('resident_type',$residentType[$house])->first();
         $initialMonth = $amount->initial_month;
-        if($paymentType[$req->payment_modes_id] == 'monthly'){
+        if($paymentType[$req->payment_type] == 'monthly'){
             $monthly = $amount->monthly;
-        }elseif($paymentType[$req->payment_modes_id] == 'six_months'){
+        }elseif($paymentType[$req->payment_type] == 'six_months'){
             $monthly = $amount->six_months;
-        }elseif($paymentType[$req->payment_modes_id] == 'twelve_months'){
+        }elseif($paymentType[$req->payment_type] == 'twelve_months'){
             $monthly = $amount->twelve_months;
         }
+
+        
         $this->initialpayment = $initialMonth;
         $this->monthlypayment = $monthly;
+
         // dd($this->initialpayment, $this->monthlypayment);
         
 

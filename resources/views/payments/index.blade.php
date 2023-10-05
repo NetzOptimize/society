@@ -394,12 +394,17 @@ Society Payments
                                 @continue
                             @endif
                         @endif
+                        @php
+                            
+                        @endphp
                         <td @if ($residentPayment[$key] == "Not Paid")
                             style="color:red;"
-                            @elseif ($residentPayment[$key] == "Paid")
+                            @elseif ($residentPayment[$key]["status"] == "Paid")
                             style="color:green;"
                         @endif >
-                            {{$residentPayment[$key]}}
+                            {{isset($residentPayment[$key]["status"]) ? $residentPayment[$key]["status"] : $residentPayment[$key]}}
+                            <br>
+                            {{isset($residentPayment[$key]["amount"]) ? "(".$residentPayment[$key]["amount"].")" : ""}}
                         </td>
                     @endforeach
                 </tr>
