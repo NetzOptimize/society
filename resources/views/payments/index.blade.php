@@ -25,12 +25,13 @@ Society Payments
             <div class="dropdown me-2" >
                 <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     @if (request('resident_type'))
-                    {{request('resident_type') == 1 ? "Non Commercial" : "Commercial"  }}
+                    Resident Type - {{request('resident_type') == 1 ? "Non Commercial" : "Commercial"  }}
                     @else
-                    Resident Type
+                    Resident Type - All
                     @endif
                 </label>
                 <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="?{{request('tableView') ? "tableView=All" : "" }}{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">All</a></li>
                     @if(request('tableView'))
                     <li><a class="dropdown-item" href="?tableView=All&resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">Non Commercial</a></li>
                     <li><a class="dropdown-item" href="?tableView=All&resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}" >Commercial</a></li>
@@ -190,12 +191,12 @@ Society Payments
     {{-- refresh button --}}
     <div class="none">
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-        <a @if(request('tableView')) href="{{ route('payments.index') }}?tableView=All"  @else href="{{ route('payments.index') }}" @endif class="btn btn-success d-flex align-items-center me-2">Refresh</a>
+        <a @if(request('tableView')) href="{{ route('payments.index') }}?tableView=All&start=03-2023&end={{date('m-Y')}}"  @else href="{{ route('payments.index') }}" @endif class="btn btn-success d-flex align-items-center me-2">Refresh</a>
         <button onclick="printDiv()" class="btn btn-success d-flex align-items-center me-2">Print</button>
         @if (request('tableView'))
         <a href="{{route('payments.index')}}" class="btn btn-success d-flex align-items-center me-2">View By: Payment Recieved</a>
         @else
-        <a href="?tableView=All" class="btn btn-success d-flex align-items-center me-2">View By: Payments by Residents </a>
+        <a href="?tableView=All&start=03-2023&end={{date('m-Y')}}" class="btn btn-success d-flex align-items-center me-2">View By: Payments by Residents </a>
         @endif
 
     </div>
@@ -205,7 +206,7 @@ Society Payments
     <table class="table w-auto table-bordered ">
 
         <tr>
-            <th class="text-center table-info" colspan="2">Financial Reports</th>
+            <th class="text-center table-info" colspan="2">Financial Reports {{ request('month') && request('month') != "All" && request('month') != "init"  ? "[".date('F', strtotime(request('month')))."]" : (!request('month') && request('end') && request('start') ? "[".date('F-Y',strtotime($start))." to ".date('F-Y',strtotime($end))."]" : "" ) }}</th>
         </tr>
 
         <tbody>
@@ -436,7 +437,7 @@ Society Payments
         e.preventDefault();
         var start_date = $('input[name="start"]').val();
         var end_date = $('input[name="end"]').val();
-        var month = "{{ request('month') ? request('month') : '' }}";
+        // var month = "{{ request('month') ? request('month') : '' }}";
         var resident_type = "{{ request('resident_type') ? request('resident_type') : '' }}";
         var unpaid = "{{ request('unpaid') ? request('unpaid') : '' }}";
         var tableView = "{{ request('tableView') ? request('tableView') : '' }}";
@@ -445,9 +446,9 @@ Society Payments
             return false;
         }
         var url = "{{ route('payments.index') }}?start=" + start_date + "&end=" + end_date;
-        if (month) {
-            url += "&month=" + month;
-        }
+        // if (month) {
+        //     url += "&month=" + month;
+        // }
         if (resident_type) {
             url += "&resident_type=" + resident_type;
         }
@@ -467,7 +468,8 @@ Society Payments
         $('#datepicker').datepicker({
             format: 'mm-yyyy', // specify the date format
             autoclose: true,
-            todayHighlight: true
+            todayHighlight: true,
+            startDate: '03-2023'
         });
     });
     $('.show_confirm').click(function(event) {

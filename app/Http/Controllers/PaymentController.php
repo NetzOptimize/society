@@ -285,6 +285,35 @@ class PaymentController extends Controller
                         $sum = $payments->where('resident_type',$_GET['resident_type'])->sum('amount');
                     }
                 }
+            }else{
+                if(!isset($_GET['month'])){
+                    if(isset($_GET['start']) && isset($_GET['end'])){
+                        
+                        $start = strtotime("01-".$_GET['start']);
+                        $end = strtotime("01-".$_GET['end']);
+
+                        $start = date('Y-m-d', $start);
+                        $end = date('Y-m-d', $end);
+                        
+                        
+                        
+                        if ( $start == true &&  $end == true) {
+                            // so i have billingdate in string format i want to first convert it into date format
+                            // then i want to compare it with start and end date
+                            // if it is between start and end date then i want to show it
+                            $sortedPayment = Payment::whereBetween(\DB::raw("STR_TO_DATE(billingmonth, '%d-%m-%Y')"), [
+                                $start,$end
+                            ])->get();
+                            // dd($sortedPayment);
+                            $initCount = Payment::where('billingmonth','init')->count();
+                            $initSum = Payment::where('billingmonth','init')->sum('amount');
+                            // dd($initCount,$initSum);
+
+                            $count = $sortedPayment->count()+ $initCount;
+                            $sum = $sortedPayment->sum('amount')+ $initSum;
+                        }
+                    }
+                }
             }
         }
         // dd($resident);
