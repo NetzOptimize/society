@@ -118,17 +118,20 @@ Society Payments
                     @endif
                 </label>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" @if (request('tableView'))
+                    <li><a class="dropdown-item" 
+                        @if (request('tableView'))
                             href="{{route('payments.index')}}?tableView=All&month={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}"
                         @else    
-                            href="{{ route('payments.index') }}?month={{ request('unpaid') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}"@endif>Paid</a></li>
+                            href="{{ route('payments.index') }}?month={{ request('unpaid') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}"
+                        @endif>Paid</a></li>
                             
                     @if (request('month'))
-                    <li><a class="dropdown-item" @if(request('tableView')) 
-                        href="{{route('payments.index')}}?tableView=All&unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}"
+                    <li><a class="dropdown-item" 
+                        @if(request('tableView')) 
+                            href="{{route('payments.index')}}?tableView=All&unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}"
                         @else
-                        href="{{ route('payments.index') }}?unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}" @endif >Unpaid</a></li>
-                    @endif
+                            href="{{ route('payments.index') }}?unpaid={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}" @endif >Unpaid</a></li>
+                        @endif
                 </ul>
             </div>
         </div>
@@ -142,6 +145,15 @@ Society Payments
         @if(request('start_date'))
             <div class="payment ">
                 <form action="" method="GET" style="margin:0" id="payment-history-form">
+                    @if(request('resident_type'))
+                    <input type="hidden" name="resident_type" value="{{ request('resident_type') }}">
+                    @endif
+                    @if(request('month'))
+                    <input type="hidden" name="month" value="{{ request('month') }}">
+                    @endif
+                    @if(request('unpaid'))
+                    <input type="hidden" name="unpaid" value="{{ request('unpaid') }}">
+                    @endif
                     <label class="ms-3 me-3 text-center"><b>Date of deposit (SD)</b></label>
                     @if (request('start_date'))
                     <input type="date" name="start_date" value={{ request('start_date') }}>
@@ -162,6 +174,15 @@ Society Payments
         @else
         <div class="payment none">
             <form action="" method="GET" style="margin:0" id="payment-history-form">
+                @if(request('resident_type'))
+                <input type="hidden" name="resident_type" value="{{ request('resident_type') }}">
+                @endif
+                @if(request('month'))
+                <input type="hidden" name="month" value="{{ request('month') }}">
+                @endif
+                @if(request('unpaid'))
+                <input type="hidden" name="unpaid" value="{{ request('unpaid') }}">
+                @endif
                 <label class="ms-3 me-3 text-center"><b>Date of deposit (SD)</b></label>
                 @if (request('start_date'))
                 <input type="date" name="start_date" value={{ request('start_date') }}>
@@ -192,7 +213,10 @@ Society Payments
     <div class="none">
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
         <a @if(request('tableView')) href="{{ route('payments.index') }}?tableView=All&start=03-2023&end={{date('m-Y')}}"  @else href="{{ route('payments.index') }}" @endif class="btn btn-success d-flex align-items-center me-2">Refresh</a>
-        <button onclick="printDiv()" class="btn btn-success d-flex align-items-center me-2">Print</button>
+        @if(!request('tableView'))
+            <button onclick="printDiv()" class="btn btn-success d-flex align-items-center me-2">Print</button>
+        
+        @endif
         @if (request('tableView'))
         <a href="{{route('payments.index')}}" class="btn btn-success d-flex align-items-center me-2">View By: Payment Recieved</a>
         @else
@@ -253,9 +277,9 @@ Society Payments
                                 @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li class=""><a class="dropdown-item " href="?sort=Ascending&month={{ request('month') }}&start_date={{ request('start_date') }}&end_date={{ request('end_date') }}">Ascending</a></li>
+                                <li class=""><a class="dropdown-item " href="?sort=Ascending&month={{ request('month') }}&start_date={{ request('start_date') }}&end_date={{ request('end_date') }}{{request('resident_type') ? "&resident_type=".request('resident_type') : ""}}">Ascending</a></li>
                                 {{-- <li class=""><a class="dropdown-item " href="?sort=Ascending&month={{ request('month') }}">Ascending</a></li> --}}
-                                <li class=""><a class="dropdown-item " href="?sort=Descending&month={{ request('month') }}&start_date={{ request('start_date') }}&end_date={{ request('end_date') }}">Descending</a></li>
+                                <li class=""><a class="dropdown-item " href="?sort=Descending&month={{ request('month') }}&start_date={{ request('start_date') }}&end_date={{ request('end_date') }}{{request('resident_type') ? "&resident_type=".request('resident_type') : ""}}">Descending</a></li>
                             </ul>
                         </div>
                     </th>
