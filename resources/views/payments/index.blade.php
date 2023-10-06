@@ -45,16 +45,21 @@ Society Payments
             <div class="dropdown me-2">
                 <label class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     @if (request('month') || request('unpaid'))
-                    {{ request('month') }}
-                    {{ request('unpaid') }}
+                        {{ request('month') }}
+                        {{ request('unpaid') }}
                     @else
+                
                     Months
-                    @endif
+            @endif
                 </label>
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">{{ $month }}</a></li>
+                    @if($key != "All" && $key !="init")
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=".DateTime::createFromFormat('d-m-Y',$key)->format('m-Y')}}">{{ $month }}</a></li>
+                    @else
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=12-2024" }}">{{ $month }}</a></li>
+                    @endif
                     @else
                         <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @endif
@@ -74,7 +79,11 @@ Society Payments
                 <ul class="dropdown-menu">
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">{{ $month }}</a></li>
+                    @if($key != "All" && $key !="init")
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=".DateTime::createFromFormat('d-m-Y',$key)->format('m-Y')}}">{{ $month }}</a></li>
+                    @else
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=12-2024" }}">{{ $month }}</a></li>
+                    @endif
                     @else
                         <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
                     @endif
@@ -181,7 +190,7 @@ Society Payments
     {{-- refresh button --}}
     <div class="none">
     <div class="refresh-button pb-4 me-5 d-flex justify-content-end">
-        <a @if(request('tableView')) href=""  @else href="{{ route('payments.index') }}" @endif class="btn btn-success d-flex align-items-center me-2">Refresh</a>
+        <a @if(request('tableView')) href="{{ route('payments.index') }}?tableView=All"  @else href="{{ route('payments.index') }}" @endif class="btn btn-success d-flex align-items-center me-2">Refresh</a>
         <button onclick="printDiv()" class="btn btn-success d-flex align-items-center me-2">Print</button>
         @if (request('tableView'))
         <a href="{{route('payments.index')}}" class="btn btn-success d-flex align-items-center me-2">View By: Payment Recieved</a>
@@ -329,10 +338,10 @@ Society Payments
         </table>
         @else
             <table class="table table-light table-bordered table-hover data" id="print-table">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th>
-                        Id
+                        Serial No
                     </th>
                     <th>
                         House No
@@ -365,12 +374,15 @@ Society Payments
                     
                 </tr>
             </thead>
+            @php
+                $i=1;
+            @endphp
             <tbody>
                 {{-- {{dd($resident->first())}} --}}
                 @foreach ($resident ?? [] as $residentPayment)
                 <tr>
                     <td>
-                        {{$residentPayment->id}}
+                        {{$i++}}
                     </td>
                     <td>
                         {{$residentPayment->full_address}}
