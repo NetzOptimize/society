@@ -1026,8 +1026,6 @@ border:none !important;
 
   }
 
- 
-
 
 
 /* print-screen*/
@@ -1268,6 +1266,36 @@ form#payment-history-form {
 
 }
 
+ 
+.table-payments{
+    overflow: unset !important;
+}
+table#print-table thead tr {
+    position: sticky;
+    top: -1px;
+ }
+ div#printableArea {  
+    overflow: auto; 
+}
+div#printableArea {
+    vertical-align: middle;
+    overflow-y: scroll;
+    max-height: 800px;
+}
+
+
+table.table.table-light.table-hover.table-bordered.data thead tr {
+    position: sticky;
+    top: -1px;
+}
+.table-expenses {
+    overflow: unset;
+}
+.table-resident div#printableArea {
+    vertical-align: unset;
+    overflow-y: unset;
+    max-height: unset;
+}
 /* print end */
 
 /* responsiveness */
@@ -2026,9 +2054,11 @@ padding:0px !important;
 
 .d-flex.justify-content-center.align-items-center.p-4.payment1 {
 
-    gap: 10px;
+    gap: 20px;
 
     flex-direction: column;
+    padding: 20px 20px !important;
+
 
 }
 
@@ -2069,7 +2099,13 @@ padding:0px !important;
     padding: 0px !important;
 
 }
-
+.paid-month-flex.d-flex.me-3 {
+    margin: 0px !important;
+    display: flex;
+     justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 16px;
+}
 }
 
 .done{
@@ -2403,18 +2439,17 @@ padding:0px !important;
     .d-flex.justify-content-center.align-items-center.p-4.payment1 {
 
         flex-direction: column-reverse;
+        padding: 0px 20px !important;
+
 
     }
 
-.reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
-
-    justify-content: center !important;
-
-    padding: 0px !important;
-
-    margin: 10px 0px 10px 0px !important;
-
-}
+    .reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+        justify-content: center !important;
+        padding: 0px 20px !important;
+        margin: 10px 0px 10px -4px !important;
+         gap: 5px;
+    }
 
 .table-expenses.ps-5.pe-5.pt-3.table-responsive{
 
@@ -2428,9 +2463,8 @@ form#payment-history-form {
 
   flex-direction: column;
 
-
-
 }
+  
 
 }
 
@@ -2452,8 +2486,16 @@ form#payment-history-form {
 
     }
 
+    .refresh-button a, .refresh-button button {
+         justify-content: center;
+         font-size: 16px !important;
 
+    }
+    .paid-month-flex.d-flex label {
+        font-size: 16px !important;
+        justify-content: center;
 
+    } 
     .side-image {
 
         display: none;
@@ -2663,7 +2705,36 @@ form#payment-history-form {
         width: 80%;
 
     }
+    .refresh-button {
+        margin: 0px !important;
+    }
+    .reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+       
+        flex-direction: column;
+    }
+    .refresh-button a, .refresh-button button {
+         justify-content: center;
+         margin: 0px !important;
 
+    }
+    .refresh-button a {
+         font-size: 16px;
+        padding: 7px 20px !important;
+     }
+     .reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+  
+        gap: 6px;
+    }
+    .refresh-button a {
+    margin: 0px !important;
+     }
+     .reports.d-flex.justify-content-end.me-5, .refresh-button.pb-4.me-5.d-flex.justify-content-end {
+           flex-direction: column;
+     }
+     .refresh-button a, .refresh-button button {
+         width: 60%;
+        margin: 0 auto !important;
+    }
 }
 
 

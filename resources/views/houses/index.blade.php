@@ -9,8 +9,13 @@ Society Houses
     </div>
     <div class="table-add-user pt-4 table-responsive">
         {{-- search bar --}}
-
+    
    <div class="refresh-button pb-3 me-5 d-flex justify-content-end">
+    @if(request('withoutowner'))
+    <a href="{{route('houses.index')}}" class="btn btn-success d-flex align-items-center me-2">Houses With Owner</a>
+    @else
+    <a href="{{route('houses.index')}}?withoutowner=1" class="btn btn-success d-flex align-items-center me-2">Houses Without Owner</a>
+    @endif
    <input type="search" placeholder="Search " id="search" style="margin:0" class="search"/>
 
    </div>

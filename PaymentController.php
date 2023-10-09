@@ -109,7 +109,6 @@ class PaymentController extends Controller
         elseif(isset($_GET['month']) && !isset($_GET['tableView']))
         {
 
-
             if($_GET['month']=='All')
             {
                 $payments = Payment::get()->pluck('id')->toarray();
@@ -124,39 +123,9 @@ class PaymentController extends Controller
                 $count = $payments->count();
                 $sum = $payments->sum('amount');
             }
-
-            if(isset($_GET['start_date']) && isset($_GET['end_date']))
-            {
-                // dd("i am here");
-                $startdate = strtotime($_GET['start_date']);
-                $enddate = strtotime($_GET['end_date']);
-
-                if ( $startdate == true &&  $enddate == true) {
-                    if($_GET['month'] != 'All'){
-                        $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->where('billingmonth',$_GET['month'])
-                        ->pluck('id')
-                        ->toarray();
-                    }else{
-                        $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();
-                    }
-                    // $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date']);
-                    // dd($payments->first());
-                    // $data= Payment::whereNotIn('id', $payments)->get();
-
-                    $payments = Payment::sortedData($payments)->get();
-                    $count = $payments->count();
-                    $sum = $payments->sum('amount');
-                } else {
-                    return redirect()->route('payments.index')->with('error','Invalid Request');
-                }
-            }
-
-            
-
         }
         elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
         {
-            // dd("i am here");
             $startdate = strtotime($_GET['start_date']);
             $enddate = strtotime($_GET['end_date']);
 
@@ -316,87 +285,9 @@ class PaymentController extends Controller
                         $sum = $payments->where('resident_type',$_GET['resident_type'])->sum('amount');
                     }
                 }
-            }else{
-                if(!isset($_GET['month'])){
-                    if(isset($_GET['start']) && isset($_GET['end'])){
-                        
-                        $start = strtotime("01-".$_GET['start']);
-                        $end = strtotime("01-".$_GET['end']);
-
-                        $start = date('Y-m-d', $start);
-                        $end = date('Y-m-d', $end);
-                        
-                        
-                        
-                        if ( $start == true &&  $end == true) {
-                            // so i have billingdate in string format i want to first convert it into date format
-                            // then i want to compare it with start and end date
-                            // if it is between start and end date then i want to show it
-                            $sortedPayment = Payment::whereBetween(\DB::raw("STR_TO_DATE(billingmonth, '%d-%m-%Y')"), [
-                                $start,$end
-                            ])->get();
-                            // dd($sortedPayment);
-                            $initCount = Payment::where('billingmonth','init')->count();
-                            $initSum = Payment::where('billingmonth','init')->sum('amount');
-                            // dd($initCount,$initSum);
-
-                            $count = $sortedPayment->count()+ $initCount;
-                            $sum = $sortedPayment->sum('amount')+ $initSum;
-                        }
-                    }
-                }
             }
-            if(request('tableView')){
-                if(request('unpaid')){
-                    $count = $resident->unique('full_address')->where(request('unpaid'),'Not Paid')->count();
-                    $sum=0;
-                    
-                }
-            }
-            // dd($resident->where('full_address','DS-A-2')->get());
-            
-            // i want to select those houses where there is owner as well as tenant
-            
-            // in these residents i want to select where is owner is 1
-            
-            $houses = House::where('house_type','house')->get();
-            $housesData = $houses->map(function($house){
-                // and isOwner is 1
-                $owner = Resident::where('house_id',$house->id)->where('isOwner',1)->first();
-                // and isTenant is 1
-                $tenant = Resident::where('house_id',$house->id)->where('isOwner',0)->first();
-
-                if($owner){
-                    $house->hasOwner = 1;
-                }else{
-                    $house->hasOwner = 0;
-                }
-
-                if($tenant){
-                    $house->hasTenant = 1;
-                }else{
-                    $house->hasTenant = 0;
-                }
-
-                return $house;
-            });
-
-            
-            $both = $housesData->where('hasOwner',1)->where('hasTenant',1)->toArray();
-            $onlyOwner = $housesData->where('hasOwner',1)->where('hasTenant',0);
-            $onlyTenant = $housesData->where('hasOwner',0)->where('hasTenant',1);
-
-            $both = array_column($both,'full_address');
-
-            $tenant = $resident->whereIn('full_address',$both)->where('isOwner',0)->toArray();
-            
-            $tenant = array_column($tenant,'user_id');
-
-            // dd($tenant);
-            $resident = $resident->whereNotIn('user_id',$tenant);
         }
-        
-        
+        // dd($resident);
         return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id', 'resident'));
     }
 
