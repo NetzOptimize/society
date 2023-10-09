@@ -1026,8 +1026,6 @@ border:none !important;
 
   }
 
- 
-
 
 
 /* print-screen*/
@@ -1268,8 +1266,36 @@ form#payment-history-form {
 
 }
 
+ 
+.table-payments{
+    overflow: unset !important;
+}
+table#print-table thead tr {
+    position: sticky;
+    top: -1px;
+ }
+ div#printableArea {  
+    overflow: auto; 
+}
+div#printableArea {
+    vertical-align: middle;
+    overflow-y: scroll;
+    max-height: 800px;
+}
 
 
+table.table.table-light.table-hover.table-bordered.data thead tr {
+    position: sticky;
+    top: -1px;
+}
+.table-expenses {
+    overflow: unset;
+}
+.table-resident div#printableArea {
+    vertical-align: unset;
+    overflow-y: unset;
+    max-height: unset;
+}
 /* print end */
 
 /* responsiveness */
