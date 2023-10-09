@@ -368,6 +368,7 @@ Society Payments
             </tbody>
         </table>
         @else
+        @if($resident->first())
             <table class="table table-light table-bordered table-hover data" id="print-table">
             <thead class="table-dark">
                 <tr>
@@ -410,6 +411,9 @@ Society Payments
             @endphp
             <tbody>
                 {{-- {{dd($resident->first())}} --}}
+                
+                {{-- check if $resident is empty --}}
+                
                 @foreach ($resident ?? [] as $residentPayment)
                 <tr>
                     <td>
@@ -461,6 +465,9 @@ Society Payments
             </tbody>
         </table>
         {{-- <table id="header-fixed" ></table> --}}
+        @else
+        <div class="error d-flex justify-content-center "><b>No Record Found</b></div>
+        @endif
         @endif
     </div>
 </div>

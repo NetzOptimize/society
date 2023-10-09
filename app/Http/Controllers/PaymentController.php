@@ -355,9 +355,48 @@ class PaymentController extends Controller
             }
             // dd($resident->where('full_address','DS-A-2')->get());
             
+            // i want to select those houses where there is owner as well as tenant
             
+            // in these residents i want to select where is owner is 1
+            
+            $houses = House::where('house_type','house')->get();
+            $housesData = $houses->map(function($house){
+                // and isOwner is 1
+                $owner = Resident::where('house_id',$house->id)->where('isOwner',1)->first();
+                // and isTenant is 1
+                $tenant = Resident::where('house_id',$house->id)->where('isOwner',0)->first();
+
+                if($owner){
+                    $house->hasOwner = 1;
+                }else{
+                    $house->hasOwner = 0;
+                }
+
+                if($tenant){
+                    $house->hasTenant = 1;
+                }else{
+                    $house->hasTenant = 0;
+                }
+
+                return $house;
+            });
+
+            
+            $both = $housesData->where('hasOwner',1)->where('hasTenant',1)->toArray();
+            $onlyOwner = $housesData->where('hasOwner',1)->where('hasTenant',0);
+            $onlyTenant = $housesData->where('hasOwner',0)->where('hasTenant',1);
+
+            $both = array_column($both,'full_address');
+
+            $tenant = $resident->whereIn('full_address',$both)->where('isOwner',0)->toArray();
+            
+            $tenant = array_column($tenant,'user_id');
+
+            // dd($tenant);
+            $resident = $resident->whereNotIn('user_id',$tenant);
         }
-        // dd($resident);
+        
+        
         return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id', 'resident'));
     }
 

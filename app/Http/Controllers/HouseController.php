@@ -17,8 +17,32 @@ class HouseController extends Controller
         {
             $houses = House::search($_GET['search']);
         }
-        else
-        {
+        elseif(isset($_GET['withoutowner'])){
+            $houses = House::where('house_type','house')->get();
+            $housesData = $houses->map(function($house){
+                // and isOwner is 1
+                $owner = Resident::where('house_id',$house->id)->where('isOwner',1)->first();
+                // and isTenant is 1
+                $tenant = Resident::where('house_id',$house->id)->where('isOwner',0)->first();
+
+                if($owner){
+                    $house->hasOwner = 1;
+                }else{
+                    $house->hasOwner = 0;
+                }
+
+                if($tenant){
+                    $house->hasTenant = 1;
+                }else{
+                    $house->hasTenant = 0;
+                }
+
+                return $house;
+            });
+            $houses = $housesData->where('hasOwner',0)->where('hasTenant',0);
+            
+        }
+        else{
             $houses = House::get();
         }
         return view('houses.index', compact('houses'));
