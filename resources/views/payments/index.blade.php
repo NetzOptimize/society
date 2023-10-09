@@ -31,13 +31,13 @@ Society Payments
                     @endif
                 </label>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="?{{request('tableView') ? "tableView=All" : "" }}{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">All</a></li>
+                    <li><a class="dropdown-item" href="?{{request('tableView') ? "tableView=All" : "" }}{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}">All</a></li>
                     @if(request('tableView'))
                     <li><a class="dropdown-item" href="?tableView=All&resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}">Non Commercial</a></li>
                     <li><a class="dropdown-item" href="?tableView=All&resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}" >Commercial</a></li>
                     @else
-                    <li><a class="dropdown-item" href="?resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}">Non Commercial</a></li>
-                    <li><a class="dropdown-item" href="?resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}" >Commercial</a></li>
+                    <li><a class="dropdown-item" href="?resident_type=1{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}">Non Commercial</a></li>
+                    <li><a class="dropdown-item" href="?resident_type=2{{request('month') ? "&month=".request('month') : "" }}{{request('unpaid') ? "&unpaid=".request("unpaid") : ""}}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}" >Commercial</a></li>
                     @endif
                 </ul>
 
@@ -57,12 +57,12 @@ Society Payments
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
                     @if($key != "All" && $key !="init")
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=".DateTime::createFromFormat('d-m-Y',$key)->format('m-Y')}}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=03-2023" : "&start=03-2023" }}{{"&end=".DateTime::createFromFormat('d-m-Y',$key)->format('m-Y')}}">{{ $month }}</a></li>
                     @else
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=12-2024" }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=03-2023" : "&start=03-2023" }}{{"&end=12-2024" }}">{{ $month }}</a></li>
                     @endif
                     @else
-                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}">{{ $month }}</a></li>
                     @endif
                     @endforeach
                 </ul>
@@ -81,12 +81,12 @@ Society Payments
                     @foreach ($months as $key => $month)
                     @if(request('tableView'))
                     @if($key != "All" && $key !="init")
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=".DateTime::createFromFormat('d-m-Y',$key)->format('m-Y')}}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=03-2023" : "&start=03-2023" }}{{"&end=".DateTime::createFromFormat('d-m-Y',$key)->format('m-Y')}}">{{ $month }}</a></li>
                     @else
-                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "&start=03-2023" }}{{"&end=12-2024" }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{route('payments.index')}}?tableView=All&month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=03-2023" : "&start=03-2023" }}{{"&end=12-2024" }}">{{ $month }}</a></li>
                     @endif
                     @else
-                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}">{{ $month }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('payments.index') }}?month={{ $key }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}">{{ $month }}</a></li>
                     @endif
                     @endforeach
                 </ul>
@@ -120,9 +120,9 @@ Society Payments
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" 
                         @if (request('tableView'))
-                            href="{{route('payments.index')}}?tableView=All&month={{ request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}"
+                            href="{{route('payments.index')}}?tableView=All&month={{ request('unpaid') ? request('unpaid') : (request('month') ? request('month') : "" ) }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request("start") ? "&start=".request("start") : "" }}{{request("end") ? "&end=".request("end") : "" }}"
                         @else    
-                            href="{{ route('payments.index') }}?month={{ request('unpaid') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}"
+                            href="{{ route('payments.index') }}?month={{ request('unpaid') ? request('unpaid') : request('month') }}{{ request('resident_type') ? "&resident_type=".request('resident_type') : "" }}{{request('start_date') ? "&start_date=".request('start_date') : "" }}{{request('end_date') ? "&end_date=".request('end_date') : "" }}"
                         @endif>Paid</a></li>
                             
                     @if (request('month'))
@@ -230,7 +230,13 @@ Society Payments
     <table class="table w-auto table-bordered ">
 
         <tr>
-            <th class="text-center table-info" colspan="2">Financial Reports {{ request('month') && request('month') != "All" && request('month') != "init"  ? "[".date('F', strtotime(request('month')))."]" : (!request('month') && request('end') && request('start') ? "[".date('F-Y',strtotime($start))." to ".date('F-Y',strtotime($end))."]" : "" ) }}</th>
+            @if(request('month'))
+            <th class="text-center table-info" colspan="2">Financial Reports {{ request('month') && request('month') != "All" && request('month') != "init"  ? "[".date('F-Y', strtotime(request('month')))."]" : (!request('month') && request('end') && request('start') ? "[".date('F-Y',strtotime($start))." to ".date('F-Y',strtotime($end))."]" : (request('month') && request('month') == "All" || request('month') == "init"  ? "[".request('month')."]" : "" ) ) }}</th>
+            @elseif(request('unpaid'))
+            <th class="text-center table-info" colspan="2">Financial Reports {{ request('unpaid') && request('unpaid') != "All" && request('unpaid') != "init"  ? "[".date('F-Y', strtotime(request('unpaid')))."]" : (!request('unpaid') && request('end') && request('start') ? "[".date('F-Y',strtotime($start))." to ".date('F-Y',strtotime($end))."]" : (request('unpaid') && request('unpaid') == "All" || request('unpaid') == "init"  ? "[".request('unpaid')."]" : "" ) ) }}</th>
+            @else
+            <th class="text-center table-info" colspan="2">Financial Reports {{ request('start') && request('end') ? "[".date('F-Y',strtotime($start))." to ".date('F-Y',strtotime($end))." + INITIAL]" : "" }}</th>
+            @endif
         </tr>
 
         <tbody>
@@ -411,6 +417,10 @@ Society Payments
                     </td>
                     <td>
                         {{$residentPayment->full_address}}
+                        <br>
+                        @if ($residentPayment->isOwner !=1)
+                            (TENANT)
+                        @endif
                     </td>
                     <td>
                         {{$residentPayment->name}}

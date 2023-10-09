@@ -109,6 +109,7 @@ class PaymentController extends Controller
         elseif(isset($_GET['month']) && !isset($_GET['tableView']))
         {
 
+
             if($_GET['month']=='All')
             {
                 $payments = Payment::get()->pluck('id')->toarray();
@@ -123,9 +124,39 @@ class PaymentController extends Controller
                 $count = $payments->count();
                 $sum = $payments->sum('amount');
             }
+
+            if(isset($_GET['start_date']) && isset($_GET['end_date']))
+            {
+                // dd("i am here");
+                $startdate = strtotime($_GET['start_date']);
+                $enddate = strtotime($_GET['end_date']);
+
+                if ( $startdate == true &&  $enddate == true) {
+                    if($_GET['month'] != 'All'){
+                        $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->where('billingmonth',$_GET['month'])
+                        ->pluck('id')
+                        ->toarray();
+                    }else{
+                        $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date'])->pluck('id')->toarray();
+                    }
+                    // $payments = Payment::Datebetween($_GET['start_date'], $_GET['end_date']);
+                    // dd($payments->first());
+                    // $data= Payment::whereNotIn('id', $payments)->get();
+
+                    $payments = Payment::sortedData($payments)->get();
+                    $count = $payments->count();
+                    $sum = $payments->sum('amount');
+                } else {
+                    return redirect()->route('payments.index')->with('error','Invalid Request');
+                }
+            }
+
+            
+
         }
         elseif(isset($_GET['start_date']) && isset($_GET['end_date']))
         {
+            // dd("i am here");
             $startdate = strtotime($_GET['start_date']);
             $enddate = strtotime($_GET['end_date']);
 
@@ -315,6 +346,16 @@ class PaymentController extends Controller
                     }
                 }
             }
+            if(request('tableView')){
+                if(request('unpaid')){
+                    $count = $resident->unique('full_address')->where(request('unpaid'),'Not Paid')->count();
+                    $sum=0;
+                    
+                }
+            }
+            // dd($resident->where('full_address','DS-A-2')->get());
+            
+            
         }
         // dd($resident);
         return view('payments.index', compact('payments', 'months', 'count', 'sum', 'id', 'resident'));
